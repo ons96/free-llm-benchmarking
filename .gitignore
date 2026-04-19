@@ -1,7 +1,38 @@
+# Python
 *.pyc
 __pycache__/
-data/speedrun.db
-data/cache/
-.env
-*.bak
+*.py[cod]
+*.so
+.Python
+build/
+dist/
+*.egg
+
+# Virtual environments
 .venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Database & data (local only)
+data/
+*.db
+*.db-wal
+*.db-shm
+
+# Secrets - NEVER commit these
+*.env
+opencode.json
+config*.yaml
+secrets.env
+*.bak
+credentials*
+
+# Logs
+*.log
+logs/
