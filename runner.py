@@ -1,0 +1,352 @@
+"""Async streaming speed test runner."""
+
+import asyncio
+import json
+import time
+import uuid
+from dataclasses import dataclass
+from typing import Optional
+
+import httpx
+
+from config import Target
+import db
+
+# Minimal prompts for token-efficient testing
+SYSTEM_PROMPT = "You are a concise coding assistant."
+USER_PROMPT = "Write a Python merge sort function with type hints."
+# ~20 input tokens total
+
+MAX_TOKENS = 200
+TIMEOUT_NORMAL = 30
+TIMEOUT_REASONING = 120
+RETRY_COUNT = 2
+RUNS_PER_TARGET = 3
+MAX_CONCURRENT = 4
+INTER_CALL_DELAY = 1.0  # seconds between calls to same provider
+
+
+@dataclass
+class TestResult:
+    ttft_ms: Optional[float] = None
+    tps: Optional[float] = None
+    output_tokens: int = 0
+    total_time_ms: Optional[float] = None
+    status: str = "error"
+    error_message: Optional[str] = None
+    raw_sample: str = ""
+
+
+async def test_single_call(
+    client: httpx.AsyncClient,
+    target: Target,
+    reasoning_effort: Optional[str] = None,
+) -> TestResult:
+    """Make a single streaming API call and measure TTFT + TPS."""
+    url = f"{target.base_url.rstrip('/')}/chat/completions"
+
+    body: dict = {
+        "model": target.model_name,
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": USER_PROMPT},
+        ],
+        "max_tokens": MAX_TOKENS,
+        "stream": True,
+        "temperature": 0.0,
+    }
+
+    if reasoning_effort and target.supports_reasoning:
+        body["reasoning_effort"] = reasoning_effort
+
+    headers = {"Content-Type": "application/json"}
+    if target.api_key:
+        headers["Authorization"] = f"Bearer {target.api_key}"
+
+    timeout = (
+        TIMEOUT_REASONING
+        if (reasoning_effort and target.supports_reasoning)
+        else TIMEOUT_NORMAL
+    )
+
+    t_start = time.monotonic()
+    first_token_time: Optional[float] = None
+    last_token_time: Optional[float] = None
+    token_count = 0
+    collected_text = ""
+
+    try:
+        async with client.stream(
+            "POST", url, json=body, headers=headers, timeout=timeout
+        ) as resp:
+            if resp.status_code != 200:
+                body_bytes = b""
+                async for chunk in resp.aiter_bytes():
+                    body_bytes += chunk
+                    if len(body_bytes) > 500:
+                        break
+                return TestResult(
+                    status="http_error",
+                    error_message=f"HTTP {resp.status_code}: {body_bytes[:300].decode(errors='replace')}",
+                    total_time_ms=(time.monotonic() - t_start) * 1000,
+                )
+
+            async for line in resp.aiter_lines():
+                if not line.startswith("data: "):
+                    continue
+                data_str = line[6:].strip()
+                if data_str == "[DONE]":
+                    break
+
+                try:
+                    chunk_data = json.loads(data_str)
+                except json.JSONDecodeError:
+                    continue
+
+                # Extract content delta
+                choices = chunk_data.get("choices", [])
+                if not choices:
+                    continue
+                delta = choices[0].get("delta", {})
+                content = delta.get("content", "")
+
+                if content:
+                    now = time.monotonic()
+                    if first_token_time is None:
+                        first_token_time = now
+                    last_token_time = now
+                    token_count += _approx_tokens(content)
+                    collected_text += content
+
+                # Check for usage in final chunk
+                usage = chunk_data.get("usage")
+                if usage and "completion_tokens" in usage:
+                    token_count = usage["completion_tokens"]
+
+    except httpx.TimeoutException:
+        return TestResult(
+            status="timeout",
+            error_message=f"Timeout after {timeout}s",
+            total_time_ms=(time.monotonic() - t_start) * 1000,
+        )
+    except httpx.HTTPError as e:
+        return TestResult(
+            status="http_error",
+            error_message=str(e)[:300],
+            total_time_ms=(time.monotonic() - t_start) * 1000,
+        )
+    except Exception as e:
+        return TestResult(
+            status="error",
+            error_message=f"{type(e).__name__}: {str(e)[:200]}",
+            total_time_ms=(time.monotonic() - t_start) * 1000,
+        )
+
+    t_end = time.monotonic()
+    total_ms = (t_end - t_start) * 1000
+
+    if first_token_time is None:
+        return TestResult(
+            status="empty",
+            error_message="No content tokens received",
+            total_time_ms=total_ms,
+        )
+
+    ttft_ms = (first_token_time - t_start) * 1000
+
+    # TPS: tokens generated / generation time
+    # Use time between first and last token if stream is long enough (>0.5s).
+    # Otherwise fall back to total_time - ttft to avoid absurd values from
+    # buffered/chunked responses where all content arrives in one burst.
+    tps = None
+    if token_count > 1:
+        stream_s = (
+            (last_token_time - first_token_time)
+            if last_token_time and last_token_time > first_token_time
+            else 0
+        )
+        gen_time_s = (total_ms - ttft_ms) / 1000  # fallback: wall-clock minus TTFT
+
+        if stream_s >= 0.5:
+            # Genuine streaming — use inter-token timing
+            tps = token_count / stream_s
+        elif gen_time_s > 0.05:
+            # Buffered response — use wall-clock generation window
+            tps = token_count / gen_time_s
+        # else: too fast to measure reliably, leave as None
+
+    return TestResult(
+        ttft_ms=ttft_ms,
+        tps=tps,
+        output_tokens=token_count,
+        total_time_ms=total_ms,
+        status="success",
+        raw_sample=collected_text[:200],
+    )
+
+
+def _approx_tokens(text: str) -> int:
+    """Quick approximation: ~4 chars per token."""
+    return max(1, len(text) // 4)
+
+
+async def run_target(
+    target: Target,
+    run_id: str,
+    num_runs: int = RUNS_PER_TARGET,
+    reasoning_effort: Optional[str] = None,
+    conn: Optional[object] = None,
+) -> list[TestResult]:
+    """Run num_runs tests against a single target, saving results to DB."""
+    results: list[TestResult] = []
+    effort = reasoning_effort if target.supports_reasoning else None
+
+    async with httpx.AsyncClient(follow_redirects=True) as client:
+        for i in range(num_runs):
+            for attempt in range(1 + RETRY_COUNT):
+                result = await test_single_call(client, target, effort)
+                if result.status == "success" or result.status in ("timeout", "empty"):
+                    break
+                if attempt < RETRY_COUNT and result.status == "http_error":
+                    err = result.error_message or ""
+                    if (
+                        "429" in err
+                        or "500" in err
+                        or "502" in err
+                        or "503" in err
+                        or "504" in err
+                    ):
+                        await asyncio.sleep(2)
+                        continue
+                    break  # 4xx non-429, don't retry
+
+            results.append(result)
+
+            # Save to DB
+            if conn:
+                db.insert_test(
+                    conn,
+                    run_id=run_id,
+                    timestamp=db.now_iso(),
+                    provider_name=target.provider_name,
+                    provider_url=target.base_url,
+                    model_name=target.model_name,
+                    source=target.source,
+                    reasoning_effort=effort,
+                    ttft_ms=result.ttft_ms,
+                    tps=result.tps,
+                    output_tokens=result.output_tokens,
+                    total_time_ms=result.total_time_ms,
+                    status=result.status,
+                    error_message=result.error_message,
+                    run_number=i + 1,
+                    raw_sample=result.raw_sample,
+                )
+                conn.commit()
+
+            if i < num_runs - 1:
+                await asyncio.sleep(INTER_CALL_DELAY)
+
+    return results
+
+
+def compute_summary(
+    results: list[TestResult],
+    target: Target,
+    run_id: str,
+    reasoning_effort: Optional[str],
+    conn,
+) -> None:
+    """Compute and store aggregate summary from individual test results."""
+    successful = [r for r in results if r.status == "success"]
+    if not successful:
+        db.insert_summary(
+            conn,
+            run_id=run_id,
+            timestamp=db.now_iso(),
+            provider_name=target.provider_name,
+            provider_url=target.base_url,
+            model_name=target.model_name,
+            source=target.source,
+            reasoning_effort=reasoning_effort if target.supports_reasoning else None,
+            avg_ttft_ms=None,
+            avg_tps=None,
+            avg_total_time_ms=None,
+            est_10k_total_s=None,
+            num_runs=len(results),
+            num_success=0,
+        )
+        conn.commit()
+        return
+
+    ttfts = [r.ttft_ms for r in successful if r.ttft_ms is not None]
+    tps_vals = [r.tps for r in successful if r.tps is not None and r.tps > 0]
+    totals = [r.total_time_ms for r in successful if r.total_time_ms is not None]
+
+    avg_ttft = sum(ttfts) / len(ttfts) if ttfts else None
+    avg_tps = sum(tps_vals) / len(tps_vals) if tps_vals else None
+    avg_total = sum(totals) / len(totals) if totals else None
+
+    # Estimated time to stream 10K tokens (agentic call proxy)
+    est_10k = None
+    if avg_ttft is not None and avg_tps and avg_tps > 0:
+        est_10k = (avg_ttft / 1000) + (10000 / avg_tps)
+
+    db.insert_summary(
+        conn,
+        run_id=run_id,
+        timestamp=db.now_iso(),
+        provider_name=target.provider_name,
+        provider_url=target.base_url,
+        model_name=target.model_name,
+        source=target.source,
+        reasoning_effort=reasoning_effort if target.supports_reasoning else None,
+        avg_ttft_ms=avg_ttft,
+        avg_tps=avg_tps,
+        avg_total_time_ms=avg_total,
+        est_10k_total_s=est_10k,
+        num_runs=len(results),
+        num_success=len(successful),
+    )
+    conn.commit()
+
+
+async def run_all(
+    targets: list[Target],
+    num_runs: int = RUNS_PER_TARGET,
+    reasoning_effort: str = "medium",
+    max_concurrent: int = MAX_CONCURRENT,
+    effort_sweep: bool = False,
+    on_progress=None,
+) -> str:
+    """Run speed tests against all targets with concurrency limit."""
+    run_id = str(uuid.uuid4())[:8]
+    conn = db.connect()
+    sem = asyncio.Semaphore(max_concurrent)
+
+    efforts_for = lambda t: (
+        (["low", "medium", "high"] if effort_sweep else [reasoning_effort])
+        if t.supports_reasoning
+        else [None]
+    )
+
+    total_jobs = sum(len(efforts_for(t)) for t in targets)
+    done = 0
+
+    async def worker(target: Target, effort: Optional[str]):
+        nonlocal done
+        async with sem:
+            results = await run_target(target, run_id, num_runs, effort, conn)
+            compute_summary(results, target, run_id, effort, conn)
+            done += 1
+            if on_progress:
+                on_progress(done, total_jobs, target, effort, results)
+
+    tasks = []
+    for target in targets:
+        for effort in efforts_for(target):
+            tasks.append(worker(target, effort))
+
+    await asyncio.gather(*tasks, return_exceptions=True)
+    conn.close()
+    return run_id
