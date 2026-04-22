@@ -4,12 +4,13 @@ import asyncio
 import json
 import time
 import uuid
+from collections import defaultdict
 from dataclasses import dataclass
 from typing import Optional
 
 import httpx
 
-from config import Target
+from config import Target, RATE_LIMITS
 import db
 
 # Minimal prompts for token-efficient testing
@@ -24,6 +25,47 @@ RETRY_COUNT = 2
 RUNS_PER_TARGET = 3
 MAX_CONCURRENT = 2
 INTER_CALL_DELAY = 2.0  # seconds between calls to same provider
+
+# Track provider call times for rate limiting
+_call_history: dict[str, list[float]] = defaultdict(list)
+# Track providers with exhausted credits (skip all their models)
+_credit_exhausted: set[str] = set()
+
+
+def _check_rate_limit(provider_name: str) -> float:
+    """Check if we need to wait for rate limit. Returns wait time in seconds."""
+    limit = RATE_LIMITS.get(provider_name)
+    if not limit:
+        return 0.0
+
+    now = time.time()
+    history = _call_history[provider_name]
+
+    # Clean old entries (>60 seconds)
+    history[:] = [t for t in history if now - t < 60]
+
+    if len(history) >= limit:
+        # Need to wait for oldest to expire
+        oldest = history[0]
+        wait = 60 - (now - oldest)
+        return max(0.0, wait)
+
+    return 0.0
+
+
+def _record_call(provider_name: str):
+    """Record a call for rate limiting."""
+    _call_history[provider_name].append(time.time())
+
+
+def set_credit_exhausted(provider_name: str):
+    """Mark a provider as having exhausted credits."""
+    _credit_exhausted.add(provider_name)
+
+
+def is_credit_exhausted(provider_name: str) -> bool:
+    """Check if a provider has exhausted credits."""
+    return provider_name in _credit_exhausted
 
 
 @dataclass
@@ -238,6 +280,15 @@ async def run_target(
     conn: Optional[object] = None,
 ) -> list[TestResult]:
     """Run num_runs tests against a single target, saving results to DB."""
+    # Skip if credits exhausted
+    if is_credit_exhausted(target.provider_name):
+        return []
+
+    # Check rate limit before making call
+    wait_time = _check_rate_limit(target.provider_name)
+    if wait_time > 0:
+        await asyncio.sleep(wait_time)
+
     results: list[TestResult] = []
     effort = reasoning_effort if target.supports_reasoning else None
 
@@ -249,6 +300,10 @@ async def run_target(
                     break
                 if attempt < RETRY_COUNT and result.status == "http_error":
                     err = result.error_message or ""
+                    # Check for credit exhaustion (403)
+                    if "403" in err and "credit" in err.lower():
+                        set_credit_exhausted(target.provider_name)
+                        break
                     if (
                         "429" in err
                         or "500" in err
@@ -256,9 +311,22 @@ async def run_target(
                         or "503" in err
                         or "504" in err
                     ):
-                        await asyncio.sleep(2)
+                        # Wait longer on 429
+                        wait = 5 if "429" in err else 2
+                        await asyncio.sleep(wait)
                         continue
                     break  # 4xx non-429, don't retry
+
+            results.append(result)
+
+            # Check final status and mark credit exhaustion
+            if results[-1].status == "http_error":
+                err = results[-1].error_message or ""
+                if "403" in err and "credit" in err.lower():
+                    set_credit_exhausted(target.provider_name)
+
+            # Record call for rate limiting
+            _record_call(target.provider_name)
 
             results.append(result)
 

@@ -27,8 +27,18 @@ SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder"}
 
 # Providers that need non-streaming mode (fail with stream=true)
 NO_STREAM_PROVIDERS = {"bluesminds"}
+
 # Paid/credits providers (opt-in with --include-credits)
 CREDITS_PROVIDERS = {"ktai-paid"}
+
+# Rate limits per provider (calls per minute). None = no limit.
+# Known limits: supacoder (~7/min), hapuppy (burst limited), blazeai (rate limited)
+RATE_LIMITS = {
+    "supacoder": 7,  # observed ~7/min
+    "hapuppy": 30,  # burst limit, be gentle
+    "blazeai": 20,  # rate limited
+    "ollama-cloud": 10,  # weekly limit
+}
 
 # Model patterns considered expensive (high token multipliers)
 EXPENSIVE_PATTERNS = [
