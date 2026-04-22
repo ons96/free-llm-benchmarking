@@ -42,6 +42,7 @@ def cmd_list(args):
 
 def cmd_test(args):
     """Run speed tests."""
+    import sqlite3
     from runner import run_all
 
     targets = load_all_targets(
@@ -50,6 +51,17 @@ def cmd_test(args):
         provider_filter=args.provider,
         model_filter=args.model,
     )
+
+    # Filter out already-tested models if requested
+    if args.skip_tested:
+        conn = sqlite3.connect(str(Path(__file__).parent / "data" / "speedrun.db"))
+        cur = conn.execute(
+            "SELECT provider_name, model_name FROM speed_tests WHERE status = 'success'"
+        )
+        tested = set((r[0], r[1]) for r in cur.fetchall())
+        conn.close()
+        targets = [t for t in targets if (t.provider_name, t.model_name) not in tested]
+        print(f"Skipped {len(tested)} already-tested models.")
 
     if not targets:
         print("No targets matched filters.")
@@ -436,6 +448,9 @@ def main():
     )
     p_test.add_argument("--concurrency", type=int, default=4)
     p_test.add_argument("-y", "--yes", action="store_true", help="Skip confirmation")
+    p_test.add_argument(
+        "--skip-tested", action="store_true", help="Skip already tested models"
+    )
     p_test.set_defaults(func=cmd_test)
 
     # fetch
