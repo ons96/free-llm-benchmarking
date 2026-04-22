@@ -17,13 +17,13 @@ SYSTEM_PROMPT = "You are a concise coding assistant."
 USER_PROMPT = "Write a Python merge sort function with type hints."
 # ~20 input tokens total
 
-MAX_TOKENS = 200
+MAX_TOKENS = 100  # Reduced for faster testing
 TIMEOUT_NORMAL = 30
 TIMEOUT_REASONING = 120
 RETRY_COUNT = 2
 RUNS_PER_TARGET = 3
-MAX_CONCURRENT = 4
-INTER_CALL_DELAY = 1.0  # seconds between calls to same provider
+MAX_CONCURRENT = 2
+INTER_CALL_DELAY = 2.0  # seconds between calls to same provider
 
 
 @dataclass
@@ -118,10 +118,16 @@ async def test_single_call(
                     token_count += _approx_tokens(content)
                     collected_text += content
 
-                # Check for usage in final chunk
-                usage = chunk_data.get("usage")
-                if usage and "completion_tokens" in usage:
-                    token_count = usage["completion_tokens"]
+                # Check for usage in final chunk (various API formats)
+                usage = chunk_data.get("usage", {})
+                if usage:
+                    # Try different field names
+                    token_count = (
+                        usage.get("completion_tokens")
+                        or usage.get("output_tokens")
+                        or usage.get("tokens")
+                        or token_count  # fallback to approximation
+                    )
 
     except httpx.TimeoutException:
         return TestResult(
@@ -319,7 +325,12 @@ async def run_all(
     effort_sweep: bool = False,
     on_progress=None,
 ) -> str:
-    """Run speed tests against all targets with concurrency limit."""
+    """Run speed tests against all targets with concurrency limit and progress bar."""
+    try:
+        from tqdm import tqdm
+    except ImportError:
+        tqdm = None
+
     run_id = str(uuid.uuid4())[:8]
     conn = db.connect()
     sem = asyncio.Semaphore(max_concurrent)
@@ -332,13 +343,24 @@ async def run_all(
 
     total_jobs = sum(len(efforts_for(t)) for t in targets)
     done = 0
+    start_time = asyncio.get_event_loop().time()
+
+    pbar = None
+    if tqdm:
+        pbar = tqdm(total=total_jobs, desc="Speed tests", unit="model")
 
     async def worker(target: Target, effort: Optional[str]):
-        nonlocal done
+        nonlocal done, start_time
         async with sem:
             results = await run_target(target, run_id, num_runs, effort, conn)
             compute_summary(results, target, run_id, effort, conn)
             done += 1
+            if pbar:
+                elapsed = asyncio.get_event_loop().time() - start_time
+                rate = done / elapsed if elapsed > 0 else 1
+                eta = (total_jobs - done) / rate
+                pbar.set_postfix(eta=f"{eta / 60:.1f}min")
+                pbar.update(1)
             if on_progress:
                 on_progress(done, total_jobs, target, effort, results)
 
@@ -348,5 +370,7 @@ async def run_all(
             tasks.append(worker(target, effort))
 
     await asyncio.gather(*tasks, return_exceptions=True)
+    if pbar:
+        pbar.close()
     conn.close()
     return run_id

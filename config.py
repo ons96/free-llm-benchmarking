@@ -2,15 +2,28 @@
 
 import json
 import re
+from typing import Any
+
+
+def _parse_jsonc(text: str) -> Any:
+    """Parse JSONC (strip comments first)."""
+    # Strip single-line comments (//) only when preceded by whitespace or {
+    text = re.sub(r"(^|[{}\s])//.*$", r"\1", text, flags=re.MULTILINE)
+    # Strip multi-line comments
+    text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
+    return json.loads(text)
+
+
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
-OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.json"
+# Use .jsonc for the full provider set
+OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.jsonc"
 GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models.yaml"
 
 # Providers to skip by default
-SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid"}
+SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder"}
 # Paid/credits providers (opt-in with --include-credits)
 CREDITS_PROVIDERS = {"ktai-paid"}
 
@@ -102,7 +115,7 @@ def load_opencode_targets(
     model_filter: Optional[str] = None,
 ) -> list[Target]:
     """Parse opencode.json providers into Target list."""
-    data = json.loads(OPENCODE_JSON.read_text())
+    data = _parse_jsonc(OPENCODE_JSON.read_text())
     providers = data.get("provider", {})
     targets: list[Target] = []
     seen: set[tuple[str, str]] = set()
@@ -171,7 +184,7 @@ def load_gateway_targets() -> list[Target]:
         return []
 
     # Gateway base URL from opencode.json "custom" provider
-    oc = json.loads(OPENCODE_JSON.read_text())
+    oc = _parse_jsonc(OPENCODE_JSON.read_text())
     custom = oc.get("provider", {}).get("custom", {})
     base_url = custom.get("baseURL", "http://40.233.101.233:8000/v1")
     api_key = custom.get("apiKey", "")
