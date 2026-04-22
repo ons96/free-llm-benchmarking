@@ -43,6 +43,10 @@ async def test_single_call(
     reasoning_effort: Optional[str] = None,
 ) -> TestResult:
     """Make a single streaming API call and measure TTFT + TPS."""
+    from config import NO_STREAM_PROVIDERS
+
+    use_stream = target.provider_name not in NO_STREAM_PROVIDERS
+
     url = f"{target.base_url.rstrip('/')}/chat/completions"
 
     body: dict = {
@@ -52,7 +56,7 @@ async def test_single_call(
             {"role": "user", "content": USER_PROMPT},
         ],
         "max_tokens": MAX_TOKENS,
-        "stream": True,
+        "stream": use_stream,
         "temperature": 0.0,
     }
 
@@ -71,9 +75,38 @@ async def test_single_call(
 
     t_start = time.monotonic()
     first_token_time: Optional[float] = None
-    last_token_time: Optional[float] = None
-    token_count = 0
     collected_text = ""
+
+    if not use_stream:
+        try:
+            resp = await client.post(url, json=body, headers=headers, timeout=timeout)
+            if resp.status_code != 200:
+                return TestResult(
+                    status="http_error",
+                    error_message=f"HTTP {resp.status_code}: {resp.text[:300]}",
+                    total_time_ms=(time.monotonic() - t_start) * 1000,
+                )
+            data = resp.json()
+            content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+            first_token_time = 0
+            collected_text = content
+            token_count = count_tokens(collected_text)
+            return TestResult(
+                ttft_ms=0,
+                tps=float(token_count) / ((time.monotonic() - t_start) * 1000)
+                if token_count
+                else None,
+                output_tokens=token_count,
+                total_time_ms=(time.monotonic() - t_start) * 1000,
+                status="success" if token_count else "empty",
+                raw_sample=collected_text[:200],
+            )
+        except Exception as e:
+            return TestResult(
+                status="error",
+                error_message=str(e)[:200],
+                total_time_ms=(time.monotonic() - t_start) * 1000,
+            )
 
     try:
         async with client.stream(

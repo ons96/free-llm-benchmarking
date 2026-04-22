@@ -24,6 +24,9 @@ GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models
 
 # Providers to skip by default
 SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder"}
+
+# Providers that need non-streaming mode (fail with stream=true)
+NO_STREAM_PROVIDERS = {"bluesminds"}
 # Paid/credits providers (opt-in with --include-credits)
 CREDITS_PROVIDERS = {"ktai-paid"}
 
