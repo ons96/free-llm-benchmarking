@@ -76,6 +76,7 @@ async def test_single_call(
     t_start = time.monotonic()
     first_token_time: Optional[float] = None
     collected_text = ""
+    token_count = 0
 
     if not use_stream:
         try:
@@ -90,7 +91,7 @@ async def test_single_call(
             content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
             first_token_time = 0
             collected_text = content
-            token_count = count_tokens(collected_text)
+            token_count = _approx_tokens(collected_text)
             return TestResult(
                 ttft_ms=0,
                 tps=float(token_count) / ((time.monotonic() - t_start) * 1000)

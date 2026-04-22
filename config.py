@@ -147,6 +147,11 @@ def load_opencode_targets(
             if model_filter and not _glob_match(mname, model_filter):
                 continue
 
+            # Check for nested model name (e.g., "glm-5.1": {"name": "z-ai/glm-5.1"})
+            model_name = mconfig.get("name") if isinstance(mconfig, dict) else mname
+            if not model_name:
+                model_name = mname
+
             expensive = _is_expensive(mname)
             if expensive and not include_expensive:
                 continue
@@ -161,7 +166,7 @@ def load_opencode_targets(
                     provider_name=pname,
                     base_url=base_url,
                     api_key=api_key,
-                    model_name=mname,
+                    model_name=model_name,
                     source="direct",
                     supports_reasoning=_supports_reasoning(mname),
                     is_expensive=expensive,
