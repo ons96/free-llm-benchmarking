@@ -53,6 +53,37 @@ def _check_rate_limit(provider_name: str) -> float:
     return 0.0
 
 
+def parse_error_for_wait_time(err: str) -> float:
+    """Parse retry-after or quota reset time from error message. Returns wait in seconds."""
+    import re
+
+    err_lower = err.lower()
+
+    # Check for retry-after
+    m = re.search(r"retry[- ]after[:\s]*(\d+)", err_lower)
+    if m:
+        return float(m.group(1))
+
+    # Check for seconds
+    m = re.search(r"(\d+)\s*sec(?:ond)?s?", err_lower)
+    if m:
+        return float(m.group(1))
+
+    # Check for quota reset time like "at 2024-01-01T00:00:00Z"
+    m = re.search(r"\d{4}-\d{2}-\d{2}T(\d{2}):(\d{2}):(\d{2})", err)
+    if m:
+        from datetime import datetime
+
+        try:
+            reset_time = datetime.fromisoformat(m.group(0).replace("Z", "+00:00"))
+            wait = (reset_time - datetime.now()).total_seconds()
+            return max(1.0, wait)
+        except Exception:
+            pass
+
+    return 0.0
+
+
 def _record_call(provider_name: str):
     """Record a call for rate limiting."""
     _call_history[provider_name].append(time.time())
@@ -311,8 +342,10 @@ async def run_target(
                         or "503" in err
                         or "504" in err
                     ):
-                        # Wait longer on 429
-                        wait = 5 if "429" in err else 2
+                        # Parse wait time from error, default 5s for 429, 2s for others
+                        wait = parse_error_for_wait_time(err)
+                        if wait == 0.0:
+                            wait = 5 if "429" in err else 2
                         await asyncio.sleep(wait)
                         continue
                     break  # 4xx non-429, don't retry
