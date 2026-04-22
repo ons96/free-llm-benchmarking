@@ -63,6 +63,25 @@ def cmd_test(args):
         targets = [t for t in targets if (t.provider_name, t.model_name) not in tested]
         print(f"Skipped {len(tested)} already-tested models.")
 
+    # Retest models with 429/403 errors
+    if args.retry_errors:
+        conn = sqlite3.connect(str(Path(__file__).parent / "data" / "speedrun.db"))
+        cur = conn.execute("""
+            SELECT provider_name, model_name FROM speed_tests
+            WHERE status = 'http_error' AND (
+                error_message LIKE '%429%' OR
+                error_message LIKE '%403%' OR
+                error_message LIKE '%rate%limit%' OR
+                error_message LIKE '%credit%'
+            )
+        """)
+        error_models = set((r[0], r[1]) for r in cur.fetchall())
+        conn.close()
+        targets = [
+            t for t in targets if (t.provider_name, t.model_name) in error_models
+        ]
+        print(f"Retesting {len(error_models)} models with rate/credit errors.")
+
     if not targets:
         print("No targets matched filters.")
         return
@@ -450,6 +469,9 @@ def main():
     p_test.add_argument("-y", "--yes", action="store_true", help="Skip confirmation")
     p_test.add_argument(
         "--skip-tested", action="store_true", help="Skip already tested models"
+    )
+    p_test.add_argument(
+        "--retry-errors", action="store_true", help="Retest models with 429/403 errors"
     )
     p_test.set_defaults(func=cmd_test)
 
