@@ -123,6 +123,46 @@ def cmd_test(args):
     print(f"Run ID: {run_id}")
     print(f"Use `python cli.py report` to see results")
 
+    # Auto-export raw test data to CSV
+    import csv
+    from db import connect
+
+    conn = connect()
+    cur = conn.execute(
+        """
+        SELECT provider_name, provider_url, model_name, source, reasoning_effort,
+               ttft_ms, tps, output_tokens, total_time_ms, status, error_message, timestamp
+        FROM speed_tests WHERE run_id = ?
+    """,
+        (run_id,),
+    )
+    rows = cur.fetchall()
+    conn.close()
+
+    output = Path("data") / f"raw_tests_{run_id}.csv"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with open(output, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            [
+                "provider",
+                "url",
+                "model",
+                "source",
+                "effort",
+                "ttft_ms",
+                "tps",
+                "tokens",
+                "total_ms",
+                "status",
+                "error",
+                "timestamp",
+            ]
+        )
+        for r in rows:
+            writer.writerow(r)
+    print(f"Auto-exported {len(rows)} rows to {output}")
+
 
 def cmd_fetch(args):
     """Fetch external benchmark data."""
@@ -158,6 +198,106 @@ def cmd_fetch(args):
         results = fetch_all(refresh=args.refresh)
         total = sum(len(v) for v in results.values())
         print(f"\nTotal benchmark entries: {total}")
+
+
+def cmd_raw_csv(args):
+    """Export all raw test data to CSV."""
+    import csv
+    from db import connect
+
+    conn = connect()
+    cur = conn.execute("""
+        SELECT provider_name, provider_url, model_name, source, reasoning_effort,
+               ttft_ms, tps, output_tokens, total_time_ms, status, error_message, timestamp
+        FROM speed_tests ORDER BY timestamp DESC
+    """)
+    rows = cur.fetchall()
+    conn.close()
+
+    output = Path(args.output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with open(output, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            [
+                "provider",
+                "url",
+                "model",
+                "source",
+                "effort",
+                "ttft_sec",
+                "tps",
+                "tokens",
+                "total_sec",
+                "status",
+                "error",
+                "timestamp",
+            ]
+        )
+        for r in rows:
+            ttft_sec = r[5] / 1000 if r[5] else ""
+            total_sec = r[8] / 1000 if r[8] else ""
+            writer.writerow(
+                [
+                    r[0],
+                    r[1],
+                    r[2],
+                    r[3],
+                    r[4],
+                    ttft_sec,
+                    r[6],
+                    r[7],
+                    total_sec,
+                    r[9],
+                    r[10],
+                    r[11],
+                ]
+            )
+    print(f"Exported {len(rows)} rows to {output}")
+
+
+def cmd_csv(args):
+    """Export results to CSV."""
+    import csv
+    from db import connect
+    from ranker import compute_rankings
+
+    rankings = compute_rankings(args.speed_weight, args.quality_weight)
+    if not rankings:
+        print("No test results found. Run `python cli.py test` first.")
+        return
+
+    output = Path(args.output) if args.output else Path("data") / "leaderboard.csv"
+    with open(output, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            [
+                "rank",
+                "provider",
+                "model",
+                "effort",
+                "TTFT_sec",
+                "TPS",
+                "avg_tokens",
+                "10K_total_sec",
+            ]
+        )
+        for r in rankings:
+            ttft_sec = r["avg_ttft_ms"] / 1000 if r["avg_ttft_ms"] else ""
+            t10k = r["est_10k_total_s"] if r["est_10k_total_s"] else ""
+            writer.writerow(
+                [
+                    r["rank"],
+                    r["provider_name"],
+                    r["model_name"],
+                    r.get("reasoning_effort", ""),
+                    f"{ttft_sec:.3f}" if ttft_sec else "",
+                    f"{r['avg_tps']:.1f}" if r["avg_tps"] else "",
+                    f"{r.get('avg_output_tokens', 0):.0f}",
+                    f"{t10k:.1f}" if t10k else "",
+                ]
+            )
+    print(f"Exported to {output}")
 
 
 def cmd_report(args):
@@ -323,6 +463,21 @@ def main():
     )
     p_report.add_argument("--json", help="Also write results to JSON file")
     p_report.set_defaults(func=cmd_report)
+
+    # csv
+    p_csv = sub.add_parser("csv", help="Export results to CSV")
+    p_csv.add_argument("--top", type=int, default=0, help="Limit results (0=all)")
+    p_csv.add_argument("--speed-weight", type=float, default=0.5)
+    p_csv.add_argument("--quality-weight", type=float, default=0.5)
+    p_csv.add_argument("--output", "-o", help="Output CSV path")
+    p_csv.set_defaults(func=cmd_csv)
+
+    # raw-csv - export all raw test data
+    p_raw_csv = sub.add_parser("raw-csv", help="Export raw test data to CSV")
+    p_raw_csv.add_argument(
+        "--output", "-o", default="data/raw_tests.csv", help="Output CSV path"
+    )
+    p_raw_csv.set_defaults(func=cmd_raw_csv)
 
     # apply
     p_apply = sub.add_parser("apply", help="Patch gateway virtual_models.yaml")
