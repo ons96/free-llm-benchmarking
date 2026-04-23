@@ -26,7 +26,10 @@ GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models
 SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder"}
 
 # Providers that need non-streaming mode (fail with stream=true)
-NO_STREAM_PROVIDERS = {"bluesminds"}
+NO_STREAM_PROVIDERS = {"bluesminds", "opencodezen"}
+
+# Models that CAN stream even if their provider defaults to non-streaming
+STREAM_MODEL_OVERRIDES = {"opencodezen/big-pickle"}
 
 # Paid/credits providers (opt-in with --include-credits)
 CREDITS_PROVIDERS = {"ktai-paid"}
@@ -38,6 +41,7 @@ RATE_LIMITS = {
     "hapuppy": 30,  # burst limit, be gentle
     "blazeai": 20,  # rate limited
     "ollama-cloud": 10,  # weekly limit
+    "opencodezen": 60,  # generous limit
 }
 
 # Model patterns considered expensive (high token multipliers)

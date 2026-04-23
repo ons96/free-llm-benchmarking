@@ -116,9 +116,13 @@ async def test_single_call(
     reasoning_effort: Optional[str] = None,
 ) -> TestResult:
     """Make a single streaming API call and measure TTFT + TPS."""
-    from config import NO_STREAM_PROVIDERS
+    from config import NO_STREAM_PROVIDERS, STREAM_MODEL_OVERRIDES
 
-    use_stream = target.provider_name not in NO_STREAM_PROVIDERS
+    stream_key = f"{target.provider_name}/{target.model_name}"
+    use_stream = (
+        target.provider_name not in NO_STREAM_PROVIDERS
+        or stream_key in STREAM_MODEL_OVERRIDES
+    )
 
     url = f"{target.base_url.rstrip('/')}/chat/completions"
 
@@ -151,9 +155,15 @@ async def test_single_call(
     collected_text = ""
     token_count = 0
 
+    NON_STREAM_TOKENS = 500  # More tokens for non-streaming TPS measurement
+    body_stream = dict(body, stream=True)
+    body_nonstream = dict(body, stream=False, max_tokens=NON_STREAM_TOKENS)
+
     if not use_stream:
         try:
-            resp = await client.post(url, json=body, headers=headers, timeout=timeout)
+            resp = await client.post(
+                url, json=body_nonstream, headers=headers, timeout=timeout
+            )
             if resp.status_code != 200:
                 return TestResult(
                     status="http_error",
@@ -162,16 +172,26 @@ async def test_single_call(
                 )
             data = resp.json()
             content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
-            first_token_time = 0
-            collected_text = content
-            token_count = _approx_tokens(collected_text)
+            reasoning = (
+                data.get("choices", [{}])[0].get("message", {}).get("reasoning", "")
+            )
+            full_text = content or reasoning or ""
+            collected_text = full_text
+            usage = data.get("usage", {})
+            token_count = (
+                usage.get("completion_tokens")
+                or usage.get("output_tokens")
+                or usage.get("tokens")
+                or _approx_tokens(full_text)
+            )
+            total_ms = (time.monotonic() - t_start) * 1000
+            gen_s = total_ms / 1000
+            tps = float(token_count) / gen_s if token_count and gen_s > 0 else None
             return TestResult(
                 ttft_ms=0,
-                tps=float(token_count) / ((time.monotonic() - t_start) * 1000)
-                if token_count
-                else None,
+                tps=tps,
                 output_tokens=token_count,
-                total_time_ms=(time.monotonic() - t_start) * 1000,
+                total_time_ms=total_ms,
                 status="success" if token_count else "empty",
                 raw_sample=collected_text[:200],
             )
@@ -184,7 +204,7 @@ async def test_single_call(
 
     try:
         async with client.stream(
-            "POST", url, json=body, headers=headers, timeout=timeout
+            "POST", url, json=body_stream, headers=headers, timeout=timeout
         ) as resp:
             if resp.status_code != 200:
                 body_bytes = b""
@@ -210,12 +230,12 @@ async def test_single_call(
                 except json.JSONDecodeError:
                     continue
 
-                # Extract content delta
+                # Extract content delta (handle both content and reasoning fields)
                 choices = chunk_data.get("choices", [])
                 if not choices:
                     continue
                 delta = choices[0].get("delta", {})
-                content = delta.get("content", "")
+                content = delta.get("content", "") or delta.get("reasoning", "")
 
                 if content:
                     now = time.monotonic()
