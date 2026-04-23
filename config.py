@@ -23,19 +23,10 @@ OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.jsonc"
 GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models.yaml"
 
 # Providers to skip by default
-SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder"}
-
-# Providers that need non-streaming mode (fail with stream=true)
-NO_STREAM_PROVIDERS = {"bluesminds", "opencodezen"}
-
-# Models that CAN stream even if their provider defaults to non-streaming
-STREAM_MODEL_OVERRIDES = {"opencodezen/big-pickle"}
-
-# Paid/credits providers (opt-in with --include-credits)
-CREDITS_PROVIDERS = {"ktai-paid"}
+SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder", "ollama-cloud"}
 
 # Providers where paid models are OK to test (user has free recurring credits/quota)
-FREE_CREDIT_PROVIDERS = {"hapuppy", "blazeai", "ollama-cloud"}
+FREE_CREDIT_PROVIDERS = {"hapuppy", "blazeai"}
 
 # Model name patterns that indicate a free model (case-insensitive substring match)
 FREE_MODEL_PATTERNS = ["free", "big-pickle"]
@@ -199,9 +190,9 @@ def load_opencode_targets(
     pricing_cache: dict[str, dict] = {}
 
     for pname, pconfig in providers.items():
-        if pname in SKIP_PROVIDERS and pname not in CREDITS_PROVIDERS:
+        if pname in SKIP_PROVIDERS and pname not in FREE_CREDIT_PROVIDERS:
             continue
-        if pname in CREDITS_PROVIDERS and not include_credits:
+        if pname in FREE_CREDIT_PROVIDERS and not include_credits:
             continue
         if provider_filter and not _glob_match(pname, provider_filter):
             continue
@@ -227,9 +218,9 @@ def load_opencode_targets(
             if model_filter and not _glob_match(mname, model_filter):
                 continue
 
-            model_name = mconfig.get("name") if isinstance(mconfig, dict) else mname
-            if not model_name:
-                model_name = mname
+            model_id = mname
+            display_name = mconfig.get("name") if isinstance(mconfig, dict) else None
+            model_name = model_id
 
             if not include_paid and pname not in FREE_CREDIT_PROVIDERS:
                 if not is_model_free(pname, model_name):

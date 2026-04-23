@@ -102,10 +102,10 @@ def is_credit_exhausted(provider_name: str) -> bool:
 
 @dataclass
 class TestResult:
-    ttft_ms: Optional[float] = None
+    ttft_sec: Optional[float] = None
     tps: Optional[float] = None
     output_tokens: int = 0
-    total_time_ms: Optional[float] = None
+    total_time_sec: Optional[float] = None
     status: str = "error"
     error_message: Optional[str] = None
     raw_sample: str = ""
@@ -169,7 +169,7 @@ async def test_single_call(
                 return TestResult(
                     status="http_error",
                     error_message=f"HTTP {resp.status_code}: {resp.text[:300]}",
-                    total_time_ms=(time.monotonic() - t_start) * 1000,
+                    total_time_sec=(time.monotonic() - t_start),
                 )
             data = resp.json()
             content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
@@ -189,10 +189,10 @@ async def test_single_call(
             gen_s = total_ms / 1000
             tps = float(token_count) / gen_s if token_count and gen_s > 0 else None
             return TestResult(
-                ttft_ms=0,
+                ttft_sec=0,
                 tps=tps,
                 output_tokens=token_count,
-                total_time_ms=total_ms,
+                total_time_sec=total_sec,
                 status="success" if token_count else "empty",
                 raw_sample=collected_text[:200],
             )
@@ -200,7 +200,7 @@ async def test_single_call(
             return TestResult(
                 status="error",
                 error_message=str(e)[:200],
-                total_time_ms=(time.monotonic() - t_start) * 1000,
+                total_time_sec=(time.monotonic() - t_start),
             )
 
     try:
@@ -216,7 +216,7 @@ async def test_single_call(
                 return TestResult(
                     status="http_error",
                     error_message=f"HTTP {resp.status_code}: {body_bytes[:300].decode(errors='replace')}",
-                    total_time_ms=(time.monotonic() - t_start) * 1000,
+                    total_time_sec=(time.monotonic() - t_start),
                 )
 
             async for line in resp.aiter_lines():
@@ -261,19 +261,19 @@ async def test_single_call(
         return TestResult(
             status="timeout",
             error_message=f"Timeout after {timeout}s",
-            total_time_ms=(time.monotonic() - t_start) * 1000,
+            total_time_sec=(time.monotonic() - t_start),
         )
     except httpx.HTTPError as e:
         return TestResult(
             status="http_error",
             error_message=str(e)[:300],
-            total_time_ms=(time.monotonic() - t_start) * 1000,
+            total_time_sec=(time.monotonic() - t_start),
         )
     except Exception as e:
         return TestResult(
             status="error",
             error_message=f"{type(e).__name__}: {str(e)[:200]}",
-            total_time_ms=(time.monotonic() - t_start) * 1000,
+            total_time_sec=(time.monotonic() - t_start),
         )
 
     t_end = time.monotonic()
@@ -283,10 +283,10 @@ async def test_single_call(
         return TestResult(
             status="empty",
             error_message="No content tokens received",
-            total_time_ms=total_ms,
+            total_time_sec=total_sec,
         )
 
-    ttft_ms = (first_token_time - t_start) * 1000
+    ttft_sec = first_token_time - t_start
 
     # TPS: tokens generated / generation time
     # Use time between first and last token if stream is long enough (>0.5s).
@@ -299,21 +299,18 @@ async def test_single_call(
             if last_token_time and last_token_time > first_token_time
             else 0
         )
-        gen_time_s = (total_ms - ttft_ms) / 1000  # fallback: wall-clock minus TTFT
+        gen_time_s = total_sec - ttft_sec
 
         if stream_s >= 0.5:
-            # Genuine streaming — use inter-token timing
             tps = token_count / stream_s
-        elif gen_time_s > 0.05:
-            # Buffered response — use wall-clock generation window
+        elif gen_time_s > 0:
             tps = token_count / gen_time_s
-        # else: too fast to measure reliably, leave as None
 
     return TestResult(
-        ttft_ms=ttft_ms,
+        ttft_sec=ttft_sec,
         tps=tps,
         output_tokens=token_count,
-        total_time_ms=total_ms,
+        total_time_sec=total_sec,
         status="success",
         raw_sample=collected_text[:200],
     )
@@ -391,10 +388,10 @@ async def run_target(
                     model_name=target.model_name,
                     source=target.source,
                     reasoning_effort=effort,
-                    ttft_ms=result.ttft_ms,
+                    ttft_sec=result.ttft_sec,
                     tps=result.tps,
                     output_tokens=result.output_tokens,
-                    total_time_ms=result.total_time_ms,
+                    total_time_sec=result.total_time_sec,
                     status=result.status,
                     error_message=result.error_message,
                     run_number=i + 1,
@@ -427,9 +424,9 @@ def compute_summary(
             model_name=target.model_name,
             source=target.source,
             reasoning_effort=reasoning_effort if target.supports_reasoning else None,
-            avg_ttft_ms=None,
+            avg_ttft_sec=None,
             avg_tps=None,
-            avg_total_time_ms=None,
+            avg_total_time_sec=None,
             est_10k_total_s=None,
             num_runs=len(results),
             num_success=0,
@@ -437,18 +434,29 @@ def compute_summary(
         conn.commit()
         return
 
-    ttfts = [r.ttft_ms for r in successful if r.ttft_ms is not None]
+    ttfts = [r.ttft_sec for r in successful if r.ttft_sec is not None]
     tps_vals = [r.tps for r in successful if r.tps is not None and r.tps > 0]
-    totals = [r.total_time_ms for r in successful if r.total_time_ms is not None]
+    totals = [r.total_time_sec for r in successful if r.total_time_sec is not None]
+    tokens_list = [r.output_tokens for r in successful]
 
     avg_ttft = sum(ttfts) / len(ttfts) if ttfts else None
     avg_tps = sum(tps_vals) / len(tps_vals) if tps_vals else None
-    avg_total = sum(totals) / len(totals) if totals else None
 
-    # Estimated time to stream 10K tokens (agentic call proxy)
+    if avg_tps is None and avg_total is not None and avg_tokens and avg_tokens > 0:
+        gen_time = avg_total - avg_ttft if avg_ttft else avg_total
+        if gen_time > 0:
+            avg_tps = avg_tokens / gen_time
+    avg_total = sum(totals) / len(totals) if totals else None
+    avg_tokens = sum(tokens_list) / len(tokens_list) if tokens_list else None
+
     est_10k = None
-    if avg_ttft is not None and avg_tps and avg_tps > 0:
-        est_10k = (avg_ttft / 1000) + (10000 / avg_tps)
+    if avg_ttft is not None:
+        if avg_tps and avg_tps > 0:
+            est_10k = avg_ttft + (10000 / avg_tps)
+        elif avg_total is not None and avg_tokens and avg_tokens > 0:
+            gen_time = avg_total - avg_ttft
+            if gen_time > 0.05:
+                est_10k = avg_ttft + (10000 * gen_time / avg_tokens)
 
     db.insert_summary(
         conn,
@@ -459,9 +467,10 @@ def compute_summary(
         model_name=target.model_name,
         source=target.source,
         reasoning_effort=reasoning_effort if target.supports_reasoning else None,
-        avg_ttft_ms=avg_ttft,
+        avg_ttft_sec=avg_ttft,
         avg_tps=avg_tps,
-        avg_total_time_ms=avg_total,
+        avg_total_time_sec=avg_total,
+        avg_output_tokens=avg_tokens,
         est_10k_total_s=est_10k,
         num_runs=len(results),
         num_success=len(successful),

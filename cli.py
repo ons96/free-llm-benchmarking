@@ -130,7 +130,7 @@ def cmd_test(args):
         avg_tps = None
         successful = [r for r in results if r.status == "success"]
         if successful:
-            ttfts = [r.ttft_ms for r in successful if r.ttft_ms]
+            ttfts = [r.ttft_sec for r in successful if r.ttft_sec]
             tps_vals = [r.tps for r in successful if r.tps]
             avg_ttft = sum(ttfts) / len(ttfts) if ttfts else None
             avg_tps = sum(tps_vals) / len(tps_vals) if tps_vals else None
@@ -139,7 +139,7 @@ def cmd_test(args):
         status_tag = f"{ok}/{len(results)}"
         metrics = ""
         if avg_ttft is not None:
-            metrics = f"  TTFT {avg_ttft:.0f}ms"
+            metrics = f"  TTFT {avg_ttft:.3f}s"
             if avg_tps:
                 metrics += f"  TPS {avg_tps:.1f}"
         print(
@@ -155,8 +155,8 @@ def cmd_test(args):
             cur = conn.execute(
                 """
                 SELECT provider_name, provider_url, model_name, source, reasoning_effort,
-                       ttft_ms, tps, output_tokens, total_time_ms, status, error_message, timestamp
-                FROM speed_tests WHERE run_id = ?
+ttft_sec, tps, output_tokens, total_time_sec, status, error_message, timestamp
+                 FROM speed_tests WHERE run_id = ?
             """,
                 (run_id,),
             )
@@ -175,10 +175,10 @@ def cmd_test(args):
                     "model",
                     "source",
                     "effort",
-                    "ttft_ms",
+                    "ttft_sec",
                     "tps",
                     "tokens",
-                    "total_ms",
+                    "total_sec",
                     "status",
                     "error",
                     "timestamp",
@@ -269,8 +269,8 @@ def cmd_raw_csv(args):
     conn = connect()
     cur = conn.execute("""
         SELECT provider_name, provider_url, model_name, source, reasoning_effort,
-               ttft_ms, tps, output_tokens, total_time_ms, status, error_message, timestamp
-        FROM speed_tests ORDER BY timestamp DESC
+ttft_sec, tps, output_tokens, total_time_sec, status, error_message, timestamp
+         FROM speed_tests ORDER BY timestamp DESC
     """)
     rows = cur.fetchall()
     conn.close()
@@ -296,24 +296,7 @@ def cmd_raw_csv(args):
             ]
         )
         for r in rows:
-            ttft_sec = r[5] / 1000 if r[5] else ""
-            total_sec = r[8] / 1000 if r[8] else ""
-            writer.writerow(
-                [
-                    r[0],
-                    r[1],
-                    r[2],
-                    r[3],
-                    r[4],
-                    ttft_sec,
-                    r[6],
-                    r[7],
-                    total_sec,
-                    r[9],
-                    r[10],
-                    r[11],
-                ]
-            )
+            writer.writerow(r)
     print(f"Exported {len(rows)} rows to {output}")
 
 
@@ -344,7 +327,7 @@ def cmd_csv(args):
             ]
         )
         for r in rankings:
-            ttft_sec = r["avg_ttft_ms"] / 1000 if r["avg_ttft_ms"] else ""
+            ttft_sec = r["avg_ttft_sec"] if r["avg_ttft_sec"] else ""
             t10k = r["est_10k_total_s"] if r["est_10k_total_s"] else ""
             writer.writerow(
                 [
@@ -372,7 +355,7 @@ def cmd_report(args):
                 continue
             print(f"\n== {canonical} ({len(rows)} providers) ==")
             for r in rows[:10]:
-                ttft = f"{r['avg_ttft_ms']:.0f}ms" if r["avg_ttft_ms"] else "?"
+                ttft = f"{r['avg_ttft_sec']:.3f}s" if r["avg_ttft_sec"] else "?"
                 tps = f"{r['avg_tps']:.1f}" if r["avg_tps"] else "?"
                 t10k = f"{r['est_10k_total_s']:.1f}s" if r["est_10k_total_s"] else "?"
                 print(
@@ -405,7 +388,7 @@ def cmd_report(args):
     print("-" * 110)
 
     for r in rankings[: args.top]:
-        ttft = f"{r['avg_ttft_ms']:.0f}ms" if r["avg_ttft_ms"] else "?"
+        ttft = f"{r['avg_ttft_sec']:.3f}s" if r["avg_ttft_sec"] else "?"
         tps = f"{r['avg_tps']:.1f}" if r["avg_tps"] else "?"
         t10k = f"{r['est_10k_total_s']:.1f}" if r["est_10k_total_s"] else "?"
         bench = f"{r['bench_score']:.1f}" if r.get("bench_score") else "-"
