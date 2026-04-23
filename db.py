@@ -108,21 +108,70 @@ def now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
 
+TEST_COLS = frozenset(
+    {
+        "id",
+        "run_id",
+        "timestamp",
+        "provider_name",
+        "provider_url",
+        "model_name",
+        "source",
+        "reasoning_effort",
+        "ttft_ms",
+        "tps",
+        "output_tokens",
+        "total_time_ms",
+        "status",
+        "error_message",
+        "run_number",
+        "raw_sample",
+    }
+)
+SUMMARY_COLS = frozenset(
+    {
+        "id",
+        "run_id",
+        "timestamp",
+        "provider_name",
+        "provider_url",
+        "model_name",
+        "source",
+        "reasoning_effort",
+        "avg_ttft_ms",
+        "avg_tps",
+        "avg_total_time_ms",
+        "est_10k_total_s",
+        "num_runs",
+        "num_success",
+    }
+)
+
+
+def _sanitize_cols(kwargs: dict, allowed: frozenset) -> tuple:
+    cols, vals = [], []
+    for k, v in kwargs.items():
+        if k in allowed:
+            cols.append(k)
+            vals.append(v)
+    return cols, vals
+
+
 def insert_test(conn: sqlite3.Connection, **kwargs: Any) -> None:
-    cols = ",".join(kwargs.keys())
-    placeholders = ",".join("?" * len(kwargs))
+    cols, vals = _sanitize_cols(kwargs, TEST_COLS)
+    placeholders = ",".join("?" * len(cols))
     conn.execute(
-        f"INSERT INTO speed_tests ({cols}) VALUES ({placeholders})",
-        list(kwargs.values()),
+        f"INSERT INTO speed_tests ({','.join(cols)}) VALUES ({placeholders})",
+        vals,
     )
 
 
 def insert_summary(conn: sqlite3.Connection, **kwargs: Any) -> None:
-    cols = ",".join(kwargs.keys())
-    placeholders = ",".join("?" * len(kwargs))
+    cols, vals = _sanitize_cols(kwargs, SUMMARY_COLS)
+    placeholders = ",".join("?" * len(cols))
     conn.execute(
-        f"INSERT INTO speed_summary ({cols}) VALUES ({placeholders})",
-        list(kwargs.values()),
+        f"INSERT INTO speed_summary ({','.join(cols)}) VALUES ({placeholders})",
+        vals,
     )
 
 
