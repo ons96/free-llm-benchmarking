@@ -114,9 +114,15 @@ def cmd_test(args):
     db.init_db()
 
     done = [0]
+    checkpoint = [0]
 
     def on_progress(d, total, target, effort, results):
         done[0] = d
+        if checkpoint[0] == 0 or d - checkpoint[0] >= 20:
+            checkpoint[0] = d
+            if handler.run_id:
+                export_csv(handler.run_id)
+        ok = sum(1 for r in results if r.status == "success")
         ok = sum(1 for r in results if r.status == "success")
         avg_ttft = None
         avg_tps = None
@@ -138,61 +144,83 @@ def cmd_test(args):
             f"[{d}/{total}] {target.provider_name}/{target.model_name}{eff_tag}  {status_tag}{metrics}"
         )
 
+    # Auto-export raw CSV after completion (and on Ctrl+C via try/finally)
+    def export_csv(run_id: str) -> None:
+        import csv
+
+        conn = db.connect()
+        try:
+            cur = conn.execute(
+                """
+                SELECT provider_name, provider_url, model_name, source, reasoning_effort,
+                       ttft_ms, tps, output_tokens, total_time_ms, status, error_message, timestamp
+                FROM speed_tests WHERE run_id = ?
+            """,
+                (run_id,),
+            )
+            rows = cur.fetchall()
+        finally:
+            conn.close()
+
+        output = Path("data") / f"raw_tests_{run_id}.csv"
+        output.parent.mkdir(parents=True, exist_ok=True)
+        with open(output, "w", newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow(
+                [
+                    "provider",
+                    "url",
+                    "model",
+                    "source",
+                    "effort",
+                    "ttft_ms",
+                    "tps",
+                    "tokens",
+                    "total_ms",
+                    "status",
+                    "error",
+                    "timestamp",
+                ]
+            )
+            for r in rows:
+                writer.writerow(r)
+        print(f"Exported {len(rows)} rows to {output}")
+
+    import signal
+
+    class SigintHandler:
+        run_id = None
+
+    handler = SigintHandler()
+
+    def handle_sigint(signum, frame):
+        print("\n\nInterrupted! Saving results...")
+        if handler.run_id:
+            export_csv(handler.run_id)
+        sys.exit(0)
+
+    orig_handler = signal.signal(signal.SIGINT, handle_sigint)
+
     print(f"\n=== Running ===\n")
-    run_id = asyncio.run(
-        run_all(
-            targets,
-            num_runs=args.runs,
-            reasoning_effort=args.reasoning_effort,
-            max_concurrent=args.concurrency,
-            effort_sweep=args.effort_sweep,
-            on_progress=on_progress,
+    try:
+        run_id = asyncio.run(
+            run_all(
+                targets,
+                num_runs=args.runs,
+                reasoning_effort=args.reasoning_effort,
+                max_concurrent=args.concurrency,
+                effort_sweep=args.effort_sweep,
+                on_progress=on_progress,
+            )
         )
-    )
-
-    print(f"\n=== Run complete ===")
-    print(f"Run ID: {run_id}")
-    print(f"Use `python cli.py report` to see results")
-
-    # Auto-export raw test data to CSV
-    import csv
-    from db import connect
-
-    conn = connect()
-    cur = conn.execute(
-        """
-        SELECT provider_name, provider_url, model_name, source, reasoning_effort,
-               ttft_ms, tps, output_tokens, total_time_ms, status, error_message, timestamp
-        FROM speed_tests WHERE run_id = ?
-    """,
-        (run_id,),
-    )
-    rows = cur.fetchall()
-    conn.close()
-
-    output = Path("data") / f"raw_tests_{run_id}.csv"
-    output.parent.mkdir(parents=True, exist_ok=True)
-    with open(output, "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(
-            [
-                "provider",
-                "url",
-                "model",
-                "source",
-                "effort",
-                "ttft_ms",
-                "tps",
-                "tokens",
-                "total_ms",
-                "status",
-                "error",
-                "timestamp",
-            ]
-        )
-        for r in rows:
-            writer.writerow(r)
-    print(f"Auto-exported {len(rows)} rows to {output}")
+        handler.run_id = run_id
+        print(f"\n=== Run complete ===")
+        print(f"Run ID: {run_id}")
+        print(f"Use `python cli.py report` to see results")
+    finally:
+        if handler.run_id:
+            export_csv(handler.run_id)
+        signal.signal(signal.SIGINT, orig_handler)
 
 
 def cmd_fetch(args):
