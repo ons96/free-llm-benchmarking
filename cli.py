@@ -21,6 +21,7 @@ def cmd_list(args):
     targets = load_all_targets(
         include_credits=args.include_credits,
         include_expensive=args.include_expensive,
+        include_paid=args.include_paid,
         provider_filter=args.provider,
         model_filter=args.model,
     )
@@ -48,6 +49,7 @@ def cmd_test(args):
     targets = load_all_targets(
         include_credits=args.include_credits,
         include_expensive=args.include_expensive,
+        include_paid=args.include_paid,
         provider_filter=args.provider,
         model_filter=args.model,
     )
@@ -473,6 +475,11 @@ def main():
         "--include-credits", action="store_true", help="Include ktai-paid"
     )
     p_list.add_argument("--include-expensive", action="store_true")
+    p_list.add_argument(
+        "--include-paid",
+        action="store_true",
+        help="Include paid models (not just free ones)",
+    )
     p_list.add_argument("-v", "--verbose", action="store_true")
     p_list.set_defaults(func=cmd_list)
 
@@ -482,6 +489,11 @@ def main():
     p_test.add_argument("--model", help="Glob filter for model name")
     p_test.add_argument("--include-credits", action="store_true")
     p_test.add_argument("--include-expensive", action="store_true")
+    p_test.add_argument(
+        "--include-paid",
+        action="store_true",
+        help="Include paid models (not just free ones)",
+    )
     p_test.add_argument("--runs", type=int, default=3)
     p_test.add_argument(
         "--reasoning-effort",
