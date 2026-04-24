@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+import sys
 import time
 import uuid
 from collections import defaultdict, deque
@@ -83,11 +84,6 @@ def parse_error_for_wait_time(err: str) -> float:
             pass
 
     return 0.0
-
-
-def _record_call(provider_name: str):
-    """Record a call for rate limiting."""
-    _call_history[provider_name].append(time.time())
 
 
 def set_credit_exhausted(provider_name: str):
@@ -185,14 +181,14 @@ async def test_single_call(
                 or usage.get("tokens")
                 or _approx_tokens(full_text)
             )
-            total_ms = (time.monotonic() - t_start) * 1000
-            gen_s = total_ms / 1000
+            total_time_sec = time.monotonic() - t_start
+            gen_s = total_time_sec
             tps = float(token_count) / gen_s if token_count and gen_s > 0 else None
             return TestResult(
                 ttft_sec=0,
                 tps=tps,
                 output_tokens=token_count,
-                total_time_sec=total_sec,
+                total_time_sec=total_time_sec,
                 status="success" if token_count else "empty",
                 raw_sample=collected_text[:200],
             )
@@ -277,13 +273,13 @@ async def test_single_call(
         )
 
     t_end = time.monotonic()
-    total_ms = (t_end - t_start) * 1000
+    total_time_sec = t_end - t_start
 
     if first_token_time is None:
         return TestResult(
             status="empty",
             error_message="No content tokens received",
-            total_time_sec=total_sec,
+            total_time_sec=total_time_sec,
         )
 
     ttft_sec = first_token_time - t_start
@@ -299,7 +295,7 @@ async def test_single_call(
             if last_token_time and last_token_time > first_token_time
             else 0
         )
-        gen_time_s = total_sec - ttft_sec
+        gen_time_s = total_time_sec - ttft_sec
 
         if stream_s >= 0.5:
             tps = token_count / stream_s
@@ -310,7 +306,7 @@ async def test_single_call(
         ttft_sec=ttft_sec,
         tps=tps,
         output_tokens=token_count,
-        total_time_sec=total_sec,
+        total_time_sec=total_time_sec,
         status="success",
         raw_sample=collected_text[:200],
     )
@@ -373,6 +369,9 @@ async def run_target(
                 err = result.error_message or ""
                 if "403" in err and "credit" in err.lower():
                     set_credit_exhausted(target.provider_name)
+
+            # Append result to list
+            results.append(result)
 
             # Record call for rate limiting
             _record_call(target.provider_name)
@@ -441,13 +440,13 @@ def compute_summary(
 
     avg_ttft = sum(ttfts) / len(ttfts) if ttfts else None
     avg_tps = sum(tps_vals) / len(tps_vals) if tps_vals else None
+    avg_total = sum(totals) / len(totals) if totals else None
+    avg_tokens = sum(tokens_list) / len(tokens_list) if tokens_list else None
 
     if avg_tps is None and avg_total is not None and avg_tokens and avg_tokens > 0:
         gen_time = avg_total - avg_ttft if avg_ttft else avg_total
         if gen_time > 0:
             avg_tps = avg_tokens / gen_time
-    avg_total = sum(totals) / len(totals) if totals else None
-    avg_tokens = sum(tokens_list) / len(tokens_list) if tokens_list else None
 
     est_10k = None
     if avg_ttft is not None:
@@ -530,7 +529,10 @@ async def run_all(
         for effort in efforts_for(target):
             tasks.append(worker(target, effort))
 
-    await asyncio.gather(*tasks, return_exceptions=True)
+    results = await asyncio.gather(*tasks, return_exceptions=True)
+    for r in results:
+        if isinstance(r, Exception):
+            print(f"ERROR: {r}", file=sys.stderr)
     if pbar:
         pbar.close()
     conn.close()

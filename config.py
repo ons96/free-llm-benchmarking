@@ -28,8 +28,14 @@ SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder", "ollama-clou
 # Providers where paid models are OK to test (user has free recurring credits/quota)
 FREE_CREDIT_PROVIDERS = {"hapuppy", "blazeai"}
 
+# Providers that don't support streaming (use non-streaming mode)
+NO_STREAM_PROVIDERS = {"bluesminds"}
+
 # Model name patterns that indicate a free model (case-insensitive substring match)
 FREE_MODEL_PATTERNS = ["free", "big-pickle"]
+
+# Streaming model overrides (force streaming for specific models)
+STREAM_MODEL_OVERRIDES = set()
 
 # Rate limits per provider (calls per minute). None = no limit.
 # Known limits: supacoder (~7/min), hapuppy (burst limited), blazeai (rate limited)
@@ -176,7 +182,6 @@ def fetch_model_pricing(base_url: str, api_key: str) -> dict[str, dict]:
 
 
 def load_opencode_targets(
-    include_credits: bool = False,
     include_expensive: bool = False,
     include_paid: bool = False,
     provider_filter: Optional[str] = None,
@@ -191,8 +196,6 @@ def load_opencode_targets(
 
     for pname, pconfig in providers.items():
         if pname in SKIP_PROVIDERS and pname not in FREE_CREDIT_PROVIDERS:
-            continue
-        if pname in FREE_CREDIT_PROVIDERS and not include_credits:
             continue
         if provider_filter and not _glob_match(pname, provider_filter):
             continue
@@ -220,7 +223,13 @@ def load_opencode_targets(
 
             model_id = mname
             display_name = mconfig.get("name") if isinstance(mconfig, dict) else None
-            model_name = model_id
+            # If display_name looks like an API model ID (has slash), use it.
+            # The config is inconsistent: some providers put the API ID in the
+            # dict key, others put it in the "name" field.
+            if display_name and "/" in display_name:
+                model_name = display_name
+            else:
+                model_name = model_id
 
             if not include_paid and pname not in FREE_CREDIT_PROVIDERS:
                 if not is_model_free(pname, model_name):
@@ -305,7 +314,6 @@ def load_gateway_targets() -> list[Target]:
 
 
 def load_all_targets(
-    include_credits: bool = False,
     include_expensive: bool = False,
     include_paid: bool = False,
     provider_filter: Optional[str] = None,
@@ -314,7 +322,6 @@ def load_all_targets(
 ) -> list[Target]:
     """Load targets from both opencode.json and gateway."""
     targets = load_opencode_targets(
-        include_credits=include_credits,
         include_expensive=include_expensive,
         include_paid=include_paid,
         provider_filter=provider_filter,

@@ -19,7 +19,6 @@ def cmd_init(args):
 def cmd_list(args):
     """List targets that would be tested."""
     targets = load_all_targets(
-        include_credits=args.include_credits,
         include_expensive=args.include_expensive,
         include_paid=args.include_paid,
         provider_filter=args.provider,
@@ -47,7 +46,6 @@ def cmd_test(args):
     from runner import run_all
 
     targets = load_all_targets(
-        include_credits=args.include_credits,
         include_expensive=args.include_expensive,
         include_paid=args.include_paid,
         provider_filter=args.provider,
@@ -62,8 +60,11 @@ def cmd_test(args):
         )
         tested = set((r[0], r[1]) for r in cur.fetchall())
         conn.close()
+        original = len(targets)
         targets = [t for t in targets if (t.provider_name, t.model_name) not in tested]
-        print(f"Skipped {len(tested)} already-tested models.")
+        skipped = original - len(targets)
+        if skipped:
+            print(f"Skipped {skipped} already-tested models.")
 
     # Retest models with 429/403 errors
     if args.retry_errors:
@@ -337,7 +338,7 @@ def cmd_csv(args):
                     r.get("reasoning_effort", ""),
                     f"{ttft_sec:.3f}" if ttft_sec else "",
                     f"{r['avg_tps']:.1f}" if r["avg_tps"] else "",
-                    f"{r.get('avg_output_tokens', 0):.0f}",
+                    f"{(r.get('avg_output_tokens') or 0):.0f}",
                     f"{t10k:.1f}" if t10k else "",
                 ]
             )
@@ -454,9 +455,6 @@ def main():
     p_list = sub.add_parser("list", help="List targets that would be tested")
     p_list.add_argument("--provider", help="Glob filter for provider name")
     p_list.add_argument("--model", help="Glob filter for model name")
-    p_list.add_argument(
-        "--include-credits", action="store_true", help="Include ktai-paid"
-    )
     p_list.add_argument("--include-expensive", action="store_true")
     p_list.add_argument(
         "--include-paid",
@@ -470,7 +468,6 @@ def main():
     p_test = sub.add_parser("test", help="Run speed tests against LLMs")
     p_test.add_argument("--provider", help="Glob filter for provider name")
     p_test.add_argument("--model", help="Glob filter for model name")
-    p_test.add_argument("--include-credits", action="store_true")
     p_test.add_argument("--include-expensive", action="store_true")
     p_test.add_argument(
         "--include-paid",
