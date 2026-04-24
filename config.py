@@ -132,6 +132,9 @@ def is_model_free(provider_name: str, model_name: str) -> bool:
     """Check if a model should be tested for free (no cost to user)."""
     if provider_name in FREE_CREDIT_PROVIDERS:
         return True
+    # Any provider with "kilo" in name: only models with "free" in name are free
+    if "kilo" in provider_name.lower():
+        return "free" in model_name.lower()
     name_lower = model_name.lower()
     return any(pat in name_lower for pat in FREE_MODEL_PATTERNS)
 
@@ -242,6 +245,10 @@ def load_opencode_targets(
                             continue
                     else:
                         continue
+
+            # Special handling for kilo providers: only models with "free" in name
+            if "kilo" in pname.lower() and "free" not in model_name.lower():
+                continue
 
             expensive = _is_expensive(mname)
             if expensive and not include_expensive:
