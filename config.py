@@ -18,8 +18,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
-# Use .jsonc for the full provider set
-OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.jsonc"
+OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.json"
+if not OPENCODE_JSON.exists():
+    OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.jsonc"
 GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models.yaml"
 
 # Providers to skip by default
