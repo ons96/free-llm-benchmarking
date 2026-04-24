@@ -26,7 +26,7 @@ GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models
 SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder", "ollama-cloud"}
 
 # Providers where paid models are OK to test (user has free recurring credits/quota)
-FREE_CREDIT_PROVIDERS = {"hapuppy", "blazeai"}
+FREE_CREDIT_PROVIDERS = {"hapuppy", "blazeai", "nvidia"}
 
 # Providers that don't support streaming (use non-streaming mode)
 NO_STREAM_PROVIDERS = {"bluesminds"}

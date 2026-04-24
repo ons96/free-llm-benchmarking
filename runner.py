@@ -19,7 +19,7 @@ SYSTEM_PROMPT = "You are a concise coding assistant."
 USER_PROMPT = "Write a Python merge sort function with type hints."
 # ~20 input tokens total
 
-MAX_TOKENS = 100  # Reduced for faster testing
+MAX_TOKENS = 500  # 500 tokens for accurate TPS estimation (extrapolating from 24 tokens is unreliable)
 TIMEOUT_NORMAL = 30
 TIMEOUT_REASONING = 120
 RETRY_COUNT = 2
