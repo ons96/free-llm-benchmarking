@@ -19,11 +19,15 @@ ENV/
 *.swp
 *.swo
 
-# Database & data (local only)
-data/
+# Database (local only)
 *.db
 *.db-wal
 *.db-shm
+
+# Data directory - keep CSV exports, ignore DBs
+data/*.db
+data/*.db-wal
+data/*.db-shm
 
 # Secrets - NEVER commit these
 *.env
