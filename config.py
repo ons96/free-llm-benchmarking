@@ -93,9 +93,12 @@ REASONING_FAMILIES = [
     # GLM thinking variants
     r"glm-4\.6",
     r"glm-4\.5",
+    r"glm[-]?4\.7",  # GLM-4.7 (with or without hyphen)
     r"glm-5",
     r"glm.*think",
     r"glm-5\.1-think",
+    # Nemotron (NVIDIA reasoning models)
+    r"nemotron",
     # Kimi K2.x (reasoning)
     r"kimi-k2",
     r"kimi-k2\.5",
