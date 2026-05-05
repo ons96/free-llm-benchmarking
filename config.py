@@ -43,10 +43,27 @@ FREE_CREDIT_PROVIDERS = {
     "cursor-proxy",
     "ktai-paid",
     # Added from opencode.json (free-tier accessible)
-    "freetheai",  # 76 models, ~40 free-marked
-    "aihubmix",   # 3 models, 2 free-marked
-    "cortecs",    # 4 models, potentially free
-    "opencode",   # 16 models, 13 free-marked
+    "freetheai",   # 76 models, 41 free-marked
+    "aihubmix",    # 3 models, 2 free-marked
+    "cortecs",     # 4 models, potentially free
+    "opencode",    # 16 models, 13 free-marked
+    # HIGH PRIORITY: major free-tier providers
+    "github-models",      # 63 free models (ALL are free)
+    "iflowcn",           # 14 free models
+    "zhipuai-coding-plan",  # 13 free models
+    "zai-coding-plan",   # 12 free models
+    # MEDIUM PRIORITY: coding plan providers with free tiers
+    "alibaba-coding-plan-cn",  # 9 free models
+    "alibaba-coding-plan",     # 9 free models
+    "tencent-coding-plan",     # 8 free models
+    "llama",             # 7 free models
+    "modelscope",        # 7 free models
+    "minimax-coding-plan",    # 6 free models
+    "minimax-cn-coding-plan", # 6 free models
+    "poe",               # 6 free models
+    "groq",              # 5 free models (some free models)
+    "huggingface",       # 5 free models
+    "siliconflow-cn",    # 5 free models
 }
 
 NO_STREAM_PROVIDERS = {"bluesminds", "xinjianya"}
@@ -67,6 +84,21 @@ RATE_LIMITS = {
     "opencode": 30,
     "ktai": 15,
     "wiwi": 20,
+    "github-models": 30,
+    "iflowcn": 20,
+    "freetheai": 20,
+    "zhipuai-coding-plan": 20,
+    "zai-coding-plan": 20,
+    "alibaba-coding-plan": 15,
+    "alibaba-coding-plan-cn": 15,
+    "tencent-coding-plan": 15,
+    "llama": 20,
+    "modelscope": 15,
+    "minimax-coding-plan": 15,
+    "poe": 20,
+    "groq": 30,
+    "huggingface": 15,
+    "siliconflow-cn": 15,
 }
 
 EXPENSIVE_PATTERNS = [
