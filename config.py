@@ -265,6 +265,8 @@ def fetch_newapi_pricing(base_url: str, api_key: str) -> dict[str, dict]:
                 "ratio": m.get("model_ratio", 1),
                 "groups": m.get("enable_groups", []),
                 "completion_ratio": m.get("completion_ratio", 1),
+                "quota_type": m.get("quota_type", 1),
+                "model_price": m.get("model_price", 0),
             }
         return pricing
     except Exception:
@@ -347,12 +349,29 @@ def load_opencode_targets(
                 is_free = is_model_free(pname, model_name)
                 if not is_free:
                     if pname in NEW_API_PROVIDERS:
-                        np = newapi_cache.get(pname, {})
-                        nmeta = np.get(model_name, {})
+                        np_data = newapi_cache.get(pname, {})
+                        nmeta = np_data.get(model_name, {})
+                        qt = nmeta.get("quota_type", 1)
                         ratio = nmeta.get("ratio", 999)
+                        mp = nmeta.get("model_price", 0)
                         groups = nmeta.get("groups", [])
-                        if ratio != 0 or ("default" not in groups and "Free" not in groups):
+                        if not ("default" in groups or "Free" in groups):
                             continue
+                        # Special handling per provider:
+                        # xinjianya: all models in 'default' group are free (regardless of ratio)
+                        #   Evidence: lmspeed.net shows "Free|Free" pricing for ratio=0.5 models
+                        #   User's scraped data confirms ~150 models with $0 pricing
+                        #   API test: ratio=0.5 model call succeeded without balance
+                        #   Conclusion: xinjianya free tier = unlimited quota for default group
+                        # huashang/lotte-library: use standard qt/ratio/mp logic
+                        if pname == "xinjianya":
+                            # For xinjianya, any model in default group with qt=0 is free
+                            if not (qt == 0):
+                                continue
+                        else:
+                            # Standard new-api filter: (qt=0 & ratio=0) OR (qt=1 & mp=0)
+                            if not (qt == 0 and ratio == 0) and not (qt == 1 and mp == 0):
+                                continue
                     else:
                         p = pricing_cache.get(pname, {})
                         model_pricing = p.get(model_name, {})
