@@ -1,15 +1,14 @@
 """Parse opencode.json and gateway configs into test targets."""
 
 import json
+import os
 import re
 from typing import Any
 
 
 def _parse_jsonc(text: str) -> Any:
     """Parse JSONC (strip comments first)."""
-    # Strip single-line comments (//) only when preceded by whitespace or {
     text = re.sub(r"(^|[{}\s])//.*$", r"\1", text, flags=re.MULTILINE)
-    # Strip multi-line comments
     text = re.sub(r"/\*.*?\*/", "", text, flags=re.DOTALL)
     return json.loads(text)
 
@@ -23,32 +22,53 @@ if not OPENCODE_JSON.exists():
     OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.jsonc"
 GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models.yaml"
 
-# Providers to skip by default
-SKIP_PROVIDERS = {"cursor-proxy", "ktai-paid", "wiwi", "supacoder", "ollama-cloud"}
-
-# Providers where paid models are OK to test (user has free recurring credits/quota)
-FREE_CREDIT_PROVIDERS = {"hapuppy", "blazeai", "nvidia"}
-
-# Providers that don't support streaming (use non-streaming mode)
-NO_STREAM_PROVIDERS = {"bluesminds"}
-
-# Model name patterns that indicate a free model (case-insensitive substring match)
-FREE_MODEL_PATTERNS = ["free", "big-pickle"]
-
-# Streaming model overrides (force streaming for specific models)
-STREAM_MODEL_OVERRIDES = set()
-
-# Rate limits per provider (calls per minute). None = no limit.
-# Known limits: supacoder (~7/min), hapuppy (burst limited), blazeai (rate limited)
-RATE_LIMITS = {
-    "supacoder": 7,  # observed ~7/min
-    "hapuppy": 30,  # burst limit, be gentle
-    "blazeai": 20,  # rate limited
-    "ollama-cloud": 10,  # weekly limit
-    "opencodezen": 60,  # generous limit
+SKIP_PROVIDERS = {
+    "cliproxyapi",  # dead
+    "supacoder",   # dead (no live models)
+    "zenllm",      # 401 auth
+    "swiftrouter", # 401 auth
+    "zenmux",      # 401 auth
+    "llmgateway",  # 401 auth
 }
 
-# Model patterns considered expensive (high token multipliers)
+FINITE_CREDIT_PROVIDERS = {"ktai-paid"}
+
+FREE_CREDIT_PROVIDERS = {
+    "hapuppy", "blazeai", "nvidia",
+    "aitools", "bluesminds", "claude-carter",
+    "ktai", "logfare", "swiftrouter",
+    "xinjianya", "zenllm",
+    "supacoder", "ollama-cloud", "wiwi",
+    "kilo", "kilocloud",
+    "cursor-proxy",
+    "ktai-paid",
+    # Added from opencode.json (free-tier accessible)
+    "freetheai",  # 76 models, ~40 free-marked
+    "aihubmix",   # 3 models, 2 free-marked
+    "cortecs",    # 4 models, potentially free
+    "opencode",   # 16 models, 13 free-marked
+}
+
+NO_STREAM_PROVIDERS = {"bluesminds", "xinjianya"}
+
+FREE_MODEL_PATTERNS = ["free", "big-pickle"]
+
+STREAM_MODEL_OVERRIDES = set()
+
+RATE_LIMITS = {
+    "supacoder": 7,
+    "hapuppy": 30,
+    "blazeai": 20,
+    "ollama-cloud": 10,
+    "xinjianya": 15,
+    "opencodezen": 60,
+    "aihubmix": 20,
+    "cortecs": 10,
+    "opencode": 30,
+    "ktai": 15,
+    "wiwi": 20,
+}
+
 EXPENSIVE_PATTERNS = [
     r"gpt-5-pro",
     r"gpt-5\.1-pro",
@@ -59,48 +79,38 @@ EXPENSIVE_PATTERNS = [
     r"o3-pro",
 ]
 
-# Model families that support reasoning_effort (matches anywhere in name)
 REASONING_FAMILIES = [
-    # OpenAI GPT-5 family
     r"gpt-5",
     r"gpt5",
     r"\bo[134]\b",
     r"\bo3\b",
     r"\bo4\b",
-    # Grok
     r"grok-4",
     r"grok4",
     r"grok-4\.1",
-    # Gemini 3.x pro variants
     r"gemini-3[\.\d]*-pro",
     r"gemini-3\.1-pro",
     r"gemini-3-pro",
     r"gemini-3\.1-pro",
-    # DeepSeek reasoning
     r"deepseek-r",
     r"deepseek-r1",
-    # Qwen thinking variants
     r"qwen.*thinking",
     r"qwen3.*thinking",
     r"qwen-qwen3\.5.*thinking",
     r"qwen-qwen3\.6.*thinking",
-    # Claude 4.x
     r"claude-opus-4",
     r"claude-sonnet-4",
     r"claude-haiku-4",
     r"claude-4-opus",
     r"claude-4-sonnet",
     r"claude-4-haiku",
-    # GLM thinking variants
     r"glm-4\.6",
     r"glm-4\.5",
-    r"glm[-]?4\.7",  # GLM-4.7 (with or without hyphen)
+    r"glm[-]?4\.7",
     r"glm-5",
     r"glm.*think",
     r"glm-5\.1-think",
-    # Nemotron (NVIDIA reasoning models)
     r"nemotron",
-    # Kimi K2.x (reasoning)
     r"kimi-k2",
     r"kimi-k2\.5",
 ]
@@ -112,7 +122,7 @@ class Target:
     base_url: str
     api_key: str
     model_name: str
-    source: str = "direct"  # "direct" or "gateway"
+    source: str = "direct"
     supports_reasoning: bool = False
     is_expensive: bool = False
 
@@ -132,11 +142,15 @@ def _supports_reasoning(model: str) -> bool:
     return _matches_any(model, REASONING_FAMILIES)
 
 
+def _resolve_env_var(s: str) -> str:
+    if not s:
+        return s
+    return os.path.expandvars(s)
+
+
 def is_model_free(provider_name: str, model_name: str) -> bool:
-    """Check if a model should be tested for free (no cost to user)."""
     if provider_name in FREE_CREDIT_PROVIDERS:
         return True
-    # Any provider with "kilo" in name: only models with "free" in name are free
     if "kilo" in provider_name.lower():
         return "free" in model_name.lower()
     name_lower = model_name.lower()
@@ -144,11 +158,6 @@ def is_model_free(provider_name: str, model_name: str) -> bool:
 
 
 def fetch_model_pricing(base_url: str, api_key: str) -> dict[str, dict]:
-    """Query /v1/models endpoint and extract pricing info.
-
-    Returns: {model_id: {"input": float, "output": float}} where prices are per-token.
-    Models with no pricing data or $0 pricing are considered free.
-    """
     import httpx
 
     try:
@@ -188,18 +197,33 @@ def fetch_model_pricing(base_url: str, api_key: str) -> dict[str, dict]:
         return {}
 
 
+def _is_localhost(url: str) -> bool:
+    return "127.0.0.1" in url or "localhost" in url
+
+
+def _probe_provider(base_url: str, api_key: str) -> bool:
+    import httpx
+    try:
+        headers = {"Authorization": f"Bearer {api_key}"} if api_key else {}
+        r = httpx.get(f"{base_url.rstrip('/')}/models", headers=headers, timeout=5)
+        return r.status_code == 200
+    except Exception:
+        return False
+
+
 def load_opencode_targets(
     include_expensive: bool = False,
     include_paid: bool = False,
     provider_filter: Optional[str] = None,
     model_filter: Optional[str] = None,
+    skip_offline: bool = True,
 ) -> list[Target]:
-    """Parse opencode.json providers into Target list."""
     data = _parse_jsonc(OPENCODE_JSON.read_text())
     providers = data.get("provider", {})
     targets: list[Target] = []
     seen: set[tuple[str, str]] = set()
     pricing_cache: dict[str, dict] = {}
+    probed_offline: set[str] = set()
 
     for pname, pconfig in providers.items():
         if pname in SKIP_PROVIDERS and pname not in FREE_CREDIT_PROVIDERS:
@@ -216,6 +240,12 @@ def load_opencode_targets(
         if not api_key and options:
             api_key = options.get("apiKey", "")
 
+        api_key = _resolve_env_var(api_key)
+
+        if skip_offline and _is_localhost(base_url) and not _probe_provider(base_url, api_key):
+            probed_offline.add(pname)
+            continue
+
         if (
             not include_paid
             and pname not in FREE_CREDIT_PROVIDERS
@@ -230,9 +260,6 @@ def load_opencode_targets(
 
             model_id = mname
             display_name = mconfig.get("name") if isinstance(mconfig, dict) else None
-            # If display_name looks like an API model ID (has slash), use it.
-            # The config is inconsistent: some providers put the API ID in the
-            # dict key, others put it in the "name" field.
             if display_name and "/" in display_name:
                 model_name = display_name
             else:
@@ -250,12 +277,12 @@ def load_opencode_targets(
                     else:
                         continue
 
-            # Special handling for kilo providers: only models with "free" in name
             if "kilo" in pname.lower() and "free" not in model_name.lower():
                 continue
 
             expensive = _is_expensive(mname)
-            if expensive and not include_expensive:
+            force_skip_expensive = pname in FINITE_CREDIT_PROVIDERS and not include_expensive
+            if (expensive and not include_expensive) or force_skip_expensive:
                 continue
 
             key = (pname, mname)
@@ -275,11 +302,13 @@ def load_opencode_targets(
                 )
             )
 
+    if probed_offline:
+        print(f"Skipped offline localhost providers: {', '.join(sorted(probed_offline))}")
+
     return targets
 
 
 def load_gateway_targets() -> list[Target]:
-    """Create targets for gateway virtual models."""
     try:
         import yaml
     except ImportError:
@@ -293,7 +322,6 @@ def load_gateway_targets() -> list[Target]:
     if not data or "virtual_models" not in data:
         return []
 
-    # Gateway base URL from opencode.json "custom" provider
     oc = _parse_jsonc(OPENCODE_JSON.read_text())
     custom = oc.get("provider", {}).get("custom", {})
     base_url = custom.get("baseURL", "http://40.233.101.233:8000/v1")
@@ -316,7 +344,7 @@ def load_gateway_targets() -> list[Target]:
                 api_key=api_key,
                 model_name=vm_name,
                 source="gateway",
-                supports_reasoning=False,  # gateway handles routing
+                supports_reasoning=False,
                 is_expensive=False,
             )
         )
@@ -330,13 +358,14 @@ def load_all_targets(
     provider_filter: Optional[str] = None,
     model_filter: Optional[str] = None,
     include_gateway: bool = True,
+    skip_offline: bool = True,
 ) -> list[Target]:
-    """Load targets from both opencode.json and gateway."""
     targets = load_opencode_targets(
         include_expensive=include_expensive,
         include_paid=include_paid,
         provider_filter=provider_filter,
         model_filter=model_filter,
+        skip_offline=skip_offline,
     )
     if include_gateway and not provider_filter:
         targets.extend(load_gateway_targets())
@@ -345,8 +374,11 @@ def load_all_targets(
     return targets
 
 
+def get_provider_count(targets: list[Target]) -> int:
+    return len({t.provider_name for t in targets})
+
+
 def _glob_match(name: str, pattern: str) -> bool:
-    """Simple glob matching (supports * wildcard)."""
     import fnmatch
 
     return fnmatch.fnmatch(name.lower(), pattern.lower())
@@ -359,7 +391,7 @@ if __name__ == "__main__":
         by_provider[t.provider_name] = by_provider.get(t.provider_name, 0) + 1
     print(f"Total targets: {len(targets)}")
     for p, c in sorted(by_provider.items()):
-        print(f"  {p}: {c} models")
+        print(f" {p}: {c} models")
     reasoning = [t for t in targets if t.supports_reasoning]
     print(f"Reasoning-capable: {len(reasoning)}")
     expensive = [t for t in targets if t.is_expensive]
