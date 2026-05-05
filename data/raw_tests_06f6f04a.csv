@@ -1,0 +1,10 @@
+provider,url,model,source,effort,ttft_sec,tps,tokens,total_sec,status,error,timestamp
+xinjianya,https://api.xinjianya.top/v1,李/LongCat-Flash-Thinking,direct,,,,0,32.545139354999264,empty,No content tokens received,2026-05-05T04:07:02.031674+00:00
+xinjianya,https://api.xinjianya.top/v1,李/bytedance/seed-oss-36b-instruct,direct,,,,0,54.14103055099986,empty,No content tokens received,2026-05-05T04:07:23.628829+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/bytedance/seed-oss-36b-instruct,direct,,,,0,38.867007113,empty,No content tokens received,2026-05-05T04:08:02.505552+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/abacusai/dracarys-llama-3.1-70b-instruct,direct,,,,0,60.50155178299974,timeout,Timeout after 60s,2026-05-05T04:08:02.544100+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-guard-4-12b,direct,,,,0,0.9613071610001498,http_error,"HTTP 400: {""error"":{""message"":""Conversation roles must alternate user/assistant/user/assistant/..."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-05-05T04:08:03.537718+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/deepseek-ai/deepseek-v4-flash,direct,,2.5637756739997712,23.12145465722144,186,10.60845499000061,success,,2026-05-05T04:08:13.144657+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.1-nemotron-nano-8b-v1,direct,medium,0.645817419001105,91.75969210189231,1000,11.65694404900205,success,,2026-05-05T04:08:24.824413+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/upstage/solar-10.7b-instruct,direct,,0.5575958219997119,37.015502330291845,503,14.160188211000786,success,,2026-05-05T04:08:39.006518+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/magistral-small-2506,direct,,,,0,50.30082291200233,empty,No content tokens received,2026-05-05T04:08:53.866110+00:00
