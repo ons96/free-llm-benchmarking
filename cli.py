@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 import db
-from config import load_all_targets, Target
+from config import load_all_targets, Target, get_provider_count
 
 
 def cmd_init(args):
@@ -89,14 +89,18 @@ def cmd_test(args):
         print("No targets matched filters.")
         return
 
+    concurrency = args.concurrency
+    if args.concurrency_auto:
+        concurrency = get_provider_count(targets)
+
     # Estimate cost
     reasoning_count = sum(1 for t in targets if t.supports_reasoning)
     effort_multiplier = 3 if args.effort_sweep else 1
     total_calls = (
         len(targets) - reasoning_count
     ) * args.runs + reasoning_count * args.runs * effort_multiplier
-    est_tokens = total_calls * 220  # ~20 input + 200 output
-    est_minutes = (total_calls * 3) / 60  # rough: 3s avg per call
+    est_tokens = total_calls * 220
+    est_minutes = (total_calls * 3) / 60
 
     print(f"\n=== Speed Test Plan ===")
     print(f"Targets: {len(targets)} models ({reasoning_count} reasoning)")
@@ -105,7 +109,7 @@ def cmd_test(args):
     print(f"Total API calls: ~{total_calls}")
     print(f"Estimated tokens used: ~{est_tokens:,}")
     print(
-        f"Estimated duration: ~{est_minutes:.1f} min (concurrency={args.concurrency})"
+        f"Estimated duration: ~{est_minutes:.1f} min (concurrency={concurrency})"
     )
 
     if not args.yes:
@@ -211,7 +215,7 @@ ttft_sec, tps, output_tokens, total_time_sec, status, error_message, timestamp
                 targets,
                 num_runs=args.runs,
                 reasoning_effort=args.reasoning_effort,
-                max_concurrent=args.concurrency,
+                max_concurrent=concurrency,
                 effort_sweep=args.effort_sweep,
                 on_progress=on_progress,
             )
@@ -474,7 +478,7 @@ def main():
         action="store_true",
         help="Include paid models (not just free ones)",
     )
-    p_test.add_argument("--runs", type=int, default=3)
+    p_test.add_argument("--runs", type=int, default=1)
     p_test.add_argument(
         "--reasoning-effort",
         default="medium",
@@ -486,6 +490,10 @@ def main():
         help="Test low/medium/high for reasoning models",
     )
     p_test.add_argument("--concurrency", type=int, default=4)
+    p_test.add_argument(
+        "--concurrency-auto", action="store_true",
+        help="Set concurrency to number of providers (optimal for per-provider rate limits)",
+    )
     p_test.add_argument("-y", "--yes", action="store_true", help="Skip confirmation")
     p_test.add_argument(
         "--skip-tested", action="store_true", help="Skip already tested models"
