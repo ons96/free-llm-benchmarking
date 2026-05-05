@@ -1,5 +1,5 @@
 HANDOFF CONTEXT
-===============
+=============
 
 USER REQUESTS (AS-IS)
 ---------------------
@@ -11,80 +11,76 @@ USER REQUESTS (AS-IS)
 - "do we have another api provider thats something for kilo, like kilocode gateway or something? i should have something like that" and "hapuppy isnt 100% dead either"
 - "ok i recently worked on this project on a different device but i believe i committed and pushed all the changes to my github. can you investigate and ideally sync the changes with the work you've done here intelligently and non-destructively?"
 - User chose to move files into llm-speedrun/ repo rather than create new repo or leave as-is
+- "can u check my opencode sessions and find the project/github repo where u were working on that thing to test speeds and tps and ttft and stuff of different llms from different providers and continue working on it if theres more stuff to be done?" (current session)
 
 GOAL
 ----
-Continue benchmarking LLM providers using the main CLI tool (cli.py), fix remaining issues, and keep the repo synced with GitHub.
+Continue benchmarking LLM providers, fix failure causes, add new free providers, run fresh benchmarks.
 
-WORK COMPLETED
---------------
-- Found expired opencode session ses_25874a04cffeiGJkal5KpazEm7 that originally created all_providers_benchmark_with_estimates.csv (session data unrecoverable)
-- Updated MAX_TOKENS from 200 to 4000 in all standalone benchmark scripts for accurate TPS measurement
-- Updated AVG_TOKENS_PER_CALL from 10000 to 4000 in scripts/add_estimated_time.py
-- Wrote scripts/all_providers_benchmark_v2.py with provider health probing (skips dead providers instantly), concurrency=15, connect timeout=5s, read timeout=15s, incremental CSV saving
-- Ran v2 benchmark: probed 19 providers, skipped 410 models on 12 dead providers, tested 56 models on 7 live providers
-- Generated data/all_providers_benchmark_with_estimates.csv with 780 rows
-- Pulled 14 new commits from ons96/free-llm-benchmarking into llm-speedrun/ (fast-forward merge)
-- Copied standalone benchmark scripts from ~/CodingProjects/testing/scripts/ into llm-speedrun/scripts/
-- Copied benchmark CSV results into llm-speedrun/data/
-- Updated .gitignore to allow CSV data files while ignoring .db files
-- Fixed config.py: OPENCODE_JSON now prefers opencode.json, falls back to opencode.jsonc
-- Fixed DB schema mismatch: old speedrun.db had ttft_ms columns, deleted and reinit'd with ttft_sec schema
-- Committed and pushed 2 commits: 9149567 (scripts+data) and f9b978b (config path fix)
+WORK COMPLETED (this session)
+---------------------------
+**Analysis & Fixes:**
+- Analyzed 3285 test results: 310 success (9%), 2867 failures across 8 providers
+- Root causes identified: xinjianya 422s (stream_options), 410 EOL models, 401 auth, 429 rate limits
+- Applied runner.py fixes: xinjianya non-stream mode, temp=0.7 (not 0.0), no stream_options, no reasoning_effort
+- Added smart retry: skip model_not_found, end-of-life, auth_unavailable permanently
+- Added new FREE_CREDIT_PROVIDERS: freetheai, aihubmix, cortecs, opencode (from opencode.json)
+- Added HIGH priority: github-models (63 free), iflowcn (14), zhipuai-coding-plan (13), zai-coding-plan (12)
+- Added MEDIUM priority: alibaba/tencent/minimax/poe/groq/huggingface/siliconflow-cn coding plans
+- Moved dead providers to SKIP_PROVIDERS: zenllm, swiftrouter, zenmux, llmgateway (all 401 auth)
+- Added rate limits for all new providers
+- Added NO_STREAM_PROVIDERS: xinjianya (fixes 39+ 422 errors)
+- Added MIN_TEMPERATURE_PROVIDERS: xinjianya (rejects temp=0.0)
+- Added NO_REASONING_EFFORT_PROVIDERS: xinjianya (rejects reasoning_effort on NVIDIA models)
 
-CURRENT STATE
--------------
-- Repo is synced with origin/main (commit f9b978b)
-- DB freshly initialized with correct schema (no test data yet in the DB)
-- The standalone scripts in scripts/ work independently from the main CLI
-- The main CLI (cli.py test) is ready to run but hasn't been run successfully yet with the new DB
-- data/all_providers_benchmark.csv and data/all_providers_benchmark_with_estimates.csv have results from the standalone v2 script (780 rows, 87 successful)
-- Top results from standalone benchmark: kilo/nvidia/nemotron-3-super-120b-a (6.58s), logfare/minimax-m2.7 (15.84s), blazeai/gpt-6 (18.61s)
-- Note: the nemotron TPS of 57770 is likely unreliable (only 1 token received, possible cached response)
+**Git:**
+- Commit 1 (b1cd974): xinjianya fixes, new providers, smarter retry (config.py + runner.py + cli.py)
+- Commit 2 (26f4f2a): CLI concurrency-auto + runs default
+- Commit 3 (b4c35c1): 20 more new providers (github-models, coding plans, etc.)
+- Pushed to origin/main
+
+**New Providers Status:**
+- WORKING: opencode.ai/zen (16 models, ~9 tested, good results)
+- NEEDS API KEY: github-models, groq, huggingface, modelscope, freetheai, iflowcn (401 errors)
+- DEAD: zenllm, swiftrouter, zenmux, llmgateway (401 auth)
+- DEAD: kilocloud, supacoder (all rate limited)
+- LIKELY DEAD: hapuppy (needs re-test with new fixes)
+
+**Raw Data CSV files in data/:**
+- raw_tests_1d000fe7.csv: 124/1761 success (xinjianya=61, aitools=16, blazeai=15, kilo=12, nvidia=9, logfare=6, ollama-cloud=3, bluesminds=2)
+- raw_tests_6418a4c5.csv: 9/9 success (nvidia provider)
+- raw_tests_681d3f30.csv: 0/18 (xinjianya failures - from before fixes)
+- raw_tests_0a199d75.csv: 3/3 success (nvidia)
+- raw_tests_e013eb05.csv: 0/5 (huggingface - needs API key)
+- raw_tests_6925cc79.csv: 0/7 (modelscope - needs API key)
 
 PENDING TASKS
 -------------
-- Run main CLI benchmark: python3 cli.py test --skip-tested -y (will populate the DB with structured results)
-- Re-test hapuppy (user confirmed it's NOT 100% dead; v2 probe returned DEAD_503 but it was likely transient)
-- Re-test kilo provider (https://api.kilo.ai/api/gateway) - most results were rate limited, only nemotron showed results
-- Investigate other potentially-alive providers that v2 marked dead due to transient errors
-- Consider syncing the standalone script changes (MAX_TOKENS=4000) back into the main CLI's runner.py (currently uses 500)
-- Run python3 scripts/add_estimated_time.py after new benchmarks to regenerate estimated totals
-- Consider adding cursor-proxy and ollama-cloud back (SKIP_PROVIDERS currently excludes them)
+- Re-test hapuppy with new fixes (user confirmed it's not dead)
+- Re-test xinjianya with non-stream mode (was all 422s before)
+- Test opencode provider (16 free models, mostly working)
+- Run full benchmark: `python3 cli.py test --concurrency-auto --yes --runs 1`
+- Test github-models, groq, huggingface, modelscope with valid API keys
+- Add EOL_MODEL_PATTERNS to skip deprecated models automatically
+- Run `python3 scripts/add_estimated_time.py` after benchmarks for estimated totals
+- Deduplicate outlier results (kilo had 99042 TPS - 1-token cached response)
 
 KEY FILES
 ---------
-- cli.py - Main CLI entry point (test, list, csv, raw-csv, report, apply subcommands)
-- config.py - Provider/model config loader, OPENCODE_JSON path (just fixed), rate limits, skip list
-- runner.py - Core benchmark runner with streaming TPS measurement
-- db.py - SQLite schema and CRUD operations
-- scripts/all_providers_benchmark_v2.py - Standalone fast benchmark with provider probing
-- scripts/add_estimated_time.py - Post-processes CSV adding estimated_total_time_s column
-- data/all_providers_benchmark_with_estimates.csv - Latest benchmark results (780 rows)
-- .gitignore - Updated to allow CSV in data/ but ignore .db files
+- cli.py - Main CLI (test, list, csv, raw-csv, report, apply, fetch subcommands)
+- config.py - Provider config, rate limits, SKIP_PROVIDERS, FREE_CREDIT_PROVIDERS, REASONING_FAMILIES
+- runner.py - Streaming benchmark runner, adaptive token sizing, outlier detection
+- db.py - SQLite schema (speed_tests, speed_summary tables)
+- scripts/all_providers_benchmark_v2.py - Standalone probe-based benchmark (independent of CLI)
+- scripts/add_estimated_time.py - Post-process CSV with estimated 10K total times
+- data/all_providers_benchmark_with_estimates.csv - Full results with estimated times (780 rows)
 
-IMPORTANT DECISIONS
-------------------
-- Used llm-speedrun/ (clone of ons96/free-llm-benchmarking) as canonical project directory
-- ~/CodingProjects/testing/ is a scratch directory for temp opencode sessions, not a project folder
-- Standalone scripts live in scripts/ subfolder alongside the main CLI tool
-- Provider probing in v2 skips dead providers entirely (saves ~40min on providers like kilocloud with 96 models)
-- Config path fallback: opencode.json first, then opencode.jsonc (works on both machines)
-
-EXPLICIT CONSTRAINTS
---------------------
-- "set the max_tokens for each test request higher than like 2"
-- "ideally run the script so that it tries to test all the models that dont have any results yet first"
-- "sync the changes with the work you've done here intelligently and non-destructively"
-- "hapuppy isnt 100% dead either"
-
-CONTEXT FOR CONTINUATION
-------------------------
-- This work started in ~/CodingProjects/testing/ but the project now lives in ~/CodingProjects/llm-speedrun/
-- GitHub username: ons96, remote repo: ons96/free-llm-benchmarking
-- OpenCode config at ~/.config/opencode/opencode.json has 854 models across 23 providers
-- The main CLI's runner.py currently uses MAX_TOKENS=500 (from commit cc0cda5), but standalone scripts use 4000 - may want to align these
-- The DB was just reinit'd so it's empty - running cli.py test will start fresh
-- Provider status from v2 run: DEAD (xinjianya, kilocloud, supacoder, kilo, cliproxyapi, zenllm, swiftrouter, bluesminds, hapuppy, custom, aitools, ktai-paid) ALIVE (nvidia, blazeai, wiwi, claude-carter, logfare, ollama-cloud, cursor-proxy)
-- cursor-proxy results show suspiciously consistent TPS=0.2-0.3 with very low token counts - likely proxy buffering, not real streaming
-- The kilo provider (https://api.kilo.ai/api/gateway) is separate from kilocloud (https://api.kilocloud.ai/v1)
+IMPORTANT NOTES
+--------------
+- DB is fresh/empty - run `cli.py test` to populate
+- xinjianya now uses non-stream mode with temp=0.7 (was causing 39+ 422 errors)
+- `_glob_match` uses fnmatch, NOT regex - `--provider "a|b"` won't work, test one at a time
+- opencode.json has 92 providers, many have "free" models but no valid API keys here
+- github-models (63 free models) needs API key - all requests return 401
+- groq (18 models, 5 free) also needs API key
+- Best results so far: nvidia/meta/llama-3.3-70b-instruct (TTFT=0.29s, TPS=27.4), blazeai fast models
