@@ -29,6 +29,7 @@ SKIP_PROVIDERS = {
     "swiftrouter", # 401 auth
     "zenmux",      # 401 auth
     "llmgateway",  # 401 auth
+    "kilocloud",   # dead (all rate limited)
 }
 
 FINITE_CREDIT_PROVIDERS = {"ktai-paid"}
@@ -37,11 +38,15 @@ FREE_CREDIT_PROVIDERS = {
     "hapuppy", "blazeai", "nvidia",
     "aitools", "bluesminds", "claude-carter",
     "ktai", "logfare", "swiftrouter",
-    "xinjianya", "zenllm",
+    "zenllm",
     "supacoder", "ollama-cloud", "wiwi",
-    "kilo", "kilocloud",
+    "kilo",
     "cursor-proxy",
     "ktai-paid",
+    # xinjianya: 73 tested free models (李/ and 英伟达/ groups)
+    "xinjianya",
+    # huashang: 502 free chat models via /v1/models?free=true
+    "huashang",
     # Added from opencode.json (free-tier accessible)
     "freetheai",   # 76 models, 41 free-marked
     "aihubmix",    # 3 models, 2 free-marked
@@ -64,9 +69,11 @@ FREE_CREDIT_PROVIDERS = {
     "groq",              # 5 free models (some free models)
     "huggingface",       # 5 free models
     "siliconflow-cn",    # 5 free models
+    # lotte-library: 98 models (deepseek, gemini, gpt, grok, kimi, minimax, qwen)
+    "lotte-library",
 }
 
-NO_STREAM_PROVIDERS = {"bluesminds", "xinjianya"}
+NO_STREAM_PROVIDERS = {"bluesminds"}
 
 FREE_MODEL_PATTERNS = ["free", "big-pickle"]
 
@@ -99,6 +106,9 @@ RATE_LIMITS = {
     "groq": 30,
     "huggingface": 15,
     "siliconflow-cn": 15,
+    "lotte-library": 20,
+    "xinjianya": 10,
+    "huashang": 15,
 }
 
 EXPENSIVE_PATTERNS = [
