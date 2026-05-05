@@ -34,6 +34,16 @@ SKIP_PROVIDERS = {
 
 FINITE_CREDIT_PROVIDERS = {"ktai-paid"}
 
+NEW_API_PROVIDERS = {
+    "xinjianya",
+    "huashang",
+    "lotte-library",
+}
+
+DAILY_QUOTA_PROVIDERS = {
+    "nvidia",
+}
+
 FREE_CREDIT_PROVIDERS = {
     "hapuppy", "blazeai", "nvidia",
     "aitools", "bluesminds", "claude-carter",
@@ -43,34 +53,25 @@ FREE_CREDIT_PROVIDERS = {
     "kilo",
     "cursor-proxy",
     "ktai-paid",
-    # xinjianya: 73 tested free models (李/ and 英伟达/ groups)
-    "xinjianya",
-    # huashang: 502 models via /v1/models?free=true - REQUIRES CREDITS (¥$0.000002 only, not free)
-    # "huashang",
-    # Added from opencode.json (free-tier accessible)
-    "freetheai",   # 76 models, 41 free-marked
-    "aihubmix",    # 3 models, 2 free-marked
-    "cortecs",     # 4 models, potentially free
-    "opencode",    # 16 models, 13 free-marked
-    # HIGH PRIORITY: major free-tier providers
-    "github-models",      # 63 free models (ALL are free)
-    "iflowcn",           # 14 free models
-    "zhipuai-coding-plan",  # 13 free models
-    "zai-coding-plan",   # 12 free models
-    # MEDIUM PRIORITY: coding plan providers with free tiers
-    "alibaba-coding-plan-cn",  # 9 free models
-    "alibaba-coding-plan",     # 9 free models
-    "tencent-coding-plan",     # 8 free models
-    "llama",             # 7 free models
-    "modelscope",        # 7 free models
-    "minimax-coding-plan",    # 6 free models
-    "minimax-cn-coding-plan", # 6 free models
-    "poe",               # 6 free models
-    "groq",              # 5 free models (some free models)
-    "huggingface",       # 5 free models
-    "siliconflow-cn",    # 5 free models
-    # lotte-library: 98 models (deepseek, gemini, gpt, grok, kimi, minimax, qwen)
-    "lotte-library",
+    "freetheai",
+    "aihubmix",
+    "cortecs",
+    "opencode",
+    "github-models",
+    "iflowcn",
+    "zhipuai-coding-plan",
+    "zai-coding-plan",
+    "alibaba-coding-plan-cn",
+    "alibaba-coding-plan",
+    "tencent-coding-plan",
+    "llama",
+    "modelscope",
+    "minimax-coding-plan",
+    "minimax-cn-coding-plan",
+    "poe",
+    "groq",
+    "huggingface",
+    "siliconflow-cn",
 }
 
 NO_STREAM_PROVIDERS = {"bluesminds"}
@@ -84,7 +85,7 @@ RATE_LIMITS = {
     "hapuppy": 30,
     "blazeai": 20,
     "ollama-cloud": 10,
-    "xinjianya": 15,
+    "xinjianya": 10,
     "opencodezen": 60,
     "aihubmix": 20,
     "cortecs": 10,
@@ -107,8 +108,8 @@ RATE_LIMITS = {
     "huggingface": 15,
     "siliconflow-cn": 15,
     "lotte-library": 20,
-    "xinjianya": 10,
-    # "huashang": 15,  # needs credits
+    "huashang": 20,
+    "10dian-ai": 20,
 }
 
 EXPENSIVE_PATTERNS = [
@@ -239,6 +240,37 @@ def fetch_model_pricing(base_url: str, api_key: str) -> dict[str, dict]:
         return {}
 
 
+def fetch_newapi_pricing(base_url: str, api_key: str) -> dict[str, dict]:
+    import httpx
+    base = base_url.rstrip("/")
+    if base.endswith("/v1"):
+        base = base[:-3]
+    try:
+        resp = httpx.get(
+            f"{base}/api/pricing",
+            headers={"Authorization": f"Bearer {api_key}"},
+            timeout=15,
+        )
+        if resp.status_code != 200:
+            return {}
+        result = resp.json()
+        if not result.get("success"):
+            return {}
+        pricing = {}
+        for m in result.get("data", []):
+            model_name = m.get("model_name", "")
+            if not model_name:
+                continue
+            pricing[model_name] = {
+                "ratio": m.get("model_ratio", 1),
+                "groups": m.get("enable_groups", []),
+                "completion_ratio": m.get("completion_ratio", 1),
+            }
+        return pricing
+    except Exception:
+        return {}
+
+
 def _is_localhost(url: str) -> bool:
     return "127.0.0.1" in url or "localhost" in url
 
@@ -265,6 +297,7 @@ def load_opencode_targets(
     targets: list[Target] = []
     seen: set[tuple[str, str]] = set()
     pricing_cache: dict[str, dict] = {}
+    newapi_cache: dict[str, dict] = {}
     probed_offline: set[str] = set()
 
     for pname, pconfig in providers.items():
@@ -295,6 +328,9 @@ def load_opencode_targets(
         ):
             pricing_cache[pname] = fetch_model_pricing(base_url, api_key)
 
+        if not include_paid and pname in NEW_API_PROVIDERS and pname not in newapi_cache:
+            newapi_cache[pname] = fetch_newapi_pricing(base_url, api_key)
+
         models = pconfig.get("models", {})
         for mname, mconfig in models.items():
             if model_filter and not _glob_match(mname, model_filter):
@@ -308,16 +344,25 @@ def load_opencode_targets(
                 model_name = model_id
 
             if not include_paid and pname not in FREE_CREDIT_PROVIDERS:
-                if not is_model_free(pname, model_name):
-                    p = pricing_cache.get(pname, {})
-                    model_pricing = p.get(model_name, {})
-                    if model_pricing:
-                        inp = model_pricing.get("input", 0)
-                        out = model_pricing.get("output", 0)
-                        if inp > 0 or out > 0:
+                is_free = is_model_free(pname, model_name)
+                if not is_free:
+                    if pname in NEW_API_PROVIDERS:
+                        np = newapi_cache.get(pname, {})
+                        nmeta = np.get(model_name, {})
+                        ratio = nmeta.get("ratio", 999)
+                        groups = nmeta.get("groups", [])
+                        if ratio != 0 or ("default" not in groups and "Free" not in groups):
                             continue
                     else:
-                        continue
+                        p = pricing_cache.get(pname, {})
+                        model_pricing = p.get(model_name, {})
+                        if model_pricing:
+                            inp = model_pricing.get("input", 0)
+                            out = model_pricing.get("output", 0)
+                            if inp > 0 or out > 0:
+                                continue
+                        else:
+                            continue
 
             if "kilo" in pname.lower() and "free" not in model_name.lower():
                 continue
