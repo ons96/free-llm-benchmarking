@@ -45,8 +45,8 @@ FREE_CREDIT_PROVIDERS = {
     "ktai-paid",
     # xinjianya: 73 tested free models (李/ and 英伟达/ groups)
     "xinjianya",
-    # huashang: 502 free chat models via /v1/models?free=true
-    "huashang",
+    # huashang: 502 models via /v1/models?free=true - REQUIRES CREDITS (¥$0.000002 only, not free)
+    # "huashang",
     # Added from opencode.json (free-tier accessible)
     "freetheai",   # 76 models, 41 free-marked
     "aihubmix",    # 3 models, 2 free-marked
@@ -108,7 +108,7 @@ RATE_LIMITS = {
     "siliconflow-cn": 15,
     "lotte-library": 20,
     "xinjianya": 10,
-    "huashang": 15,
+    # "huashang": 15,  # needs credits
 }
 
 EXPENSIVE_PATTERNS = [
