@@ -1,0 +1,10 @@
+provider,url,model,source,effort,ttft_sec,tps,tokens,total_sec,status,error,timestamp
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.1-70b-instruct,direct,,0.28992205898975953,27.353400612327327,494,18.391188209003303,success,,2026-04-24T23:29:16.752072+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm5,direct,,38.31810968898935,26.23114061912729,154,44.18971239301027,success,,2026-04-24T23:30:01.011094+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm5,direct,,8.809572228987236,9.169367302542858,153,25.496550265990663,success,,2026-04-24T23:30:26.514491+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm5,direct,,55.840322224015836,17.572357026920848,152,64.49157748301513,success,,2026-04-24T23:31:31.018909+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm5,direct,,14.822332838986767,5.726824494651689,235,55.85806722397683,success,,2026-04-24T23:32:26.886343+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,medium,5.4409600690123625,1055.6302308399459,141,5.574529567005811,success,,2026-04-24T23:32:32.519718+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,medium,6.082055075996323,130.0112336652362,139,7.152845469972817,success,,2026-04-24T23:32:39.681524+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,medium,8.976360742992256,185.9518703511412,124,9.761503893008921,success,,2026-04-24T23:32:49.453511+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,medium,7.276290655019693,501.8349384573484,167,7.609069397993153,success,,2026-04-24T23:32:57.071159+00:00

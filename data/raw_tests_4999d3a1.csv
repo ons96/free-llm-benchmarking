@@ -1,0 +1,4 @@
+provider,url,model,source,effort,ttft_sec,tps,tokens,total_sec,status,error,timestamp
+aihubmix,,coding-glm-5-free,direct,medium,,,0,0.0006371780000336003,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-05-05T02:33:07.781502+00:00
+aihubmix,,glm-4.7-free,direct,medium,,,0,0.0004482000003918074,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-05-05T02:33:07.790106+00:00
+aihubmix,,glm-4-flash,direct,,,,0,0.0004272599981050007,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-05-05T02:33:07.796382+00:00

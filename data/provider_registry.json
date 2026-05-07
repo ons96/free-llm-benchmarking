@@ -1,0 +1,77 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-05-07",
+  "providers": {
+    "nvidia": {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "credit_type": "recurring_free",
+      "free_tier": true,
+      "supports_tool_calls": true,
+      "supports_reasoning": false,
+      "model_types": ["text", "chat"],
+      "notes": "NVIDIA NIM - free tier with rate limits",
+      "rate_limit_per_min": 30,
+      "daily_checkin": false
+    },
+    "xinjianya": {
+      "base_url": "https://api.xinjianya.top/v1",
+      "credit_type": "one_time_no_expiry",
+      "free_tier": true,
+      "supports_tool_calls": true,
+      "supports_reasoning": true,
+      "model_types": ["text", "chat", "image"],
+      "notes": "Free models in 'default' group (ratio=0), no paid model testing",
+      "rate_limit_per_min": 10,
+      "skip_paid_models": true
+    },
+    "blazeai": {
+      "base_url": "https://blazeai.boxu.dev/api/",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "supports_tool_calls": true,
+      "supports_reasoning": true,
+      "model_types": ["text", "chat", "image"],
+      "notes": "Unlimited free usage",
+      "rate_limit_per_min": 20
+    },
+    "groq": {
+      "base_url": "https://api.groq.com/openai/v1",
+      "credit_type": "one_time_with_expiry",
+      "free_tier": true,
+      "supports_tool_calls": true,
+      "supports_reasoning": true,
+      "model_types": ["text", "chat", "audio"],
+      "notes": "$5 free credits, expires if unused",
+      "rate_limit_per_min": 30,
+      "billing_quota_cents": 500
+    },
+    "hapuppy": {
+      "base_url": "https://beta.hapuppy.com/v1",
+      "credit_type": "recurring_free",
+      "free_tier": true,
+      "supports_tool_calls": false,
+      "supports_reasoning": false,
+      "model_types": ["text", "chat"],
+      "notes": "Daily free credits reset",
+      "rate_limit_per_min": 30
+    },
+    "opencode": {
+      "base_url": "https://opencode.ai/zen/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "supports_tool_calls": false,
+      "supports_reasoning": false,
+      "model_types": ["text", "code"],
+      "notes": "OpenCode Zen - unlimited free"
+    },
+    "freetheai": {
+      "base_url": "https://api.freetheai.xyz/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "supports_tool_calls": false,
+      "supports_reasoning": false,
+      "model_types": ["text", "chat"],
+      "notes": "Free tier with daily limits"
+    }
+  }
+}
