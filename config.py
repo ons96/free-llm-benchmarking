@@ -20,7 +20,12 @@ from typing import Optional
 OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.json"
 if not OPENCODE_JSON.exists():
     OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.jsonc"
-GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models.yaml"
+    GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models.yaml"
+
+SKIP_MODEL_TYPES = {
+    "image", "vision", "tts", "speech", "audio",
+    "safety", "content-safety", "moderation", "embed", "rerank",
+}
 
 SKIP_PROVIDERS = {
     "cliproxyapi",  # dead
@@ -168,6 +173,8 @@ class Target:
     source: str = "direct"
     supports_reasoning: bool = False
     is_expensive: bool = False
+    model_type: str = "text"  # text, image, audio, etc.
+    tool_calls: bool = False  # supports function/tool calling
 
     def __repr__(self) -> str:
         return f"Target({self.provider_name}/{self.model_name})"
@@ -396,6 +403,30 @@ def load_opencode_targets(
                 continue
             seen.add(key)
 
+            model_type = "text"
+            tool_calls = False
+            try:
+                import httpx
+                resp = httpx.get(
+                    f"{base_url.rstrip('/')}/models",
+                    headers={"Authorization": f"Bearer {api_key}"} if api_key else {},
+                    timeout=15,
+                )
+                if resp.status_code == 200:
+                    result = resp.json()
+                    models_data = result.get("data", result) if isinstance(result, dict) else result
+                    for m in models_data:
+                        if m.get("id", "") == model_name:
+                            mt = m.get("model_type", "").lower()
+                            if mt in SKIP_MODEL_TYPES:
+                                model_type = mt
+                            caps = m.get("capabilities", {})
+                            if caps.get("function_calling") or "function" in str(caps):
+                                tool_calls = True
+                            break
+            except Exception:
+                pass
+            
             targets.append(
                 Target(
                     provider_name=pname,
@@ -405,6 +436,8 @@ def load_opencode_targets(
                     source="direct",
                     supports_reasoning=_supports_reasoning(mname),
                     is_expensive=expensive,
+                    model_type=model_type,
+                    tool_calls=tool_calls,
                 )
             )
 
