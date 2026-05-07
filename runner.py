@@ -33,10 +33,26 @@ MIN_TEMPERATURE_PROVIDERS = {"xinjianya"}
 # Providers that don't accept stream_options field in request body
 NO_STREAM_OPTIONS_PROVIDERS = {"xinjianya"}
 
-# Providers that don't accept reasoning_effort parameter
+SKIP_MODEL_TYPES = {
+    "image", "vision", "tts", "speech", "audio",
+    "safety", "content-safety", "moderation", "embed", "rerank",
+}
+
+REASONING_HIGHEST = {
+    "gpt-5": "high",
+    "gpt5": "high",
+    "claude": "3",
+    "grok-4": "high",
+    "deepseek-r": "high",
+    "qwen": "thinking",
+    "qwen3": "thinking",
+    "glm-4.5": "high", "glm-4.6": "high", "glm-5": "high",
+    "kimi": "high",
+    "nemotron": "high",
+}
+
 NO_REASONING_EFFORT_PROVIDERS = {"xinjianya"}
 
-# Track provider call times for rate limiting
 _call_history: dict[str, deque[float]] = defaultdict(lambda: deque(maxlen=200))
 # Track providers with exhausted credits (skip all their models)
 _credit_exhausted: set[str] = set()
@@ -705,11 +721,42 @@ async def run_all(
     conn = db.connect()
 
     efforts_for = lambda t: (
-        (["low", "medium", "high"] if effort_sweep else [reasoning_effort])
-        if t.supports_reasoning
+        [None, REASONING_HIGHEST[t.model_name]] if t.model_name in REASONING_HIGHEST
         else [None]
     )
 
+    filtered = [
+        t for t in targets
+        if t.model_type.lower() not in SKIP_MODEL_TYPES
+    ]
+    targets = filtered
+
+    async def validate_target(target: Target) -> bool:
+        try:
+            async with httpx.AsyncClient(timeout=15) as client:
+                resp = await client.get(
+                    f"{target.base_url.rstrip('/')}/models",
+                    headers={"Authorization": f"Bearer {target.api_key}"} if target.api_key else {},
+                )
+                if resp.status_code != 200:
+                    return False
+                result = resp.json()
+                models_data = result.get("data", result) if isinstance(result, dict) else result
+                for m in models_data:
+                    if m.get("id", "") == target.model_name:
+                        return True
+                print(f"SKIP: {target.model_name} not found in /v1/models")
+                return False
+        except Exception as e:
+            print(f"WARN: Could not validate {target.model_name}: {e}")
+            return True
+    
+    valid_targets = []
+    for t in targets:
+        if await validate_target(t):
+            valid_targets.append(t)
+    targets = valid_targets
+    
     total_jobs = sum(len(efforts_for(t)) for t in targets)
     done = 0
     start_time = asyncio.get_event_loop().time()
