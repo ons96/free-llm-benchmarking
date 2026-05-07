@@ -1,0 +1,87 @@
+#!/usr/bin/env python3
+import asyncio, aiohttp, time, json, csv
+from datetime import datetime
+
+# Load key from opencode config
+with open('/home/osees/.config/opencode/opencode.json') as f:
+    cfg = json.load(f)
+blazeai_cfg = cfg.get('provider', {}).get('blazeai', {}).get('options', {})
+KEY = blazeai_cfg.get('apiKey', '')
+BASE = blazeai_cfg.get('baseURL', 'https://blazeai.boxu.dev/api')
+ENDPOINT = f"{BASE.rstrip('/')}/chat/completions"
+
+PROMPT = "Write Python factorial"
+MAX_TOKENS = 4000
+MAX_CONCURRENT = 5
+
+MODELS = [
+    "xinjianya/flux-schnell",
+    "xinjianya/qwen3-30b-a3b",
+    "xinjianya/qwen3-235b-a22b",
+    "xinjianya/qwen3-14b",
+    "xinjianya/qwen3-32b",
+    "xinjianya/qwen3-2.5b",
+    "xinjianya/qwen3-0.5b",
+    "xinjianya/qwen3-1.7b",
+]
+
+HEADERS = {'Authorization': f'Bearer {KEY}', 'Content-Type': 'application/json'}
+
+async def test(session, model):
+    payload = {'model': model, 'messages': [{'role': 'user', 'content': PROMPT}],
+               'max_tokens': MAX_TOKENS, 'stream': True}
+    start = time.perf_counter()
+    ttft = None
+    tokens = 0
+    try:
+        async with session.post(ENDPOINT, json=payload, headers=HEADERS, timeout=30) as r:
+            if r.status != 200:
+                txt = await r.text()
+                return {'model': model, 'status': f'http_{r.status}', 'error': txt[:120]}
+            async for line in r.content:
+                if line.strip().startswith(b'data:') and b'delta' in line:
+                    if ttft is None:
+                        ttft = time.perf_counter() - start
+                    tokens += 1
+            total = time.perf_counter() - start
+            if ttft and tokens:
+                tps = tokens / (total - ttft) if total > ttft else tokens / total
+                return {'model': model, 'ttft_s': round(ttft, 3), 'tps': round(tps, 1),
+                        'tokens': tokens, 'total_s': round(total, 3), 'status': 'ok'}
+            return {'model': model, 'status': 'no_tokens'}
+    except Exception as e:
+        return {'model': model, 'status': 'error', 'error': str(e)[:120]}
+
+async def main():
+    sem = asyncio.Semaphore(MAX_CONCURRENT)
+    connector = aiohttp.TCPConnector(limit=MAX_CONCURRENT)
+    async with aiohttp.ClientSession(connector=connector) as session:
+        tasks = [test(session, m) for m in MODELS]
+        results = []
+        for i, coro in enumerate(asyncio.as_completed(tasks), 1):
+            r = await coro
+            results.append(r)
+            if r['status'] == 'ok':
+                print(f"[{i:2d}/{len(MODELS)}] ✓ {r['model'][:55]:<55s} TTFT={r['ttft_s']:.3f}s  TPS={r['tps']:.1f}  tokens={r['tokens']}")
+            else:
+                print(f"[{i:2d}/{len(MODELS)}] ✗ {r['model'][:55]:<55s} {r['status']:>12s}  {r.get('error','')[:40]}")
+    ok = [r for r in results if r['status'] == 'ok']
+    print(f"\nRESULT: {len(ok)}/{len(results)} succeeded")
+    if ok:
+        print("\nTOP BY TPS:")
+        for r in sorted(ok, key=lambda x: x['tps'], reverse=True):
+            print(f"  {r['tps']:>6.1f} tok/s  {r['ttft_s']:.3f}s  {r['model']}")
+        print("\nTOP BY TTFT (fastest):")
+        for r in sorted(ok, key=lambda x: x['ttft_s']):
+            print(f"  {r['ttft_s']:.3f}s TTFT  {r['tps']:>6.1f} tok/s  {r['model']}")
+    ts = datetime.now().strftime('%Y%m%d_%H%M%S')
+    out = f'/home/osees/CodingProjects/llm-speedrun/data/new_xinjianya_{ts}.csv'
+    with open(out, 'w', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=['model','status','ttft_s','tps','tokens','total_s','error'])
+        w.writeheader()
+        w.writerows(results)
+    print(f"\nSaved → {out}")
+    return results
+
+if __name__ == '__main__':
+    asyncio.run(main())

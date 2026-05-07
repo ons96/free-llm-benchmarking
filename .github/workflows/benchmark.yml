@@ -1,0 +1,203 @@
+name: LLM Speed Benchmark
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+    inputs:
+      runs:
+        description: 'Number of runs per model'
+        required: false
+        default: '1'
+      include-expensive:
+        description: 'Include expensive models'
+        required: false
+        default: 'false'
+        type: boolean
+      include-paid:
+        description: 'Include paid models'
+        required: false
+        default: 'false'
+        type: boolean
+      effort-sweep:
+        description: 'Test all reasoning effort levels'
+        required: false
+        default: 'false'
+        type: boolean
+      concurrency:
+        description: 'Concurrent API calls'
+        required: false
+        default: '10'
+      skip-tested:
+        description: 'Skip already-tested models'
+        required: false
+        default: 'true'
+        type: boolean
+
+jobs:
+  benchmark:
+    name: Run LLM Benchmarks
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          activate-environment: true
+          enable-cache: true
+          cache-dependency-glob: |
+            requirements.txt
+            uv.lock
+
+      - name: Install dependencies
+        run: |
+          uv pip install -r requirements.txt
+          uv pip install httpx
+          uv pip install --system jq  # for JSON parsing in scripts
+
+      - name: Restore opencode config from secret
+        env:
+          OPENCODE_JSON_B64: ${{ secrets.OPENCODE_JSON_BASE64 }}
+        run: |
+          if [ -z "$OPENCODE_JSON_B64" ]; then
+            echo "::error::OPENCODE_JSON_BASE64 secret not set. Please add it in repo settings."
+            exit 1
+          fi
+          mkdir -p ~/.config/opencode
+          echo "$OPENCODE_JSON_B64" | base64 -d > ~/.config/opencode/opencode.json
+          echo "Config restored. Providers configured: $(uv run python -c "import json; d=json.load(open('/home/runner/.config/opencode/opencode.json')); print(len(d.get('provider', {})))")"
+
+      - name: Initialize database
+        run: |
+          uv run python cli.py init
+
+      - name: List targets
+        run: |
+          uv run python cli.py list --verbose
+
+      - name: Run benchmarks
+        env:
+          NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
+        run: |
+          ARGS="--runs ${{ github.event.inputs.runs || 1 }} --concurrency ${{ github.event.inputs.concurrency || 10 }}"
+
+          if [ "${{ github.event.inputs.include-expensive }}" = "true" ]; then
+            ARGS="$ARGS --include-expensive"
+          fi
+
+          if [ "${{ github.event.inputs.include-paid }}" = "true" ]; then
+            ARGS="$ARGS --include-paid"
+          fi
+
+          if [ "${{ github.event.inputs.effort-sweep }}" = "true" ]; then
+            ARGS="$ARGS --effort-sweep"
+          fi
+
+          if [ "${{ github.event.inputs.skip-tested }}" != "false" ]; then
+            ARGS="$ARGS --skip-tested"
+          fi
+
+          echo "Running: python cli.py test $ARGS"
+          uv run python cli.py test $ARGS -y
+
+      - name: Generate report and site data
+        if: always()
+        run: |
+          uv run python cli.py report --top 20 || true
+          uv run python cli.py csv -o data/leaderboard.csv || true
+          # Generate clean JSON for GitHub Pages
+          uv run python3 << 'PYEOF'
+import csv, json
+with open('data/leaderboard.csv') as f:
+    reader = csv.DictReader(f)
+    rows = list(reader)
+cleaned = []
+for r in rows:
+    try:
+        tokens = float(r.get('avg_tokens', '0') or 0
+        tps = float(r.get('TPS', '0') or 0
+        ttft = float(r.get('TTFT_sec', '0') or 0
+        total = float(r.get('10K_total_sec', '0') or 0
+        flags = []
+        if tokens < 50: flags.append('low_tokens')
+        if tps > 50000 and tokens < 100: flags.append('inflated_tps')
+        if not r.get('effort'): r['effort'] = 'none'
+        cleaned.append({
+            'rank': int(r['rank']) if r['rank'].isdigit() else 0,
+            'provider_name': r.get('provider', ''),
+            'model_name': r.get('model', ''),
+            'reasoning_effort': r.get('effort', 'none'),
+            'avg_ttft_sec': ttft,
+            'avg_tps': tps,
+            'avg_output_tokens': tokens,
+            'est_10k_total_s': total,
+            'flags': flags,
+            'is_suspicious': len(flags) > 0
+        })
+    except: pass
+cleaned.sort(key=lambda x: x['est_10k_total_s'])
+for i, r in enumerate(cleaned, 1): r['rank'] = i
+with open('docs/leaderboard.json', 'w') as f:
+    json.dump(cleaned, f, indent=2)
+print(f'Saved {len(cleaned)} rows to docs/leaderboard.json')
+PYEOF
+          cp data/leaderboard.csv docs/leaderboard.csv || true
+
+      - name: Upload benchmark data as artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-data-${{ github.run_number }}
+          path: |
+            data/speedrun.db
+            data/leaderboard.csv
+            data/raw_tests_*.csv
+          retention-days: 90
+
+      - name: Commit updated data files
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Add changed data files
+          git add data/speedrun.db data/leaderboard.csv data/raw_tests_*.csv 2>/dev/null || true
+          git add docs/leaderboard.json docs/leaderboard.csv docs/index.html 2>/dev/null || true
+
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update benchmark data [skip ci]"
+            git push
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          enable_jekyll: false
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Benchmark Run Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          uv run python cli.py report --top 10 --json data/summary.json || true
+          if [ -f data/summary.json ]; then
+            echo "Top 10 results:" >> $GITHUB_STEP_SUMMARY
+            uv run python -c "
+import json, sys
+data = json.load(open('data/summary.json'))
+for i, r in enumerate(data[:10], 1):
+    print(f'{i}. {r[\"provider_name\"]}/{r[\"model_name\"]}: TTFT={r.get(\"avg_ttft_sec\", \"?\")}s TPS={r.get(\"avg_tps\", \"?\")}' 
+" >> $GITHUB_STEP_SUMMARY
+          fi
