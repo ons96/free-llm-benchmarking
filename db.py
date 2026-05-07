@@ -25,7 +25,9 @@ CREATE TABLE IF NOT EXISTS speed_tests (
     status TEXT NOT NULL,
     error_message TEXT,
     run_number INTEGER NOT NULL,
-    raw_sample TEXT
+    raw_sample TEXT,
+    tool_calls INTEGER DEFAULT 0,
+    model_type TEXT DEFAULT 'text'
 );
 
 CREATE INDEX IF NOT EXISTS idx_speed_tests_run_id ON speed_tests(run_id);
@@ -46,7 +48,9 @@ CREATE TABLE IF NOT EXISTS speed_summary (
     avg_output_tokens REAL,
     est_10k_total_s REAL,
     num_runs INTEGER,
-    num_success INTEGER
+    num_success INTEGER,
+    tool_calls INTEGER DEFAULT 0,
+    model_type TEXT DEFAULT 'text'
 );
 
 CREATE INDEX IF NOT EXISTS idx_summary_run ON speed_summary(run_id);
