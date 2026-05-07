@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLM Speed Leaderboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; padding: 20px; background: #0f0f0f; color: #e0e0e0; }
+    h1 { font-size: 1.8rem; margin-bottom: 10px; }
+    p.subtitle { color: #888; margin-bottom: 20px; }
+    
+    .controls { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; }
+    .controls input, .controls select { 
+      background: #1a1a1a; border: 1px solid #333; color: #e0e0e0; 
+      padding: 8px 12px; border-radius: 6px; font-size: 0.9rem;
+    }
+    .controls input { flex: 1; min-width: 200px; }
+    .controls select { cursor: pointer; }
+    
+    table { width: 100%; border-collapse: collapse; background: #1a1a1a; border-radius: 8px; overflow: hidden; }
+    th { background: #252525; padding: 12px 16px; text-align: left; font-weight: 600; cursor: pointer; user-select: none; white-space: nowrap; }
+    th:hover { background: #2a2a2a; }
+    th.sorted-asc::after { content: " ↑"; margin-left: 5px; }
+    th.sorted-desc::after { content: " ↓"; margin-left: 5px; }
+    td { padding: 10px 16px; border-bottom: 1px solid #252525; }
+    tr:hover { background: #222; }
+    tr:last-child td { border-bottom: none; }
+    
+    .rank { font-weight: 700; color: #f0b040; }
+    .provider { color: #6ab7ff; }
+    .model { color: #4ec9b0; font-family: monospace; font-size: 0.85rem; }
+    .effort { font-size: 0.8rem; color: #aaa; }
+    .number { text-align: right; font-variant-numeric: tabular-nums; }
+    .fast { color: #4ec9b0; }
+    .slow { color: #f44742; }
+    
+    .stats { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
+    .stat-card { background: #1a1a1a; padding: 16px 20px; border-radius: 8px; min-width: 150px; }
+    .stat-card .label { font-size: 0.8rem; color: #888; margin-bottom: 5px; }
+    .stat-card .value { font-size: 1.5rem; font-weight: 700; }
+    
+    .footer { margin-top: 30px; color: #555; font-size: 0.8rem; text-align: center; }
+    .updated { color: #666; margin-top: 10px; }
+    
+    @media (max-width: 768px) {
+      body { padding: 10px; }
+      th, td { padding: 8px 10px; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🚀 LLM Speed Leaderboard</h1>
+  <p class="subtitle">Benchmark results for LLM API providers — TTFT (Time to First Token) and TPS (Tokens per Second)</p>
+  
+  <div class="stats" id="stats"></div>
+  
+  <div class="controls">
+    <input type="text" id="searchInput" placeholder="Search providers or models...">
+    <select id="providerFilter">
+      <option value="">All Providers</option>
+    </select>
+    <select id="sortBy">
+      <option value="rank">Sort by Rank</option>
+      <option value="ttft">Sort by TTFT</option>
+      <option value="tps">Sort by TPS</option>
+      <option value="total10k">Sort by 10K Total Time</option>
+    </select>
+    <select id="effortFilter">
+      <option value="">All Efforts</option>
+      <option value="low">Low</option>
+      <option value="medium">Medium</option>
+      <option value="high">High</option>
+      <option value="">No Reasoning</option>
+    </select>
+  </div>
+  
+  <table id="leaderboardTable">
+    <thead>
+      <tr>
+        <th data-sort="rank">#</th>
+        <th data-sort="provider">Provider</th>
+        <th data-sort="model">Model</th>
+        <th data-sort="effort">Effort</th>
+        <th data-sort="ttft" class="number">TTFT (s)</th>
+        <th data-sort="tps" class="number">TPS</th>
+        <th data-sort="tokens" class="number">Avg Tokens</th>
+        <th data-sort="total10k" class="number">10K Time (s)</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+  
+  <div class="footer">
+    <p>Data sourced from <code>speedrun.db</code> — Updated: <span id="updateTime">...</span></p>
+    <p class="updated">TTFT = Time to First Token | TPS = Tokens per Second | 10K Time = Estimated total time for 10,000 tokens</p>
+  </div>
+
+  <script>
+    let data = [];
+    let filteredData = [];
+    let currentSort = { column: 'rank', direction: 'asc' };
+    
+    // Fetch the JSON data
+    async function loadData() {
+      try {
+        const resp = await fetch('data/leaderboard.json');
+        if (!resp.ok) throw new Error('Failed to load data');
+        data = await resp.json();
+        initFilters();
+        applyFiltersAndSort();
+        updateStats();
+      } catch (e) {
+        console.error('Error loading data:', e);
+        document.getElementById('tableBody').innerHTML = 
+          '<tr><td colspan="7" style="text-align:center;color:#666;padding:40px;">Failed to load data. Run `python cli.py report --json data/leaderboard.json` to generate.</td></tr>';
+      }
+    }
+    
+    function initFilters() {
+      const providerSet = new Set(data.map(d => d.provider_name));
+      const select = document.getElementById('providerFilter');
+      [...providerSet].sort().forEach(p => {
+        const opt = document.createElement('option');
+        opt.value = p;
+        opt.textContent = p;
+        select.appendChild(opt);
+      });
+    }
+    
+    function updateStats() {
+      const stats = document.getElementById('stats');
+      const total = data.length;
+      const providers = new Set(data.map(d => d.provider_name)).size;
+      const avgTps = data.filter(d => d.avg_tps).reduce((a, b) => a + b.avg_tps, 0) / data.filter(d => d.avg_tps).length;
+      const fastest = data.reduce((min, d) => (d.est_10k_total_s && d.est_10k_total_s < (min.est_10k_total_s || Infinity)) ? d : min, {});
+      
+      stats.innerHTML = `
+        <div class="stat-card"><div class="label">Total Models</div><div class="value">${total}</div></div>
+        <div class="stat-card"><div class="label">Providers</div><div class="value">${providers}</div></div>
+        <div class="stat-card"><div class="label">Avg TPS</div><div class="value">${avgTps ? avgTps.toFixed(1) : '?'}</div></div>
+        <div class="stat-card"><div class="label">Fastest 10K</div><div class="value">${fastest.est_10k_total_s ? fastest.est_10k_total_s.toFixed(1) + 's' : '?'}</div></div>
+      `;
+    }
+    
+    function applyFiltersAndSort() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const provider = document.getElementById('providerFilter').value;
+      const effort = document.getElementById('effortFilter').value;
+      
+      filteredData = data.filter(d => {
+        const matchesSearch = !search || 
+          d.provider_name.toLowerCase().includes(search) || 
+          d.model_name.toLowerCase().includes(search);
+        const matchesProvider = !provider || d.provider_name === provider;
+        const matchesEffort = !effort || (d.reasoning_effort || '') === effort;
+        return matchesSearch && matchesProvider && matchesEffort;
+      });
+      
+      sortData();
+      renderTable();
+    }
+    
+    function sortData() {
+      const { column, direction } = currentSort;
+      filteredData.sort((a, b) => {
+        let valA = a[column], valB = b[column];
+        if (column === 'ttft') { valA = a.avg_ttft_sec; valB = b.avg_ttft_sec; }
+        if (column === 'tps') { valA = a.avg_tps; valB = b.avg_tps; }
+        if (column === 'total10k') { valA = a.est_10k_total_s; valB = b.est_10k_total_s; }
+        
+        if (valA === null || valA === undefined) return 1;
+        if (valB === null || valB === undefined) return -1;
+        if (typeof valA === 'string') return direction === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        return direction === 'asc' ? valA - valB : valB - valA;
+      });
+    }
+    
+    function renderTable() {
+      const tbody = document.getElementById('tableBody');
+      if (filteredData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;color:#666;padding:40px;">No results match your filters</td></tr>';
+        return;
+      }
+      
+      tbody.innerHTML = filteredData.map((d, i) => {
+        const ttft = d.avg_ttft_sec ? `<span class="${d.avg_ttft_sec < 1 ? 'fast' : d.avg_ttft_sec > 10 ? 'slow' : ''}">${d.avg_ttft_sec.toFixed(3)}</span>` : '?';
+        const tps = d.avg_tps ? `<span class="${d.avg_tps > 100 ? 'fast' : d.avg_tps < 10 ? 'slow' : ''}">${d.avg_tps.toFixed(1)}</span>` : '?';
+        const total = d.est_10k_total_s ? `${d.est_10k_total_s.toFixed(1)}` : '?';
+        const effort = d.reasoning_effort ? `<span class="effort">${d.reasoning_effort}</span>` : '';
+        
+        return `<tr>
+          <td class="rank">${d.rank || i + 1}</td>
+          <td class="provider">${d.provider_name || '?'}</td>
+          <td><span class="model">${d.model_name || '?'}</span> ${effort}</td>
+          <td>${effort ? d.reasoning_effort : '-'}</td>
+          <td class="number">${ttft}</td>
+          <td class="number">${tps}</td>
+          <td class="number">${d.avg_output_tokens ? d.avg_output_tokens.toFixed(0) : '?'}</td>
+          <td class="number">${total}</td>
+        </tr>`;
+      }).join('');
+    }
+    
+    // Event listeners
+    document.getElementById('searchInput').addEventListener('input', applyFiltersAndSort);
+    document.getElementById('providerFilter').addEventListener('change', applyFiltersAndSort);
+    document.getElementById('effortFilter').addEventListener('change', applyFiltersAndSort);
+    document.getElementById('sortBy').addEventListener('change', (e) => {
+      currentSort = { column: e.target.value, direction: 'asc' };
+      sortData();
+      renderTable();
+    });
+    
+    document.querySelectorAll('th[data-sort]').forEach(th => {
+      th.addEventListener('click', () => {
+        const col = th.dataset.sort;
+        if (currentSort.column === col) {
+          currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+          currentSort = { column: col, direction: 'asc' };
+        }
+        document.querySelectorAll('th').forEach(t => t.className = '');
+        th.className = `sorted-${currentSort.direction}`;
+        sortData();
+        renderTable();
+      });
+    });
+    
+    loadData();
+  </script>
+</body>
+</html>
