@@ -1,0 +1,56 @@
+model,status,ttft_s,tps,tokens,total_s,error
+xinjianya/flux-schnell,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+xinjianya/李/meta/llama-3.3-70b-instruct,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+blazeai/qwen/qwen3-coder-flash,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+xinjianya/qwen3-235b-a22b,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+xinjianya/qwen3-2.5b,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+xinjianya/qwen3-32b,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+xinjianya/qwen3-1.7b,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+nvidia/nvidia/llama-3.1-nemotron-70b-instruct,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+xinjianya/qwen3-14b,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+xinjianya/qwen3-30b-a3b,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"
+xinjianya/qwen3-0.5b,http_401,,,,,"{
+  ""error"": {
+    ""message"": ""Missing or invalid BlazeAPI key."",
+    ""type"": ""invalid_api_key"",
+    ""code"": ""invalid_ap"

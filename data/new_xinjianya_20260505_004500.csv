@@ -1,0 +1,33 @@
+model,status,ttft_s,tps,tokens,total_s,error
+xinjianya/qwen3-30b-a3b,http_404,,,,,"{
+  ""error"": {
+    ""message"": ""Model 'xinjianya/qwen3-30b-a3b' is not available on BlazeAPI."",
+    ""type"": ""model_not_fo"
+xinjianya/qwen3-0.5b,http_404,,,,,"{
+  ""error"": {
+    ""message"": ""Model 'xinjianya/qwen3-0.5b' is not available on BlazeAPI."",
+    ""type"": ""model_not_found"
+xinjianya/qwen3-1.7b,http_404,,,,,"{
+  ""error"": {
+    ""message"": ""Model 'xinjianya/qwen3-1.7b' is not available on BlazeAPI."",
+    ""type"": ""model_not_found"
+xinjianya/qwen3-32b,http_404,,,,,"{
+  ""error"": {
+    ""message"": ""Model 'xinjianya/qwen3-32b' is not available on BlazeAPI."",
+    ""type"": ""model_not_found"""
+xinjianya/qwen3-14b,http_404,,,,,"{
+  ""error"": {
+    ""message"": ""Model 'xinjianya/qwen3-14b' is not available on BlazeAPI."",
+    ""type"": ""model_not_found"""
+xinjianya/qwen3-235b-a22b,http_404,,,,,"{
+  ""error"": {
+    ""message"": ""Model 'xinjianya/qwen3-235b-a22b' is not available on BlazeAPI."",
+    ""type"": ""model_not_"
+xinjianya/qwen3-2.5b,http_404,,,,,"{
+  ""error"": {
+    ""message"": ""Model 'xinjianya/qwen3-2.5b' is not available on BlazeAPI."",
+    ""type"": ""model_not_found"
+xinjianya/flux-schnell,http_404,,,,,"{
+  ""error"": {
+    ""message"": ""Model 'xinjianya/flux-schnell' is not available on BlazeAPI."",
+    ""type"": ""model_not_fou"

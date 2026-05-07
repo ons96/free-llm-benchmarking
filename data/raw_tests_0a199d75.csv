@@ -1,0 +1,4 @@
+provider,url,model,source,effort,ttft_sec,tps,tokens,total_sec,status,error,timestamp
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.1-70b-instruct,direct,,21.867583345010644,7.552684914402503,510,89.49574115101132,success,,2026-04-24T22:36:05.782691+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm5,direct,,7.33670223900117,15.127188937374905,158,17.782551206997596,success,,2026-04-24T22:36:23.631011+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,medium,5.820478909998201,33572.61029451382,140,5.824648975976743,success,,2026-04-24T22:36:29.526107+00:00

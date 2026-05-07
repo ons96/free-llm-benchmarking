@@ -1,0 +1,6 @@
+provider,url,model,source,effort,ttft_sec,tps,tokens,total_sec,status,error,timestamp
+huggingface,https://router.huggingface.co/v1,zai-org/GLM-4.7-Flash,direct,medium,,,0,0.2552105130016571,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-05-05T01:10:34.738405+00:00
+huggingface,https://router.huggingface.co/v1,Qwen/Qwen3-32B,direct,,,,0,0.28012608800054295,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-05-05T01:10:34.763869+00:00
+huggingface,https://router.huggingface.co/v1,Qwen/Qwen3-235B-A22B,direct,,,,0,0.28374308600177756,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-05-05T01:10:34.767332+00:00
+huggingface,https://router.huggingface.co/v1,deepseek-ai/DeepSeek-R1,direct,medium,,,0,0.20238744000016595,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-05-05T01:10:34.964390+00:00
+huggingface,https://router.huggingface.co/v1,mistralai/Mistral-Small-3.1-24B-Instruct,direct,,,,0,0.21726293400206487,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-05-05T01:10:35.006808+00:00
