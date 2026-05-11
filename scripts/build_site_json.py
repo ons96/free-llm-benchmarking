@@ -10,10 +10,10 @@ with open("data/leaderboard.csv") as f:
 cleaned = []
 for r in rows:
     try:
-tokens = float(r.get("avg_tokens", "0") or 0)
-tps = float(r.get("TPS", "0") or 0)
-ttft = float(r.get("TTFT_sec", "0") or 0)
-total = float(r.get("10K_total_sec", "0") or 0)
+        tokens = float(r.get("avg_tokens", "0") or 0)
+        tps = float(r.get("TPS", "0") or 0)
+        ttft = float(r.get("TTFT_sec", "0") or 0)
+        total = float(r.get("10K_total_sec", "0") or 0)
         
         # Flag suspicious data
         flags = []
