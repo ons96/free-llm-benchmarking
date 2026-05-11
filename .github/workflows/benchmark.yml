@@ -110,41 +110,7 @@ jobs:
           uv run python cli.py report --top 20 || true
           uv run python cli.py csv -o data/leaderboard.csv || true
           # Generate clean JSON for GitHub Pages
-          uv run python3 << 'PYEOF'
-import csv, json
-with open('data/leaderboard.csv') as f:
-    reader = csv.DictReader(f)
-    rows = list(reader)
-cleaned = []
-for r in rows:
-    try:
-        tokens = float(r.get('avg_tokens', '0') or 0
-        tps = float(r.get('TPS', '0') or 0
-        ttft = float(r.get('TTFT_sec', '0') or 0
-        total = float(r.get('10K_total_sec', '0') or 0
-        flags = []
-        if tokens < 50: flags.append('low_tokens')
-        if tps > 50000 and tokens < 100: flags.append('inflated_tps')
-        if not r.get('effort'): r['effort'] = 'none'
-        cleaned.append({
-            'rank': int(r['rank']) if r['rank'].isdigit() else 0,
-            'provider_name': r.get('provider', ''),
-            'model_name': r.get('model', ''),
-            'reasoning_effort': r.get('effort', 'none'),
-            'avg_ttft_sec': ttft,
-            'avg_tps': tps,
-            'avg_output_tokens': tokens,
-            'est_10k_total_s': total,
-            'flags': flags,
-            'is_suspicious': len(flags) > 0
-        })
-    except: pass
-cleaned.sort(key=lambda x: x['est_10k_total_s'])
-for i, r in enumerate(cleaned, 1): r['rank'] = i
-with open('docs/leaderboard.json', 'w') as f:
-    json.dump(cleaned, f, indent=2)
-print(f'Saved {len(cleaned)} rows to docs/leaderboard.json')
-PYEOF
+          uv run python scripts/build_site_json.py
           cp data/leaderboard.csv docs/leaderboard.csv || true
 
       - name: Upload benchmark data as artifact
@@ -194,10 +160,5 @@ PYEOF
           uv run python cli.py report --top 10 --json data/summary.json || true
           if [ -f data/summary.json ]; then
             echo "Top 10 results:" >> $GITHUB_STEP_SUMMARY
-            uv run python -c "
-import json, sys
-data = json.load(open('data/summary.json'))
-for i, r in enumerate(data[:10], 1):
-    print(f'{i}. {r[\"provider_name\"]}/{r[\"model_name\"]}: TTFT={r.get(\"avg_ttft_sec\", \"?\")}s TPS={r.get(\"avg_tps\", \"?\")}' 
-" >> $GITHUB_STEP_SUMMARY
+            uv run python scripts/generate_summary.py >> $GITHUB_STEP_SUMMARY
           fi
