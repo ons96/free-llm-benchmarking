@@ -20,7 +20,7 @@ from typing import Optional
 OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.json"
 if not OPENCODE_JSON.exists():
     OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.jsonc"
-    GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models.yaml"
+GATEWAY_VIRTUAL = Path.home() / "LLM-API-Key-Proxy" / "config" / "virtual_models.yaml"
 
 SKIP_MODEL_TYPES = {
     "image", "vision", "tts", "speech", "audio",
