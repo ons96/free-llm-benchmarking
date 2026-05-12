@@ -301,6 +301,7 @@ def load_opencode_targets(
     model_filter: Optional[str] = None,
     skip_offline: bool = True,
     skip_pricing: bool = False,
+    provider_names: Optional[set[str]] = None,
 ) -> list[Target]:
     data = _parse_jsonc(OPENCODE_JSON.read_text())
     providers = data.get("provider", {})
@@ -314,6 +315,8 @@ def load_opencode_targets(
         if pname in SKIP_PROVIDERS and pname not in FREE_CREDIT_PROVIDERS:
             continue
         if provider_filter and not _glob_match(pname, provider_filter):
+            continue
+        if provider_names is not None and pname not in provider_names:
             continue
 
         base_url = pconfig.get("baseURL", "")
@@ -501,6 +504,7 @@ def load_all_targets(
     include_gateway: bool = True,
     skip_offline: bool = True,
     skip_pricing: bool = False,
+    provider_names: Optional[set[str]] = None,
 ) -> list[Target]:
     targets = load_opencode_targets(
         include_expensive=include_expensive,
@@ -509,6 +513,7 @@ def load_all_targets(
         model_filter=model_filter,
         skip_offline=skip_offline,
         skip_pricing=skip_pricing,
+        provider_names=provider_names,
     )
     if include_gateway and not provider_filter:
         targets.extend(load_gateway_targets())
