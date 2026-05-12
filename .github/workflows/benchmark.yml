@@ -139,7 +139,7 @@ jobs:
 
           # Add changed data files
           git add data/speedrun.db data/leaderboard.csv data/raw_tests_*.csv 2>/dev/null || true
-          git add docs/leaderboard.json docs/leaderboard.csv docs/index.html 2>/dev/null || true
+          git add docs/leaderboard.json docs/leaderboard.csv docs/data/leaderboard.json docs/index.html 2>/dev/null || true
 
           # Only commit if there are changes
           if git diff --staged --quiet; then
