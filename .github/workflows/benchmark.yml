@@ -33,6 +33,11 @@ on:
         required: false
         default: 'true'
         type: boolean
+      retest-suspicious:
+        description: 'Retest models with suspicious results (TPS>2000, tokens<500, TTFT=0)'
+        required: false
+        default: 'false'
+        type: boolean
 
 jobs:
   benchmark:
@@ -98,6 +103,10 @@ jobs:
 
           if [ "${{ github.event.inputs.skip-tested }}" != "false" ]; then
             ARGS="$ARGS --skip-tested"
+          fi
+
+          if [ "${{ github.event.inputs.retest-suspicious }}" = "true" ]; then
+            ARGS="$ARGS --retest-suspicious"
           fi
 
           echo "Running: python cli.py test $ARGS"
