@@ -97,7 +97,7 @@ jobs:
             ARGS="$ARGS --effort-sweep"
           fi
 
-          if [ "${{ github.event.inputs.skip-tested }}" != "false" ]; then
+          if [ "${{ github.event.inputs.skip-tested }}" != "false" ] && [ "${{ github.event.inputs.retest-suspicious }}" != "true" ]; then
             ARGS="$ARGS --skip-tested"
           fi
 

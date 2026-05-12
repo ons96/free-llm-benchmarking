@@ -45,13 +45,43 @@ def cmd_test(args):
     import sqlite3
     from runner import run_all
 
+    # For retest-suspicious: query DB first to get specific providers/models
+    suspicious_filter_provider_names: Optional[set[str]] = None
+    suspicious_filter_model_names: Optional[set[str]] = None
+    if args.retest_suspicious:
+        conn = sqlite3.connect(str(Path(__file__).parent / "data" / "speedrun.db"))
+        cur = conn.execute("""
+            SELECT DISTINCT provider_name, model_name FROM speed_summary
+            WHERE num_success > 0 AND (
+                (avg_tps > 2000 AND avg_output_tokens < 500)
+                OR (avg_output_tokens < 50)
+                OR (avg_tps > 50000)
+                OR (avg_ttft_sec IS NOT NULL AND avg_ttft_sec = 0)
+            )
+        """)
+        suspicious_pairs = set((r[0], r[1]) for r in cur.fetchall())
+        conn.close()
+        if not suspicious_pairs:
+            print("No suspicious models found in DB.")
+            return
+        suspicious_filter_provider_names = set(p for p, m in suspicious_pairs)
+        suspicious_filter_model_names = set(m for p, m in suspicious_pairs)
+        print(f"Retesting {len(suspicious_pairs)} suspicious models from {len(suspicious_filter_provider_names)} providers.")
+
     targets = load_all_targets(
         include_expensive=args.include_expensive,
         include_paid=args.include_paid,
         provider_filter=args.provider,
         model_filter=args.model,
         skip_pricing=args.retest_suspicious or args.retry_errors,
+        provider_names=args.retest_suspicious and suspicious_filter_provider_names or None,
     )
+
+    # Apply model name filter for retest-suspicious
+    if args.retest_suspicious and suspicious_filter_model_names:
+        original = len(targets)
+        targets = [t for t in targets if t.model_name in suspicious_filter_model_names]
+        print(f"Filtered to {len(targets)} matching models (from {original} loaded).")
 
     # Filter out already-tested models if requested
     if args.skip_tested:
@@ -86,27 +116,7 @@ def cmd_test(args):
         ]
         print(f"Retesting {len(error_models)} models with rate/credit errors.")
 
-    if args.retest_suspicious:
-        conn = sqlite3.connect(str(Path(__file__).parent / "data" / "speedrun.db"))
-        cur = conn.execute("""
-            SELECT provider_name, model_name FROM speed_summary
-            WHERE num_success > 0 AND (
-                (avg_tps > 2000 AND avg_output_tokens < 500)
-                OR (avg_output_tokens < 50)
-                OR (avg_tps > 50000)
-                OR (avg_ttft_sec IS NOT NULL AND avg_ttft_sec = 0)
-            )
-        """)
-        suspicious_models = set((r[0], r[1]) for r in cur.fetchall())
-        conn.close()
-        if suspicious_models:
-            targets = [
-                t for t in targets
-                if (t.provider_name, t.model_name) in suspicious_models
-            ]
-            print(f"Retesting {len(suspicious_models)} models with suspicious results.")
-        else:
-            print("No models with suspicious results found.")
+
 
     if not targets:
         print("No targets matched filters.")
@@ -114,7 +124,13 @@ def cmd_test(args):
 
     concurrency = args.concurrency
     if args.concurrency_auto:
-        concurrency = get_provider_count(targets)
+        import json, os
+        cfg_path = os.path.expanduser("~/.config/opencode/opencode.json")
+        if os.path.exists(cfg_path):
+            data = json.load(open(cfg_path))
+            concurrency = len(data.get("provider", {}))
+        else:
+            concurrency = get_provider_count(targets)
 
     # Estimate cost
     reasoning_count = sum(1 for t in targets if t.supports_reasoning)
