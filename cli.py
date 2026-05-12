@@ -50,6 +50,7 @@ def cmd_test(args):
         include_paid=args.include_paid,
         provider_filter=args.provider,
         model_filter=args.model,
+        skip_pricing=args.retest_suspicious or args.retry_errors,
     )
 
     # Filter out already-tested models if requested
