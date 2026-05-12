@@ -111,6 +111,9 @@ jobs:
           # Generate clean JSON for GitHub Pages
           uv run python scripts/build_site_json.py
           cp data/leaderboard.csv docs/leaderboard.csv || true
+          # Copy data/ to docs/data/ so the HTML can fetch leaderboard.json
+          mkdir -p docs/data
+          cp docs/leaderboard.json docs/data/leaderboard.json
 
       - name: Upload benchmark data as artifact
         if: always()
@@ -156,8 +159,4 @@ jobs:
         run: |
           echo "## Benchmark Run Summary" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          uv run python cli.py report --top 10 --json data/summary.json || true
-          if [ -f data/summary.json ]; then
-            echo "Top 10 results:" >> $GITHUB_STEP_SUMMARY
-            uv run python scripts/generate_summary.py >> $GITHUB_STEP_SUMMARY
-          fi
+          uv run python scripts/generate_summary.py >> $GITHUB_STEP_SUMMARY || true

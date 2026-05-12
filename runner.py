@@ -38,6 +38,27 @@ SKIP_MODEL_TYPES = {
     "safety", "content-safety", "moderation", "embed", "rerank",
 }
 
+SKIP_MODEL_NAME_PATTERNS = [
+    "content-safety",
+    "safety-guard",
+    "safety-reasoning",
+    "topic-control",
+    "translation",
+    "calibration",
+    "nemoguard",
+    "riva-translate",
+]
+
+
+def _should_skip_model(target: Target) -> bool:
+    if target.model_type.lower() in SKIP_MODEL_TYPES:
+        return True
+    name_lower = target.model_name.lower()
+    for pat in SKIP_MODEL_NAME_PATTERNS:
+        if pat in name_lower:
+            return True
+    return False
+
 REASONING_HIGHEST = {
     "gpt-5": "high",
     "gpt5": "high",
@@ -69,8 +90,9 @@ def _get_adaptive_max_tokens(target: Target) -> int:
     model_key = f"{target.provider_name}/{target.model_name}"
 
     if model_key not in _model_performance:
-        # First test: use conservative 1000 tokens for quick results
-        return 1000
+        # First test: use 2000 tokens for more accurate TPS measurement
+        # This avoids inflated TPS from short 1000-token responses
+        return 2000
 
     perf = _model_performance[model_key]
     tps = perf.get("tps")
@@ -235,11 +257,19 @@ def _is_outlier(result: TestResult) -> tuple[bool, str]:
     if result.status != "success" or result.tps is None or result.ttft_sec is None:
         return False, ""
 
-    if result.tps > 500:
+    # TTFT = 0 means pre-computed/cached response (not actual streaming)
+    if result.ttft_sec == 0:
+        return True, f"TTFT=0 (pre-computed, not streaming)"
+
+    if result.tps > 2000:
         return True, f"TPS too high: {result.tps:.1f}"
 
     if result.tps < 1:
         return True, f"TPS too low: {result.tps:.1f}"
+
+    # Very short responses with high TPS are measurement artifacts
+    if result.output_tokens < 100 and result.tps > 200:
+        return True, f"Suspicious: {result.output_tokens} tokens @ {result.tps:.1f} TPS"
 
     if result.ttft_sec > 10:
         return True, f"TTFT too high: {result.ttft_sec:.1f}s"
@@ -725,10 +755,7 @@ async def run_all(
         else [None]
     )
 
-    filtered = [
-        t for t in targets
-        if t.model_type.lower() not in SKIP_MODEL_TYPES
-    ]
+    filtered = [t for t in targets if not _should_skip_model(t)]
     targets = filtered
 
     async def validate_target(target: Target) -> bool:
