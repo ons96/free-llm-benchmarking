@@ -81,7 +81,7 @@ jobs:
 
       - name: List targets
         run: |
-          uv run python cli.py list --verbose
+          uv run python cli.py list
 
       - name: Run benchmarks
         env:
