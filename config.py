@@ -35,6 +35,18 @@ SKIP_PROVIDERS = {
     "zenmux",      # 401 auth
     "llmgateway",  # 401 auth
     "kilocloud",   # dead (all rate limited)
+    # User-requested skips
+    "g4f",        # unreliable, no tool calls, proxy
+    "g4f_gemini", # proxy
+    "g4f_groq",   # proxy
+    "g4f_nvidia", # proxy
+    "g4f_ollama", # proxy
+    "g4f_pollinations", # proxy
+    "antigravity", # workaround, skip
+    "iflow",      # API likely shut down
+    "noobrouter", # no longer free
+    # Search APIs (not LLMs)
+    "brave_search", "duckduckgo", "exa",  "jina", "tavily",
 }
 
 FINITE_CREDIT_PROVIDERS = {"ktai-paid"}
@@ -61,7 +73,7 @@ FREE_CREDIT_PROVIDERS = {
     "freetheai",
     "aihubmix",
     "cortecs",
-    "opencode",
+    "opencode", "opencode_zen",
     "github-models",
     "iflowcn",
     "zhipuai-coding-plan",
@@ -77,6 +89,16 @@ FREE_CREDIT_PROVIDERS = {
     "groq",
     "huggingface",
     "siliconflow-cn",
+    "cohere",
+    "huashang",
+    # Free tier providers (recurring free credits, from VPS gateway + user confirmation)
+    "cerebras",  # free tier (1M tokens/day)
+    "gemini",    # free tier (1k req/day, AI Studio)
+    "mistral",   # free tier (5k tokens/min)
+    "sambanova", # free tier
+    "openrouter", # free with low recurring limit
+    # NOTE: together is NOT free (mostly paid now)
+    # NOTE: openai is NOT free (paid only)
 }
 
 NO_STREAM_PROVIDERS = {"bluesminds"}
