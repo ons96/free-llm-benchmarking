@@ -87,7 +87,7 @@ jobs:
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}
         run: |
-          ARGS="--runs ${{ github.event.inputs.runs || 1 }} --concurrency ${{ github.event.inputs.concurrency || 10 }}"
+          ARGS="--runs ${{ github.event.inputs.runs || 1 }} --concurrency-auto"
 
           if [ "${{ github.event.inputs.include-expensive }}" = "true" ]; then
             ARGS="$ARGS --include-expensive"

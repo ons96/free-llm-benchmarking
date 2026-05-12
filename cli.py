@@ -239,6 +239,7 @@ ttft_sec, tps, output_tokens, total_time_sec, status, error_message, timestamp
                 max_concurrent=concurrency,
                 effort_sweep=args.effort_sweep,
                 on_progress=on_progress,
+                skip_validation=args.retest_suspicious or args.retry_errors or len(targets) < 20,
             )
         )
         handler.run_id = run_id
