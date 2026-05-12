@@ -1,0 +1,329 @@
+provider,url,model,source,effort,ttft_sec,tps,tokens,total_sec,status,error,timestamp
+aihubmix,,coding-glm-5-free,direct,,,,0,0.00025000900006943994,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-05-12T02:10:28.987707+00:00
+aihubmix,,glm-4.7-free,direct,,,,0,0.00022284800002125849,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-05-12T02:10:29.008698+00:00
+aihubmix,,glm-4-flash,direct,,,,0,0.00019735000000764558,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-05-12T02:10:29.028718+00:00
+nvidia,https://integrate.api.nvidia.com/v1,aisingapore/sea-lion-7b-instruct,direct,,,,0,0.06555474200001754,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function id '02f84bf4-c1a1-489b-a9de-ac3e8dcdec14' version 'null': Specified function in account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0' is not found""}",2026-05-12T02:10:29.183444+00:00
+nvidia,https://integrate.api.nvidia.com/v1,01-ai/yi-large,direct,,,,0,0.15714930599995114,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '23bd454d-b225-49a3-8118-582a62fc51b8': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.205498+00:00
+nvidia,https://integrate.api.nvidia.com/v1,adept/fuyu-8b,direct,,,,0,0.12501958900008958,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e598bfc1-b058-41af-869d-556d3c7e1b48': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.207097+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ai21labs/jamba-1.5-large-instruct,direct,,,,0,0.11183969900002921,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '6497fc2b-7ff8-4019-8946-123dccbfc863': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.210879+00:00
+nvidia,https://integrate.api.nvidia.com/v1,baai/bge-m3,direct,,,,0,0.07687135999992734,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:10:29.280475+00:00
+nvidia,https://integrate.api.nvidia.com/v1,bigcode/starcoder2-15b,direct,,,,0,0.07767919200000506,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:10:29.309910+00:00
+nvidia,https://integrate.api.nvidia.com/v1,databricks/dbrx-instruct,direct,,,,0,0.08460756099998434,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '3d6c2ff8-8bfc-4d10-8fd0-b7337288e869': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.350768+00:00
+nvidia,https://integrate.api.nvidia.com/v1,deepseek-ai/deepseek-coder-6.7b-instruct,direct,,,,0,0.07126977799998713,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e503b15c-62b0-4d69-b532-a88f0bfa2656': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.371692+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/codegemma-1.1-7b,direct,,,,0,0.04260399400004644,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e2d298c5-204e-4213-b921-9f492cc9011b': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.373058+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/codegemma-7b,direct,,,,0,0.07587980000005246,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '7dfc10a8-3cc4-448e-97c1-2213308dc222': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.446040+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/deplot,direct,,,,0,0.10671850699998231,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '784a8ca4-ea7d-4c93-bb46-ec027c3fae47': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.500082+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-2b,direct,,,,0,0.05447462999995878,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '04174188-f742-4069-9e72-d77c2b77d3cb': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:29.520170+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-2-2b-it,direct,,,,0,0.17199910600004387,http_error,"HTTP 422: {""error"":""body -> temperature\n  Input should be greater than 0 (type=greater_than; gt=0.0)\nbody -> stream_options\n  Extra inputs are not permitted (type=extra_forbidden)""}",2026-05-12T02:10:29.582281+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-3-12b-it,direct,,,,0,0.08421292499997435,http_error,"HTTP 422: {""error"":""body -> stream_options\n  Extra inputs are not permitted (type=extra_forbidden)""}",2026-05-12T02:10:29.603299+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-3-4b-it,direct,,,,0,0.08574423400000342,http_error,"HTTP 422: {""error"":""body -> stream_options\n  Extra inputs are not permitted (type=extra_forbidden)""}",2026-05-12T02:10:29.626198+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-3n-e2b-it,direct,,0.44719840200002636,21.842435280485127,251,11.989708596000014,success,,2026-05-12T02:10:41.591937+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/recurrentgemma-2b,direct,,,,0,0.04232767700000295,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '2f495340-a99f-4b4b-89bd-1beb003dd896': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:41.654782+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ibm/granite-3.0-3b-a800m-instruct,direct,,,,0,0.03953166799999508,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '67324577-3f91-4aa6-b750-97468262530d': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:41.714133+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ibm/granite-3.0-8b-instruct,direct,,,,0,0.04578125000000455,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '5a24a4f0-2d59-46b3-ac65-42307f2633d1': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:41.781547+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ibm/granite-34b-code-instruct,direct,,,,0,0.052407141999992746,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '4df48b4f-e3c5-4ade-82c7-c06b65e25d18': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:41.855036+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ibm/granite-8b-code-instruct,direct,,,,0,0.03467640799999572,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'af7b6f03-f615-4c5f-86c6-388bd35cede0': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:41.913608+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/codellama-70b,direct,,,,0,0.08115394199990078,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'f6b06895-d073-4714-8bb2-26c09e9f6597': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:10:42.016062+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-3n-e4b-it,direct,,0.2521139089999451,18.875656418705788,244,13.234580286999972,success,,2026-05-12T02:10:42.859486+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.2-11b-vision-instruct,direct,,0.17030644999999822,44.59897361241737,509,11.60405170499996,success,,2026-05-12T02:10:54.483485+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.1-70b-instruct,direct,,0.20224952700004906,14.282754160152576,515,36.307188224000015,success,,2026-05-12T02:11:18.345177+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.2-3b-instruct,direct,,0.14183379200005675,97.4631232730615,491,5.19096227700004,success,,2026-05-12T02:11:23.556156+00:00
+nvidia,https://integrate.api.nvidia.com/v1,abacusai/dracarys-llama-3.1-70b-instruct,direct,,6.186276277000047,11.30630248894503,606,59.8588758300001,success,,2026-05-12T02:11:28.924123+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-4-31b-it,direct,,,,0,60.01795042699996,timeout,Timeout after 60s,2026-05-12T02:11:29.663410+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.2-1b-instruct,direct,,0.25918953699999747,7.522374565798696,365,48.914510436,success,,2026-05-12T02:11:43.418441+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-guard-4-12b,direct,,,,0,0.4581270129999666,http_error,"HTTP 400: {""object"":""error"",""message"":""Conversation roles must alternate user/assistant/user/assistant/..."",""type"":""BadRequestError"",""param"":null,""code"":400}",2026-05-12T02:11:43.898289+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama2-70b,direct,,,,0,0.050558887999955004,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '2fddadfb-7e76-4c8a-9b82-f7d3fab94471': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:11:43.970376+00:00
+nvidia,https://integrate.api.nvidia.com/v1,microsoft/kosmos-2,direct,,,,0,0.04090992099997948,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '6018fed7-f227-48dc-99bc-3fd4264d5037': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:11:44.030504+00:00
+nvidia,https://integrate.api.nvidia.com/v1,microsoft/phi-3-vision-128k-instruct,direct,,,,0,0.05383961600000475,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '20f2537e-8593-4eb9-ad40-60eee3bbaa55': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:11:44.106327+00:00
+nvidia,https://integrate.api.nvidia.com/v1,microsoft/phi-3.5-moe-instruct,direct,,,,0,0.07164040700001806,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e6cab982-62f4-481e-9a7a-3dedb87dbd01': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:11:44.197439+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-4-maverick-17b-128e-instruct,direct,,0.22932858699994085,39.55514423910546,620,15.913804346000006,success,,2026-05-12T02:11:45.597437+00:00
+nvidia,https://integrate.api.nvidia.com/v1,microsoft/phi-4-mini-instruct,direct,,0.184796418000019,84.02546344615611,210,2.696179313000016,success,,2026-05-12T02:11:46.912866+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.3-70b-instruct,direct,,6.4481568579999475,35.393400724912375,441,18.92614816599996,success,,2026-05-12T02:11:47.872018+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/codestral-22b-instruct-v0.1,direct,,,,0,0.033309167999959755,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function id '9a10b012-e6df-46fd-83b2-700dcbc75814' version 'null': Specified function in account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0' is not found""}",2026-05-12T02:11:47.925251+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/ministral-14b-instruct-2512,direct,,0.17959292099999402,79.69717894585311,281,3.720713225000054,success,,2026-05-12T02:11:51.665890+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-7b-instruct-v0.3,direct,,,,0,0.019599562000053083,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function id 'cd89bd68-13e3-47a9-861e-9a62e6e14b05' version 'null': Specified function in account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0' is not found""}",2026-05-12T02:11:51.706761+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-large,direct,,,,0,0.11629345799997282,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '767b5b9a-3f9d-4c1d-86e8-fa861988cee7': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:11:51.842917+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-large-2-instruct,direct,,,,0,0.04121784500000558,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '7fadd4de-e22a-48e4-90e9-f02ef14a74b9': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:11:51.904013+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.2-90b-vision-instruct,direct,,0.12510585399991214,13.810945573652491,491,35.738905032999924,success,,2026-05-12T02:11:59.315032+00:00
+nvidia,https://integrate.api.nvidia.com/v1,microsoft/phi-4-multimodal-instruct,direct,,,,0,60.01137531400002,timeout,Timeout after 60s,2026-05-12T02:12:45.629563+00:00
+nvidia,https://integrate.api.nvidia.com/v1,minimaxai/minimax-m2.7,direct,,,,0,60.012370040000064,timeout,Timeout after 60s,2026-05-12T02:12:46.945273+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-nemotron,direct,,0.2535130469999558,57.35009127894636,270,4.981343731999914,success,,2026-05-12T02:12:50.631303+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-small-4-119b-2603,direct,,0.29415876200005187,53.280873294362486,184,3.7618229820000124,success,,2026-05-12T02:12:50.728491+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mixtral-8x22b-v0.1,direct,,,,0,0.09041337899998325,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function id '39655fc1-9ebc-4b24-963e-6915ea6680de' version 'null': Specified function in account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0' is not found""}",2026-05-12T02:12:50.839378+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mixtral-8x22b-instruct-v0.1,direct,,0.25469348799992986,113.6662725450481,343,3.28345088399999,success,,2026-05-12T02:12:53.934781+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mixtral-8x7b-instruct-v0.1,direct,,0.2665647449999824,40.50277521778381,431,10.934773540000037,success,,2026-05-12T02:13:01.794065+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nv-mistralai/mistral-nemo-12b-instruct,direct,,,,0,0.05523010100000647,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'f8c05193-d2e2-4f0f-bb4d-7ad70070002b': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:01.869235+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/ai-synthetic-video-detector,direct,,,,0,0.11108902399996623,http_error,"HTTP 500: {""type"":""urn:nvcf-worker-service:problem-details:internal-server-error"",""title"":""Internal Server Error"",""status"":500,""detail"":""Internal error while making inference request""}",2026-05-12T02:13:06.301070+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/cosmos-reason2-8b,direct,,,,0,0.05886166800007686,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e199b43b-6c62-4a63-9379-f60e1a953236': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:06.381957+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/embed-qa-4,direct,,,,0,0.019854409000004125,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:13:06.421673+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/gliner-pii,direct,,,,0,0.13828344900002776,http_error,"HTTP 422: {""detail"":""Unknown parameter 'stream_options' is not allowed. Please check the API documentation for valid parameters."",""error"":""Invalid request parameters"",""details"":[{""field"":""stream_options"",""message"":""Unknown parameter 'stream_options' is not allowed. Please check the API documentation for valid",2026-05-12T02:13:06.581549+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-51b-instruct,direct,,,,0,0.046545520999984547,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '5beba52c-65a9-4f46-8cd9-656689a1b205': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:06.648080+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-70b-instruct,direct,,,,0,0.04928699200002029,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '9b96341b-9791-4db9-a00d-4e43aa192a39': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:06.717104+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-large-3-675b-instruct-2512,direct,,7.543952967999985,3.668788001497962,251,76.21149218000005,success,,2026-05-12T02:13:08.135297+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-medium-3.5-128b,direct,,,,0,69.02290603799997,timeout,Timeout after 60s,2026-05-12T02:13:08.357967+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-ultra-253b-v1,direct,,,,0,0.03677647199992862,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '84bf12ff-edbd-4435-baea-0fa6a7453d2e': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:08.414552+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.2-nemoretriever-1b-vlm-embed-v1,direct,,,,0,0.014640103000033378,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:13:08.448404+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.2-nemoretriever-300m-embed-v1,direct,,,,0,0.08571850800001357,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:13:08.553580+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.2-nv-embedqa-1b-v1,direct,,,,0,0.028472264000015457,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:13:08.602067+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.2-nv-embedqa-1b-v2,direct,,,,0,0.058721447000039007,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:13:08.682372+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-nano-vl-8b-v1,direct,,0.1529802000000018,47.49393266930857,476,10.199635504999947,success,,2026-05-12T02:13:18.357336+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-nano-8b-v1,direct,,0.14415416999997888,67.77346412088725,2000,29.65473306900003,success,,2026-05-12T02:13:36.392057+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-nemotron-embed-1b-v2,direct,,,,0,0.08491029000003891,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:13:36.496579+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-nemotron-embed-vl-1b-v2,direct,,,,0,0.05625513100005719,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:13:36.572381+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama3-chatqa-1.5-70b,direct,,,,0,0.0520671559999073,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '46594287-38b9-481c-a37f-baa02f2d3ba1': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:36.645205+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/mistral-nemo-minitron-8b-8k-instruct,direct,,,,0,0.11442793799994888,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '5aa06dd2-0a02-4a5d-be4c-bf88e956965d': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:36.780155+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemoretriever-parse,direct,,,,0,0.12201800700006515,http_error,"HTTP 400: {""object"":""error"",""message"":""Streaming is not supported"",""type"":""BadRequestError"",""param"":null,""code"":400}",2026-05-12T02:13:36.922242+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-3-nano-30b-a3b,direct,,0.26901003099999343,190.24045801706814,904,5.021394481000016,success,,2026-05-12T02:13:41.963705+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning,direct,,0.3317086050000171,108.55359690422682,544,5.343530514999998,success,,2026-05-12T02:13:47.329023+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-4-340b-instruct,direct,,,,0,0.06044114200005879,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'b0fcd392-e905-4ab4-8eb9-aeae95c30b37': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:47.409487+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-4-340b-reward,direct,,,,0,0.04747192800004996,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'c53ee0e9-bad9-4e09-b365-52c9d6b71254': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:13:47.478271+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1,direct,,0.17821100300000126,15.28270665611037,647,42.51420606399995,success,,2026-05-12T02:13:51.216820+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-nano-12b-v2-vl,direct,,0.24447383300002912,143.1852190296907,355,2.7319159480000508,success,,2026-05-12T02:13:53.968966+00:00
+nvidia,https://integrate.api.nvidia.com/v1,moonshotai/kimi-k2.6,direct,,,,0,60.041447743999925,timeout,Timeout after 60s,2026-05-12T02:13:53.997426+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-parse,direct,,,,0,0.12404620999996041,http_error,"HTTP 400: {""object"":""error"",""message"":""Expected exactly one message. Expected exactly one message."",""type"":""BadRequestError"",""param"":null,""code"":400}",2026-05-12T02:13:54.141493+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-nano-3-30b-a3b,direct,,,,0,0.20954364400006398,http_error,"HTTP 404: {""error"":{""message"":""The model `nvidia/nemotron-nano-3-30b-a3b` does not exist."",""type"":""NotFoundError"",""param"":""model"",""code"":404}}",2026-05-12T02:13:54.198977+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-mini-4b-instruct,direct,,0.21913149699992118,101.52160115398442,527,5.420543897000016,success,,2026-05-12T02:13:56.069953+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nv-embedcode-7b-v1,direct,,,,0,0.08637791699993613,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:14:01.898527+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nv-embed-v1,direct,,,,0,0.07366705599997658,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:14:01.902756+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/neva-22b,direct,,,,0,0.07588478200000282,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'bc205f8e-1740-40df-8d32-c4321763498a': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:14:01.921829+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nv-embedqa-e5-v5,direct,,,,0,0.032298021999963566,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:14:06.368245+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nv-embedqa-mistral-7b-v2,direct,,,,0,0.019803056999990076,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:14:06.372824+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nvclip,direct,,,,0,0.05745882399992297,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:14:06.376347+00:00
+nvidia,https://integrate.api.nvidia.com/v1,openai/gpt-oss-120b,direct,,0.17540082899995468,154.66819392617145,530,3.6095380330000353,success,,2026-05-12T02:14:10.008742+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3-coder-480b-a35b-instruct,direct,,0.7377281770000081,34.47329849751853,286,9.330913455000086,success,,2026-05-12T02:14:19.361037+00:00
+nvidia,https://integrate.api.nvidia.com/v1,openai/gpt-oss-20b,direct,,0.3913487649999752,63.68429831077165,840,13.601372642000001,success,,2026-05-12T02:14:20.034393+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3-next-80b-a3b-instruct,direct,,0.5549474949999649,51.0659677256595,569,11.69793576799998,success,,2026-05-12T02:14:31.079891+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3-next-80b-a3b-thinking,direct,,0.2400373650000347,143.5467987756986,2105,14.904734761999975,success,,2026-05-12T02:14:34.959316+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nvidia-nemotron-nano-9b-v2,direct,,0.24148572600006446,43.274485200490325,1442,33.56408606100001,success,,2026-05-12T02:14:39.980180+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3.5-397b-a17b,direct,,2.5293259979999902,15.620261254682001,223,16.806089260999897,success,,2026-05-12T02:14:51.786382+00:00
+nvidia,https://integrate.api.nvidia.com/v1,snowflake/arctic-embed-l,direct,,,,0,0.014898292999987461,http_error,"HTTP 404: 404 page not found
+",2026-05-12T02:14:51.822030+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3.5-122b-a10b,direct,,,,0,50.118876714000066,empty,No content tokens received,2026-05-12T02:15:21.220663+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1.5,direct,,0.7803225330000032,15.317313979926569,2000,131.35202785499996,success,,2026-05-12T02:15:29.729303+00:00
+nvidia,https://integrate.api.nvidia.com/v1,stockmark/stockmark-2-100b-instruct,direct,,0.17906030400001782,26.696565496474708,426,16.174799355999994,success,,2026-05-12T02:15:37.421573+00:00
+nvidia,https://integrate.api.nvidia.com/v1,writer/palmyra-creative-122b,direct,,,,0,0.11340851999989354,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '00bdd0a7-e38f-4423-9007-c4d8730a3f78': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:15:37.555099+00:00
+nvidia,https://integrate.api.nvidia.com/v1,writer/palmyra-fin-70b-32k,direct,,,,0,0.03849881500002539,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '316490c6-f1ed-41f9-9da8-3fa9e885653b': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:15:37.613796+00:00
+nvidia,https://integrate.api.nvidia.com/v1,writer/palmyra-med-70b,direct,,,,0,0.038202922999971634,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'aab71274-5281-4941-b0b8-20f339d1fc7e': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:15:37.672065+00:00
+nvidia,https://integrate.api.nvidia.com/v1,writer/palmyra-med-70b-32k,direct,,,,0,0.06727565599999252,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'd6faa974-3591-49a4-963d-97221d074b2e': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:15:37.758790+00:00
+blazeai,https://blazeai.boxu.dev/api/,DeepSeek-V4-Flash-TEST,direct,,,,0,0.37027190200001314,http_error,"HTTP 404: {
+  ""error"": {
+    ""message"": ""Model 'DeepSeek-V4-Flash-TEST' is not available on BlazeAPI."",
+    ""type"": ""model_not_found"",
+    ""code"": ""model_not_found""
+  }
+}",2026-05-12T02:15:38.078683+00:00
+nvidia,https://integrate.api.nvidia.com/v1,sarvamai/sarvam-m,direct,,0.17316080099999454,32.56770147035432,2000,61.584206265000034,success,,2026-05-12T02:15:41.587818+00:00
+nvidia,https://integrate.api.nvidia.com/v1,upstage/solar-10.7b-instruct,direct,,0.1452756239999644,36.98109015395333,446,12.233122619999904,success,,2026-05-12T02:15:41.982823+00:00
+blazeai,https://blazeai.boxu.dev/api/,MiniMax-M2.1-highspeed,direct,,,,0,0.33692222299998775,http_error,"HTTP 502: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class=""no-js"" lang=""en-US""> <!",2026-05-12T02:15:42.837609+00:00
+blazeai,https://blazeai.boxu.dev/api/,MiniMax-M2.5-highspeed,direct,,,,0,0.16154258800008847,http_error,"HTTP 502: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class=""no-js"" lang=""en-US""> <!",2026-05-12T02:15:42.962615+00:00
+nvidia,https://integrate.api.nvidia.com/v1,stepfun-ai/step-3.5-flash,direct,,6.758652869999992,41.29777454399186,1877,52.20947580799998,success,,2026-05-12T02:15:44.053060+00:00
+nvidia,https://integrate.api.nvidia.com/v1,zyphra/zamba2-7b-instruct,direct,,,,0,0.048547632999998314,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '8378ffb2-51b0-4140-9684-dda1889373e6': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-05-12T02:15:44.121479+00:00
+blazeai,https://blazeai.boxu.dev/api/,MiniMax-M2.7-highspeed,direct,,,,0,0.17095461199994588,http_error,"HTTP 502: <!DOCTYPE html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class=""no-js"" lang=""en-US""> <!",2026-05-12T02:15:46.111446+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-flash-search,direct,,2.6985559070000136,29.019918566442428,158,9.004274324999983,success,,2026-05-12T02:15:51.025511+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-plus-search,direct,,2.5697941060000176,47.161707166917175,162,7.068241741000065,success,,2026-05-12T02:15:53.199520+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm5,direct,,5.784245992000024,5.760888465710328,152,32.169592866000016,success,,2026-05-12T02:16:14.173899+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,,30.35477365099996,62.74072331779575,168,33.089053217000014,success,,2026-05-12T02:16:14.697094+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-plus-thinking-search,direct,,2.913430841000036,70.28618041811679,1347,23.06545449400005,success,,2026-05-12T02:16:16.287123+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-plus-image,direct,,33.70362542400005,259798.65609469707,104,33.70402573399997,success,,2026-05-12T02:16:16.686249+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm-5.1,direct,,30.35997648700004,19.138440169126994,215,41.59443971899998,success,,2026-05-12T02:16:19.372917+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-flash-thinking-search,direct,,2.5933430229999885,58.371453120903425,2196,41.34531334600001,success,,2026-05-12T02:16:24.204305+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-max-preview,direct,,3.3665092109999932,42.777655540419126,171,8.558538670999951,success,,2026-05-12T02:16:24.866479+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus,direct,,3.723066039999935,47.03962426874029,171,8.401022141999988,success,,2026-05-12T02:16:33.287294+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-plus-image,direct,,33.109908277000045,215770.76845784602,104,33.11039027000004,success,,2026-05-12T02:16:49.798518+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-image,direct,,33.31516965700007,226189.72537501657,104,33.31562944799998,success,,2026-05-12T02:17:06.623193+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-plus-thinking,direct,,2.695711224999968,56.38885049197238,3939,76.71480858799998,success,,2026-05-12T02:17:07.760817+00:00
+nvidia,https://integrate.api.nvidia.com/v1,bytedance/seed-oss-36b-instruct,direct,,,,0,398.9723370180001,empty,No content tokens received,2026-05-12T02:17:08.221542+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm-5.1,direct,,20.70404027799998,9.31579000542157,262,48.82890479999992,success,,2026-05-12T02:17:13.230222+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-search,direct,,3.3089331820000325,45.51480218646215,142,7.315579909999997,success,,2026-05-12T02:17:15.096918+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,,58.631075144999954,29.96265198388707,166,64.24814542399997,success,,2026-05-12T02:17:18.948235+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-plus-image,direct,,34.528232568000135,243057.66546524764,104,34.528660450000075,success,,2026-05-12T02:17:24.329686+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm-5.1,direct,,0.41369911300000695,10.329776242486318,154,15.322544063999999,success,,2026-05-12T02:17:28.554310+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-max-preview-thinking,direct,,2.965695995000033,30.68436333382801,2054,70.8987912980001,success,,2026-05-12T02:17:35.123566+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-image,direct,,33.35877044199992,209521.12332837065,104,33.35926681199999,success,,2026-05-12T02:17:39.984087+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-thinking,direct,,3.152112758000044,44.774518388228024,1668,41.43853557600005,success,,2026-05-12T02:17:56.555725+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.5-omni-plus-image,direct,,33.07803949100003,209966.54665115723,104,33.078534808000086,success,,2026-05-12T02:17:57.409534+00:00
+kilo,https://api.kilo.ai/api/gateway,kilo-auto/free,direct,,1.6629106959999262,125.32211181624265,825,8.288517818999935,success,,2026-05-12T02:18:04.882403+00:00
+kilo,https://api.kilo.ai/api/gateway,stepfun/step-3.5-flash:free,direct,,0.9940444009998828,224.68069650800103,353,2.5661661249998815,success,,2026-05-12T02:18:07.468759+00:00
+kilo,https://api.kilo.ai/api/gateway,openrouter/free,direct,,11.00159019900002,223.89687626099163,891,14.984919305000176,success,,2026-05-12T02:18:12.431371+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-image,direct,,33.75844736699992,207626.68725083102,104,33.758948265999834,success,,2026-05-12T02:18:13.744897+00:00
+kilo,https://api.kilo.ai/api/gateway,openrouter/free,direct,,2.4025435830001243,156.45871038047528,316,4.422711556000195,success,,2026-05-12T02:18:16.856347+00:00
+kilo,https://api.kilo.ai/api/gateway,openrouter/free,direct,,0.7876056920001702,68.93264346441646,257,4.517177504000074,success,,2026-05-12T02:18:21.375450+00:00
+kilo,https://api.kilo.ai/api/gateway,openrouter/free,direct,,0.3289485379998496,54.21602968263577,500,9.577954137999996,success,,2026-05-12T02:18:30.955191+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-thinking-search,direct,,3.4897430549999626,43.84569075545048,2261,56.30942382600006,success,,2026-05-12T02:18:31.452834+00:00
+kilo,https://api.kilo.ai/api/gateway,poolside/laguna-m.1:free,direct,,4.09509497099998,14.78072732396457,293,24.011103395999953,success,,2026-05-12T02:18:31.499834+00:00
+blazeai,https://blazeai.boxu.dev/api/,moonshotai/kimi-k2-thinking,direct,,,,0,0.19622006800000236,http_error,"HTTP 404: {
+  ""error"": {
+    ""message"": ""Model 'moonshotai/kimi-k2-thinking' is not available on BlazeAPI."",
+    ""type"": ""model_not_found"",
+    ""code"": ""model_not_found""
+  }
+}",2026-05-12T02:18:31.669039+00:00
+kilo,https://api.kilo.ai/api/gateway,x-ai/grok-code-fast-1:optimized:free,direct,,,,0,0.1557580420001159,http_error,"HTTP 400: {""error"":""This model does not support the chat_completions API, please use any of: responses"",""error_type"":""api_kind_not_supported"",""message"":""This model does not support the chat_completions API, please use any of: responses""}",2026-05-12T02:18:31.675138+00:00
+logfare,https://logfare.ai/v1,minimax-m2.7,direct,,,,0,0.06983708699999625,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-05-12T02:18:31.800236+00:00
+logfare,https://logfare.ai/v1,gemini-3-flash,direct,,,,0,0.11061052599984578,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-05-12T02:18:31.821855+00:00
+ollama-cloud,https://ollama.com/v1,glm-4.6,direct,high,,,0,0.035891804999891974,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:31.877079+00:00
+ollama-cloud,https://ollama.com/v1,glm-4.6,direct,,,,0,0.07860539700004665,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:31.899303+00:00
+ollama-cloud,https://ollama.com/v1,glm-4.7,direct,,,,0,0.05068706499992004,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:31.948937+00:00
+ollama-cloud,https://ollama.com/v1,glm-5,direct,,,,0,0.04978964699989774,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:31.969919+00:00
+ollama-cloud,https://ollama.com/v1,glm-5,direct,high,,,0,0.07402376599998206,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:32.042714+00:00
+ollama-cloud,https://ollama.com/v1,glm-5.1,direct,,,,0,0.13477642899988496,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:32.125083+00:00
+ollama-cloud,https://ollama.com/v1,deepseek-v3.2,direct,,,,0,0.08390532900011749,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:32.147100+00:00
+ollama-cloud,https://ollama.com/v1,qwen3-coder-next,direct,,,,0,0.05762512499995864,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:32.203486+00:00
+ollama-cloud,https://ollama.com/v1,kimi-k2-thinking,direct,,,,0,0.05713022899999487,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:32.224543+00:00
+ollama-cloud,https://ollama.com/v1,kimi-k2.5,direct,,,,0,0.11456736500008446,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:32.337726+00:00
+ollama-cloud,https://ollama.com/v1,minimax-m2,direct,,,,0,0.0985867159999998,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:18:32.342441+00:00
+kilo,https://api.kilo.ai/api/gateway,poolside/laguna-xs.2:free,direct,,0.7964700410000205,101.8191811979943,460,5.348031725000055,success,,2026-05-12T02:18:36.324596+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen/qwen3.5-397b,direct,,1.6707604620000893,36.71173728404758,223,7.814399780000031,success,,2026-05-12T02:18:39.508846+00:00
+kilo,https://api.kilo.ai/api/gateway,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,direct,,0.6034425540001394,62.7231028202755,567,9.652401817000055,success,,2026-05-12T02:18:41.142132+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm-5.1,direct,,30.984840906000045,6.313620815415796,228,67.09767537700009,success,,2026-05-12T02:18:45.775130+00:00
+openrouter,https://openrouter.ai/api/v1,meta-llama/llama-3.3-70b-instruct:free,direct,,,,0,0.023506891999886648,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-05-12T02:18:45.820011+00:00
+cortecs,https://api.cortecs.ai/v1,devstral-2512,direct,,,,0,0.28857835999997405,http_error,"HTTP 401: {""error"":{""message"":""Unauthorized.""},""code"":401}",2026-05-12T02:18:46.128544+00:00
+cortecs,https://api.cortecs.ai/v1,gpt-oss-120b,direct,,,,0,0.30764433299987104,http_error,"HTTP 401: {""error"":{""message"":""Unauthorized.""},""code"":401}",2026-05-12T02:18:46.457028+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,,64.14088642200011,7.056147054921182,166,87.66714001000003,success,,2026-05-12T02:18:46.616869+00:00
+cortecs,https://api.cortecs.ai/v1,llama-3.1-405b-instruct,direct,,,,0,0.4398578620000535,http_error,"HTTP 401: {""error"":{""message"":""Unauthorized.""},""code"":401}",2026-05-12T02:18:46.917002+00:00
+huggingface,https://router.huggingface.co/v1,Qwen/Qwen3-235B-A22B,direct,,,,0,0.09476503700011563,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-05-12T02:18:47.032755+00:00
+huggingface,https://router.huggingface.co/v1,Qwen/Qwen3-32B,direct,,,,0,0.04804502900014995,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-05-12T02:18:47.101382+00:00
+huggingface,https://router.huggingface.co/v1,deepseek-ai/DeepSeek-R1,direct,,,,0,0.07476960000008148,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-05-12T02:18:47.195791+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-image,direct,,33.97783873199978,184431.17166269757,104,33.97840262799991,success,,2026-05-12T02:18:47.725003+00:00
+modelscope,https://api-inference.modelscope.cn/v1,Qwen/Qwen3-30B-A3B-Thinking-2507,direct,,,,0,1.3306739590000234,http_error,"HTTP 401: {""error"":{""message"":""Authentication failed, please make sure that a valid ModelScope token is supplied."",""request_id"":""21c0551f-b599-4acc-a602-d8f18e5b5216""}}",2026-05-12T02:18:48.546134+00:00
+modelscope,https://api-inference.modelscope.cn/v1,Qwen/Qwen3-235B-A22B-Instruct-2507,direct,,,,0,1.3944065359999058,http_error,"HTTP 401: {""error"":{""message"":""Authentication failed, please make sure that a valid ModelScope token is supplied."",""request_id"":""e783fbe1-0ea1-4e7c-b5d9-e6371eebdb66""}}",2026-05-12T02:18:49.140372+00:00
+modelscope,https://api-inference.modelscope.cn/v1,Qwen/Qwen3-Coder-30B-A3B-Instruct,direct,,,,0,1.3381029829999989,http_error,"HTTP 401: {""error"":{""message"":""Authentication failed, please make sure that a valid ModelScope token is supplied."",""request_id"":""623699bd-04e1-42ce-b43f-ce1b8744d65a""}}",2026-05-12T02:18:49.905186+00:00
+opencode,https://opencode.ai/zen/v1,gpt-5-nano,direct,,,,0,0.036316062999958376,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""AuthError"",""message"":""Missing API key.""}}",2026-05-12T02:18:49.963162+00:00
+modelscope,https://api-inference.modelscope.cn/v1,Qwen/Qwen3-235B-A22B-Thinking-2507,direct,,,,0,1.3297566619999088,http_error,"HTTP 401: {""error"":{""message"":""Authentication failed, please make sure that a valid ModelScope token is supplied."",""request_id"":""a2aacf66-274b-4afe-a0f5-764eab1f4eff""}}",2026-05-12T02:18:50.491765+00:00
+opencode,https://opencode.ai/zen/v1,minimax-m2.5-free,direct,,1.8603632260001177,55.507382692483475,291,7.121147405000102,success,,2026-05-12T02:18:57.105061+00:00
+opencode,https://opencode.ai/zen/v1,trinity-large-preview-free,direct,,,,0,0.3068620189999365,http_error,"HTTP 400: {""error"":{""message"":""Error from provider: No endpoints found for arcee-ai/trinity-large-preview:free."",""code"":404},""user_id"":""user_2z4xm5LomaIHfsnVqMhFsWrVrGY""}",2026-05-12T02:18:57.432531+00:00
+blazeai,https://blazeai.boxu.dev/api/,z-ai/glm4.7,direct,,,,0,60.02764858799992,timeout,Timeout after 60s,2026-05-12T02:18:57.457094+00:00
+poe,https://api.poe.com/v1,kimi-k2.5-fw,direct,,,,0,0.10186249799994584,http_error,"HTTP 401: {""error"": {""message"": ""Incorrect API key provided. You can find your API key at https://poe.com/api/keys."", ""type"": ""authentication_error"", ""code"": ""invalid_api_key""}}",2026-05-12T02:18:57.579752+00:00
+poe,https://api.poe.com/v1,gemma-4-31b,direct,,,,0,0.030969258999903104,http_error,"HTTP 401: {""error"": {""message"": ""Incorrect API key provided. You can find your API key at https://poe.com/api/keys."", ""type"": ""authentication_error"", ""code"": ""invalid_api_key""}}",2026-05-12T02:18:57.630709+00:00
+poe,https://api.poe.com/v1,qwen3.5-397b-a17b-t,direct,,,,0,0.05013187600002311,http_error,"HTTP 401: {""error"": {""message"": ""Incorrect API key provided. You can find your API key at https://poe.com/api/keys."", ""type"": ""authentication_error"", ""code"": ""invalid_api_key""}}",2026-05-12T02:18:57.700295+00:00
+poe,https://api.poe.com/v1,gemma-4-31b-t,direct,,,,0,0.07264812299990808,http_error,"HTTP 401: {""error"": {""message"": ""Incorrect API key provided. You can find your API key at https://poe.com/api/keys."", ""type"": ""authentication_error"", ""code"": ""invalid_api_key""}}",2026-05-12T02:18:57.792553+00:00
+poe,https://api.poe.com/v1,glm-5-t,direct,,,,0,0.060006099999782236,http_error,"HTTP 401: {""error"": {""message"": ""Incorrect API key provided. You can find your API key at https://poe.com/api/keys."", ""type"": ""authentication_error"", ""code"": ""invalid_api_key""}}",2026-05-12T02:18:57.872697+00:00
+poe,https://api.poe.com/v1,glm-5.1-t,direct,,,,0,0.07231346099979419,http_error,"HTTP 401: {""error"": {""message"": ""Incorrect API key provided. You can find your API key at https://poe.com/api/keys."", ""type"": ""authentication_error"", ""code"": ""invalid_api_key""}}",2026-05-12T02:18:57.964191+00:00
+opencode,https://opencode.ai/zen/v1,big-pickle,direct,,7.353408019999961,247.49792090986492,759,10.42053157600003,success,,2026-05-12T02:19:00.932367+00:00
+opencode,https://opencode.ai/zen/v1,nemotron-3-super-free,direct,,12.333952603999933,53171.44054740396,541,12.344127239000045,success,,2026-05-12T02:19:09.797012+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gemini-2.5-flash-lite,direct,,,,0,0.43788128300002427,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:12.292207+00:00
+opencode,https://opencode.ai/zen/v1,nemotron-3-super-free,direct,,9.16240658699985,328842.7238270567,552,9.164085200999807,success,,2026-05-12T02:19:18.962811+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gemini-2.5-flash,direct,,19.703322731999833,228.89650725016543,325,21.159086044999867,success,,2026-05-12T02:19:19.143284+00:00
+nvidia,https://integrate.api.nvidia.com/v1,z-ai/glm4.7,direct,,34.11643461199992,56.739729290358156,125,36.349172986999974,success,,2026-05-12T02:19:22.967671+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gemini-3.0-flash,direct,,,,0,0.18705981400012206,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:23.414742+00:00
+opencode,https://opencode.ai/zen/v1,nemotron-3-super-free,direct,,6.529954862000068,287689.0317635754,488,6.531651137999916,success,,2026-05-12T02:19:25.496112+00:00
+ollama-cloud,https://ollama.com/v1,minimax-m2.5,direct,,,,0,0.03954094300001998,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:19:31.953520+00:00
+ollama-cloud,https://ollama.com/v1,minimax-m2.1,direct,,,,0,0.09813915499989889,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:19:31.994995+00:00
+ollama-cloud,https://ollama.com/v1,gemini-3-flash-preview,direct,,,,0,0.047530945000062275,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:19:32.064312+00:00
+ollama-cloud,https://ollama.com/v1,nemotron-3-super,direct,,,,0,0.036958716000071945,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:19:32.122793+00:00
+ollama-cloud,https://ollama.com/v1,minimax-m2.7,direct,,,,0,0.23595804599995063,http_error,"HTTP 401: unauthorized
+",2026-05-12T02:19:32.210969+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gpt-4.1,direct,,,,0,0.1902141399998527,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:33.851267+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gpt-5-mini,direct,,,,0,0.16740804400001252,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:33.970742+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gemini-2.5-flash,direct,,18.390193436000118,227.12740655327636,239,19.45254584600002,success,,2026-05-12T02:19:38.597121+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gpt-5.4-mini,direct,,,,0,0.15826433899997028,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:42.818892+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/grok-4.1-fast-non-reasoning,direct,,,,0,0.16434420999985377,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:44.381450+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/deepseek-ai/DeepSeek-V4-Pro,direct,,,,0,0.17136398399998143,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:44.500696+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gemini-2.5-flash,direct,,5.097650138999825,221.11100093047781,232,6.1622543379999115,success,,2026-05-12T02:19:44.760969+00:00
+opencode,https://opencode.ai/zen/v1,nemotron-3-super-free,direct,,21.788573946000042,82216.24367008405,451,21.794059479999987,success,,2026-05-12T02:19:47.291583+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/deepseek-ai/DeepSeek-V4-Flash,direct,,,,0,0.18971411600000465,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:53.369431+00:00
+freetheai,https://api.freetheai.xyz/v1,bbl/gemini-2.5-flash,direct,,,,0,0.19221569599994837,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:55.310729+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/zai-org/GLM-5.1,direct,,,,0,0.20806791700010763,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:19:55.332304+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/moonshotai/Kimi-K2.6,direct,,,,0,0.16838883200011878,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:03.892993+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/MiniMaxAI/MiniMax-M2.7,direct,,,,0,0.16809265899996717,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:05.895770+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/Qwen/Qwen3.6-35B-A3B,direct,,,,0,0.18704408799999328,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:05.917646+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-video,direct,,130.06550135199996,529586.4693681006,222,130.0659205469999,success,,2026-05-12T02:20:06.642786+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/moonshotai/Kimi-K2.5,direct,,,,0,0.1793176140001833,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:14.453601+00:00
+freetheai,https://api.freetheai.xyz/v1,glm/glm-4.5,direct,,,,0,0.15668983899990963,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:16.463671+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/zai-org/GLM-5,direct,,,,0,0.18450072699988596,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:16.484691+00:00
+freetheai,https://api.freetheai.xyz/v1,glm/glm-4.5-air,direct,,,,0,0.1592316359999586,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:24.984313+00:00
+freetheai,https://api.freetheai.xyz/v1,glm/glm-4.6,direct,,,,0,0.17028052099999513,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:27.019995+00:00
+freetheai,https://api.freetheai.xyz/v1,glm/glm-4.7,direct,,,,0,0.18080902599990623,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:27.043175+00:00
+freetheai,https://api.freetheai.xyz/v1,bbg/deepseek-ai/DeepSeek-V3.2,direct,,3.0398835739999868,25.224228936398607,1063,45.26343475099998,success,,2026-05-12T02:20:29.665419+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/baidu/qianfan-ocr-fast:free,direct,,,,0,0.1656413349999184,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:37.824768+00:00
+freetheai,https://api.freetheai.xyz/v1,glm/glm-5.1,direct,,,,0,0.17674182399991878,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:37.884977+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/kilo-auto/free,direct,,,,0,0.21117615899993325,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:44.415897+00:00
+freetheai,https://api.freetheai.xyz/v1,glm/glm-5,direct,,5.002166732999967,33.62726606037679,321,14.650936085000012,success,,2026-05-12T02:20:44.820857+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/nvidia/nemotron-3-super-120b-a12b:free,direct,,,,0,0.1840001340001436,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:49.163335+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,direct,,1.6983815420001065,147.59073510479232,139,2.6434773290000066,success,,2026-05-12T02:20:50.830184+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/openrouter/free,direct,,,,0,0.17315006599983462,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:54.972023+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/poolside/laguna-xs.2:free,direct,,1.6480039519999536,155.6651008667446,680,6.033047622999902,success,,2026-05-12T02:20:56.883190+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/openrouter/owl-alpha,direct,,,,0,0.16957534400012264,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:57.818288+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/poolside/laguna-m.1:free,direct,,,,0,0.19010611899989271,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:20:59.722964+00:00
+freetheai,https://api.freetheai.xyz/v1,kai/stepfun/step-3.5-flash:free,direct,,,,0,0.1711277599999903,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:05.528806+00:00
+freetheai,https://api.freetheai.xyz/v1,opc/minimax-m2.5-free,direct,,,,0,0.1766863780001131,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:08.366441+00:00
+freetheai,https://api.freetheai.xyz/v1,opc/big-pickle,direct,,12.337489172000005,522.515424381263,877,14.016341063000027,success,,2026-05-12T02:21:10.920456+00:00
+freetheai,https://api.freetheai.xyz/v1,opc/nemotron-3-super-free,direct,,,,0,0.17187056100010523,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:14.696397+00:00
+freetheai,https://api.freetheai.xyz/v1,or/cognitivecomputations/dolphin-mistral-24b-venice-edition:free,direct,,,,0,0.21380143700002918,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:16.455695+00:00
+freetheai,https://api.freetheai.xyz/v1,or/google/gemma-4-26b-a4b-it:free,direct,,,,0,0.18230364000010013,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:18.897830+00:00
+freetheai,https://api.freetheai.xyz/v1,opc/big-pickle,direct,,7.412884887000018,183.9660452070021,701,11.223763907000148,success,,2026-05-12T02:21:22.146361+00:00
+freetheai,https://api.freetheai.xyz/v1,or/google/gemma-4-31b-it:free,direct,,,,0,0.1927421279999635,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:27.078251+00:00
+freetheai,https://api.freetheai.xyz/v1,or/google/lyria-3-clip-preview,direct,,,,0,0.20700926000017716,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:27.100030+00:00
+freetheai,https://api.freetheai.xyz/v1,opc/big-pickle,direct,,10.417713579999827,464.53785394017046,714,11.965234623999777,success,,2026-05-12T02:21:34.113866+00:00
+freetheai,https://api.freetheai.xyz/v1,or/google/lyria-3-pro-preview,direct,,,,0,0.18143978699981744,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:35.515121+00:00
+freetheai,https://api.freetheai.xyz/v1,or/liquid/lfm-2.5-1.2b-instruct:free,direct,,,,0,0.16269934299998567,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:37.637991+00:00
+freetheai,https://api.freetheai.xyz/v1,or/liquid/lfm-2.5-1.2b-thinking:free,direct,,,,0,0.17095560799998566,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:40.208096+00:00
+freetheai,https://api.freetheai.xyz/v1,or/meta-llama/llama-3.2-3b-instruct:free,direct,,,,0,0.18426005700007408,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:48.410445+00:00
+freetheai,https://api.freetheai.xyz/v1,or/meta-llama/llama-3.3-70b-instruct:free,direct,,,,0,0.1687982699997974,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:48.417379+00:00
+freetheai,https://api.freetheai.xyz/v1,opc/big-pickle,direct,,14.062466289999975,261.4280961923543,1236,18.820740599000146,success,,2026-05-12T02:21:52.936233+00:00
+freetheai,https://api.freetheai.xyz/v1,or/minimax/minimax-m2.5:free,direct,,,,0,0.17092752200005634,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:21:54.943072+00:00
+freetheai,https://api.freetheai.xyz/v1,or/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,direct,,,,0,0.19324471899994933,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:00.019811+00:00
+freetheai,https://api.freetheai.xyz/v1,or/nvidia/nemotron-3-nano-30b-a3b:free,direct,,1.58647592300008,183.6775047602261,998,7.030613932000051,success,,2026-05-12T02:22:01.414177+00:00
+freetheai,https://api.freetheai.xyz/v1,or/nvidia/nemotron-nano-12b-v2-vl:free,direct,,,,0,0.185414081999852,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:05.566026+00:00
+freetheai,https://api.freetheai.xyz/v1,or/nvidia/nemotron-3-super-120b-a12b:free,direct,,,,0,0.17433903400001327,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:05.781754+00:00
+freetheai,https://api.freetheai.xyz/v1,or/nvidia/nemotron-nano-9b-v2:free,direct,,,,0,0.17472388200008027,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:10.648175+00:00
+freetheai,https://api.freetheai.xyz/v1,or/openai/gpt-oss-20b:free,direct,,,,0,0.17237379199991665,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:16.149909+00:00
+freetheai,https://api.freetheai.xyz/v1,or/openrouter/free,direct,,,,0,0.1594613089998802,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:18.893261+00:00
+freetheai,https://api.freetheai.xyz/v1,or/openrouter/owl-alpha,direct,,,,0,0.17364311699998325,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:21.465713+00:00
+freetheai,https://api.freetheai.xyz/v1,or/openai/gpt-oss-120b:free,direct,,2.080445440000176,26.219559252955452,562,23.56630287400003,success,,2026-05-12T02:22:25.002562+00:00
+freetheai,https://api.freetheai.xyz/v1,or/poolside/laguna-m.1:free,direct,,,,0,0.17752919300005487,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:26.697415+00:00
+freetheai,https://api.freetheai.xyz/v1,or/poolside/laguna-xs.2:free,direct,,,,0,0.1810218129999157,http_error,"HTTP 503: {""error"":{""message"":""upstream capacity temporarily unavailable, please retry shortly"",""type"":""provider_unavailable""}}",2026-05-12T02:22:29.427790+00:00
+freetheai,https://api.freetheai.xyz/v1,or/qwen/qwen3-coder:free,direct,,,,0,0.16364655400002448,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:32.020691+00:00
+zanity,https://api.zanity.xyz/v1,gpt-4o:free,direct,,,,0,0.42444065500012584,http_error,"HTTP 403: {""error"":""IP address not allowed""}",2026-05-12T02:22:32.465231+00:00
+freetheai,https://api.freetheai.xyz/v1,or/z-ai/glm-4.5-air:free,direct,,,,0,0.16614139100011016,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:37.626359+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-video,direct,,151.08511967100003,507928.9538937388,222,151.08555674000013,success,,2026-05-12T02:22:37.731327+00:00
+freetheai,https://api.freetheai.xyz/v1,or/qwen/qwen3-next-80b-a3b-instruct:free,direct,,,,0,0.17654723200007538,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:38.744813+00:00
+freetheai,https://api.freetheai.xyz/v1,rev/minimax-m2.5,direct,,,,0,0.1835147069998584,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:48.181311+00:00
+freetheai,https://api.freetheai.xyz/v1,rev/minimax-m2.1,direct,,,,0,4.583334753999907,http_error,"HTTP 503: {""error"":{""message"":""upstream provider temporarily unavailable"",""type"":""provider_unavailable""}}",2026-05-12T02:22:49.346601+00:00
+freetheai,https://api.freetheai.xyz/v1,wsf/kimi-k2.6,direct,,,,0,0.1720355909999398,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:49.554762+00:00
+freetheai,https://api.freetheai.xyz/v1,rev/claude-haiku-4.5,direct,,,,0,0.16923798199991325,http_error,"HTTP 429: {""error"":{""message"":""concurrency limit exceeded; wait for an active request to finish"",""type"":""concurrency_limit_error""}}",2026-05-12T02:22:51.929369+00:00
+freetheai,https://api.freetheai.xyz/v1,wsf/swe-1.6,direct,,3.195393015000036,107.26319181875688,236,6.273337768999909,success,,2026-05-12T02:22:55.640218+00:00
+freetheai,https://api.freetheai.xyz/v1,wsf/swe-1.5,direct,,2.7876971959999537,175.96538863837725,677,7.465225064999913,success,,2026-05-12T02:23:06.025414+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-video,direct,,148.24638777199993,369086.5108480811,222,148.246989257,success,,2026-05-12T02:25:05.980227+00:00
+blazeai,https://blazeai.boxu.dev/api/,qwen3.6-plus-video,direct,,127.00619814400011,400542.71745231317,222,127.00675239199995,success,,2026-05-12T02:27:12.988433+00:00
