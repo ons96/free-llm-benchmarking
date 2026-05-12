@@ -79,10 +79,6 @@ jobs:
         run: |
           uv run python cli.py init
 
-      - name: List targets
-        run: |
-          uv run python cli.py list
-
       - name: Run benchmarks
         env:
           NVIDIA_API_KEY: ${{ secrets.NVIDIA_API_KEY }}

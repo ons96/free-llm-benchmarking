@@ -300,6 +300,7 @@ def load_opencode_targets(
     provider_filter: Optional[str] = None,
     model_filter: Optional[str] = None,
     skip_offline: bool = True,
+    skip_pricing: bool = False,
 ) -> list[Target]:
     data = _parse_jsonc(OPENCODE_JSON.read_text())
     providers = data.get("provider", {})
@@ -331,13 +332,14 @@ def load_opencode_targets(
             continue
 
         if (
-            not include_paid
+            not skip_pricing
+            and not include_paid
             and pname not in FREE_CREDIT_PROVIDERS
             and pname not in pricing_cache
         ):
             pricing_cache[pname] = fetch_model_pricing(base_url, api_key)
 
-        if not include_paid and pname in NEW_API_PROVIDERS and pname not in newapi_cache:
+        if not skip_pricing and not include_paid and pname in NEW_API_PROVIDERS and pname not in newapi_cache:
             newapi_cache[pname] = fetch_newapi_pricing(base_url, api_key)
 
         models = pconfig.get("models", {})
@@ -498,6 +500,7 @@ def load_all_targets(
     model_filter: Optional[str] = None,
     include_gateway: bool = True,
     skip_offline: bool = True,
+    skip_pricing: bool = False,
 ) -> list[Target]:
     targets = load_opencode_targets(
         include_expensive=include_expensive,
@@ -505,6 +508,7 @@ def load_all_targets(
         provider_filter=provider_filter,
         model_filter=model_filter,
         skip_offline=skip_offline,
+        skip_pricing=skip_pricing,
     )
     if include_gateway and not provider_filter:
         targets.extend(load_gateway_targets())
