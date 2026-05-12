@@ -132,7 +132,8 @@
       const stats = document.getElementById('stats');
       const total = data.length;
       const providers = new Set(data.map(d => d.provider_name)).size;
-      const avgTps = data.filter(d => d.avg_tps).reduce((a, b) => a + b.avg_tps, 0) / data.filter(d => d.avg_tps).length;
+      const tpsData = data.filter(d => d.avg_tps !== null && d.avg_tps !== undefined);
+      const avgTps = tpsData.length > 0 ? tpsData.reduce((a, b) => a + b.avg_tps, 0) / tpsData.length : null;
       const fastest = data.reduce((min, d) => (d.est_10k_total_s && d.est_10k_total_s < (min.est_10k_total_s || Infinity)) ? d : min, {});
       
       stats.innerHTML = `
@@ -184,8 +185,8 @@
       }
       
       tbody.innerHTML = filteredData.map((d, i) => {
-        const ttft = d.avg_ttft_sec ? `<span class="${d.avg_ttft_sec < 1 ? 'fast' : d.avg_ttft_sec > 10 ? 'slow' : ''}">${d.avg_ttft_sec.toFixed(3)}</span>` : '?';
-        const tps = d.avg_tps ? `<span class="${d.avg_tps > 100 ? 'fast' : d.avg_tps < 10 ? 'slow' : ''}">${d.avg_tps.toFixed(1)}</span>` : '?';
+        const ttft = (d.avg_ttft_sec !== null && d.avg_ttft_sec !== undefined) ? `<span class="${d.avg_ttft_sec < 1 ? 'fast' : d.avg_ttft_sec > 10 ? 'slow' : ''}">${d.avg_ttft_sec.toFixed(3)}</span>` : '?';
+        const tps = (d.avg_tps !== null && d.avg_tps !== undefined) ? `<span class="${d.avg_tps > 100 ? 'fast' : d.avg_tps < 10 ? 'slow' : ''}">${d.avg_tps.toFixed(1)}</span>` : '?';
         const total = d.est_10k_total_s ? `${d.est_10k_total_s.toFixed(1)}` : '?';
         const effort = d.reasoning_effort ? `<span class="effort">${d.reasoning_effort}</span>` : '';
         

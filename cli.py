@@ -85,6 +85,28 @@ def cmd_test(args):
         ]
         print(f"Retesting {len(error_models)} models with rate/credit errors.")
 
+    if args.retest_suspicious:
+        conn = sqlite3.connect(str(Path(__file__).parent / "data" / "speedrun.db"))
+        cur = conn.execute("""
+            SELECT provider_name, model_name FROM speed_summary
+            WHERE num_success > 0 AND (
+                (avg_tps > 2000 AND avg_output_tokens < 500)
+                OR (avg_output_tokens < 50)
+                OR (avg_tps > 50000)
+                OR (avg_ttft_sec IS NOT NULL AND avg_ttft_sec = 0)
+            )
+        """)
+        suspicious_models = set((r[0], r[1]) for r in cur.fetchall())
+        conn.close()
+        if suspicious_models:
+            targets = [
+                t for t in targets
+                if (t.provider_name, t.model_name) in suspicious_models
+            ]
+            print(f"Retesting {len(suspicious_models)} models with suspicious results.")
+        else:
+            print("No models with suspicious results found.")
+
     if not targets:
         print("No targets matched filters.")
         return
@@ -129,7 +151,6 @@ def cmd_test(args):
             checkpoint[0] = d
             if handler.run_id:
                 export_csv(handler.run_id)
-        ok = sum(1 for r in results if r.status == "success")
         ok = sum(1 for r in results if r.status == "success")
         avg_ttft = None
         avg_tps = None
@@ -500,6 +521,11 @@ def main():
     )
     p_test.add_argument(
         "--retry-errors", action="store_true", help="Retest models with 429/403 errors"
+    )
+    p_test.add_argument(
+        "--retest-suspicious",
+        action="store_true",
+        help="Retest models with suspicious results (TPS>2000, tokens<500, TTFT=0)",
     )
     p_test.set_defaults(func=cmd_test)
 
