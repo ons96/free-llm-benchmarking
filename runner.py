@@ -741,6 +741,7 @@ async def run_all(
     max_concurrent: int = MAX_CONCURRENT,
     effort_sweep: bool = False,
     on_progress=None,
+    skip_validation: bool = False,
 ) -> str:
     try:
         from tqdm import tqdm
@@ -758,31 +759,29 @@ async def run_all(
     filtered = [t for t in targets if not _should_skip_model(t)]
     targets = filtered
 
-    async def validate_target(target: Target) -> bool:
-        try:
-            async with httpx.AsyncClient(timeout=15) as client:
-                resp = await client.get(
-                    f"{target.base_url.rstrip('/')}/models",
-                    headers={"Authorization": f"Bearer {target.api_key}"} if target.api_key else {},
-                )
-                if resp.status_code != 200:
+    if not skip_validation:
+        async def validate_target(target: Target) -> bool:
+            try:
+                async with httpx.AsyncClient(timeout=15) as client:
+                    resp = await client.get(
+                        f"{target.base_url.rstrip('/')}/models",
+                        headers={"Authorization": f"Bearer {target.api_key}" if target.api_key else {}},
+                    )
+                    if resp.status_code != 200:
+                        return False
+                    result = resp.json()
+                    models_data = result.get("data", result) if isinstance(result, dict) else result
+                    for m in models_data:
+                        if m.get("id", "") == target.model_name:
+                            return True
+                    print(f"SKIP: {target.model_name} not found in /v1/models")
                     return False
-                result = resp.json()
-                models_data = result.get("data", result) if isinstance(result, dict) else result
-                for m in models_data:
-                    if m.get("id", "") == target.model_name:
-                        return True
-                print(f"SKIP: {target.model_name} not found in /v1/models")
-                return False
-        except Exception as e:
-            print(f"WARN: Could not validate {target.model_name}: {e}")
-            return True
-    
-    valid_targets = []
-    for t in targets:
-        if await validate_target(t):
-            valid_targets.append(t)
-    targets = valid_targets
+            except Exception as e:
+                print(f"WARN: Could not validate {target.model_name}: {e}")
+                return True
+
+        valid_targets = await asyncio.gather(*[validate_target(t) for t in targets])
+        targets = [t for t, valid in zip(targets, valid_targets) if valid]
     
     total_jobs = sum(len(efforts_for(t)) for t in targets)
     done = 0
