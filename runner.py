@@ -474,23 +474,10 @@ async def test_single_call(
 
     ttft_sec = first_token_time - t_start
 
-    # TPS: tokens generated / generation time
-    # Use time between first and last token if stream is long enough (>0.5s).
-    # Otherwise fall back to total_time - ttft to avoid absurd values from
-    # buffered/chunked responses where all content arrives in one burst.
-    tps = None
-    if token_count > 1:
-        stream_s = (
-            (last_token_time - first_token_time)
-            if last_token_time and last_token_time > first_token_time
-            else 0
-        )
-        gen_time_s = total_time_sec - ttft_sec
-
-        if stream_s >= 0.5:
-            tps = token_count / stream_s
-        elif gen_time_s > 0:
-            tps = token_count / gen_time_s
+    # TPS: total output tokens / total wall-clock time.
+    # Using total_time_sec instead of generation-only time avoids inflated
+    # values from models that return all tokens in one burst (non-streaming).
+    tps = float(token_count) / total_time_sec if token_count > 1 and total_time_sec > 0 else None
 
     return TestResult(
         ttft_sec=ttft_sec,
