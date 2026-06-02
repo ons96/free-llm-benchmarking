@@ -3,6 +3,7 @@
 
 import asyncio
 import json
+import os
 import sqlite3
 import sys
 import time
@@ -11,7 +12,7 @@ from pathlib import Path
 
 import httpx
 
-API_KEY = "REDACTED-NVIDIA-KEY"
+API_KEY = os.environ.get("NVIDIA_API_KEY", "")
 BASE_URL = "https://integrate.api.nvidia.com/v1"
 MAX_TOKENS = 200
 TIMEOUT = 30
