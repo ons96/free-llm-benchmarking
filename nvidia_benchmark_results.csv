@@ -1,0 +1,20 @@
+id,model,ttft_ms,tps,output_tokens,total_time_ms,flirty_pass,flirty_test_time_ms,notes
+1,meta/llama-3.1-8b-instruct,331,246.0,200,1144,unknown,_,fast but untested for flirty
+2,meta/llama-3.3-70b-instruct,344,79.5,107,1690,YES,1201,truncated at 200 but flirty
+3,meta/llama-3.2-3b-instruct,270,89.4,141,1847,unknown,_,small fast
+4,mistralai/mistral-small-4-119b-2603,544,81.4,81,1539,YES,584,FASTEST FLIRTY - top recommendation
+5,mistralai/mistral-nemotron,769,57.1,200,4269,YES,1245,consistent flirty
+6,mistralai/mistral-7b-instruct-v0.3,596,55.4,200,4203,YES,1149,good flirty
+7,mistralai/mistral-large-3-675b-instruct-2512,639,5.6,185,33414,YES,5145,FLIRTY but very slow
+8,microsoft/phi-4-mini-instruct,13389,86.7,116,14726,YES,729,slow TTFT but quick content
+9,upstage/solar-10.7b-instruct,586,36.3,116,3783,YES,1373,flirty as Zara
+10,abacusai/dracarys-llama-3.1-70b-instruct,386,17.0,200,12180,YES,31598,flirty but 32s slow
+11,qwen/qwen3-coder-480b-a35b-instruct,1659,17.5,34,3607,YES,4729,flirty short
+12,nvidia/llama-3.1-nemotron-nano-8b-v1,1472,2.3,201,89917,NO,1254,off-topic no flirty
+13,stockmark/stockmark-2-100b-instruct,876,25.4,200,8739,NO,1986,JAPANESE not English
+14,sarvamai/sarvam-m,936,33.7,201,6901,generic,18625,generic slow
+15,z-ai/glm-5.1,1668,1.1,21,20204,YES,20060,flirty but 20s slow
+16,moonshotai/kimi-k2.6,5142,2736.0,1,5143,NO,3368,garbled output (repetition)
+17,openai/gpt-oss-120b,_,_,0,3120,_,5352,404 not on NIM (cerebras only)
+18,nvidia/nemotron-3-super-120b-a12b,17091,3677.4,1,17091,_,_,reasoning model
+19,meta/llama-3.2-1b-instruct,1019,0.8,201,262032,_,_,tiny but 4min total
