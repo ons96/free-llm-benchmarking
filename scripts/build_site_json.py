@@ -89,8 +89,18 @@ for r in rows:
 
 cleaned.sort(key=lambda x: x["est_10k_total_s"] if x["est_10k_total_s"] > 0 else float("inf"))
 
-for i, r in enumerate(cleaned, 1):
+# Separate clean vs suspicious; rank only clean entries
+clean = [r for r in cleaned if not r["is_suspicious"]]
+suspicious_rows = [r for r in cleaned if r["is_suspicious"]]
+
+for i, r in enumerate(clean, 1):
     r["rank"] = i
+
+# Suspicious entries get rank=null, appended at end
+for r in suspicious_rows:
+    r["rank"] = None
+
+cleaned = clean + suspicious_rows
 
 docs_data = Path("docs/data")
 docs_data.mkdir(parents=True, exist_ok=True)
