@@ -35,6 +35,8 @@ SKIP_PROVIDERS = {
     "zenmux",      # 401 auth
     "llmgateway",  # 401 auth
     "kilocloud",   # dead (all rate limited)
+    "claude-carter", # 404 dead
+    "cortecs",     # 401 auth
     # User-requested skips
     "g4f",        # unreliable, no tool calls, proxy
     "g4f_gemini", # proxy
@@ -63,16 +65,14 @@ DAILY_QUOTA_PROVIDERS = {
 
 FREE_CREDIT_PROVIDERS = {
     "hapuppy", "blazeai", "nvidia",
-    "aitools", "bluesminds", "claude-carter",
-    "ktai", "logfare", "swiftrouter",
-    "zenllm",
-    "supacoder", "ollama-cloud", "wiwi",
+    "aitools", "bluesminds",
+    "ktai", "logfare",
+    "ollama-cloud", "wiwi",
     "kilo",
     "cursor-proxy",
     "ktai-paid",
     "freetheai",
     "aihubmix",
-    "cortecs",
     "opencode", "opencode_zen",
     "github-models",
     "iflowcn",
@@ -97,6 +97,20 @@ FREE_CREDIT_PROVIDERS = {
     "mistral",   # free tier (5k tokens/min)
     "sambanova", # free tier
     "openrouter", # free with low recurring limit
+    # Providers with working creds (raw key in opencode.json or ~/.env)
+    "mydamoxing",
+    "paxsenix",
+    "gratisfy",
+    "freemodel",
+    "anthropic",    # cc.freemodel.dev proxy entry in opencode.json
+    "setbug",
+    "zanity",
+    "yzgpt-main",
+    "yzgpt-alt",
+    "zhangyuapi",
+    "tokenrouter",
+    "lotte-library",
+    "xinjianya",
     # NOTE: together is NOT free (mostly paid now)
     # NOTE: openai is NOT free (paid only)
 }
@@ -215,8 +229,20 @@ def _supports_reasoning(model: str) -> bool:
 
 
 def _resolve_env_var(s: str) -> str:
+    """Resolve env var references in config values.
+
+    Supports both shell-style ($VAR / ${VAR}) and opencode.json-style
+    ({env:VAR}) references. Unresolvable {env:VAR} refs become empty
+    strings so providers fail fast with a clear missing-key error
+    instead of sending the literal placeholder as a Bearer token (401).
+    """
     if not s:
         return s
+    s = re.sub(
+        r"\{env:([A-Za-z_][A-Za-z0-9_]*)\}",
+        lambda m: os.environ.get(m.group(1), ""),
+        s,
+    )
     return os.path.expandvars(s)
 
 
