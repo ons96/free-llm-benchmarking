@@ -2,6 +2,7 @@
 """Build leaderboard.json for GitHub Pages site."""
 import csv
 import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 INFLATED_TPS_PATTERNS = [
@@ -111,7 +112,13 @@ with open("docs/data/leaderboard.json", "w") as f:
 with open("docs/leaderboard.json", "w") as f:
     json.dump(cleaned, f, indent=2)
 
+# Sidecar metadata (keeps leaderboard.json array root stable for consumers)
+generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+with open("docs/data/meta.json", "w") as f:
+    json.dump({"generated_at": generated_at, "row_count": len(cleaned)}, f, indent=2)
+
 print(f"Saved {len(cleaned)} rows to docs/data/leaderboard.json")
+print(f"generated_at: {generated_at}")
 suspicious = sum(1 for r in cleaned if r["is_suspicious"])
 fake_tps = sum(1 for r in cleaned if "fake_tps" in r["flags"])
 content_filter = sum(1 for r in cleaned if "content_filter_model" in r["flags"])
