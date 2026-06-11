@@ -482,8 +482,51 @@ def cmd_apply(args):
     if not args.dry_run:
         print(f"Backup: {result.get('backup')}")
         print(f"Written: {result.get('written')}")
+        if getattr(args, "gateway_restart", False):
+            _restart_gateway()
     else:
         print("(Dry run - no changes written. Pass --write to apply.)")
+        if getattr(args, "gateway_restart", False):
+            print("(Dry run - gateway restart skipped.)")
+
+
+def _restart_gateway(service: str = "llm-gateway.service"):
+    """Restart the gateway systemd service so it picks up the new YAML.
+
+    Tries plain systemctl first (works if user has lingering/system perms),
+    then sudo -n (non-interactive). Never blocks waiting for a password.
+    """
+    import subprocess
+
+    cmds = [
+        ["systemctl", "restart", service],
+        ["sudo", "-n", "systemctl", "restart", service],
+    ]
+    for cmd in cmds:
+        try:
+            proc = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=60
+            )
+        except FileNotFoundError:
+            continue
+        except subprocess.TimeoutExpired:
+            print(f"Gateway restart timed out: {' '.join(cmd)}")
+            return
+        if proc.returncode == 0:
+            print(f"Gateway restarted via: {' '.join(cmd)}")
+            verify = subprocess.run(
+                ["systemctl", "is-active", service],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            print(f"Gateway status: {verify.stdout.strip() or 'unknown'}")
+            return
+    print(
+        f"WARNING: could not restart {service} "
+        "(no permissions?). Restart manually: "
+        f"sudo systemctl restart {service}"
+    )
 
 
 def main():
@@ -598,7 +641,13 @@ def main():
         action="store_false",
         help="Actually write changes (default: dry run)",
     )
-    p_apply.set_defaults(func=cmd_apply, dry_run=True)
+    p_apply.add_argument(
+        "--gateway-restart",
+        dest="gateway_restart",
+        action="store_true",
+        help="Restart llm-gateway.service after a successful --write",
+    )
+    p_apply.set_defaults(func=cmd_apply, dry_run=True, gateway_restart=False)
 
     args = parser.parse_args()
     args.func(args)
