@@ -116,6 +116,7 @@
         initFilters();
         applyFiltersAndSort();
         updateStats();
+        loadMeta();
       } catch (e) {
         console.error('Error loading data:', e);
         document.getElementById('tableBody').innerHTML = 
@@ -123,6 +124,21 @@
       }
     }
     
+    async function loadMeta() {
+      try {
+        const resp = await fetch('data/meta.json');
+        if (!resp.ok) return;
+        const meta = await resp.json();
+        if (meta.generated_at) {
+          const dt = new Date(meta.generated_at);
+          document.getElementById('updateTime').textContent =
+            isNaN(dt) ? meta.generated_at : dt.toUTCString();
+        }
+      } catch (e) {
+        // Non-fatal: leave placeholder
+      }
+    }
+
     function initFilters() {
       const providerSet = new Set(data.map(d => d.provider_name));
       const select = document.getElementById('providerFilter');

@@ -487,7 +487,27 @@ async def test_single_call(
         )
         gen_time_s = total_time_sec - ttft_sec
 
-        if stream_s >= 0.5:
+        # Fake-streaming / buffered-proxy detection:
+        # Some providers accept stream=true but deliver the entire response
+        # in a single SSE chunk (or a buffered proxy coalesces it). Then
+        # first_token_time == last_token_time (stream_s == 0) and ttft_sec
+        # consumes nearly the whole call (gen_time_s ~ epsilon), so
+        # token_count / gen_time_s explodes into millions of TPS while the
+        # measured "TTFT" is really the full generation time.
+        # In that case fall back to the conservative whole-call rate and
+        # zero out TTFT (same convention as the non-streaming path, which
+        # _is_outlier and the leaderboard flag logic already treat as
+        # "not real streaming").
+        burst_detected = stream_s < 0.5 and (
+            gen_time_s < 0.05
+            or (total_time_sec > 0 and ttft_sec / total_time_sec > 0.95)
+        )
+
+        if burst_detected:
+            if total_time_sec > 0:
+                tps = token_count / total_time_sec
+            ttft_sec = 0.0
+        elif stream_s >= 0.5:
             tps = token_count / stream_s
         elif gen_time_s > 0:
             tps = token_count / gen_time_s
