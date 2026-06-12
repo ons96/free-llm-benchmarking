@@ -649,6 +649,10 @@ def main():
     )
     p_apply.set_defaults(func=cmd_apply, dry_run=True, gateway_restart=False)
 
+    # chain (objective fallback leaderboards)
+    from scripts import fallback_chain as _fb_chain
+    _fb_chain.add_chain_subparser(sub)
+
     args = parser.parse_args()
     args.func(args)
 
