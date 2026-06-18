@@ -1,0 +1,42 @@
+# Bundled gitleaks rules for pre-publish-gitleaks.sh.
+# Conservative defaults; extend `[[rules]]` blocks as new patterns emerge.
+# gitleaks.toml schema: https://github.com/gitleaks/gitleaks/blob/master/config/gitleaks.toml
+# Schema: gitleaks >=8.18 uses [[allowlists]] (plural, array of tables).
+
+title = "task-board pre-publish default rules"
+
+# Top-level allow-list (gitleaks >=8.18: [[allowlists]] array of tables).
+[[allowlists]]
+description = "Operational allow-lists"
+paths = [
+  '''\.lock$''',
+  '''\.lock\.json$''',
+  '''package-lock\.json$''',
+  '''pnpm-lock\.yaml$''',
+  '''yarn\.lock$''',
+  '''Cargo\.lock$''',
+  '''go\.sum$''',
+  '''.+\.snap$''',
+  '''docs/leaderboard\.json$''',
+  '''docs/data/leaderboard\.json$''',
+]
+
+# Most defaults from upstream gitleaks (>=8.18) work; we only override
+# what needs extra tuning for this org.
+[[rules]]
+id = "task-board-tailscale-key"
+description = "Tailscale API key"
+regex = '''tskey-api-[A-Za-z0-9_]{8,}\.[A-Za-z0-9_]{32,}\.[A-Za-z0-9_]{32,}'''
+tags = ["tailscale", "secret"]
+
+[[rules]]
+id = "task-board-gh-classic-pat"
+description = "GitHub classic PAT (ghp_/gho_/ghs_/ghu_/ghr_) — usually leaked via robots"
+regex = '''\b(ghp|gho|ghs|ghu|ghr)_[A-Za-z0-9]{36,}\b'''
+tags = ["github", "pat"]
+# These tokens are fine in GHA logs and in some scripts; redact by default.
+# gitleaks >=8.18: [[rules.allowlists]] (plural, array of tables).
+[[rules.allowlists]]
+paths = [
+  '''docs/.*''',
+]
