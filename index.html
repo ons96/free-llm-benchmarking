@@ -34,6 +34,11 @@
     .number { text-align: right; font-variant-numeric: tabular-nums; }
     .fast { color: #4ec9b0; }
     .slow { color: #f44742; }
+    .suspicious { opacity: 0.5; }
+    .suspicious td::before { content: ""; }
+    .suspicious .rank::after { content: " \26A0"; color: #f0b040; }
+    .controls label { color: #aaa; font-size: 0.85rem; display: flex; align-items: center; gap: 5px; cursor: pointer; }
+    .controls input[type="checkbox"] { cursor: pointer; }
     
     .stats { display: flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
     .stat-card { background: #1a1a1a; padding: 16px 20px; border-radius: 8px; min-width: 150px; }
@@ -73,6 +78,7 @@
       <option value="high">High</option>
       <option value="">No Reasoning</option>
     </select>
+    <label><input type="checkbox" id="showSuspicious"> Show suspicious</label>
   </div>
   
   <table id="leaderboardTable">
@@ -110,6 +116,7 @@
         initFilters();
         applyFiltersAndSort();
         updateStats();
+        loadMeta();
       } catch (e) {
         console.error('Error loading data:', e);
         document.getElementById('tableBody').innerHTML = 
@@ -117,6 +124,21 @@
       }
     }
     
+    async function loadMeta() {
+      try {
+        const resp = await fetch('data/meta.json');
+        if (!resp.ok) return;
+        const meta = await resp.json();
+        if (meta.generated_at) {
+          const dt = new Date(meta.generated_at);
+          document.getElementById('updateTime').textContent =
+            isNaN(dt) ? meta.generated_at : dt.toUTCString();
+        }
+      } catch (e) {
+        // Non-fatal: leave placeholder
+      }
+    }
+
     function initFilters() {
       const providerSet = new Set(data.map(d => d.provider_name));
       const select = document.getElementById('providerFilter');
@@ -130,11 +152,12 @@
     
     function updateStats() {
       const stats = document.getElementById('stats');
-      const total = data.length;
-      const providers = new Set(data.map(d => d.provider_name)).size;
-      const tpsData = data.filter(d => d.avg_tps !== null && d.avg_tps !== undefined);
+      const cleanData = data.filter(d => !d.is_suspicious);
+      const total = cleanData.length;
+      const providers = new Set(cleanData.map(d => d.provider_name)).size;
+      const tpsData = cleanData.filter(d => d.avg_tps !== null && d.avg_tps !== undefined);
       const avgTps = tpsData.length > 0 ? tpsData.reduce((a, b) => a + b.avg_tps, 0) / tpsData.length : null;
-      const fastest = data.reduce((min, d) => (d.est_10k_total_s && d.est_10k_total_s < (min.est_10k_total_s || Infinity)) ? d : min, {});
+      const fastest = cleanData.reduce((min, d) => (d.est_10k_total_s && d.est_10k_total_s < (min.est_10k_total_s || Infinity)) ? d : min, {});
       
       stats.innerHTML = `
         <div class="stat-card"><div class="label">Total Models</div><div class="value">${total}</div></div>
@@ -148,6 +171,7 @@
       const search = document.getElementById('searchInput').value.toLowerCase();
       const provider = document.getElementById('providerFilter').value;
       const effort = document.getElementById('effortFilter').value;
+      const showSuspicious = document.getElementById('showSuspicious').checked;
       
       filteredData = data.filter(d => {
         const matchesSearch = !search || 
@@ -155,7 +179,8 @@
           d.model_name.toLowerCase().includes(search);
         const matchesProvider = !provider || d.provider_name === provider;
         const matchesEffort = !effort || (d.reasoning_effort || '') === effort;
-        return matchesSearch && matchesProvider && matchesEffort;
+        const matchesSuspicious = showSuspicious || !d.is_suspicious;
+        return matchesSearch && matchesProvider && matchesEffort && matchesSuspicious;
       });
       
       sortData();
@@ -189,9 +214,11 @@
         const tps = (d.avg_tps !== null && d.avg_tps !== undefined) ? `<span class="${d.avg_tps > 100 ? 'fast' : d.avg_tps < 10 ? 'slow' : ''}">${d.avg_tps.toFixed(1)}</span>` : '?';
         const total = d.est_10k_total_s ? `${d.est_10k_total_s.toFixed(1)}` : '?';
         const effort = d.reasoning_effort ? `<span class="effort">${d.reasoning_effort}</span>` : '';
+        const rowClass = d.is_suspicious ? 'suspicious' : '';
+        const rankDisplay = d.rank || '-';
         
-        return `<tr>
-          <td class="rank">${d.rank || i + 1}</td>
+        return `<tr class="${rowClass}">
+          <td class="rank">${rankDisplay}</td>
           <td class="provider">${d.provider_name || '?'}</td>
           <td><span class="model">${d.model_name || '?'}</span> ${effort}</td>
           <td>${effort ? d.reasoning_effort : '-'}</td>
@@ -207,6 +234,7 @@
     document.getElementById('searchInput').addEventListener('input', applyFiltersAndSort);
     document.getElementById('providerFilter').addEventListener('change', applyFiltersAndSort);
     document.getElementById('effortFilter').addEventListener('change', applyFiltersAndSort);
+    document.getElementById('showSuspicious').addEventListener('change', applyFiltersAndSort);
     document.getElementById('sortBy').addEventListener('change', (e) => {
       currentSort = { column: e.target.value, direction: 'asc' };
       sortData();
