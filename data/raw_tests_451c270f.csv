@@ -1,0 +1,752 @@
+provider,url,model,source,effort,ttft_sec,tps,tokens,total_sec,status,error,timestamp
+xinjianya,https://api.xinjianya.top/v1,李/LongCat-Flash-Lite,direct,,,,0,0.08350246800000605,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.495506+00:00
+xinjianya,https://api.xinjianya.top/v1,李/LongCat-Flash-Chat,direct,,,,0,0.1043144029999894,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.499544+00:00
+xinjianya,https://api.xinjianya.top/v1,李/LongCat-Flash-Thinking-2601,direct,,,,0,0.016623155000047518,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.556969+00:00
+xinjianya,https://api.xinjianya.top/v1,李/LongCat-Flash-Thinking,direct,,,,0,0.06368644400004086,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.583290+00:00
+xinjianya,https://api.xinjianya.top/v1,李/google/gemma-3n-e2b-it,direct,,,,0,0.023851497000009658,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.625631+00:00
+xinjianya,https://api.xinjianya.top/v1,李/bytedance/seed-oss-36b-instruct,direct,,,,0,0.06291679599996769,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.645543+00:00
+xinjianya,https://api.xinjianya.top/v1,李/google/gemma-3n-e4b-it,direct,,,,0,0.021895596999911504,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.666744+00:00
+xinjianya,https://api.xinjianya.top/v1,李/meta/llama-3.2-11b-vision-instruct,direct,,,,0,0.021175973000026715,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.686350+00:00
+xinjianya,https://api.xinjianya.top/v1,李/meta/llama-3.2-90b-vision-instruct,direct,,,,0,0.020360848999985137,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.705823+00:00
+xinjianya,https://api.xinjianya.top/v1,李/meta/llama-3.3-70b-instruct,direct,,,,0,0.020442569000010735,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.725358+00:00
+xinjianya,https://api.xinjianya.top/v1,李/microsoft/phi-4-multimodal-instruct,direct,,,,0,0.009476814999970884,http_error,[Errno -2] Name or service not known,2026-07-21T06:03:30.734049+00:00
+xinjianya,https://api.xinjianya.top/v1,李/mistralai/devstral-2-123b-instruct-2512,direct,,,,0,0.051756312999941656,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.604880+00:00
+xinjianya,https://api.xinjianya.top/v1,李/mistralai/mistral-large-3-675b-instruct-2512,direct,,,,0,0.07045175099995049,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.607230+00:00
+xinjianya,https://api.xinjianya.top/v1,李/mistralai/mixtral-8x22b-instruct-v0.1,direct,,,,0,0.04752016800000547,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.691505+00:00
+xinjianya,https://api.xinjianya.top/v1,李/mistralai/mistral-small-4-119b-2603,direct,,,,0,0.08263421699996343,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.710101+00:00
+xinjianya,https://api.xinjianya.top/v1,李/nvidia/llama-3.3-nemotron-super-49b-v1.5,direct,,,,0,0.011610120999989704,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.740147+00:00
+xinjianya,https://api.xinjianya.top/v1,李/nvidia/llama-3.1-nemotron-nano-vl-8b-v1,direct,,,,0,0.04935234800007038,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.758878+00:00
+xinjianya,https://api.xinjianya.top/v1,李/qwen/qwen2.5-coder-32b-instruct,direct,,,,0,0.03362737100007962,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.810640+00:00
+xinjianya,https://api.xinjianya.top/v1,李/nvidia/nemotron-3-super-120b-a12b,direct,,,,0,0.054673716999900535,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.813015+00:00
+xinjianya,https://api.xinjianya.top/v1,李/qwen/qwen3-next-80b-a3b-instruct,direct,,,,0,0.03261735800003862,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.881621+00:00
+xinjianya,https://api.xinjianya.top/v1,李/qwen/qwen3-coder-480b-a35b-instruct,direct,,,,0,0.051150355999993735,http_error,[Errno -2] Name or service not known,2026-07-21T06:04:30.883850+00:00
+xinjianya,https://api.xinjianya.top/v1,李/qwen/qwen3-next-80b-a3b-thinking,direct,,,,0,0.2938732960000152,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:30.975222+00:00
+xinjianya,https://api.xinjianya.top/v1,李/qwen/qwen3.5-122b-a10b,direct,,,,0,0.28028122599994276,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:30.977885+00:00
+xinjianya,https://api.xinjianya.top/v1,李/stepfun-ai/step-3.5-flash,direct,,,,0,0.05627738700002283,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.052806+00:00
+xinjianya,https://api.xinjianya.top/v1,李/stockmark/stockmark-2-100b-instruct,direct,,,,0,0.042532642999958625,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.055218+00:00
+xinjianya,https://api.xinjianya.top/v1,李/z-ai/glm4.7,direct,,,,0,0.06396905899998728,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.137979+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/abacusai/dracarys-llama-3.1-70b-instruct,direct,,,,0,0.050427745999968465,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.140743+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/deepseek-ai/deepseek-v4-flash,direct,,,,0,0.013402197999994314,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.189150+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/bytedance/seed-oss-36b-instruct,direct,,,,0,0.048577831999978116,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.207949+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/gemma-3n-e2b-it,direct,,,,0,0.03261589199996706,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.240038+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/gemma-3n-e4b-it,direct,,,,0,0.03963146599994616,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.266154+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/gemma-4-31b-it,direct,,,,0,0.020263264000050185,http_error,[Errno -2] Name or service not known,2026-07-21T06:05:31.284545+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-3.2-11b-vision-instruct,direct,,,,0,0.028369893999979467,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.035987+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-3.1-8b-instruct,direct,,,,0,0.01430170999992697,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.038555+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-3.2-3b-instruct,direct,,,,0,0.02344174600000315,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.094312+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-3.2-1b-instruct,direct,,,,0,0.009462763999977142,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.096645+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-3.2-90b-vision-instruct,direct,,,,0,0.053127903000017795,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.224749+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-3.3-70b-instruct,direct,,,,0,0.0723324530000582,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.227436+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-4-maverick-17b-128e-instruct,direct,,,,0,0.044938745999957064,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.290960+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-guard-4-12b,direct,,,,0,0.030920245000061186,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.293313+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/microsoft/phi-4-multimodal-instruct,direct,,,,0,0.03000574299994696,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.357565+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/microsoft/phi-4-mini-instruct,direct,,,,0,0.06548866699995415,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.376844+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/minimaxai/minimax-m2.7,direct,,,,0,0.012127193999958763,http_error,[Errno -2] Name or service not known,2026-07-21T06:06:31.388391+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/ministral-14b-instruct-2512,direct,,,,0,0.015395443999977942,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.115480+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/magistral-small-2506,direct,,,,0,0.034246059999986755,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.117946+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mistral-nemotron,direct,,,,0,0.007435562999944523,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.160816+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mistral-large-3-675b-instruct-2512,direct,,,,0,0.026457364000066264,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.163050+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/moonshotai/kimi-k2-instruct,direct,,,,0,0.04812248199993974,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.290519+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mistral-small-4-119b-2603,direct,,,,0,0.033816161000004286,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.292799+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.1-nemotron-nano-8b-v1,direct,,,,0,0.03691692899997179,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.363932+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/moonshotai/kimi-k2-thinking,direct,,,,0,0.05559830499998952,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.366256+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.3-nemotron-super-49b-v1,direct,,,,0,0.021848613000088335,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.416684+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.1-nemotron-nano-vl-8b-v1,direct,,,,0,0.02502623600003062,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.436336+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.3-nemotron-super-49b-v1.5,direct,,,,0,0.03408296700001756,http_error,[Errno -2] Name or service not known,2026-07-21T06:07:31.469734+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemotron-3-super-120b-a12b,direct,,,,0,0.005899815000020681,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.185840+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemotron-3-nano-30b-a3b,direct,,,,0,0.04813227800002551,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.211397+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemotron-mini-4b-instruct,direct,,,,0,0.028180571999996573,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.232388+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemotron-nano-12b-v2-vl,direct,,,,0,0.00884172500002478,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.240325+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/qwen/qwen2.5-coder-32b-instruct,direct,,,,0,0.006460564000008162,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.330603+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/qwen/qwen3-coder-480b-a35b-instruct,direct,,,,0,0.025157090999982756,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.332971+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/qwen/qwen3-next-80b-a3b-instruct,direct,,,,0,0.006761277999999038,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.403073+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/qwen/qwen3-next-80b-a3b-thinking,direct,,,,0,0.025303356999984317,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.405385+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/qwen/qwen3.5-397b-a17b,direct,,,,0,0.04026029500005279,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.474413+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/qwen/qwen3.5-122b-a10b,direct,,,,0,0.026465766000001167,http_error,[Errno -2] Name or service not known,2026-07-21T06:08:31.476896+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/sarvamai/sarvam-m,direct,,,,0,0.031876708000027065,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.253753+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/stepfun-ai/step-3.5-flash,direct,,,,0,0.05104514399999971,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.256390+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/stockmark/stockmark-2-100b-instruct,direct,,,,0,0.0331233900000143,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.307765+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/upstage/solar-10.7b-instruct,direct,,,,0,0.019203367000045546,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.310178+00:00
+xinjianya,https://api.xinjianya.top/v1,Total: 200,direct,,,,0,0.03746955799999796,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.400951+00:00
+xinjianya,https://api.xinjianya.top/v1,abacusai/dracarys-llama-3.1-70b-instruct,direct,,,,0,0.056230292000009285,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.403403+00:00
+xinjianya,https://api.xinjianya.top/v1,deepseek-ai/deepseek-v4-pro,direct,,,,0,0.015813202999993337,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.454443+00:00
+xinjianya,https://api.xinjianya.top/v1,deepseek-ai/deepseek-v4-flash,direct,,,,0,0.051798328000018046,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.473776+00:00
+xinjianya,https://api.xinjianya.top/v1,deepseek-v4-flash,direct,,,,0,0.03032621600004859,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.503453+00:00
+xinjianya,https://api.xinjianya.top/v1,deepseek-v4-flash-search,direct,,,,0,0.029778325000052064,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.522834+00:00
+xinjianya,https://api.xinjianya.top/v1,deepseek-v4-pro,direct,,,,0,0.014871150999965721,http_error,[Errno -2] Name or service not known,2026-07-21T06:09:31.536823+00:00
+xinjianya,https://api.xinjianya.top/v1,deepseek-v4-pro-search,direct,,,,0,0.07114828099997794,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.366912+00:00
+xinjianya,https://api.xinjianya.top/v1,deepseek-v4-vision,direct,,,,0,0.04643912200003797,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.369297+00:00
+xinjianya,https://api.xinjianya.top/v1,deepseek-v4-vision-search,direct,,,,0,0.03342121200000747,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.421092+00:00
+xinjianya,https://api.xinjianya.top/v1,mistralai/magistral-small-2506,direct,,,,0,0.01982240199993157,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.423889+00:00
+xinjianya,https://api.xinjianya.top/v1,mistralai/ministral-14b-instruct-2512,direct,,,,0,0.04352477199995519,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.485374+00:00
+xinjianya,https://api.xinjianya.top/v1,moonshotai/kimi-k2-instruct,direct,,,,0,0.02979637199996432,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.487958+00:00
+xinjianya,https://api.xinjianya.top/v1,openai/gpt-oss-120b,direct,,,,0,0.027959444999964944,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.550120+00:00
+xinjianya,https://api.xinjianya.top/v1,nvidia/nemotron-nano-12b-v2-vl,direct,,,,0,0.046488434999901074,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.552386+00:00
+xinjianya,https://api.xinjianya.top/v1,李/baichuan-inc/baichuan2-13b-chat,direct,,,,0,0.025248466999983066,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.612702+00:00
+xinjianya,https://api.xinjianya.top/v1,z-ai/glm-5.1,direct,,,,0,0.061183515000038824,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.632006+00:00
+xinjianya,https://api.xinjianya.top/v1,李/deepseek-ai/deepseek-v3.1,direct,,,,0,0.009272331000033773,http_error,[Errno -2] Name or service not known,2026-07-21T06:10:31.640692+00:00
+xinjianya,https://api.xinjianya.top/v1,李/deepseek-ai/deepseek-v3.1-terminus,direct,,,,0,0.030352624999977706,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.439125+00:00
+xinjianya,https://api.xinjianya.top/v1,李/deepseek-ai/deepseek-v3.2,direct,,,,0,0.049183169000002636,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.441722+00:00
+xinjianya,https://api.xinjianya.top/v1,李/google/gemma-3-27b-it,direct,,,,0,0.01649101599991809,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.499414+00:00
+xinjianya,https://api.xinjianya.top/v1,李/google/gemma-3-12b-it,direct,,,,0,0.05875341099999787,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.518558+00:00
+xinjianya,https://api.xinjianya.top/v1,李/google/gemma-4-31b-it,direct,,,,0,0.0316940270000714,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.549749+00:00
+xinjianya,https://api.xinjianya.top/v1,李/igenius/colosseum_355b_instruct_16k,direct,,,,0,0.03136982799992438,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.568694+00:00
+xinjianya,https://api.xinjianya.top/v1,李/institute-of-science-tokyo/llama-3.1-swallow-70b-instruct-v0.1,direct,,,,0,0.019882339999981014,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.588044+00:00
+xinjianya,https://api.xinjianya.top/v1,李/meta/llama-3.1-405b-instruct,direct,,,,0,0.014750101999993603,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.602010+00:00
+xinjianya,https://api.xinjianya.top/v1,李/meta/llama3-70b-instruct,direct,,,,0,0.04412695300004543,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.674496+00:00
+xinjianya,https://api.xinjianya.top/v1,李/meta/llama-3.1-70b-instruct,direct,,,,0,0.04068080599995483,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.693379+00:00
+xinjianya,https://api.xinjianya.top/v1,李/microsoft/phi-3.5-vision-instruct,direct,,,,0,0.0074051010000175665,http_error,[Errno -2] Name or service not known,2026-07-21T06:11:31.700215+00:00
+xinjianya,https://api.xinjianya.top/v1,李/microsoft/phi-4-mini-flash-reasoning,direct,,,,0,0.028396191999945586,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.544328+00:00
+xinjianya,https://api.xinjianya.top/v1,李/minimaxai/minimax-m2.5,direct,,,,0,0.031485620000012204,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.563842+00:00
+xinjianya,https://api.xinjianya.top/v1,李/minimaxai/minimax-m2.7,direct,,,,0,0.025714867000033337,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.588961+00:00
+aihubmix,,coding-glm-5-free,direct,,,,0,0.00028787500014004763,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-07-21T06:12:31.634145+00:00
+aihubmix,,glm-4.7-free,direct,,,,0,0.0002466349999394879,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-07-21T06:12:31.659128+00:00
+xinjianya,https://api.xinjianya.top/v1,李/moonshotai/kimi-k2-instruct-0905,direct,,,,0,0.07872696000003998,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.661467+00:00
+aihubmix,,glm-4-flash,direct,,,,0,0.0002090689999931783,http_error,Request URL is missing an 'http://' or 'https://' protocol.,2026-07-21T06:12:31.679557+00:00
+xinjianya,https://api.xinjianya.top/v1,李/moonshotai/kimi-k2-thinking,direct,,,,0,0.11836813300010363,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.730838+00:00
+xinjianya,https://api.xinjianya.top/v1,李/moonshotai/kimi-k2.5,direct,,,,0,0.08151130000010198,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.791085+00:00
+xinjianya,https://api.xinjianya.top/v1,李/nvidia/llama-3.1-nemotron-70b-reward,direct,,,,0,0.06269800700010819,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.829553+00:00
+xinjianya,https://api.xinjianya.top/v1,李/nvidia/llama-3.1-nemotron-ultra-253b-v1,direct,,,,0,0.05404889800001911,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.865671+00:00
+xinjianya,https://api.xinjianya.top/v1,李/nvidia/usdcode-llama-3.1-70b-instruct,direct,,,,0,0.03876437500002794,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.887055+00:00
+xinjianya,https://api.xinjianya.top/v1,李/qwen/qwen3.5-397b-a17b,direct,,,,0,0.021598530000119354,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.907347+00:00
+xinjianya,https://api.xinjianya.top/v1,李/speakleash/bielik-11b-v2.6-instruct,direct,,,,0,0.01648622999982763,http_error,[Errno -2] Name or service not known,2026-07-21T06:12:31.922540+00:00
+nvidia,https://integrate.api.nvidia.com/v1,01-ai/yi-large,direct,,,,0,0.24570353499984776,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '23bd454d-b225-49a3-8118-582a62fc51b8': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:31.975963+00:00
+nvidia,https://integrate.api.nvidia.com/v1,aisingapore/sea-lion-7b-instruct,direct,,,,0,0.1309458809998887,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '02f84bf4-c1a1-489b-a9de-ac3e8dcdec14': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:31.995507+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ai21labs/jamba-1.5-large-instruct,direct,,,,0,0.1872161149999556,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '6497fc2b-7ff8-4019-8946-123dccbfc863': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.015508+00:00
+nvidia,https://integrate.api.nvidia.com/v1,adept/fuyu-8b,direct,,,,0,0.22890593399984027,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e598bfc1-b058-41af-869d-556d3c7e1b48': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.018635+00:00
+nvidia,https://integrate.api.nvidia.com/v1,baai/bge-m3,direct,,,,0,0.0764108060000126,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:12:32.071272+00:00
+nvidia,https://integrate.api.nvidia.com/v1,bigcode/starcoder2-15b,direct,,,,0,0.08572158400011176,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:12:32.100624+00:00
+nvidia,https://integrate.api.nvidia.com/v1,databricks/dbrx-instruct,direct,,,,0,0.11028340600000774,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '3d6c2ff8-8bfc-4d10-8fd0-b7337288e869': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.163951+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/codegemma-1.1-7b,direct,,,,0,0.0658586810000088,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e2d298c5-204e-4213-b921-9f492cc9011b': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.184774+00:00
+nvidia,https://integrate.api.nvidia.com/v1,deepseek-ai/deepseek-coder-6.7b-instruct,direct,,,,0,0.11559994799995366,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e503b15c-62b0-4d69-b532-a88f0bfa2656': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.205503+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/codegemma-7b,direct,,,,0,0.0909062719999838,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '7dfc10a8-3cc4-448e-97c1-2213308dc222': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.274293+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/deplot,direct,,,,0,0.09089158900019356,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '784a8ca4-ea7d-4c93-bb46-ec027c3fae47': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.294662+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-3-12b-it,direct,,,,0,0.05109322599992083,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'ee47df99-c92b-4dc9-b3a7-f3fb0f087b73': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.364518+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-2b,direct,,,,0,0.09073743099997955,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '04174188-f742-4069-9e72-d77c2b77d3cb': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.383915+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-2-2b-it,direct,,,,0,0.17955982200010112,http_error,"HTTP 422: {""error"":""body -> temperature\n  Input should be greater than 0 (type=greater_than; gt=0.0)\nbody -> stream_options\n  Extra inputs are not permitted (type=extra_forbidden)""}",2026-07-21T06:12:32.403590+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-3-4b-it,direct,,,,0,0.09579440099992098,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'c322f327-55a3-4af3-a91f-c757e2b8b135': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:32.479144+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-3n-e2b-it,direct,,0.225325858999895,22.071167895597643,251,11.64199260700002,success,,2026-07-21T06:12:44.044290+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/recurrentgemma-2b,direct,,,,0,0.05708168699993621,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '2f495340-a99f-4b4b-89bd-1beb003dd896': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:44.120167+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ibm/granite-3.0-3b-a800m-instruct,direct,,,,0,0.05040904900010901,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '67324577-3f91-4aa6-b750-97468262530d': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:44.189412+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ibm/granite-3.0-8b-instruct,direct,,,,0,0.12461389999998573,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '5a24a4f0-2d59-46b3-ac65-42307f2633d1': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:44.332685+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ibm/granite-34b-code-instruct,direct,,,,0,0.04931141600013689,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '4df48b4f-e3c5-4ade-82c7-c06b65e25d18': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:44.400614+00:00
+nvidia,https://integrate.api.nvidia.com/v1,ibm/granite-8b-code-instruct,direct,,,,0,0.04850142700001925,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'af7b6f03-f615-4c5f-86c6-388bd35cede0': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:44.467527+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/codellama-70b,direct,,,,0,0.055298139999877094,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'f6b06895-d073-4714-8bb2-26c09e9f6597': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:12:44.541367+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-3n-e4b-it,direct,,0.254097215999991,17.9866982990709,244,13.876834528000018,success,,2026-07-21T06:12:46.298761+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.2-11b-vision-instruct,direct,,0.1762317160000748,36.311529852513246,524,14.628042188000109,success,,2026-07-21T06:13:00.945918+00:00
+nvidia,https://integrate.api.nvidia.com/v1,abacusai/dracarys-llama-3.1-70b-instruct,direct,,2.5257956400000694,12.9027799347392,557,45.76445489899993,success,,2026-07-21T06:13:17.513518+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.2-3b-instruct,direct,,0.1832927440000276,87.6378618889678,491,5.795735250000007,success,,2026-07-21T06:13:23.328076+00:00
+xinjianya,https://api.xinjianya.top/v1,李/yentinglin/llama-3-taiwan-70b-instruct,direct,,,,0,0.015727579999975205,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.593397+00:00
+xinjianya,https://api.xinjianya.top/v1,李/z-ai/glm5,direct,,,,0,0.034618576999946526,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.595923+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/01-ai/yi-large,direct,,,,0,0.035135082000124385,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.713459+00:00
+xinjianya,https://api.xinjianya.top/v1,李/z-ai/glm5.1,direct,,,,0,0.02241590200014798,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.717519+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/ai21labs/jamba-1.5-large-instruct,direct,,,,0,0.02585823200001869,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.781326+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/adept/fuyu-8b,direct,,,,0,0.011830886999860013,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.783626+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/baai/bge-m3,direct,,,,0,0.030265340000141805,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.838913+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/aisingapore/sea-lion-7b-instruct,direct,,,,0,0.016586650000135705,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.841488+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/databricks/dbrx-instruct,direct,,,,0,0.045023645999890505,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.927389+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/bigcode/starcoder2-15b,direct,,,,0,0.031117348999941896,http_error,[Errno -2] Name or service not known,2026-07-21T06:13:31.929761+00:00
+nvidia,https://integrate.api.nvidia.com/v1,bytedance/seed-oss-36b-instruct,direct,,,,0,60.17150039499984,timeout,Timeout after 60s,2026-07-21T06:13:32.207105+00:00
+nvidia,https://integrate.api.nvidia.com/v1,google/gemma-4-31b-it,direct,,,,0,60.02917701399997,timeout,Timeout after 60s,2026-07-21T06:13:32.527420+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.1-70b-instruct,direct,,0.7233311630000117,7.131505103477562,491,69.63175827400005,success,,2026-07-21T06:13:54.191501+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-guard-4-12b,direct,,,,0,0.17969832200014935,http_error,"HTTP 400: {""object"":""error"",""message"":""Conversation roles must alternate user/assistant/user/assistant/..."",""type"":""BadRequestError"",""param"":null,""code"":400}",2026-07-21T06:13:54.389922+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama2-70b,direct,,,,0,0.06288145700000314,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '2fddadfb-7e76-4c8a-9b82-f7d3fab94471': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:13:54.471405+00:00
+nvidia,https://integrate.api.nvidia.com/v1,microsoft/kosmos-2,direct,,,,0,0.09987078400013161,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '6018fed7-f227-48dc-99bc-3fd4264d5037': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:13:54.589700+00:00
+nvidia,https://integrate.api.nvidia.com/v1,microsoft/phi-3-vision-128k-instruct,direct,,,,0,0.07707633800009717,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '20f2537e-8593-4eb9-ad40-60eee3bbaa55': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:13:54.685330+00:00
+nvidia,https://integrate.api.nvidia.com/v1,microsoft/phi-3.5-moe-instruct,direct,,,,0,0.08704125500003101,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e6cab982-62f4-481e-9a7a-3dedb87dbd01': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:13:54.790723+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.2-1b-instruct,direct,,,,0,60.03922468199994,timeout,Timeout after 60s,2026-07-21T06:14:01.003930+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/codestral-22b-instruct-v0.1,direct,,,,0,0.08931589199983136,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '9a10b012-e6df-46fd-83b2-700dcbc75814': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:14:01.111998+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.2-90b-vision-instruct,direct,,,,0,60.04279615400014,timeout,Timeout after 60s,2026-07-21T06:14:23.389539+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-7b-instruct-v0.3,direct,,,,0,0.08604596999998648,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'cd89bd68-13e3-47a9-861e-9a62e6e14b05': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:14:23.494218+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-large,direct,,,,0,0.07740344900003038,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '767b5b9a-3f9d-4c1d-86e8-fa861988cee7': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:14:23.590748+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-large-2-instruct,direct,,,,0,0.07250141899999107,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '7fadd4de-e22a-48e4-90e9-f02ef14a74b9': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:14:23.681618+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/deepseek-ai/deepseek-v3.1-terminus,direct,,,,0,0.055298815000014656,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:31.671864+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/deepseek-ai/deepseek-coder-6.7b-instruct,direct,,,,0,0.041269066000040766,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:31.674294+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/deepseek-ai/deepseek-v3.2,direct,,,,0,0.28635497100003704,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:32.033479+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/deepseek-ai/deepseek-v4-pro,direct,,,,0,0.3050100109999221,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:32.035805+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/codegemma-7b,direct,,,,0,0.043257435999976224,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:32.113215+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/codegemma-1.1-7b,direct,,,,0,0.06187885699978324,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:32.115528+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/gemma-2-2b-it,direct,,,,0,0.04037288100016667,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:32.190305+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/deplot,direct,,,,0,0.05892285599998104,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:32.192582+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/gemma-2b,direct,,,,0,0.04414166399988062,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:32.255009+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/gemma-3-12b-it,direct,,,,0,0.030827673999965555,http_error,[Errno -2] Name or service not known,2026-07-21T06:14:32.257880+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-3.3-70b-instruct,direct,,,,0,60.09392342599995,timeout,Timeout after 60s,2026-07-21T06:14:32.320302+00:00
+nvidia,https://integrate.api.nvidia.com/v1,meta/llama-4-maverick-17b-128e-instruct,direct,,,,0,60.03734153200003,timeout,Timeout after 60s,2026-07-21T06:14:32.583631+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-nemotron,direct,,0.25429668999981914,57.00988887044167,268,4.974927025999932,success,,2026-07-21T06:14:37.576865+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-small-4-119b-2603,direct,,0.25857007399986287,65.72348327607236,183,3.0548524230000567,success,,2026-07-21T06:14:40.650742+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mixtral-8x22b-v0.1,direct,,,,0,0.0663444920000984,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '39655fc1-9ebc-4b24-963e-6915ea6680de': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:14:40.736100+00:00
+nvidia,https://integrate.api.nvidia.com/v1,minimaxai/minimax-m2.7,direct,,44.02389032400015,26.45754939950305,261,53.90690730100005,success,,2026-07-21T06:14:48.716691+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/ministral-14b-instruct-2512,direct,,,,0,60.0183365339999,timeout,Timeout after 60s,2026-07-21T06:15:01.148653+00:00
+nvidia,https://integrate.api.nvidia.com/v1,moonshotai/kimi-k2.6,direct,,,,0,0.05415818500000569,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '23d4f03a-b8a6-4adb-a183-7daa083a09cc': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:01.221650+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nv-mistralai/mistral-nemo-12b-instruct,direct,,,,0,0.055695866999940336,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'f8c05193-d2e2-4f0f-bb4d-7ad70070002b': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:01.295999+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/ai-synthetic-video-detector,direct,,,,0,0.12476016499999787,http_error,"HTTP 500: {""type"":""urn:nvcf-worker-service:problem-details:internal-server-error"",""title"":""Internal Server Error"",""status"":500,""detail"":""Internal error while making inference request""}",2026-07-21T06:15:06.018375+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/cosmos-reason2-8b,direct,,,,0,0.07585738400007358,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'e199b43b-6c62-4a63-9379-f60e1a953236': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:06.113272+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/embed-qa-4,direct,,,,0,0.027674567000076422,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:15:06.159624+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/gliner-pii,direct,,,,0,0.13157452300015393,http_error,"HTTP 422: {""detail"":""Unknown parameter 'stream_options' is not allowed. Please check the API documentation for valid parameters."",""error"":""Invalid request parameters"",""details"":[{""field"":""stream_options"",""message"":""Unknown parameter 'stream_options' is not allowed. Please check the API documentation for valid",2026-07-21T06:15:06.309526+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-51b-instruct,direct,,,,0,0.05799008200006028,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '5beba52c-65a9-4f46-8cd9-656689a1b205': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:06.385914+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-70b-instruct,direct,,,,0,0.05817904000014096,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '9b96341b-9791-4db9-a00d-4e43aa192a39': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:06.462575+00:00
+nvidia,https://integrate.api.nvidia.com/v1,minimaxai/minimax-m2.7,direct,,15.13511196599984,16.40892240003994,261,31.058070190999842,success,,2026-07-21T06:15:19.776142+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mixtral-8x7b-instruct-v0.1,direct,,0.32607695499996225,9.279709330457033,371,40.417600283999946,success,,2026-07-21T06:15:21.173403+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-large-3-675b-instruct-2512,direct,,,,0,60.24372690699988,timeout,Timeout after 60s,2026-07-21T06:15:23.943831+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-ultra-253b-v1,direct,,,,0,0.04751869400001851,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '84bf12ff-edbd-4435-baea-0fa6a7453d2e': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:24.011726+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.2-nemoretriever-1b-vlm-embed-v1,direct,,,,0,0.10117084400008025,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:15:24.131426+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.2-nv-embedqa-1b-v1,direct,,,,0,0.027375329999813403,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:15:24.177473+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/gemma-3-27b-it,direct,,,,0,0.29160139600003276,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:31.996629+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/gemma-3-4b-it,direct,,,,0,0.3101455309999892,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:31.999047+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/ibm/granite-3.0-3b-a800m-instruct,direct,,,,0,0.0430259100000967,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.093743+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/google/recurrentgemma-2b,direct,,,,0,0.028929493000077855,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.096002+00:00
+nvidia,https://integrate.api.nvidia.com/v1,mistralai/mistral-medium-3.5-128b,direct,,,,0,60.021369797000034,timeout,Timeout after 60s,2026-07-21T06:15:32.360207+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/ibm/granite-3.0-8b-instruct,direct,,,,0,0.2877229149999039,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.434119+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/ibm/granite-34b-code-instruct,direct,,,,0,0.323433070999954,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.453541+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/codellama-70b,direct,,,,0,0.010889758999837795,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.482583+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/ibm/granite-8b-code-instruct,direct,,,,0,0.04819723200012049,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.501140+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-3.1-405b-instruct,direct,,,,0,0.02022896599987689,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.520808+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama2-70b,direct,,,,0,0.015896134000058737,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.554986+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/meta/llama-3.1-70b-instruct,direct,,,,0,0.03759464800009482,http_error,[Errno -2] Name or service not known,2026-07-21T06:15:32.557230+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-nano-vl-8b-v1,direct,,0.15891554900008487,41.81763752233533,476,11.567644532000031,success,,2026-07-21T06:15:32.759803+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-nemotron-embed-1b-v2,direct,,,,0,0.04908326700001453,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:15:32.827319+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-nemotron-embed-vl-1b-v2,direct,,,,0,0.04840234999983295,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:15:32.894200+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama3-chatqa-1.5-70b,direct,,,,0,0.10321552300001713,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '46594287-38b9-481c-a37f-baa02f2d3ba1': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:33.015795+00:00
+logfare,https://logfare.ai/v1,kimi-k2.5,direct,,,,0,0.04317534100005105,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-07-21T06:15:33.097880+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/mistral-nemo-minitron-8b-8k-instruct,direct,,,,0,0.11700980199998412,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '5aa06dd2-0a02-4a5d-be4c-bf88e956965d': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:33.151152+00:00
+logfare,https://logfare.ai/v1,gemini-3-flash,direct,,,,0,0.08319358300013846,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-07-21T06:15:33.199768+00:00
+logfare,https://logfare.ai/v1,gpt-5.4,direct,,,,0,0.05744341199988412,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-07-21T06:15:33.246532+00:00
+logfare,https://logfare.ai/v1,minimax-m2.7,direct,,,,0,0.06089782000003652,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-07-21T06:15:33.278758+00:00
+logfare,https://logfare.ai/v1,claude-opus-4.6,direct,,,,0,0.06008557900008782,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-07-21T06:15:33.324493+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemoretriever-parse,direct,,,,0,0.1753498400000808,http_error,"HTTP 400: {""object"":""error"",""message"":""Streaming is not supported"",""type"":""BadRequestError"",""param"":null,""code"":400}",2026-07-21T06:15:33.348205+00:00
+logfare,https://logfare.ai/v1,claude-sonnet-4.6,direct,,,,0,0.09384245100000044,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-07-21T06:15:33.390691+00:00
+logfare,https://logfare.ai/v1,claude-opus-4.7,direct,,,,0,0.08837896199997886,http_error,"HTTP 401: {""error"":{""message"":""API key required. Register at /register to get one."",""type"":""authentication_error""}}",2026-07-21T06:15:33.430739+00:00
+ollama-cloud,https://ollama.com/v1,glm-5.1,direct,,,,0,0.13928113899987693,http_error,"HTTP 401: {""error"":""Unauthorized""}
+",2026-07-21T06:15:33.522267+00:00
+ollama-cloud,https://ollama.com/v1,kimi-k2.5,direct,,,,0,0.13282079600003271,http_error,"HTTP 401: {""error"":""Unauthorized""}
+",2026-07-21T06:15:33.542374+00:00
+ollama-cloud,https://ollama.com/v1,minimax-m2.5,direct,,,,0,0.0658725170001162,http_error,"HTTP 401: {""error"":""Unauthorized""}
+",2026-07-21T06:15:33.606815+00:00
+ollama-cloud,https://ollama.com/v1,nemotron-3-super,direct,,,,0,0.0672950100001799,http_error,"HTTP 401: {""error"":""Unauthorized""}
+",2026-07-21T06:15:33.693619+00:00
+ollama-cloud,https://ollama.com/v1,minimax-m2.7,direct,,,,0,0.15226671300001726,http_error,"HTTP 401: {""error"":""Unauthorized""}
+",2026-07-21T06:15:33.712857+00:00
+groq,https://api.groq.com/openai/v1,canopylabs/orpheus-arabic-saudi,direct,,,,0,0.0864005950002138,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:33.798731+00:00
+groq,https://api.groq.com/openai/v1,canopylabs/orpheus-v1-english,direct,,,,0,0.08857608700009223,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:33.820263+00:00
+groq,https://api.groq.com/openai/v1,allam-2-7b,direct,,,,0,0.17924245599988353,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:33.821583+00:00
+groq,https://api.groq.com/openai/v1,groq/compound-mini,direct,,,,0,0.06003823900005045,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:33.917388+00:00
+groq,https://api.groq.com/openai/v1,groq/compound,direct,,,,0,0.07945073800010505,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:33.920446+00:00
+groq,https://api.groq.com/openai/v1,gemma2-9b-it,direct,,,,0,0.12201850099995681,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:33.940078+00:00
+groq,https://api.groq.com/openai/v1,llama-3.3-70b-versatile,direct,,,,0,0.08166189799999302,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.040098+00:00
+groq,https://api.groq.com/openai/v1,llama-3.1-8b-instant,direct,,,,0,0.12184820799984664,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.060010+00:00
+groq,https://api.groq.com/openai/v1,meta-llama/llama-4-maverick-17b-128e-instruct,direct,,,,0,0.08629501900009018,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.063364+00:00
+groq,https://api.groq.com/openai/v1,meta-llama/llama-4-scout-17b-16e-instruct,direct,,,,0,0.11021398799994131,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.168892+00:00
+groq,https://api.groq.com/openai/v1,mixtral-8x7b-32768,direct,,,,0,0.10770108099995923,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.188998+00:00
+groq,https://api.groq.com/openai/v1,moonshotai/kimi-k2-instruct,direct,,,,0,0.11100312000007762,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.210935+00:00
+groq,https://api.groq.com/openai/v1,moonshotai/kimi-k2-instruct-0905,direct,,,,0,0.10060052599988012,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.289077+00:00
+groq,https://api.groq.com/openai/v1,openai/gpt-oss-20b,direct,,,,0,0.07961088999991262,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.309721+00:00
+groq,https://api.groq.com/openai/v1,openai/gpt-oss-120b,direct,,,,0,0.10502858900008505,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.313760+00:00
+groq,https://api.groq.com/openai/v1,qwen/qwen3-32b,direct,,,,0,0.09764720299995133,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.405451+00:00
+groq,https://api.groq.com/openai/v1,deepseek-r1-distill-llama-70b,direct,,,,0,0.09840440299990405,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.447404+00:00
+gemini,https://generativelanguage.googleapis.com/v1beta,gemini-1.5-flash,direct,,,,0,0.059231224999848564,http_error,"HTTP 400: [{
+  ""error"": {
+    ""code"": 400,
+    ""message"": ""Missing or invalid Authorization header."",
+    ""status"": ""INVALID_ARGUMENT""
+  }
+}
+]",2026-07-21T06:15:34.483157+00:00
+groq,https://api.groq.com/openai/v1,llama-4-scout-17b-16e-instruct,direct,,,,0,0.1533607110000048,http_error,"HTTP 401: {""error"":{""message"":""Invalid API Key"",""type"":""invalid_request_error"",""code"":""invalid_api_key""}}
+",2026-07-21T06:15:34.484384+00:00
+gemini,https://generativelanguage.googleapis.com/v1beta,gemini-1.5-pro,direct,,,,0,0.09229629400010708,http_error,"HTTP 400: [{
+  ""error"": {
+    ""code"": 400,
+    ""message"": ""Missing or invalid Authorization header."",
+    ""status"": ""INVALID_ARGUMENT""
+  }
+}
+]",2026-07-21T06:15:34.558001+00:00
+gemini,https://generativelanguage.googleapis.com/v1beta,gemini-2.0-flash,direct,,,,0,0.07606202600004508,http_error,"HTTP 400: [{
+  ""error"": {
+    ""code"": 400,
+    ""message"": ""Missing or invalid Authorization header."",
+    ""status"": ""INVALID_ARGUMENT""
+  }
+}
+]",2026-07-21T06:15:34.579878+00:00
+gemini,https://generativelanguage.googleapis.com/v1beta,gemini-2.5-flash,direct,,,,0,0.061201529000072696,http_error,"HTTP 400: [{
+  ""error"": {
+    ""code"": 400,
+    ""message"": ""Missing or invalid Authorization header."",
+    ""status"": ""INVALID_ARGUMENT""
+  }
+}
+]",2026-07-21T06:15:34.581312+00:00
+gemini,https://generativelanguage.googleapis.com/v1beta,gemini-2.5-pro,direct,,,,0,0.0896606429998883,http_error,"HTTP 400: [{
+  ""error"": {
+    ""code"": 400,
+    ""message"": ""Missing or invalid Authorization header."",
+    ""status"": ""INVALID_ARGUMENT""
+  }
+}
+]",2026-07-21T06:15:34.666385+00:00
+gemini,https://generativelanguage.googleapis.com/v1beta,gemma-3-27b-it,direct,,,,0,0.06950777399993058,http_error,"HTTP 400: [{
+  ""error"": {
+    ""code"": 400,
+    ""message"": ""Missing or invalid Authorization header."",
+    ""status"": ""INVALID_ARGUMENT""
+  }
+}
+]",2026-07-21T06:15:34.686619+00:00
+gemini,https://generativelanguage.googleapis.com/v1beta,gemini-3-pro-preview,direct,,,,0,0.08906862200001342,http_error,"HTTP 400: [{
+  ""error"": {
+    ""code"": 400,
+    ""message"": ""Missing or invalid Authorization header."",
+    ""status"": ""INVALID_ARGUMENT""
+  }
+}
+]",2026-07-21T06:15:34.689844+00:00
+cerebras,https://api.cerebras.ai/v1,gpt-oss-120b,direct,,,,0,0.09470318400008182,http_error,"HTTP 401: {""message"":""Wrong API Key"",""type"":""invalid_request_error"",""param"":""api_key"",""code"":""wrong_api_key""}",2026-07-21T06:15:34.779828+00:00
+cerebras,https://api.cerebras.ai/v1,llama3.1-8b,direct,,,,0,0.07482506699989244,http_error,"HTTP 401: {""message"":""Wrong API Key"",""type"":""invalid_request_error"",""param"":""api_key"",""code"":""wrong_api_key""}",2026-07-21T06:15:34.799952+00:00
+cerebras,https://api.cerebras.ai/v1,llama-3.3-70b,direct,,,,0,0.09437919500010139,http_error,"HTTP 401: {""message"":""Wrong API Key"",""type"":""invalid_request_error"",""param"":""api_key"",""code"":""wrong_api_key""}",2026-07-21T06:15:34.801247+00:00
+cerebras,https://api.cerebras.ai/v1,qwen-3-32b,direct,,,,0,0.06641562599997997,http_error,"HTTP 401: {""message"":""Wrong API Key"",""type"":""invalid_request_error"",""param"":""api_key"",""code"":""wrong_api_key""}",2026-07-21T06:15:34.888639+00:00
+cerebras,https://api.cerebras.ai/v1,qwen-3-235b-a22b-instruct-2507,direct,,,,0,0.11051143700001376,http_error,"HTTP 401: {""message"":""Wrong API Key"",""type"":""invalid_request_error"",""param"":""api_key"",""code"":""wrong_api_key""}",2026-07-21T06:15:34.909914+00:00
+cerebras,https://api.cerebras.ai/v1,zai-glm-4.7,direct,,,,0,0.07272193199992216,http_error,"HTTP 401: {""message"":""Wrong API Key"",""type"":""invalid_request_error"",""param"":""api_key"",""code"":""wrong_api_key""}",2026-07-21T06:15:34.911283+00:00
+cerebras,https://api.cerebras.ai/v1,qwen-3-235b,direct,,,,0,0.09643453400008184,http_error,"HTTP 401: {""message"":""Wrong API Key"",""type"":""invalid_request_error"",""param"":""api_key"",""code"":""wrong_api_key""}",2026-07-21T06:15:35.003707+00:00
+mistral,https://api.mistral.ai/v1,codestral-latest,direct,,,,0,0.163388359999999,http_error,"HTTP 401: {""detail"":""Unauthorized""}
+",2026-07-21T06:15:35.094149+00:00
+mistral,https://api.mistral.ai/v1,mistral-large-latest,direct,,,,0,0.16720271100007267,http_error,"HTTP 401: {""detail"":""Unauthorized""}
+",2026-07-21T06:15:35.114010+00:00
+mistral,https://api.mistral.ai/v1,mistral-nemo,direct,,,,0,0.13764344699984576,http_error,"HTTP 401: {""detail"":""Unauthorized""}
+",2026-07-21T06:15:35.159783+00:00
+mistral,https://api.mistral.ai/v1,mistral-small-latest,direct,,,,0,0.1636710090001543,http_error,"HTTP 401: {""detail"":""Unauthorized""}
+",2026-07-21T06:15:35.276307+00:00
+mistral,https://api.mistral.ai/v1,open-mistral-nemo,direct,,,,0,0.17463033600006383,http_error,"HTTP 401: {""detail"":""Unauthorized""}
+",2026-07-21T06:15:35.308066+00:00
+mistral,https://api.mistral.ai/v1,devstral-small-latest,direct,,,,0,0.15086349299986068,http_error,"HTTP 401: {""detail"":""Unauthorized""}
+",2026-07-21T06:15:35.329431+00:00
+openrouter,https://openrouter.ai/api/v1,deepseek/deepseek-chat,direct,,,,0,0.07812288800005263,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.373476+00:00
+openrouter,https://openrouter.ai/api/v1,meta-llama/llama-3.3-70b-instruct,direct,,,,0,0.04633048699997744,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.394446+00:00
+openrouter,https://openrouter.ai/api/v1,deepseek/deepseek-r1:free,direct,,,,0,0.047590379999974175,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.439451+00:00
+openrouter,https://openrouter.ai/api/v1,google/gemma-3-27b-it:free,direct,,,,0,0.030831216000024142,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.488706+00:00
+openrouter,https://openrouter.ai/api/v1,google/gemini-flash-1.5,direct,,,,0,0.2883009699999093,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.614903+00:00
+openrouter,https://openrouter.ai/api/v1,mistralai/mistral-small-3.1-24b-instruct:free,direct,,,,0,0.029810085000008257,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.663282+00:00
+openrouter,https://openrouter.ai/api/v1,deepseek/deepseek-chat:free,direct,,,,0,0.2717659669999648,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.684495+00:00
+openrouter,https://openrouter.ai/api/v1,qwen/qwen3-235b-a22b:free,direct,,,,0,0.044625394999911805,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.726658+00:00
+openrouter,https://openrouter.ai/api/v1,qwen/qwen3-32b:free,direct,,,,0,0.04478165699993042,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.747970+00:00
+openrouter,https://openrouter.ai/api/v1,qwen/qwen2.5-coder-32b:free,direct,,,,0,0.030811525999979494,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.797678+00:00
+openrouter,https://openrouter.ai/api/v1,qwen/qwen3-30b-a3b:free,direct,,,,0,0.0733939100000498,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:35.818926+00:00
+opencode_zen,https://opencode.ai/zen/v1,bigcode/pickle,direct,,,,0,0.0879965550000179,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model bigcode/pickle is not supported""}}",2026-07-21T06:15:35.904344+00:00
+opencode_zen,https://opencode.ai/zen/v1,minimax/m2.1,direct,,,,0,0.08795286100007615,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model minimax/m2.1 is not supported""}}",2026-07-21T06:15:35.925456+00:00
+opencode_zen,https://opencode.ai/zen/v1,moonshot/kimi-k2.5,direct,,,,0,0.07917269700010365,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model moonshot/kimi-k2.5 is not supported""}}",2026-07-21T06:15:36.002006+00:00
+opencode_zen,https://opencode.ai/zen/v1,trinity/large-preview,direct,,,,0,0.08012860000008004,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model trinity/large-preview is not supported""}}",2026-07-21T06:15:36.023990+00:00
+openrouter,https://openrouter.ai/api/v1,meta-llama/llama-3.3-70b-instruct:free,direct,,,,0,0.5575458299999809,http_error,"HTTP 401: {""error"":{""message"":""No cookie auth credentials found"",""code"":401}}",2026-07-21T06:15:36.065274+00:00
+opencode_zen,https://opencode.ai/zen/v1,zhipu/glm-4.7,direct,,,,0,0.0841909669998131,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model zhipu/glm-4.7 is not supported""}}",2026-07-21T06:15:36.105817+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,qwen3-coder-plus,direct,,,,0,1.4120142790000045,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""0cde3c8c-08c7-9ae3-bc36-b654a57fcc7a""}",2026-07-21T06:15:37.454536+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,glm-4.7,direct,,,,0,1.3512038280000525,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""21854f06-1383-900e-afa3-c212be285c07""}",2026-07-21T06:15:37.475489+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,kimi-k2.5,direct,,,,0,1.393171123000002,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""d818f2d6-4c2c-9290-9fd2-642f3b5e7ef4""}",2026-07-21T06:15:37.477120+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-3-nano-30b-a3b,direct,,0.49243478900007176,225.14195057873945,907,4.527819348000094,success,,2026-07-21T06:15:37.894602+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,MiniMax-M2.5,direct,,,,0,0.9502410499999314,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""0a270a8a-c0a7-9fa7-b38c-cc7ee754a9dc""}",2026-07-21T06:15:38.463428+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,glm-5,direct,high,,,0,0.9875976550001724,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""572f1cea-45d2-9637-90bb-c1fb3708af13""}",2026-07-21T06:15:38.484730+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,glm-5,direct,,,,0,1.0147147180000502,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""56f90e26-093c-9baf-b8e9-296cc99451ad""}",2026-07-21T06:15:38.488285+00:00
+kilo,https://api.kilo.ai/api/gateway,openrouter/free,direct,,0.8145405800000844,171.3754568828137,892,6.020919767000123,success,,2026-07-21T06:15:38.815253+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,qwen3-max-2026-01-23,direct,,,,0,0.997136232999992,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""eb9304ec-a896-9e5e-9d90-86c911b65147""}",2026-07-21T06:15:39.502717+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,qwen3-coder-next,direct,,,,0,1.015035515000136,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""cceefc4c-e82b-9a0e-9585-0e6eb0e9d7ca""}",2026-07-21T06:15:39.539249+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,qwen3.6-plus,direct,,,,0,1.0810864970001148,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""f2621371-fa18-9092-a023-998c2bc93fe7""}",2026-07-21T06:15:39.563799+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,qwen3-coder-plus,direct,,,,0,1.4295224509999116,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""beeecdef-d26d-9df0-8c11-5bc3c380bae4""}",2026-07-21T06:15:40.263691+00:00
+alibaba-coding-plan,https://coding-intl.dashscope.aliyuncs.com/v1,qwen3.5-plus,direct,,,,0,1.0349348260001534,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""525a4b25-e882-93cb-84ad-3030340d9203""}",2026-07-21T06:15:40.557077+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,kimi-k2.5,direct,,,,0,1.1932691459999205,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""f6680801-bf5b-9712-bd6e-2ed11e8c6b50""}",2026-07-21T06:15:40.731850+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,glm-4.7,direct,,,,0,1.1944133780000357,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""d934a4a5-abd9-9001-88d2-421c17704e24""}",2026-07-21T06:15:40.753059+00:00
+kilo,https://api.kilo.ai/api/gateway,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free,direct,,0.6674639440000192,106.50607659843308,793,8.120847914000024,success,,2026-07-21T06:15:41.049652+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,glm-5,direct,,,,0,1.2869130700000824,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""c484802b-cf69-9ba7-aaac-998026746fc2""}",2026-07-21T06:15:41.569688+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,glm-5,direct,high,,,0,1.0738605079998251,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""41c9b1a0-da96-9aa9-81b4-92f753007c4d""}",2026-07-21T06:15:41.824634+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,MiniMax-M2.5,direct,,,,0,1.1559168799999497,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""a1f3994b-7f20-96cb-923a-11bc14cb3682""}",2026-07-21T06:15:41.927278+00:00
+huggingface,https://router.huggingface.co/v1,zai-org/GLM-4.7-Flash,direct,,,,0,0.10213031900002534,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-07-21T06:15:41.964549+00:00
+huggingface,https://router.huggingface.co/v1,Qwen/Qwen3-235B-A22B,direct,,,,0,0.05164713099998153,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-07-21T06:15:42.013820+00:00
+huggingface,https://router.huggingface.co/v1,Qwen/Qwen3-32B,direct,,,,0,0.08136461999993116,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-07-21T06:15:42.065158+00:00
+huggingface,https://router.huggingface.co/v1,deepseek-ai/DeepSeek-R1,direct,,,,0,0.13432977999991635,http_error,"HTTP 401: {""error"":""Invalid username or password.""}",2026-07-21T06:15:42.166819+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,qwen3.6-plus,direct,,,,0,1.1147445470001003,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""65da3ecc-8501-93c1-ac76-9fe2d37494fd""}",2026-07-21T06:15:42.703093+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,qwen3-max-2026-01-23,direct,,,,0,1.3822963860000073,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""629b1caa-5c34-9b3f-a6d3-1ef624f9dc67""}",2026-07-21T06:15:43.225754+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,qwen3-coder-next,direct,,,,0,1.306011129000126,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""3c5ed67e-0727-97de-a724-1560dccd47ee""}",2026-07-21T06:15:43.251821+00:00
+modelscope,https://api-inference.modelscope.cn/v1,Qwen/Qwen3-30B-A3B-Thinking-2507,direct,,,,0,1.2471327129999281,http_error,"HTTP 401: {""error"":{""message"":""Authentication failed, please make sure that a valid ModelScope token is supplied."",""request_id"":""9594d1f1-abbf-4013-af98-0d8d69f4e15c""}}",2026-07-21T06:15:43.331746+00:00
+opencode,https://opencode.ai/zen/v1,glm-4.7-free,direct,,,,0,0.09853184799999326,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model glm-4.7-free is not supported""}}",2026-07-21T06:15:43.368908+00:00
+modelscope,https://api-inference.modelscope.cn/v1,Qwen/Qwen3-235B-A22B-Instruct-2507,direct,,,,0,1.2166682000001856,http_error,"HTTP 401: {""error"":{""message"":""Authentication failed, please make sure that a valid ModelScope token is supplied."",""request_id"":""fef1e533-1e71-4bd6-a5e2-51f67518f32f""}}",2026-07-21T06:15:43.402208+00:00
+opencode,https://opencode.ai/zen/v1,gpt-5-nano,direct,,,,0,0.080298823000021,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""AuthError"",""message"":""Missing API key.""}}",2026-07-21T06:15:43.469509+00:00
+opencode,https://opencode.ai/zen/v1,kimi-k2.5-free,direct,,,,0,0.12313513900016915,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model kimi-k2.5-free is not supported""}}",2026-07-21T06:15:43.490289+00:00
+opencode,https://opencode.ai/zen/v1,minimax-m2.5-free,direct,,,,0,0.09784974900003363,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model minimax-m2.5-free is not supported""}}",2026-07-21T06:15:43.518764+00:00
+opencode,https://opencode.ai/zen/v1,glm-5-free,direct,,,,0,0.07653200300001117,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model glm-5-free is not supported""}}",2026-07-21T06:15:43.614882+00:00
+opencode,https://opencode.ai/zen/v1,trinity-large-preview-free,direct,,,,0,0.12688449899997067,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model trinity-large-preview-free is not supported""}}",2026-07-21T06:15:43.636267+00:00
+opencode,https://opencode.ai/zen/v1,qwen3.6-plus-free,direct,,,,0,0.06931544999997641,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model qwen3.6-plus-free is not supported""}}",2026-07-21T06:15:43.724383+00:00
+opencode,https://opencode.ai/zen/v1,minimax-m2.1-free,direct,,,,0,0.11071747900018636,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model minimax-m2.1-free is not supported""}}",2026-07-21T06:15:43.744649+00:00
+opencode,https://opencode.ai/zen/v1,ling-2.6-flash-free,direct,,,,0,0.08217489200001182,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model ling-2.6-flash-free is not supported""}}",2026-07-21T06:15:43.825414+00:00
+opencode,https://opencode.ai/zen/v1,grok-code,direct,,,,0,0.08758441800000583,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model grok-code is not supported""}}",2026-07-21T06:15:43.851824+00:00
+alibaba-coding-plan-cn,https://coding.dashscope.aliyuncs.com/v1,qwen3.5-plus,direct,,,,0,1.1998840779999682,http_error,"HTTP 401: {""error"":{""code"":""invalid_api_key"",""message"":""invalid access token or token expired"",""param"":null,""type"":""invalid_request_error""},""request_id"":""70358100-9e2a-9f45-b372-b9aebcecb616""}",2026-07-21T06:15:43.922219+00:00
+opencode,https://opencode.ai/zen/v1,mimo-v2-flash-free,direct,,,,0,0.09859251800003221,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model mimo-v2-flash-free is not supported""}}",2026-07-21T06:15:43.942437+00:00
+opencode,https://opencode.ai/zen/v1,hy3-preview-free,direct,,,,0,0.09282593500006442,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model hy3-preview-free is not supported""}}",2026-07-21T06:15:43.963229+00:00
+modelscope,https://api-inference.modelscope.cn/v1,Qwen/Qwen3-Coder-30B-A3B-Instruct,direct,,,,0,1.227876576999961,http_error,"HTTP 401: {""error"":{""message"":""Authentication failed, please make sure that a valid ModelScope token is supplied."",""request_id"":""a4a485a6-6fd3-4f06-b0f5-7ad79e30a226""}}",2026-07-21T06:15:43.966530+00:00
+opencode,https://opencode.ai/zen/v1,mimo-v2-pro-free,direct,,,,0,0.13700533600012932,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model mimo-v2-pro-free is not supported""}}",2026-07-21T06:15:44.078003+00:00
+opencode,https://opencode.ai/zen/v1,nemotron-3-super-free,direct,,,,0,0.1378961679999975,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model nemotron-3-super-free is not supported""}}",2026-07-21T06:15:44.100531+00:00
+opencode,https://opencode.ai/zen/v1,mimo-v2-omni-free,direct,,,,0,0.11873618799995711,http_error,"HTTP 401: {""type"":""error"",""error"":{""type"":""ModelError"",""message"":""Model mimo-v2-omni-free is not supported""}}",2026-07-21T06:15:44.102460+00:00
+poe,https://api.poe.com/v1,gemma-4-31b,direct,,,,0,0.1573177550001219,http_error,"HTTP 401: {""error"": {""message"": ""Incorrect API key provided. You can find your API key at https://poe.com/api/keys."", ""type"": ""authentication_error"", ""code"": ""invalid_api_key""}}",2026-07-21T06:15:44.170560+00:00
+poe,https://api.poe.com/v1,gemma-4-31b-t,direct,,,,0,0.09514100299998063,http_error,"HTTP 401: {""error"": {""message"": ""Incorrect API key provided. You can find your API key at https://poe.com/api/keys."", ""type"": ""authentication_error"", ""code"": ""invalid_api_key""}}",2026-07-21T06:15:44.192595+00:00
+modelscope,https://api-inference.modelscope.cn/v1,Qwen/Qwen3-235B-A22B-Thinking-2507,direct,,,,0,1.2626150860000962,http_error,"HTTP 401: {""error"":{""message"":""Authentication failed, please make sure that a valid ModelScope token is supplied."",""request_id"":""de2402b6-6a94-4910-8535-a010707464aa""}}",2026-07-21T06:15:44.613305+00:00
+nvidia,https://integrate.api.nvidia.com/v1,minimaxai/minimax-m2.7,direct,,16.47235314699992,22.830215089300868,238,26.914561247999927,success,,2026-07-21T06:15:46.692225+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-3-nano-omni-30b-a3b-reasoning,direct,,0.7841385600002013,98.0723439573104,948,10.460009732000117,success,,2026-07-21T06:15:48.374206+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-4-340b-instruct,direct,,,,0,0.06068332599988935,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'b0fcd392-e905-4ab4-8eb9-aeae95c30b37': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:48.453864+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-4-340b-reward,direct,,,,0,0.0547601839998606,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'c53ee0e9-bad9-4e09-b365-52c9d6b71254': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:15:48.527150+00:00
+zanity,https://api.zanity.xyz/v1,claude-4.5-opus,direct,,,,0,0.10984701500001393,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:15:48.754163+00:00
+zanity,https://api.zanity.xyz/v1,chatgpt-4o-latest,direct,,,,0,0.1424444939998466,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:15:48.787675+00:00
+zanity,https://api.zanity.xyz/v1,claude-4-sonnet,direct,,,,0,0.10703083799990054,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:15:48.938294+00:00
+zanity,https://api.zanity.xyz/v1,claude-4.1-opus,direct,,,,0,0.12601233300006243,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:15:48.977345+00:00
+zanity,https://api.zanity.xyz/v1,claude-4.5-sonnet,direct,,,,0,0.30269420199988417,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:15:49.394953+00:00
+kilo,https://api.kilo.ai/api/gateway,kilo-auto/free,direct,,5.9513031420001425,173.82942216964298,2000,17.461239445000047,success,,2026-07-21T06:15:50.036310+00:00
+opencode,https://opencode.ai/zen/v1,big-pickle,direct,,1.3032552530000885,83.34072312831783,526,7.644918702000041,success,,2026-07-21T06:15:51.133424+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-mini-4b-instruct,direct,,0.15943991499989352,99.14759488427262,530,5.515428067999892,success,,2026-07-21T06:15:54.060989+00:00
+zanity,https://api.zanity.xyz/v1,command-a-03-2025,direct,,,,0,0.03113004900001215,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:15:55.965999+00:00
+zanity,https://api.zanity.xyz/v1,command-r-plus,direct,,,,0,0.025332187000003614,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:15:56.121668+00:00
+zanity,https://api.zanity.xyz/v1,command-r,direct,,,,0,0.028145987000016248,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:15:56.187196+00:00
+zanity,https://api.zanity.xyz/v1,deepseek-r1,direct,,,,0,0.028488100000004124,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:15:56.358240+00:00
+zanity,https://api.zanity.xyz/v1,deepseek-v3,direct,,,,0,0.027149525999902835,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:15:56.587863+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-nano-12b-v2-vl,direct,,0.11533385999996426,31.669093130971135,381,12.170494054000073,success,,2026-07-21T06:16:06.249739+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-nano-3-30b-a3b,direct,,,,0,0.2148457650000637,http_error,"HTTP 404: {""error"":{""message"":""Model not found"",""type"":""Not Found"",""code"":404}}",2026-07-21T06:16:06.482865+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nemotron-parse,direct,,,,0,0.5374245699999847,http_error,"HTTP 400: {""object"":""error"",""message"":""Expected exactly one message. Expected exactly one message."",""type"":""BadRequestError"",""param"":null,""code"":400}",2026-07-21T06:16:07.038817+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/neva-22b,direct,,,,0,0.05936286099995414,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'bc205f8e-1740-40df-8d32-c4321763498a': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:16:07.117361+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nv-embed-v1,direct,,,,0,0.026397746999919036,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:16:07.161979+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nv-embedcode-7b-v1,direct,,,,0,0.026735848000043916,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:16:07.206855+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nv-embedqa-e5-v5,direct,,,,0,0.10776905299985629,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:16:07.332929+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nv-embedqa-mistral-7b-v2,direct,,,,0,0.034737430999939534,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:16:07.385938+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nvclip,direct,,,,0,0.03556453800001691,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:16:07.439831+00:00
+nvidia,https://integrate.api.nvidia.com/v1,minimaxai/minimax-m2.7,direct,,16.195646591000013,28.350461028109734,261,25.402470509000068,success,,2026-07-21T06:16:12.095831+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/vila,direct,,,,0,0.049920230999987325,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '1c8df143-2303-419b-8b28-b4dd82cfe113': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:16:12.164117+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1,direct,,0.2614038240001264,9.187716786513679,616,67.30794341900014,success,,2026-07-21T06:16:31.504245+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/microsoft/phi-3-vision-128k-instruct,direct,,,,0,0.006194163999907687,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.036248+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/microsoft/kosmos-2,direct,,,,0,0.024718600000142033,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.038564+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/microsoft/phi-3.5-moe-instruct,direct,,,,0,0.0059873679999782325,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.144768+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/minimaxai/minimax-m2.5,direct,,,,0,0.03078200699997069,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.147175+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/devstral-2-123b-instruct-2512,direct,,,,0,0.028266170999813767,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.479803+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/codestral-22b-instruct-v0.1,direct,,,,0,0.014141965999897366,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.482008+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mistral-7b-instruct-v0.3,direct,,,,0,0.019423971999913192,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.519212+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mistral-large,direct,,,,0,0.025094341000112763,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.543512+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mistral-large-2-instruct,direct,,,,0,0.035334617999978946,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.572873+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mistral-medium-3-instruct,direct,,,,0,0.021932680999952936,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.594019+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mixtral-8x22b-instruct-v0.1,direct,,,,0,0.006773956999950315,http_error,[Errno -2] Name or service not known,2026-07-21T06:16:32.599351+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1.5,direct,,0.5503673020000406,33.10333271062076,2000,60.967696814999954,success,,2026-07-21T06:16:33.346669+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/nvidia-nemotron-nano-9b-v2,direct,,0.17875636500002656,66.95214170268733,2032,30.529282947999945,success,,2026-07-21T06:16:37.987364+00:00
+nvidia,https://integrate.api.nvidia.com/v1,openai/gpt-oss-20b,direct,,0.2366825990000052,205.56854233901635,1303,6.582299063000164,success,,2026-07-21T06:16:38.105012+00:00
+kilo,https://api.kilo.ai/api/gateway,poolside/laguna-m.1:free,direct,,1.1366743559999577,20.363718421106146,1342,67.09455227400008,success,,2026-07-21T06:16:39.956825+00:00
+zanity,https://api.zanity.xyz/v1,deepseek-v4-pro,direct,,,,0,0.10711148999985198,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:16:53.204956+00:00
+zanity,https://api.zanity.xyz/v1,gemini-2.5-flash,direct,,,,0,0.1217354590000923,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:16:53.391443+00:00
+zanity,https://api.zanity.xyz/v1,gemini-2.5-pro-exp-05-06,direct,,,,0,0.11414053399994373,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:16:53.424042+00:00
+zanity,https://api.zanity.xyz/v1,gemini-3-pro,direct,,,,0,0.11231633800002783,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:16:53.425255+00:00
+zanity,https://api.zanity.xyz/v1,deepseek-v3.1,direct,,,,0,0.30398364200004835,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:16:53.597001+00:00
+lotte-library,https://api.lotte-library.top/v1,Claude Opus 4.6,direct,,,,0,0.5461344610000651,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616538827483508268d9d6sfe1gBT9)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:53.990512+00:00
+lotte-library,https://api.lotte-library.top/v1,claude-4.6-opus,direct,,,,0,0.5358690969999316,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616544409813208268d9d6RKa8lDgq)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:54.545346+00:00
+lotte-library,https://api.lotte-library.top/v1,claude-4.6-sonnet,direct,,,,0,0.5034367739999652,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model claude-4.6-sonnet under group default (distributor) (request id: 202607210616549649717138268d9d6oZgGlXka)"",""type"":""new_api_error""}}",2026-07-21T06:16:55.067147+00:00
+lotte-library,https://api.lotte-library.top/v1,claude-4.5-haiku,direct,,,,0,1.5707936650001102,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 20260721061655842801968268d9d6vwOCKu0f)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:55.186155+00:00
+lotte-library,https://api.lotte-library.top/v1,claude-4.7-opus,direct,,,,0,0.5318456840000181,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616555138599338268d9d64kRlq0j4)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:55.617277+00:00
+lotte-library,https://api.lotte-library.top/v1,claude-opus-4-6,direct,,,,0,0.5930601820000447,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model claude-opus-4-6 under group default (distributor) (request id: 202607210616561262855248268d9d6Na0sEodv)"",""type"":""new_api_error""}}",2026-07-21T06:16:56.228380+00:00
+lotte-library,https://api.lotte-library.top/v1,claude-haiku-4-5-20251001,direct,,,,0,1.499587732000009,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model claude-haiku-4-5-20251001 under group default (distributor) (request id: 202607210616566033148578268d9d68uedEvzB)"",""type"":""new_api_error""}}",2026-07-21T06:16:56.703943+00:00
+lotte-library,https://api.lotte-library.top/v1,claude-opus-4-7,direct,,,,0,0.5290906340001129,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616566723854348268d9d64Ji5Ro5l)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:56.775744+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-chat,direct,,,,0,0.5181941890000417,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616572099363528268d9d6Q0WSncat)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:57.312297+00:00
+lotte-library,https://api.lotte-library.top/v1,claude-sonnet-4-6,direct,,,,0,0.610048764000112,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model claude-sonnet-4-6 under group default (distributor) (request id: 202607210616572300974458268d9d6Nl57RhCN)"",""type"":""new_api_error""}}",2026-07-21T06:16:57.332350+00:00
+lotte-library,https://api.lotte-library.top/v1,DeepSeek-Kimi,direct,,,,0,0.5245542800000749,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616577525202948268d9d6UZhH9sfu)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:57.855362+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-ocr,direct,,,,0,0.5254385370001273,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616577710118978268d9d6WMUKcMUb)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:57.875773+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-r1,direct,,,,0,0.7701100740000584,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616585412590828268d9d6r7CypkHL)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:58.644017+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-r1-250120,direct,,,,0,0.5161864459998924,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model deepseek-r1-250120 under group default (distributor) (request id: 20260721061659796805298268d9d68cCDdHN4)"",""type"":""new_api_error""}}",2026-07-21T06:16:59.179610+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-r1-250528,direct,,,,0,0.7627861189998839,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210616598563423348268d9d6VG6T4m7m)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:16:59.960854+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3.5-397b-a17b,direct,,19.467863644999852,53.71603011201665,153,22.317361283999844,success,,2026-07-21T06:17:00.323634+00:00
+zanity,https://api.zanity.xyz/v1,gemini-3.1-pro,direct,,,,0,0.0103599189999386,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:17:00.355021+00:00
+zanity,https://api.zanity.xyz/v1,glm-5.1,direct,,,,0,0.05558414000006451,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:17:00.402234+00:00
+zanity,https://api.zanity.xyz/v1,glm-5,direct,,,,0,0.0542522519999693,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:17:00.404164+00:00
+zanity,https://api.zanity.xyz/v1,gpt-3.5-turbo,direct,,,,0,0.055665400999941994,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:17:00.406912+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-reasoner,direct,,,,0,0.49948760400002357,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617003703055508268d9d6AyGsPMfD)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:00.478833+00:00
+lotte-library,https://api.lotte-library.top/v1,DeepSeek-v3,direct,,,,0,0.7888467280001805,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 20260721061701821820838268d9d6tiFbARM4)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:01.184282+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v3-250324,direct,,,,0,0.7375645639999675,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617011360513628268d9d6LDk2hWkl)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:01.238093+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v3-0324,direct,,,,0,0.8213094850000289,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617011578289228268d9d6HH4nELNd)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:01.262632+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v3.1-terminus,direct,,,,0,0.5250888269999905,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617016786380178268d9d6EuOxk7Ur)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:01.781394+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v3.1,direct,,,,0,0.5837511290001203,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617016838273198268d9d68JbzCfGG)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:01.786476+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v3.1-thinking,direct,,,,0,1.1389921309998954,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617023154906798268d9d6gztyowZG)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:02.419445+00:00
+zanity,https://api.zanity.xyz/v1,glm-5,direct,high,,,0,0.026969979000114108,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:17:03.421878+00:00
+nvidia,https://integrate.api.nvidia.com/v1,nvidia/llama-3.1-nemotron-nano-8b-v1,direct,,,,0,117.14687981599991,timeout,Timeout after 60s,2026-07-21T06:17:03.627837+00:00
+nvidia,https://integrate.api.nvidia.com/v1,snowflake/arctic-embed-l,direct,,,,0,0.02727444100014509,http_error,"HTTP 404: 404 page not found
+",2026-07-21T06:17:03.673142+00:00
+lotte-library,https://api.lotte-library.top/v1,DeepSeek-R1-0528,direct,,,,0,1.0136129439999877,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617045561580588268d9d6NTrQhsZm)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:04.660157+00:00
+zanity,https://api.zanity.xyz/v1,gpt-4.1,direct,,,,0,0.13234439699999712,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:10.707518+00:00
+zanity,https://api.zanity.xyz/v1,gpt-4.1-mini,direct,,,,0,0.1382624149998719,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:10.710326+00:00
+zanity,https://api.zanity.xyz/v1,gpt-4o,direct,,,,0,0.13908159799984787,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:10.713192+00:00
+zanity,https://api.zanity.xyz/v1,gpt-4,direct,,,,0,0.14143367900010162,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:10.714151+00:00
+nvidia,https://integrate.api.nvidia.com/v1,stepfun-ai/step-3.5-flash,direct,,0.3125055100001646,54.07543882697027,566,10.779838340000197,success,,2026-07-21T06:17:14.471019+00:00
+nvidia,https://integrate.api.nvidia.com/v1,openai/gpt-oss-120b,direct,,,,0,60.01854048699988,timeout,Timeout after 60s,2026-07-21T06:17:19.811508+00:00
+nvidia,https://integrate.api.nvidia.com/v1,writer/palmyra-creative-122b,direct,,,,0,0.06075858799999878,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '00bdd0a7-e38f-4423-9007-c4d8730a3f78': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:17:19.890816+00:00
+nvidia,https://integrate.api.nvidia.com/v1,writer/palmyra-fin-70b-32k,direct,,,,0,0.15216324300013184,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '316490c6-f1ed-41f9-9da8-3fa9e885653b': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:17:20.061320+00:00
+nvidia,https://integrate.api.nvidia.com/v1,writer/palmyra-med-70b,direct,,,,0,1.328892259999975,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'aab71274-5281-4941-b0b8-20f339d1fc7e': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:17:21.408909+00:00
+nvidia,https://integrate.api.nvidia.com/v1,writer/palmyra-med-70b-32k,direct,,,,0,0.0917824840000776,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function 'd6faa974-3591-49a4-963d-97221d074b2e': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:17:21.519065+00:00
+nvidia,https://integrate.api.nvidia.com/v1,zyphra/zamba2-7b-instruct,direct,,,,0,0.06574186700004248,http_error,"HTTP 404: {""status"":404,""title"":""Not Found"",""detail"":""Function '8378ffb2-51b0-4140-9684-dda1889373e6': Not found for account 'ic_VSgb-YiSl3nLcdfIRkxUBiQWJj-ZMZxd58HnAWd0'""}",2026-07-21T06:17:21.603748+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3.5-397b-a17b,direct,,21.967717968999978,26.029454125804737,150,27.730999280999868,success,,2026-07-21T06:17:28.056841+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mixtral-8x7b-instruct-v0.1,direct,,,,0,0.04376112399995691,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.096397+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/mistralai/mixtral-8x22b-v0.1,direct,,,,0,0.029644317000020237,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.098581+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/moonshotai/kimi-k2-instruct-0905,direct,,,,0,0.011530087999972238,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.189469+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/moonshotai/kimi-k2.5,direct,,,,0,0.030026797999880728,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.191709+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nv-mistralai/mistral-nemo-12b-instruct,direct,,,,0,0.027854542000113724,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.540293+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/cosmos-reason2-8b,direct,,,,0,0.06309481199991751,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.559301+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/embed-qa-4,direct,,,,0,0.020216251999954693,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.578971+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/gliner-pii,direct,,,,0,0.02027429800000391,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.597982+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.1-nemotron-51b-instruct,direct,,,,0,0.02012777200002347,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.617389+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.1-nemotron-70b-instruct,direct,,,,0,0.019932743000026676,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.636479+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.1-nemotron-ultra-253b-v1,direct,,,,0,0.005914432000054148,http_error,[Errno -2] Name or service not known,2026-07-21T06:17:32.641388+00:00
+nvidia,https://integrate.api.nvidia.com/v1,upstage/solar-10.7b-instruct,direct,,0.1939878509999744,32.20073990872076,594,18.671942818999923,success,,2026-07-21T06:17:33.161573+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3-next-80b-a3b-instruct,direct,,,,0,60.02002986299999,timeout,Timeout after 60s,2026-07-21T06:17:33.385008+00:00
+nvidia,https://integrate.api.nvidia.com/v1,sarvamai/sarvam-m,direct,,0.20467532799989385,26.660767841383795,1575,59.31469340599983,success,,2026-07-21T06:17:37.438101+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v3.2-exp,direct,,,,0,0.566930462000073,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617544702899868268d9d6V2cdjLek)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:54.575485+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v3.2,direct,,,,0,0.5536387090000972,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617544688773468268d9d6JBthWmfC)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:54.578470+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v4-flash,direct,,,,0,0.541273116000184,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617544823193088268d9d6JNJTtuS5)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:54.582399+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v3.2-thinking,direct,,,,0,0.5332986860000801,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model deepseek-v3.2-thinking under group default (distributor) (request id: 202607210617544880616508268d9d6Iv8O6RJR)"",""type"":""new_api_error""}}",2026-07-21T06:17:54.590625+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-2.5-pro,direct,,,,0,0.5354346789999909,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617555473463478268d9d6J5R8YnIG)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:55.652095+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3-flash,direct,,,,0,0.5641683150001882,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617555576054268268d9d6Lu1Y9x1t)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:55.664768+00:00
+lotte-library,https://api.lotte-library.top/v1,deepseek-v4-pro,direct,,,,0,0.5350040130001616,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617555600016418268d9d6g2hW4yK1)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:55.667705+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-2.5-flash,direct,,,,0,0.5871782970000368,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617555622139628268d9d6sOe14FTH)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:55.671414+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3.5-397b-a17b,direct,,25.05331259200011,51.53407822472119,150,27.964482868000005,success,,2026-07-21T06:17:56.022713+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3-pro-high,direct,,,,0,0.5310903279998911,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model gemini-3-pro-high under group default (distributor) (request id: 202607210617566874785568268d9d6zauFNRuv)"",""type"":""new_api_error""}}",2026-07-21T06:17:56.792432+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3.0-flash-preview,direct,,,,0,0.5199193939999986,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617566916045468268d9d6cZiPf5jl)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:56.797414+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3-pro-preview,direct,,,,0,0.5553132679999635,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model gemini-3-pro-preview under group default (distributor) (request id: 202607210617566980976478268d9d68ZXGU8LX)"",""type"":""new_api_error""}}",2026-07-21T06:17:56.800468+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3-flash-preview,direct,,,,0,0.5090662490001705,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617566962616108268d9d6YNBnnnCD)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:56.802620+00:00
+zanity,https://api.zanity.xyz/v1,gpt-5.1-chat,direct,,,,0,0.11378293000007034,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:57.654273+00:00
+zanity,https://api.zanity.xyz/v1,gpt-5.2,direct,,,,0,0.11569695399998636,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:57.656950+00:00
+zanity,https://api.zanity.xyz/v1,gpt-4o:free,direct,,,,0,0.11343329700002869,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:57.659169+00:00
+zanity,https://api.zanity.xyz/v1,gpt-5,direct,,,,0,0.11507876000018769,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:57.661406+00:00
+zanity,https://api.zanity.xyz/v1,gpt-5,direct,high,,,0,0.10766705599985471,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:17:57.838478+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3.0-pro-preview,direct,,,,0,0.5481307259999539,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model gemini-3.0-pro-preview under group default (distributor) (request id: 202607210617577920605458268d9d6nweKPnX8)"",""type"":""new_api_error""}}",2026-07-21T06:17:57.893563+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3.1-pro-high,direct,,,,0,0.5284018199999991,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model gemini-3.1-pro-high under group default (distributor) (request id: 202607210617578055880288268d9d62trtALKF)"",""type"":""new_api_error""}}",2026-07-21T06:17:57.906003+00:00
+lotte-library,https://api.lotte-library.top/v1,Gemini-3.0-Pro,direct,,,,0,0.5555220419998932,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model Gemini-3.0-Pro under group default (distributor) (request id: 202607210617578153384088268d9d6ViVfsVsN)"",""type"":""new_api_error""}}",2026-07-21T06:17:57.917050+00:00
+lotte-library,https://api.lotte-library.top/v1,Gemini-3.1-Pro,direct,,,,0,0.5900772359998427,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617578131494968268d9d6GlPa2bqZ)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:57.919345+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3.1-pro-low,direct,,,,0,0.5658594559999983,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617591218755288268d9d6ONZOLgHR)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:59.227008+00:00
+lotte-library,https://api.lotte-library.top/v1,glm-5,direct,,,,0,0.5439546229999905,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617591330788738268d9d6nHIY4sq8)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:59.237296+00:00
+lotte-library,https://api.lotte-library.top/v1,gemini-3.1-pro-preview,direct,,,,0,0.5308087490000162,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617591367030568268d9d6TpBLwzA7)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:59.240263+00:00
+lotte-library,https://api.lotte-library.top/v1,glm-4.7,direct,,,,0,0.5653544490000968,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210617591354770858268d9d69y39eEzp)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:17:59.242701+00:00
+lotte-library,https://api.lotte-library.top/v1,glm-5.1,direct,,,,0,0.632976693999808,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618005088041848268d9d6f5QGLxIE)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:00.611585+00:00
+lotte-library,https://api.lotte-library.top/v1,glm-5v-turbo,direct,,,,0,0.6241030470000624,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618005158443998268d9d69mK6nkCS)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:00.618887+00:00
+lotte-library,https://api.lotte-library.top/v1,glm-5-thinking,direct,,,,0,0.7959471540000322,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model glm-5-thinking under group default (distributor) (request id: 202607210618007064843968268d9d6gMMaThzp)"",""type"":""new_api_error""}}",2026-07-21T06:18:00.806720+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5,direct,,,,0,0.5056335859999308,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618016226249768268d9d64U8kIgQ9)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:01.723923+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5,direct,high,,,0,0.5387788950001777,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618016373522298268d9d6t7ly92o3)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:01.740851+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5-codex,direct,,,,0,0.5110789459999978,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618016423835098268d9d6jC8y6qcG)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:01.745423+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5-codex-mini,direct,,,,0,0.520686324000053,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618022437170808268d9d6yYnhmqkr)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:02.351356+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.1,direct,,,,0,0.5395542680000744,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618022482200228268d9d6AS6VKrFM)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:02.354173+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5-mini,direct,,,,0,0.5609031379999578,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618022572228798268d9d67VmsDxbW)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:02.359397+00:00
+lotte-library,https://api.lotte-library.top/v1,glm-5,direct,high,,,0,0.16776107000009688,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618026856612428268d9d67BhHHFhb)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:02.786098+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.1-codex-mini,direct,,,,0,0.5346735220000483,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618028868124288268d9d6h3ZsLVum)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:02.988205+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.1-codex-max,direct,,,,0,0.5558035779999955,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618028907034578268d9d6oA44Q8ba)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:02.993264+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.1-codex,direct,,,,0,0.5458212809999168,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618029063143178268d9d6xcqjHySD)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:03.015511+00:00
+zanity,https://api.zanity.xyz/v1,grok-4,direct,,,,0,0.01311680100002377,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:18:04.757352+00:00
+zanity,https://api.zanity.xyz/v1,grok-4-1-fast,direct,,,,0,0.015738539000039964,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:18:04.760278+00:00
+zanity,https://api.zanity.xyz/v1,grok-4-1-fast-non-reasoning,direct,,,,0,0.018937529000140785,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:18:04.762688+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.2-codex,direct,,,,0,0.5625138640000387,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618051630166898268d9d6NCdSRKYW)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:05.274269+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.2-chat-latest,direct,,,,0,0.6047526629999993,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618051789538948268d9d6XEb8qaw3)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:05.284001+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.2-chat,direct,,,,0,0.5594470219998584,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618051801517228268d9d6EGrPf02K)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:05.287513+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.2,direct,,,,0,0.5951894980000816,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618051794119258268d9d6u8XNw7mX)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:05.290718+00:00
+zanity,https://api.zanity.xyz/v1,grok-fun,direct,,,,0,0.02859411400004319,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:18:07.805681+00:00
+zanity,https://api.zanity.xyz/v1,grok-4,direct,high,,,0,0.033061142999940785,http_error,"HTTP 429: <!doctype html>
+<!--[if lt IE 7]> <html class=""no-js ie6 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 7]>    <html class=""no-js ie7 oldie"" lang=""en-US""> <![endif]-->
+<!--[if IE 8]>    <html class=""no-js ie8 oldie"" lang=""en-US""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=""no-js"" lang=""en-US"">
+  ",2026-07-21T06:18:07.809535+00:00
+zanity,https://api.zanity.xyz/v1,llama-3.1-8b-instruct,direct,,,,0,0.10829596900020988,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:18:18.081305+00:00
+zanity,https://api.zanity.xyz/v1,llama-3.1-70b-instruct,direct,,,,0,0.1119877930000257,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:18:18.084227+00:00
+zanity,https://api.zanity.xyz/v1,llama-3-70b-instruct,direct,,,,0,0.11282572200002505,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:18:18.087812+00:00
+zanity,https://api.zanity.xyz/v1,llama-3-8b-instruct,direct,,,,0,0.10815944299997682,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:18:18.088858+00:00
+zanity,https://api.zanity.xyz/v1,llama-3.1-nemotron-70b,direct,,,,0,0.11060365399998773,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:18:18.274292+00:00
+nvidia,https://integrate.api.nvidia.com/v1,qwen/qwen3.5-397b-a17b,direct,,30.031366919999982,44.44440168486194,153,33.47456973600015,success,,2026-07-21T06:18:29.498513+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.2-nemoretriever-1b-vlm-embed-v1,direct,,,,0,0.04368103299998438,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.176663+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.2-nemoretriever-300m-embed-v1,direct,,,,0,0.06219925200002763,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.178909+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.2-nv-embedqa-1b-v2,direct,,,,0,0.049003551999931005,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.255728+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-3.2-nv-embedqa-1b-v1,direct,,,,0,0.034981701000106113,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.257994+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-nemotron-embed-1b-v2,direct,,,,0,0.0323186280002119,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.605702+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama-nemotron-embed-vl-1b-v2,direct,,,,0,0.06034362200011856,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.617522+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/mistral-nemo-minitron-8b-8k-instruct,direct,,,,0,0.02913346399986949,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.681042+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/llama3-chatqa-1.5-70b,direct,,,,0,0.0475020129999848,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.683076+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemotron-4-340b-instruct,direct,,,,0,0.025954714000135937,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.743534+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemoretriever-parse,direct,,,,0,0.044287700000040786,http_error,[Errno -2] Name or service not known,2026-07-21T06:18:32.745500+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.4-mini,direct,,,,0,0.5465702379999584,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 20260721061855845374558268d9d6GXrgB6Ba)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:55.193357+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.5,direct,,,,0,0.5821203460000106,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 20260721061855809929698268d9d6kXcztGv6)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:55.196434+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.4,direct,,,,0,0.5423245810000026,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 20260721061855835508198268d9d6y2qwNprk)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:55.205314+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-5.3-codex,direct,,,,0,0.5780606230000558,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618551010745328268d9d6nUNX8SVk)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:55.208694+00:00
+lotte-library,https://api.lotte-library.top/v1,gpt-image-2,direct,,,,0,0.5111248450000403,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model gpt-image-2 under group default (distributor) (request id: 202607210618561152159078268d9d6H7wTQrEX)"",""type"":""new_api_error""}}",2026-07-21T06:18:56.229950+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4,direct,high,,,0,0.5632716430000073,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618561181800158268d9d67FPiPtmF)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:56.232893+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-3,direct,,,,0,0.550310958999944,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618561270788858268d9d634EKOLAv)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:56.236392+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4,direct,,,,0,0.5361298390000684,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618561226881778268d9d6N3dkqJcy)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:56.238653+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4.20-0309-non-reasoning,direct,,,,0,0.5621644339998966,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618572656104478268d9d6jYzyYk55)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:57.372409+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4.20-0309-reasoning-super,direct,,,,0,0.5253762880001887,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-4.20-0309-reasoning-super under group default (distributor) (request id: 202607210618572815584418268d9d6tyuyKL8l)"",""type"":""new_api_error""}}",2026-07-21T06:18:57.383956+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4.20-0309-non-reasoning-super,direct,,,,0,0.5601367990000199,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-4.20-0309-non-reasoning-super under group default (distributor) (request id: 202607210618572842163238268d9d6CcxVFXYf)"",""type"":""new_api_error""}}",2026-07-21T06:18:57.386603+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4.1-fast,direct,,,,0,0.5571105940000507,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618572986559598268d9d67gEI9h7s)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:57.399675+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4.20-expert,direct,,,,0,0.636588114999995,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-4.20-expert under group default (distributor) (request id: 202607210618584464432368268d9d6otvP6Egc)"",""type"":""new_api_error""}}",2026-07-21T06:18:58.546539+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4.20-auto,direct,,,,0,0.6160650669999086,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-4.20-auto under group default (distributor) (request id: 202607210618584569965048268d9d6GPXgBUwo)"",""type"":""new_api_error""}}",2026-07-21T06:18:58.558590+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4.20-0309-super,direct,,,,0,0.6072981240001809,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-4.20-0309-super under group default (distributor) (request id: 202607210618584649371878268d9d6npuixA7h)"",""type"":""new_api_error""}}",2026-07-21T06:18:58.565906+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-4.20-fast,direct,,,,0,0.6461790270000165,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210618584659677818268d9d6ICMOpujZ)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:18:58.572512+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-imagine-image-edit,direct,,,,0,0.6480879430000641,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-imagine-image-edit under group default (distributor) (request id: 202607210618598039300648268d9d6gp3ae48G)"",""type"":""new_api_error""}}",2026-07-21T06:18:59.908755+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-imagine-1.0-fast,direct,,,,0,0.6350692119999621,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-imagine-1.0-fast under group default (distributor) (request id: 202607210618598088582708268d9d69RQqnAmm)"",""type"":""new_api_error""}}",2026-07-21T06:18:59.911727+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-imagine-image,direct,,,,0,0.6682442880000963,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-imagine-image under group default (distributor) (request id: 202607210618598086182988268d9d6mXO5WUVV)"",""type"":""new_api_error""}}",2026-07-21T06:18:59.912739+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-imagine-1.0,direct,,,,0,0.8230041619999611,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-imagine-1.0 under group default (distributor) (request id: 20260721061900147183868268d9d65XdLUNtj)"",""type"":""new_api_error""}}",2026-07-21T06:19:00.115649+00:00
+lotte-library,https://api.lotte-library.top/v1,kimi-k2-instruct,direct,,,,0,0.5355128870000954,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 20260721061901612316278268d9d68poSvUI3)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:01.164249+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-imagine-video,direct,,,,0,0.538657996999973,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-imagine-video under group default (distributor) (request id: 20260721061901810264848268d9d6HIvw8APT)"",""type"":""new_api_error""}}",2026-07-21T06:19:01.183616+00:00
+lotte-library,https://api.lotte-library.top/v1,grok-imagine-image-pro,direct,,,,0,0.5090354690000822,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model grok-imagine-image-pro under group default (distributor) (request id: 20260721061901834130558268d9d6zlKGg2s5)"",""type"":""new_api_error""}}",2026-07-21T06:19:01.186168+00:00
+lotte-library,https://api.lotte-library.top/v1,kimi-k2-instruct-0905,direct,,,,0,0.5274812109998948,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 20260721061901836004598268d9d6Ud7Owr8p)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:01.188555+00:00
+zanity,https://api.zanity.xyz/v1,llama-3.2-90b-vision-instruct,direct,,,,0,0.10858242999984213,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:02.080469+00:00
+zanity,https://api.zanity.xyz/v1,llama-3.2-3b-instruct,direct,,,,0,0.10926762200006124,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:02.091880+00:00
+zanity,https://api.zanity.xyz/v1,llama-3.3-70b-instruct,direct,,,,0,0.11123184600000968,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:02.094205+00:00
+zanity,https://api.zanity.xyz/v1,llama-3.2-1b-instruct,direct,,,,0,0.11109472400016784,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:02.096310+00:00
+zanity,https://api.zanity.xyz/v1,llama-3.2-11b-vision-instruct,direct,,,,0,0.11250443799985987,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:02.098475+00:00
+lotte-library,https://api.lotte-library.top/v1,kimi-k2.5,direct,,,,0,0.5327592800001639,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619022038212938268d9d61InXntvZ)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:02.307119+00:00
+lotte-library,https://api.lotte-library.top/v1,minimax-m2.1,direct,,,,0,0.5676778279998871,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model minimax-m2.1 under group default (distributor) (request id: 202607210619022066670358268d9d69YChoobM)"",""type"":""new_api_error""}}",2026-07-21T06:19:02.309843+00:00
+lotte-library,https://api.lotte-library.top/v1,kimi-k2-thinking,direct,,,,0,0.5327072229999885,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619022198984428268d9d6oq1g3SL2)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:02.323047+00:00
+lotte-library,https://api.lotte-library.top/v1,minimax-m2,direct,,,,0,0.5672135810000327,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model minimax-m2 under group default (distributor) (request id: 202607210619022209099238268d9d67rTjaSHP)"",""type"":""new_api_error""}}",2026-07-21T06:19:02.325579+00:00
+lotte-library,https://api.lotte-library.top/v1,minimax-m2.7,direct,,,,0,0.5419072790000428,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619028203784398268d9d6Ap0OHbIb)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:02.926565+00:00
+lotte-library,https://api.lotte-library.top/v1,minimax-m2.7-highspeed,direct,,,,0,0.5628528270001425,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model minimax-m2.7-highspeed under group default (distributor) (request id: 202607210619028236375578268d9d6OZdV1Tql)"",""type"":""new_api_error""}}",2026-07-21T06:19:02.931349+00:00
+lotte-library,https://api.lotte-library.top/v1,moonshotai/kimi-k2-0905 (Lotte),direct,,,,0,0.5334685610000633,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model moonshotai/kimi-k2-0905 (Lotte) under group default (distributor) (request id: 202607210619028272092278268d9d6aHHkuMAZ)"",""type"":""new_api_error""}}",2026-07-21T06:19:02.934250+00:00
+lotte-library,https://api.lotte-library.top/v1,minimax-m2.5,direct,,,,0,0.5185108549999313,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619028265872728268d9d6211udRfS)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:02.935326+00:00
+lotte-library,https://api.lotte-library.top/v1,qwen3-32b,direct,,,,0,0.5334281449997889,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619034689379448268d9d6VNoDQVbS)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:03.570867+00:00
+lotte-library,https://api.lotte-library.top/v1,qwen3-235b-a22b,direct,,,,0,0.5379767290000927,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model qwen3-235b-a22b under group default (distributor) (request id: 202607210619034846783928268d9d6KCpx4Tcf)"",""type"":""new_api_error""}}",2026-07-21T06:19:03.591435+00:00
+lotte-library,https://api.lotte-library.top/v1,qwen3-coder-480b-a35b-instruct,direct,,,,0,0.5739669429999594,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619034895106578268d9d6ngxaHIaL)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:03.595356+00:00
+lotte-library,https://api.lotte-library.top/v1,qwen3-vl-235b-a22b-thinking,direct,,,,0,0.5925158279999323,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619034882409928268d9d6COyARPHj)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:03.597651+00:00
+lotte-library,https://api.lotte-library.top/v1,流式抗截断/gemini-2.5-flash (Lotte),direct,,,,0,0.5601483279999684,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model 流式抗截断/gemini-2.5-flash (Lotte) under group default (distributor) (request id: 202607210619057508259888268d9d6NVEmjhn7)"",""type"":""new_api_error""}}",2026-07-21T06:19:05.850926+00:00
+lotte-library,https://api.lotte-library.top/v1,次gpt-5.4,direct,,,,0,0.5538349549999566,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619057602848368268d9d6uChuc0kN)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:05.860775+00:00
+lotte-library,https://api.lotte-library.top/v1,qwen3-vl-32b-instruct,direct,,,,0,0.5262633199999982,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619057639890858268d9d6nlwVGyrd)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:05.865184+00:00
+lotte-library,https://api.lotte-library.top/v1,次gpt-5.2,direct,,,,0,0.5445150860000467,http_error,"HTTP 403: {""error"":{""message"":""用户额度不足, 剩余额度: ＄0.000000 (request id: 202607210619057646689298268d9d6KnGebd3V)"",""type"":""new_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-21T06:19:05.867457+00:00
+zanity,https://api.zanity.xyz/v1,llama-4-maverick,direct,,,,0,0.10858956399988529,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:09.199312+00:00
+zanity,https://api.zanity.xyz/v1,llama-4-scout,direct,,,,0,0.11359766500004298,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:09.203731+00:00
+zanity,https://api.zanity.xyz/v1,mistral-medium,direct,,,,0,0.11448134500005835,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:09.411868+00:00
+zanity,https://api.zanity.xyz/v1,sonar-pro,direct,,,,0,0.11399598599996352,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:09.414868+00:00
+zanity,https://api.zanity.xyz/v1,sonar,direct,,,,0,0.3088264660000277,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:09.609332+00:00
+zanity,https://api.zanity.xyz/v1,zanity-rp-large,direct,,,,0,0.10575629899994965,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:22.475162+00:00
+zanity,https://api.zanity.xyz/v1,sonar-reasoning,direct,,,,0,0.11043210899993028,http_error,"HTTP 500: {""statusCode"":500,""code"":""FST_REPLY_FROM_INTERNAL_SERVER_ERROR"",""error"":""Internal Server Error"",""message"":""""}",2026-07-21T06:19:22.488010+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemotron-nano-3-30b-a3b,direct,,,,0,0.03190022800004044,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.251756+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemotron-4-340b-reward,direct,,,,0,0.050753041000007215,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.254056+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/neva-22b,direct,,,,0,0.04558004199998322,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.318325+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nemotron-parse,direct,,,,0,0.031246538000004875,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.320346+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nv-embed-v1,direct,,,,0,0.036595672999965245,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.676720+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nv-embedcode-7b-v1,direct,,,,0,0.055064051000044856,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.678951+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nv-embedqa-e5-v5,direct,,,,0,0.025908488999903057,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.740213+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nv-embedqa-mistral-7b-v2,direct,,,,0,0.044349828000122216,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.742313+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nvidia-nemotron-nano-9b-v2,direct,,,,0,0.0326805479999166,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.809272+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/nvclip,direct,,,,0,0.06766170699984286,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.827773+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/nvidia/vila,direct,,,,0,0.011275522000005367,http_error,[Errno -2] Name or service not known,2026-07-21T06:19:32.838472+00:00
+lotte-library,https://api.lotte-library.top/v1,流式抗截断/gemini-3-flash (Lotte),direct,,,,0,1.6169047299999875,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model 流式抗截断/gemini-3-flash (Lotte) under group default (distributor) (request id: 202607210619567295228778268d9d6CUYvMHdj)"",""type"":""new_api_error""}}",2026-07-21T06:19:56.834862+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/openai/gpt-oss-20b,direct,,,,0,0.03571809300001405,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.356313+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/openai/gpt-oss-120b,direct,,,,0,0.05435342100008711,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.358606+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/snowflake/arctic-embed-l,direct,,,,0,0.04311915800008137,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.419633+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/writer/palmyra-creative-122b,direct,,,,0,0.029088215000001583,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.421732+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/writer/palmyra-med-70b,direct,,,,0,0.025704885999857652,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.719859+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/writer/palmyra-fin-70b-32k,direct,,,,0,0.011559473000033904,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.722053+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/z-ai/glm-5.1,direct,,,,0,0.027309354000180974,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.784225+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/writer/palmyra-med-70b-32k,direct,,,,0,0.05427633199997217,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.827426+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/z-ai/glm4.7,direct,,,,0,0.020271917999934885,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.846883+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/z-ai/glm5,direct,,,,0,0.019816274000049816,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.865945+00:00
+xinjianya,https://api.xinjianya.top/v1,英伟达/zyphra/zamba2-7b-instruct,direct,,,,0,0.007770390999894516,http_error,[Errno -2] Name or service not known,2026-07-21T06:20:32.872922+00:00
