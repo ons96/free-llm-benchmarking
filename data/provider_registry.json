@@ -1,77 +1,1553 @@
 {
-  "schema_version": "1.0",
-  "updated": "2026-05-07",
+  "categories": [
+    "unlimited_free",
+    "recurring_auto_refresh",
+    "recurring_checkin_required",
+    "finite",
+    "unknown"
+  ],
   "providers": {
-    "nvidia": {
-      "base_url": "https://integrate.api.nvidia.com/v1",
-      "credit_type": "recurring_free",
+    "17nas": {
+      "base_url": "https://ai.17nas.com/v1",
+      "credit_type": "recurring_auto_refresh",
       "free_tier": true,
-      "supports_tool_calls": true,
-      "supports_reasoning": false,
-      "model_types": ["text", "chat"],
-      "notes": "NVIDIA NIM - free tier with rate limits",
-      "rate_limit_per_min": 30,
-      "daily_checkin": false
-    },
-    "xinjianya": {
-      "base_url": "https://api.xinjianya.top/v1",
-      "credit_type": "one_time_no_expiry",
-      "free_tier": true,
-      "supports_tool_calls": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "WORKING free for GPT-5.5. Source: AAAK working-premium-model-providers + opencode_zen config",
+      "rate_limit_per_min": 20,
       "supports_reasoning": true,
-      "model_types": ["text", "chat", "image"],
-      "notes": "Free models in 'default' group (ratio=0), no paid model testing",
-      "rate_limit_per_min": 10,
-      "skip_paid_models": true
+      "supports_tool_calls": false
     },
-    "blazeai": {
-      "base_url": "https://blazeai.boxu.dev/api/",
+    "888avi": {
+      "base_url": "https://api.888avi.cc/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "DEAD: 401 invalid key per AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "aerolink": {
+      "base_url": "https://capi.aerolink.lat/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "$350+ signup credit, INR-priced, rolling 5h/weekly windows, drains to zero. Source: capi.aerolink.lat pricing. | $350+ signup credit, INR-priced, rolling 5h/weekly windows, drains to zero. Source: capi.aerolink.lat pricing. | $350+ signup credit, INR-priced, rolling 5h/weekly windows, drains to zero. Source: capi.aerolink.lat pricing.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "agnes-ai": {
+      "base_url": "https://apihub.agnes-ai.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Free tier w/ 30 RPM text, OpenAI-compatible, no expiry. Token Plan tier for paid. Source: apihub.agnes-ai.com. | Free tier w/ 30 RPM text, OpenAI-compatible, no expiry. Token Plan tier for paid. Source: apihub.agnes-ai.com. | Free tier w/ 30 RPM text, OpenAI-compatible, no expiry. Token Plan tier for paid. Source: apihub.agnes-ai.com.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "ai-claw": {
+      "base_url": "https://api.ai-claw.cloud/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Group key has finite balance. 138-model catalog but only 15 invoke on user default key. 402 insufficient-balance on premium tier models = paid-tier gate, not drain. Source: docs/llm-provider-findings-2026-07-17.md",
+      "skip_paid_models": true,
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "aihub-071129": {
+      "base_url": "https://aihub.071129.xyz/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Chinese NewAPI gateway, \u00a57.30 per $1 quota, prepaid credit drains. Source: ai.071129.xyz pricing. | Chinese NewAPI gateway, \u00a57.30 per $1 quota, prepaid credit drains. Source: ai.071129.xyz pricing. | Chinese NewAPI gateway, \u00a57.30 per $1 quota, prepaid credit drains. Source: ai.071129.xyz pricing.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "aihubmix": {
+      "base_url": "https://aihubmix.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "27+ free models (GPT-5.5, GPT-Image-2, Gemini 3, GLM-5.1, Kimi, MiniMax, Xiaomi MiMo), daily quota resets, no trial expiry. Source: docs.aihubmix.com/en/blogs/free-ai-models. | 27+ free models (GPT-5.5, GPT-Image-2, Gemini 3, GLM-5.1, Kimi, MiniMax, Xiaomi MiMo), daily quota resets, no trial expiry. Source: docs.aihubmix.com/en/blogs/free-ai-models. | 27+ free models (GPT-5.5, GPT-Image-2, Gemini 3, GLM-5.1, Kimi, MiniMax, Xiaomi MiMo), daily quota resets, no trial expiry. Source: docs.aihubmix.com/en/blogs/free-ai-models.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "airforce": {
+      "base_url": "https://api.airforce/v1",
       "credit_type": "unlimited_free",
       "free_tier": true,
-      "supports_tool_calls": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "All 18 :free models 200 OK. Hidden ~120s token bucket cooldown after 1-2 successes. Key sk-air-... configured. Source: FREE_LLM_PROVIDER_AUDIT_2026-07-09.md",
+      "rate_limit_per_min": 1,
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "aitools": {
+      "base_url": "https://platform.aitools.cfd/api/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "19 free models, OpenAI-compatible, no login for API key, 429 on rate limit. Source: platform.aitools.cfd. | 19 free models, OpenAI-compatible, no login for API key, 429 on rate limit. Source: platform.aitools.cfd. | 19 free models, OpenAI-compatible, no login for API key, 429 on rate limit. Source: platform.aitools.cfd.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "alibaba-coding-plan": {
+      "base_url": "https://coding-intl.dashscope.aliyuncs.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Aliyun Dashscope Coding Plan, free monthly quota via subscription. AAAK llm-provider-manager vps_config. | Aliyun Dashscope Coding Plan, free monthly quota via subscription. AAAK llm-provider-manager vps_config. | Aliyun Dashscope Coding Plan, free monthly quota via subscription. AAAK llm-provider-manager vps_config. | Aliyun Dashscope Coding Plan, free monthly quota via subscription. AAAK llm-provider-manager vps_config.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "alibaba-coding-plan-cn": {
+      "base_url": "https://coding.dashscope.aliyuncs.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Aliyun Dashscope Coding Plan (CN), free monthly quota via subscription. AAAK llm-provider-manager vps_config. | Aliyun Dashscope Coding Plan (CN), free monthly quota via subscription. AAAK llm-provider-manager vps_config. | Aliyun Dashscope Coding Plan (CN), free monthly quota via subscription. AAAK llm-provider-manager vps_config. | Aliyun Dashscope Coding Plan (CN), free monthly quota via subscription. AAAK llm-provider-manager vps_config.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "anmix": {
+      "base_url": "https://anmix.ai/api/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "DEAD: returned HTML not JSON per AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON. AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON. AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON. AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON. AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "anthropic": {
+      "base_url": "https://cc.freemodel.dev/v1",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "antigravity": {
+      "base_url": "https://api.antigravity.dev/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Google Antiquity OAuth, free Google/Gemini quota. Needs periodic re-auth. Unreliable. Source: AAAK antigravity-endpoint",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "atessa": {
+      "base_url": "https://atessa.top/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Quota resets 00:00 UTC daily. Separate buckets for grok-4.5 / composer-2.5 vs other premium. 32 models catalog. Source: AAAK atessa-catalog-2026-07-16 + scripts/free-llm-providers-2026-07-17.md",
+      "rate_limit_per_min": 10,
       "supports_reasoning": true,
-      "model_types": ["text", "chat", "image"],
-      "notes": "Unlimited free usage",
-      "rate_limit_per_min": 20
+      "supports_tool_calls": true
+    },
+    "banana2556": {
+      "base_url": "https://api.banana2556.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "\u516c\u76ca API (public-service), free test quota, OpenAI-compatible. Source: api.banana2556.com. | \u516c\u76ca API (public-service), free test quota, OpenAI-compatible. Source: api.banana2556.com. | \u516c\u76ca API (public-service), free test quota, OpenAI-compatible. Source: api.banana2556.com.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "bayunzi": {
+      "base_url": "https://ai.bayunzi.shop/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "AAAK dead: connection timeout (host down) | Connection timeout. AAAK dead-shared-key-providers-2026-07-16. | Connection timeout. AAAK dead-shared-key-providers-2026-07-16. | Connection timeout. AAAK dead-shared-key-providers-2026-07-16. | Connection timeout. AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "blaze": {
+      "base_url": "https://payg.blazeapi.org/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "payg.blazeapi.org/v1 = pay-as-you-go endpoint, prepaid credit drains to zero. | payg.blazeapi.org/v1 = pay-as-you-go endpoint, prepaid credit drains to zero.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "blaze-free": {
+      "base_url": "https://api.blazeapi.org/free/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "api.blazeapi.org/free/v1 endpoint. blazeai already classified unlimited_free; /free/ endpoint is the free variant. | api.blazeapi.org/free/v1 endpoint. blazeai already classified unlimited_free; /free/ endpoint is the free variant.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "blaze-org": {
+      "base_url": "https://blazeapi.org/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "blazeapi.org/v1 root endpoint (ambiguous). Default-to-finite per user's credit-burn concern. | blazeapi.org/v1 root endpoint (ambiguous). Default-to-finite per user's credit-burn concern.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "blazeai": {
+      "base_url": "https://blazeai.boxu.dev/api/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat",
+        "image"
+      ],
+      "notes": "Unlimited free usage. Source: v1.0 registry + AAAK working-premium-model-providers (blazeai qwen3.6-max-preview-thinking etc verified working)",
+      "rate_limit_per_min": 20,
+      "supports_reasoning": true,
+      "supports_tool_calls": true
+    },
+    "bluesminds": {
+      "base_url": "https://api.bluesminds.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "OmniRoute permanent free plan, 500 pi credits + 20 RPM + 300 RPD, 200+ models. Source: OmniRoute wiki. | OmniRoute permanent free plan, 500 pi credits + 20 RPM + 300 RPD, 200+ models. Source: OmniRoute wiki. | OmniRoute permanent free plan, 500 pi credits + 20 RPM + 300 RPD, 200+ models. Source: OmniRoute wiki.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "bosco": {
+      "base_url": "https://api.bosco.qzz.io/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Same qzz.io platform operator as qzz.io main entry; qzz classified recurring_auto_refresh w/ 1 req/5min hard cap. Inherits. Source: api.bosco.qzz.io.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "brave_search": {
+      "base_url": "",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "buddybackend": {
+      "base_url": "https://buddybackend.cloud/v1",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "buddybackend.cloud: no clear docs found anywhere (UCO BuddyGPT unrelated, university HPC). Default unknown.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "cerebras": {
+      "base_url": "https://api.cerebras.ai/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "1M tok/day cap, 8K ctx free. Source: AAAK working-llm-providers + free-llm-providers-2026-07-17.md",
+      "rate_limit_per_min": 30,
+      "supports_reasoning": true,
+      "supports_tool_calls": true
+    },
+    "choosec": {
+      "base_url": "https://api.choosec.cn/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Chinese NewAPI aggregator, \u00a51/$1 top-up gateway, 260+ models, prepaid drains to zero. Source: api.choosec.cn. | Chinese NewAPI aggregator, \u00a51/$1 top-up gateway, 260+ models, prepaid drains to zero. Source: api.choosec.cn. | Chinese NewAPI aggregator, \u00a51/$1 top-up gateway, 260+ models, prepaid drains to zero. Source: api.choosec.cn.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "cohere": {
+      "base_url": "https://api.cohere.com/v2",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Cohere Trial API key. Free tier: 1000 req/mo, 50 req/min. Auto-refreshes monthly. https://cohere.com/key | Cohere Trial API key. Free tier: 1000 req/mo, 50 req/min. Auto-refreshes monthly. https://cohere.com/key | Cohere Trial API key. Free tier: 1000 req/mo, 50 req/min. Auto-refreshes monthly. https://cohere.com/key | Cohere Trial API key. Free tier: 1000 req/mo, 50 req/min. Auto-refreshes monthly. https://cohere.com/key",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "conduit": {
+      "base_url": "https://conduit.ozdoev.net/api/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "AAAK dead: port 443 refused (host down) | Port 443 refused. AAAK dead-shared-key-providers-2026-07-16. | Port 443 refused. AAAK dead-shared-key-providers-2026-07-16. | Port 443 refused. AAAK dead-shared-key-providers-2026-07-16. | Port 443 refused. AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "cortecs": {
+      "base_url": "https://api.cortecs.ai/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "5% pass-through gateway, EUR prepaid, top up balance, drains to zero, no free tier. Source: cortecs.ai/pricing. | 5% pass-through gateway, EUR prepaid, top up balance, drains to zero, no free tier. Source: cortecs.ai/pricing. | 5% pass-through gateway, EUR prepaid, top up balance, drains to zero, no free tier. Source: cortecs.ai/pricing.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "crowllm": {
+      "base_url": "https://crowllm.com/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "OpenAI-compatible AI API platform, no clear free-tier pricing. Default-to-finite per user's credit-burn concern. Source: crowllm.com. | OpenAI-compatible AI API platform, no clear free-tier pricing. Default-to-finite per user's credit-burn concern. Source: crowllm.com. | OpenAI-compatible AI API platform, no clear free-tier pricing. Default-to-finite per user's credit-burn concern. Source: crowllm.com.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "custom": {
+      "base_url": "http://40.233.101.233:8000/v1",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "dcapi-gbox": {
+      "base_url": "https://dcapi.gbox.top/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "DEAD: 200 on /v1 but HTML not JSON per AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON on /v1. AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON on /v1. AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON on /v1. AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON on /v1. AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "deepseek": {
+      "base_url": "https://api.deepseek.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Direct DeepSeek API (api.deepseek.com). Trusted direct provider. Source: AAAK + AGENTS.md",
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "dext": {
+      "base_url": "https://ai.dext.top/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "NewAPI-compatible, 215 models. Working free via DEXT_API_KEY. Source: AAAK opencode-apikey-cleanup-2026-07-15",
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "duckduckgo": {
+      "base_url": "",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "evolvex": {
+      "base_url": "https://api.evolvex.gg/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "$0/mo, no credit card, 150+ open models, 5 RPM hard cap. Source: api.evolvex.gg/pricing. | $0/mo, no credit card, 150+ open models, 5 RPM hard cap. Source: api.evolvex.gg/pricing. | $0/mo, no credit card, 150+ open models, 5 RPM hard cap. Source: api.evolvex.gg/pricing.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "exa": {
+      "base_url": "",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "free-gemini": {
+      "base_url": "https://free-gemini-proandflash.onrender.com/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Free Gemini proxy on Render. Source: FREE_LLM_PROVIDER_AUDIT_2026-07-09.md (gemini wrapper)",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "freemodel": {
+      "base_url": "https://api.freemodel.dev/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Free models endpoint (freemodel.dev). Hosts anthropic-archived route. Source: FREE_LLM_PROVIDER_AUDIT_2026-07-09.md",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "freetheai": {
+      "base_url": "https://api.freetheai.xyz/v1",
+      "credit_type": "recurring_checkin_required",
+      "daily_checkin": true,
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "AAAK: 403 Discord daily check-in required (working otherwise)",
+      "rate_limit_per_min": 30,
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "furry": {
+      "base_url": "https://ai.furry.edu.gr/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "ai.furry.edu.gr = PawsAI OpenAI-compatible relay. New registrations include \u00a55 trial. Mixed Max/K-proxy pools. Prepaid drains. Source: ai.furry.edu.gr.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "futureppo": {
+      "base_url": "https://api.futureppo.top/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "17nas is the same backend per AAAK; AAAK working-premium-model-providers lists 17nas w/ GPT-5.5 working free. | 17nas is the same backend per AAAK; AAAK working-premium-model-providers lists 17nas w/ GPT-5.5 working free.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "futureppo-new": {
+      "base_url": "https://api.futureppo.top/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Futureppo new endpoint. Slow response time (smoke). Source: b13 + b4, AAAK working-premium-model-providers",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "gbox": {
+      "base_url": "https://dcapi.gbox.top/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "DEAD: alias of dcapi-gbox per AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON on /v1 (duplicate of dcapi-gbox). AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON on /v1 (duplicate of dcapi-gbox). AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON on /v1 (duplicate of dcapi-gbox). AAAK dead-shared-key-providers-2026-07-16. | Returns HTML not JSON on /v1 (duplicate of dcapi-gbox). AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "gcli": {
+      "base_url": "https://gcli.ggchan.dev",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "GG\u516c\u76ca\u7ad9-\u4e91GCLI, Chinese charity/public welfare station, converts GeminiCLI+Antigravity OAuth to OpenAI-compatible. \u516c\u76ca = charity/freebie. Source: gcli.ggchan.dev. | GG\u516c\u76ca\u7ad9-\u4e91GCLI, Chinese charity/public welfare station, converts GeminiCLI+Antigravity OAuth to OpenAI-compatible. \u516c\u76ca = charity/freebie. Source: gcli.ggchan.dev.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "gemini": {
+      "base_url": "https://generativelanguage.googleapis.com/v1beta",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Free tier generous RPM. Source: AAAK working-llm-providers (Gemini 429 quota occasionally). Trusted direct.",
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "github-models": {
+      "base_url": "https://models.inference.ai.azure.com",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "GitHub Models free tier (incl GPT-5.5, Sonnet 5, etc). Source: AAAK free-llm-providers-2026-07-17.md | GitHub Models. Free tier: limited requests/day per model. https://github.com/marketplace/models | GitHub Models. Free tier: limited requests/day per model. https://github.com/marketplace/models | GitHub Models. Free tier: limited requests/day per model. https://github.com/marketplace/models | GitHub Models. Free tier: limited requests/day per model. https://github.com/marketplace/models",
+      "rate_limit_per_min": 15,
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "google": {
+      "base_url": "",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Google AI Studio Gemini API. Free tier: 15 RPM, 1500 req/day, 1M tokens/min. https://aistudio.google.com | Google AI Studio Gemini API. Free tier: 15 RPM, 1500 req/day, 1M tokens/min. https://aistudio.google.com | Google AI Studio Gemini API. Free tier: 15 RPM, 1500 req/day, 1M tokens/min. https://aistudio.google.com | Google AI Studio Gemini API. Free tier: 15 RPM, 1500 req/day, 1M tokens/min. https://aistudio.google.com",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "gratisfy": {
+      "base_url": "https://api.gratisfy.xyz/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "FREE models: subaxis/glm-5.2, glm-5.2 alias, atessa/grok-4.5, atessa/composer-2.5, atessa/hy3. Old 500/* models 402 quota-exhausted (paid bucket). Source: AAAK gratisfy-models-2026-07-16",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
     },
     "groq": {
       "base_url": "https://api.groq.com/openai/v1",
-      "credit_type": "one_time_with_expiry",
+      "billing_quota_cents": 500,
+      "credit_type": "finite",
       "free_tier": true,
-      "supports_tool_calls": true,
-      "supports_reasoning": true,
-      "model_types": ["text", "chat", "audio"],
-      "notes": "$5 free credits, expires if unused",
+      "model_types": [
+        "text",
+        "chat",
+        "audio"
+      ],
+      "notes": "$5 free signup credits. Free API tier actually IS recurring now (post-2024) - RECLASSIFY pending probe. Source: v1.0 registry + current groq docs (free tier active, not just signup credits).",
       "rate_limit_per_min": 30,
-      "billing_quota_cents": 500
+      "supports_reasoning": true,
+      "supports_tool_calls": true
     },
     "hapuppy": {
       "base_url": "https://beta.hapuppy.com/v1",
-      "credit_type": "recurring_free",
+      "credit_type": "dead",
       "free_tier": true,
-      "supports_tool_calls": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "AAAK dead: 403 banned (host alive) | Account banned (403 \u7528\u6237\u5df2\u88ab\u5c01\u7981). AAAK dead-shared-key-providers-2026-07-16. | Account banned (403 \u7528\u6237\u5df2\u88ab\u5c01\u7981). AAAK dead-shared-key-providers-2026-07-16. | Account banned (403 \u7528\u6237\u5df2\u88ab\u5c01\u7981). AAAK dead-shared-key-providers-2026-07-16. | Account banned (403 \u7528\u6237\u5df2\u88ab\u5c01\u7981). AAAK dead-shared-key-providers-2026-07-16.",
+      "rate_limit_per_min": 30,
       "supports_reasoning": false,
-      "model_types": ["text", "chat"],
-      "notes": "Daily free credits reset",
-      "rate_limit_per_min": 30
+      "supports_tool_calls": false
+    },
+    "huashang": {
+      "base_url": "https://huashang.dpdns.org/v1",
+      "credit_type": "recurring_checkin_required",
+      "daily_checkin": true,
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "welfare-provider group. Source: chinese-llm-welfare-providers-2026-07-02.md",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "huggingface": {
+      "base_url": "https://router.huggingface.co/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Inference router. zai-org/GLM-5.2 working free 2.67s. Source: AAAK + FREE_LLM_PROVIDER_AUDIT_2026-07-09.md",
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "iamhc": {
+      "base_url": "https://api.iamhc.cn/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "195+ models UNLIMITED per docs. Old key dead 401 (needs rotation, see AAAK dead-shared-key-providers-2026-07-16). Source: chinese-llm-welfare-providers-2026-07-02.md",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "iflow": {
+      "base_url": "https://api.iflow.cn/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "iFlow search/web API, API key expires in 7 days, search-tool not LLM. Source: api.iflow.cn docs. | iFlow search/web API, API key expires in 7 days, search-tool not LLM. Source: api.iflow.cn docs.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "iflowcn": {
+      "base_url": "https://apis.iflow.cn/v1",
+      "credit_type": "recurring_checkin_required",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "iFlow 14 LLM models via OpenAI-compatible. API key expires in 7 days, periodic manual renewal needed. Source: apis.iflow.cn. | iFlow 14 LLM models via OpenAI-compatible. API key expires in 7 days, periodic manual renewal needed. Source: apis.iflow.cn.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "jiekou": {
+      "base_url": "https://api.jiekou.ai/openai",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Chinese NewAPI aggregator, signup vouchers + top-up balance + pay-as-you-go. Source: api.jiekou.ai/openai. | Chinese NewAPI aggregator, signup vouchers + top-up balance + pay-as-you-go. Source: api.jiekou.ai/openai.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "jina": {
+      "base_url": "",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "kilocode": {
+      "base_url": "https://api.kilo.ai/api/gateway",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Kilo Gateway, `:free` models, anonymous access OK, 200 req/hr per IP rate limit. Source: kilo.ai/docs/gateway/authentication + kilo.ai/pricing. | Kilo Gateway, `:free` models, anonymous access OK, 200 req/hr per IP rate limit. Source: kilo.ai/docs/gateway/authentication + kilo.ai/pricing. | Kilo Gateway, `:free` models, anonymous access OK, 200 req/hr per IP rate limit. Source: kilo.ai/docs/gateway/authentication + kilo.ai/pricing.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "kimi-for-coding": {
+      "base_url": "https://api.kimi.com/coding/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Moonshot Kimi K2 for Coding, free coding plan monthly quota. | Moonshot Kimi K2 for Coding, free coding plan monthly quota. | Moonshot Kimi K2 for Coding, free coding plan monthly quota. | Moonshot Kimi K2 for Coding, free coding plan monthly quota.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "koyeb": {
+      "base_url": "https://new-api.koyeb.app/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Koyeb free NIM proxy tier. Same 404 hash 23d4f03a as nvidia direct + xinjianya + paxsenix for kimi-k2.6 (NIM passthrough). Source: FREE_LLM_PROVIDER_AUDIT_2026-07-09.md",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "ktai": {
+      "base_url": "https://ktai.koyeb.app/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Koyeb-hosted NewAPI aggregator. Free Instance 512MB RAM scale-to-zero after 1h idle. LLM calls drain topped-up balance, not recurring free. Source: ktai.koyeb.app.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "ktai-paid": {
+      "base_url": "https://ktai.koyeb.app/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Paid variant of ktai. Prepaid credit drains. | Paid variant of ktai. Prepaid credit drains.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "kuae-cloud-coding-plan": {
+      "base_url": "https://coding-plan-endpoint.kuaecloud.net/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Kuae Cloud Coding Plan, free monthly quota via subscription. | Kuae Cloud Coding Plan, free monthly quota via subscription. | Kuae Cloud Coding Plan, free monthly quota via subscription. | Kuae Cloud Coding Plan, free monthly quota via subscription.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "llama": {
+      "base_url": "https://api.llama.com/compat/v1/",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "llama.com Meta official API. Paid only, no free tier confirmed (signup may grant trial credits). | llama.com Meta official API. Paid only, no free tier confirmed (signup may grant trial credits). | llama.com Meta official API. Paid only, no free tier confirmed (signup may grant trial credits). | llama.com Meta official API. Paid only, no free tier confirmed (signup may grant trial credits).",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "llm7": {
+      "base_url": "https://api.llm7.io/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "30 RPM free WITH token (Discord-issued). Catalog-free only; target models (gpt-5.5/fable/opus/sonnet) are paid tier. Source: AAAK free-llm-providers-2026-07-17",
+      "rate_limit_per_min": 30,
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "llmgateway": {
+      "base_url": "https://api.llmgateway.io/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Unified API for 40+ providers, Free tier w/ own keys (no cost) + paid managed. Source: llmgateway.io. | Unified API for 40+ providers, Free tier w/ own keys (no cost) + paid managed. Source: llmgateway.io. | Unified API for 40+ providers, Free tier w/ own keys (no cost) + paid managed. Source: llmgateway.io.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "logfare": {
+      "base_url": "https://logfare.ai/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "FREE Kimi K3 + deepseek-v4-flash, v4-pro, kimi-k2.6, mimo-v2.5 working with reasoning_effort:max. Source: docs/llm-provider-findings-2026-07-17.md",
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "logfare-alt": {
+      "base_url": "https://logfare.ai/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Logfare alternate key. Same endpoint. Source: b4 merge",
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "lotte-library": {
+      "base_url": "https://api.lotte-library.top",
+      "credit_type": "recurring_checkin_required",
+      "daily_checkin": true,
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Lottery spins/day + daily quota. Source: chinese-llm-welfare-providers-2026-07-02.md (as Weiyun)",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "lpgpt": {
+      "base_url": "https://lpgpt.us/v1",
+      "credit_type": "recurring_checkin_required",
+      "daily_checkin": true,
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "welfare-provider group. Source: inferred from group",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "meganova": {
+      "base_url": "https://api.meganova.ai/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Free registration, no card, 550 msgs/day auto-resets daily 19:00 EST (Manta Mini/Flash/Pro, GLM-4.7-Flash, L3, DeepSeek-V3-Economic, Mistral-Small). Source: api.meganova.ai. | Free registration, no card, 550 msgs/day auto-resets daily 19:00 EST (Manta Mini/Flash/Pro, GLM-4.7-Flash, L3, DeepSeek-V3-Economic, Mistral-Small). Source: api.meganova.ai.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "minimax-cn-coding-plan": {
+      "base_url": "https://api.minimaxi.com/anthropic/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "MiniMax Coding Plan (CN), free monthly quota via subscription. | MiniMax Coding Plan (CN), free monthly quota via subscription. | MiniMax Coding Plan (CN), free monthly quota via subscription. | MiniMax Coding Plan (CN), free monthly quota via subscription.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "minimax-coding-plan": {
+      "base_url": "https://api.minimax.io/anthropic/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "MiniMax Coding Plan ( internacional), free monthly quota via subscription. | MiniMax Coding Plan ( internacional), free monthly quota via subscription. | MiniMax Coding Plan ( internacional), free monthly quota via subscription. | MiniMax Coding Plan ( internacional), free monthly quota via subscription.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "mistral": {
+      "base_url": "https://api.mistral.ai/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "~1B tok/mo free tier. Source: AAAK free-llm-providers-2026-07-17.md",
+      "supports_reasoning": true,
+      "supports_tool_calls": true
+    },
+    "modelscope": {
+      "base_url": "https://api-inference.modelscope.cn/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Alibaba ModelScope, free inference for select open models w/ daily quota. | Alibaba ModelScope, free inference for select open models w/ daily quota. | Alibaba ModelScope, free inference for select open models w/ daily quota. | Alibaba ModelScope, free inference for select open models w/ daily quota.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "mydamoxing": {
+      "base_url": "https://www.dmxapi.cn/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "AAAK dead: 401 invalid key (host alive) | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "nano-gpt": {
+      "base_url": "https://nano-gpt.com/api/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "x402 accountless crypto payments, no recurring free quota, prepaid balance. Source: nano-gpt.com. | x402 accountless crypto payments, no recurring free quota, prepaid balance. Source: nano-gpt.com.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "navy": {
+      "base_url": "https://api.navy/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "NavyAIUnified $0/day tier w/ 150K tokens/day + 20 RPM, OpenAI-compatible. Source: api.navy pricing. | NavyAIUnified $0/day tier w/ 150K tokens/day + 20 RPM, OpenAI-compatible. Source: api.navy pricing. | NavyAIUnified $0/day tier w/ 150K tokens/day + 20 RPM, OpenAI-compatible. Source: api.navy pricing.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "navy-alt": {
+      "base_url": "https://api.navy/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "NavyAIUnified $0/day tier w/ 150K tokens/day + 20 RPM (alt endpoint). Source: api.navy pricing. | NavyAIUnified $0/day tier w/ 150K tokens/day + 20 RPM (alt endpoint). Source: api.navy pricing. | NavyAIUnified $0/day tier w/ 150K tokens/day + 20 RPM (alt endpoint). Source: api.navy pricing.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "nianhua": {
+      "base_url": "https://us-3.nianhuaapi.com/v1",
+      "credit_type": "recurring_checkin_required",
+      "daily_checkin": true,
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "$15 free + 3-5 daily check-in. ONLY route for Claude Fable 5/Opus 4.8/4.7/Sonnet 5. Ration. Source: chinese-llm-welfare-providers-2026-07-02.md + FREE_LLM_PROVIDER_AUDIT_2026-07-09.md",
+      "rate_limit_per_min": 20,
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "nova": {
+      "base_url": "https://api.nova.amazon.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "api.nova.amazon.com = Amazon Bedrock Nova. AWS free tier 1M tok/mo. | api.nova.amazon.com = Amazon Bedrock Nova. AWS free tier 1M tok/mo.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "novita": {
+      "base_url": "https://api.novita.ai/openai/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Novita AI. Free $20 signup credits, no recurring refresh. https://novita.ai/pricing | Novita AI. Free $20 signup credits, no recurring refresh. https://novita.ai/pricing | Novita AI. Free $20 signup credits, no recurring refresh. https://novita.ai/pricing | Novita AI. Free $20 signup credits, no recurring refresh. https://novita.ai/pricing",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "nvidia": {
+      "base_url": "https://integrate.api.nvidia.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "daily_checkin": false,
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "NIM free tier 40 RPM best-effort, no daily token cap. Credit program retired early 2025. Source: AAAK nim-glm52-429-diagnosis + research 2026-07-06",
+      "rate_limit_per_min": 40,
+      "supports_reasoning": true,
+      "supports_tool_calls": true
+    },
+    "ollama": {
+      "base_url": "https://ollama.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Ollama.com public API. Free limited tier for cloud models w/ daily rate limit. | Ollama.com public API. Free limited tier for cloud models w/ daily rate limit. | Ollama.com public API. Free limited tier for cloud models w/ daily rate limit. | Ollama.com public API. Free limited tier for cloud models w/ daily rate limit.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "ollama-alt": {
+      "base_url": "https://ollama.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Ollama.com (alt endpoint). Same free tier w/ daily rate limit. | Ollama.com (alt endpoint). Same free tier w/ daily rate limit. | Ollama.com (alt endpoint). Same free tier w/ daily rate limit. | Ollama.com (alt endpoint). Same free tier w/ daily rate limit.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "ollama-cloud": {
+      "base_url": "https://ollama.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Ollama.com cloud. Free limited tier for cloud models. | Ollama.com cloud. Free limited tier for cloud models. | Ollama.com cloud. Free limited tier for cloud models. | Ollama.com cloud. Free limited tier for cloud models.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
     },
     "opencode": {
       "base_url": "https://opencode.ai/zen/v1",
       "credit_type": "unlimited_free",
       "free_tier": true,
-      "supports_tool_calls": false,
+      "model_types": [
+        "text",
+        "code"
+      ],
+      "notes": "OpenCode Zen - unlimited free but only for free-tier models (premium returns 401). Source: AAAK opencode-model-config + v1.0 registry",
       "supports_reasoning": false,
-      "model_types": ["text", "code"],
-      "notes": "OpenCode Zen - unlimited free"
+      "supports_tool_calls": false
     },
-    "freetheai": {
-      "base_url": "https://api.freetheai.xyz/v1",
+    "opencode_zen": {
+      "base_url": "https://opencode.ai/zen/v1",
       "credit_type": "unlimited_free",
       "free_tier": true,
-      "supports_tool_calls": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "OpenCode Zen duplicate. ONLY free-tier models (premium 401). Source: AAAK opencode-model-config",
       "supports_reasoning": false,
-      "model_types": ["text", "chat"],
-      "notes": "Free tier with daily limits"
+      "supports_tool_calls": false
+    },
+    "opencode_zen-nokey": {
+      "base_url": "https://opencode.ai/zen/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "OpenCode Zen anonymous tier (no key). 18 models. Source: AAAK",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "openrouter": {
+      "base_url": "https://openrouter.ai/api/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "402 no credits on free tier. SKIP in nightly per AAAK. Source: FREE_LLM_PROVIDER_AUDIT_2026-07-09.md",
+      "skip_paid_models": true,
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "ovhcloud": {
+      "base_url": "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
+      "credit_type": "unlimited_free",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Anonymous, 2 RPM/model/IP, EU-hosted, no apiKey. 11 LIVE chat-only models verified 2026-07-17. Source: AAAK free-llm-providers-2026-07-17",
+      "rate_limit_per_min": 2,
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "paxsenix": {
+      "base_url": "https://api.paxsenix.org/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "WORKING free for GPT-5.5 + GLM-5.2. 37 models. ATessa-equivalent routing. Source: FREE_LLM_PROVIDER_AUDIT_2026-07-09.md + AAAK working-premium-model-providers",
+      "rate_limit_per_min": 20,
+      "supports_reasoning": true,
+      "supports_tool_calls": true
+    },
+    "poe": {
+      "base_url": "https://api.poe.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Poe API. Daily free quota for some bots + paid subscription for compute bots. https://creator.poe.com | Poe API. Daily free quota for some bots + paid subscription for compute bots. https://creator.poe.com | Poe API. Daily free quota for some bots + paid subscription for compute bots. https://creator.poe.com | Poe API. Daily free quota for some bots + paid subscription for compute bots. https://creator.poe.com",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "pooled": {
+      "base_url": "https://ai.pooled.dev/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "ai.pooled.dev. Pooled free API endpoint, auto-refreshing daily quota (AAAK working-premium-model-providers). | ai.pooled.dev. Pooled free API endpoint, auto-refreshing daily quota (AAAK working-premium-model-providers). | ai.pooled.dev. Pooled free API endpoint, auto-refreshing daily quota (AAAK working-premium-model-providers). | ai.pooled.dev. Pooled free API endpoint, auto-refreshing daily quota (AAAK working-premium-model-providers).",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "qzz": {
+      "base_url": "https://0api.qzz.io/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Hard rate cap: 1 req / 5 min / whole account (not per-model). Low-priority fallback only. Source: AAAK free-llm-providers-2026-07-17 + scripts/free-llm-providers-2026-07-17.md",
+      "rate_limit_per_min": null,
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "redwakeai": {
+      "base_url": "https://redwakeai.vercel.app/api/v1",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "redwakeai.vercel.app is subdomain of vercel.app (NOT official Vercel AI Gateway at ai-gateway.vercel.sh). Someone's Vercel deployment, no clear docs. Default unknown.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "sambanova": {
+      "base_url": "https://api.sambanova.ai/v1",
+      "billing_quota_cents": 1000,
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "$10 free signup credits. Source: chinese-llm-welfare-providers-2026-07-02.md",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "setbug": {
+      "base_url": "https://aiapi.setbug.cn/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "AAAK dead: DNS NX (host gone) | Host DNS NX (gone). AAAK dead-shared-key-providers-2026-07-16. | Host DNS NX (gone). AAAK dead-shared-key-providers-2026-07-16. | Host DNS NX (gone). AAAK dead-shared-key-providers-2026-07-16. | Host DNS NX (gone). AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "siliconflow": {
+      "base_url": "https://api.siliconflow.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "SiliconFlow API. Free $14 signup + free models w/ daily rate limit. | SiliconFlow API. Free $14 signup + free models w/ daily rate limit. | SiliconFlow API. Free $14 signup + free models w/ daily rate limit. | SiliconFlow API. Free $14 signup + free models w/ daily rate limit.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "siliconflow-cn": {
+      "base_url": "https://api.siliconflow.cn/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "SiliconFlow CN (siliconflow.cn). Same provider, CN endpoint. | SiliconFlow CN (siliconflow.cn). Same provider, CN endpoint. | SiliconFlow CN (siliconflow.cn). Same provider, CN endpoint. | SiliconFlow CN (siliconflow.cn). Same provider, CN endpoint.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "tavily": {
+      "base_url": "",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "tencent-coding-plan": {
+      "base_url": "https://api.lkeap.cloud.tencent.com/coding/v3",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Tencent LKEAP Coding Plan, free monthly quota. AAAK llm-provider-manager vps_config. | Tencent LKEAP Coding Plan, free monthly quota. AAAK llm-provider-manager vps_config. | Tencent LKEAP Coding Plan, free monthly quota. AAAK llm-provider-manager vps_config. | Tencent LKEAP Coding Plan, free monthly quota. AAAK llm-provider-manager vps_config.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "tencent-tokenhub": {
+      "base_url": "https://tokenhub.tencentmaas.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Tencent TokenHub free token quota, auto-refreshes. Source: tokenhub.tencentmaas.com. | Tencent TokenHub free token quota, auto-refreshes. Source: tokenhub.tencentmaas.com.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "together": {
+      "base_url": "https://api.together.xyz/v1",
+      "billing_quota_cents": 500,
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "$5 signup credits, trusted direct provider. Source: AGENTS.md trusted-providers list",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "tokenaizf": {
+      "base_url": "https://tokenaizf.cn/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "AAAK dead: 401 API key disabled (host alive) | Key disabled (401). AAAK dead-shared-key-providers-2026-07-16. | Key disabled (401). AAAK dead-shared-key-providers-2026-07-16. | Key disabled (401). AAAK dead-shared-key-providers-2026-07-16. | Key disabled (401). AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "tokenlb": {
+      "base_url": "https://tokenlb.net/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Opus 4.8/4.7 + GPT-5.5 verified working (post-merge smoke test 2026-07-21). Source: AAAK working-premium-model-providers",
+      "supports_reasoning": true,
+      "supports_tool_calls": false
+    },
+    "tokenreply": {
+      "base_url": "https://api.tokenreply.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "38 models in catalog. Smoke 2026-07-21 partial (some succeed). Source: b4 sweep DB.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "tokenrouter": {
+      "base_url": "https://api.tokenrouter.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "api.tokenrouter.com. Free tier w/ daily quota (AAAK working-premium-model-providers listed tokenrouter returns empty content but 200 OK). | api.tokenrouter.com. Free tier w/ daily quota (AAAK working-premium-model-providers listed tokenrouter returns empty content but 200 OK). | api.tokenrouter.com. Free tier w/ daily quota (AAAK working-premium-model-providers listed tokenrouter returns empty content but 200 OK). | api.tokenrouter.com. Free tier w/ daily quota (AAAK working-premium-model-providers listed tokenrouter returns empty content but 200 OK).",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "voidai": {
+      "base_url": "https://api.voidai.app/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "125k tokens/day free per openai-compatible API, Free plan gives basic models. Source: docs.voidai.app/guides/credits + Newelle-LLMS GitHub. | 125k tokens/day free per openai-compatible API, Free plan gives basic models. Source: docs.voidai.app/guides/credits + Newelle-LLMS GitHub. | 125k tokens/day free per openai-compatible API, Free plan gives basic models. Source: docs.voidai.app/guides/credits + Newelle-LLMS GitHub.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "xiaomi-token-plan-ams": {
+      "base_url": "https://token-plan-ams.xiaomimimo.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Xiaomi Mimo Token Plan (Amsterdam region), free monthly quota. | Xiaomi Mimo Token Plan (Amsterdam region), free monthly quota. | Xiaomi Mimo Token Plan (Amsterdam region), free monthly quota. | Xiaomi Mimo Token Plan (Amsterdam region), free monthly quota.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "xiaomi-token-plan-cn": {
+      "base_url": "https://token-plan-cn.xiaomimimo.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Xiaomi Mimo Token Plan (CN), free monthly quota. | Xiaomi Mimo Token Plan (CN), free monthly quota. | Xiaomi Mimo Token Plan (CN), free monthly quota. | Xiaomi Mimo Token Plan (CN), free monthly quota.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "xiaomi-token-plan-sgp": {
+      "base_url": "https://token-plan-sgp.xiaomimimo.com/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Xiaomi Mimo Token Plan (Singapore), free monthly quota. | Xiaomi Mimo Token Plan (Singapore), free monthly quota. | Xiaomi Mimo Token Plan (Singapore), free monthly quota. | Xiaomi Mimo Token Plan (Singapore), free monthly quota.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "xinjianya-alt": {
+      "base_url": "https://xn--kiv260fv3i.cn/v1",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "punycode xn--kiv260fv3i.cn = Chinese-domain variant of xinjianya. xinjianya free group already classified in registry v1.0. Same backend/operator, alt domain. Inherits.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "yanproxy": {
+      "base_url": "https://ai.yanproxy.link/v1",
+      "credit_type": "unknown",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "yanProxy GitHub = light HTTP proxy library NOT LLM. Someone's deployment at .link has no public docs. Default unknown.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "yzgpt-alt": {
+      "base_url": "https://yzgpt.zeabur.app/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Zeabur AI Hub pay-as-you-go w/ API key. Someone's NewAPI-on-Zeabur deployment. Prepaid drains. Source: yzgpt.zeabur.app.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "yzgpt-main": {
+      "base_url": "https://yzgpt.zeabur.app/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Zeabur AI Hub pay-as-you-go w/ API key (main). Prepaid drains. Source: yzgpt.zeabur.app.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "zai": {
+      "base_url": "https://api.z.ai/api/paas/v4",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Z.AI (Zhipu international) API. Free tier w/ limited daily quota. | Z.AI (Zhipu international) API. Free tier w/ limited daily quota. | Z.AI (Zhipu international) API. Free tier w/ limited daily quota. | Z.AI (Zhipu international) API. Free tier w/ limited daily quota.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "zai-coding-plan": {
+      "base_url": "https://api.z.ai/api/coding/paas/v4",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Z.AI Coding Plan, free monthly quota via subscription. | Z.AI Coding Plan, free monthly quota via subscription. | Z.AI Coding Plan, free monthly quota via subscription. | Z.AI Coding Plan, free monthly quota via subscription.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "zanity": {
+      "base_url": "https://zanity.xyz/v1",
+      "credit_type": "recurring_checkin_required",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Made by Voidi (zukijourney's dev), docs.zanity.xyz Premium API 15 RPM. Free Discord role @Zanity Premium # w/ /getkey slash command. Free-via-Discord-role setup. Source: zanity.xyz + docs.zanity.xyz.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "zenmux": {
+      "base_url": "https://zenmux.ai/api/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "402 reject_no_credit. Source: FREE_LLM_PROVIDER_AUDIT_2026-07-09.md",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "zhangyuapi": {
+      "base_url": "https://zhangyuapi.com/v1",
+      "credit_type": "dead",
+      "free_tier": false,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "AAAK dead: 401 invalid key (host alive) | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16. | Key 401 invalid. AAAK dead-shared-key-providers-2026-07-16.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "zhipuai": {
+      "base_url": "https://open.bigmodel.cn/api/paas/v4",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Zhipu BigModel.cn API. Free tier w/ limited daily quota for select models. AAAK bigmodel.cn 20M free Z.ai tokens. | Zhipu BigModel.cn API. Free tier w/ limited daily quota for select models. AAAK bigmodel.cn 20M free Z.ai tokens. | Zhipu BigModel.cn API. Free tier w/ limited daily quota for select models. AAAK bigmodel.cn 20M free Z.ai tokens. | Zhipu BigModel.cn API. Free tier w/ limited daily quota for select models. AAAK bigmodel.cn 20M free Z.ai tokens.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "zhipuai-coding-plan": {
+      "base_url": "https://open.bigmodel.cn/api/coding/paas/v4",
+      "credit_type": "recurring_auto_refresh",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "Zhipu BigModel.cn Coding Plan, free monthly quota via subscription. | Zhipu BigModel.cn Coding Plan, free monthly quota via subscription. | Zhipu BigModel.cn Coding Plan, free monthly quota via subscription. | Zhipu BigModel.cn Coding Plan, free monthly quota via subscription.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
+    },
+    "zyf": {
+      "base_url": "https://zyf.12040414.xyz/v1",
+      "credit_type": "finite",
+      "free_tier": true,
+      "model_types": [
+        "text",
+        "chat"
+      ],
+      "notes": "zyf.12040414.xyz = N89\u533b\u8d39 OpenAI-compatible Chinese relay. \u00a55 trial credit for new registrations. LMSpeed free=0. Prepaid drains. Source: zyf.12040414.xyz.",
+      "supports_reasoning": false,
+      "supports_tool_calls": false
     }
-  }
+  },
+  "schema_version": "1.1",
+  "updated": "2026-07-22"
 }
