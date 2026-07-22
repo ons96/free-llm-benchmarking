@@ -111,7 +111,49 @@ FREE_CREDIT_PROVIDERS = {
     "tokenrouter",
     "lotte-library",
     "xinjianya",
-    # NOTE: together is NOT free (mostly paid now)
+        "qzz",
+    "tokenlb",
+    "atessa",
+    "dext",
+    "tokenreply",
+    "futureppo",
+    "futureppo-new",
+    "17nas",
+    "novita",
+    "navy",
+    "pooled",
+    "voidai",
+    "airforce",
+    "banana2556",
+    "bayunzi",
+    "crowllm",
+    "gbox",
+    "logfare-alt",
+    "lpgpt",
+    "redwakeai",
+    "free-gemini",
+    "tokenaizf",
+    "nianhua",
+    "xinjianya-alt",
+    "blaze",
+    "blaze-free",
+    "blaze-org",
+    "bosco",
+    "aerolink",
+    "furry",
+    "evolvex",
+    "yanproxy",
+    "888avi",
+    "aihub-071129",
+    "ai-claw",
+    "anmix",
+    "buddybackend",
+    "choosec",
+    "conduit",
+    "agnes-ai",
+    "dcapi-gbox",
+    "gcli",
+# NOTE: together is NOT free (mostly paid now)
     # NOTE: openai is NOT free (paid only)
 }
 
@@ -229,12 +271,17 @@ def _supports_reasoning(model: str) -> bool:
 
 
 def _resolve_env_var(s: str) -> str:
-    """Resolve env var references in config values.
+    """Resolve env var and secret-file references in config values.
 
-    Supports both shell-style ($VAR / ${VAR}) and opencode.json-style
-    ({env:VAR}) references. Unresolvable {env:VAR} refs become empty
-    strings so providers fail fast with a clear missing-key error
-    instead of sending the literal placeholder as a Bearer token (401).
+    Supports:
+      - shell-style $VAR / ${VAR}
+      - opencode.json-style {env:VAR}
+      - opencode.json-style {file:PATH} (file content, stripped)
+
+    Unresolvable {env:VAR} refs become empty strings so providers fail
+    fast with a clear missing-key error instead of sending the literal
+    placeholder as a Bearer token (401). Missing {file:PATH} also
+    becomes empty for the same reason.
     """
     if not s:
         return s
@@ -243,7 +290,22 @@ def _resolve_env_var(s: str) -> str:
         lambda m: os.environ.get(m.group(1), ""),
         s,
     )
+    s = re.sub(
+        r"\{file:([^}]+)\}",
+        lambda m: _read_secret_file(m.group(1)),
+        s,
+    )
     return os.path.expandvars(s)
+
+
+def _read_secret_file(path: str) -> str:
+    # ponytail: ~ expansion only; no mkdir. Silent fail = empty token.
+    path = os.path.expanduser(path)
+    try:
+        with open(path) as f:
+            return f.read().strip()
+    except (OSError, IOError):
+        return ""
 
 
 def is_model_free(provider_name: str, model_name: str) -> bool:
@@ -440,8 +502,10 @@ def load_opencode_targets(
                             out = model_pricing.get("output", 0)
                             if inp > 0 or out > 0:
                                 continue
-                        else:
+                        elif p:
+                            # Provider returned pricing for other models but not this one
                             continue
+                        # else: no pricing data at all — include; paid APIs fail at call time
 
             if "kilo" in pname.lower() and "free" not in model_name.lower():
                 continue
