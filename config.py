@@ -3,6 +3,7 @@
 import json
 import os
 import re
+from pathlib import Path
 from typing import Any
 
 
@@ -13,8 +14,42 @@ def _parse_jsonc(text: str) -> Any:
     return json.loads(text)
 
 
+def _load_provider_registry() -> dict:
+    # ponytail: registry is canonical source of credit_type since v1.1 (commit d8de55c)
+    # Falls back to empty if missing — callers degrade to legacy static sets.
+    path = Path(__file__).parent / "data" / "provider_registry.json"
+    if not path.exists():
+        return {"providers": {}}
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {"providers": {}}
+
+
+_REGISTRY = _load_provider_registry()
+_REGISTRY_PROVIDERS = _REGISTRY.get("providers", {})
+
+# ponytail: derive credit-type sets from registry at import time. Replaces dead
+# 1-provider set {ktai-paid} w/ registry-driven classification. Missing/empty
+# registry -> empty sets -> falls through to FREE_CREDIT_PROVIDERS legacy gate.
+FINITE_CREDIT_PROVIDERS = {
+    name for name, p in _REGISTRY_PROVIDERS.items()
+    if p.get("credit_type") in {"finite", "unknown"}
+}
+RECURRING_PROVIDERS = {
+    name for name, p in _REGISTRY_PROVIDERS.items()
+    if p.get("credit_type") in {
+        "recurring_auto_refresh", "recurring_checkin_required", "unlimited_free",
+    }
+}
+DEAD_PROVIDERS = {
+    name for name, p in _REGISTRY_PROVIDERS.items()
+    if p.get("credit_type") == "dead"
+}
+
+
 from dataclasses import dataclass, field
-from pathlib import Path
 from typing import Optional
 
 OPENCODE_JSON = Path.home() / ".config" / "opencode" / "opencode.json"
@@ -51,7 +86,8 @@ SKIP_PROVIDERS = {
     "brave_search", "duckduckgo", "exa",  "jina", "tavily",
 }
 
-FINITE_CREDIT_PROVIDERS = {"ktai-paid"}
+# ponytail: FINITE_CREDIT_PROVIDERS now derived from data/provider_registry.json at module-init (registry v1.1, commit d8de55c).
+# See definitions at top of file (_load_provider_registry + set comprehensions from _REGISTRY_PROVIDERS).
 
 NEW_API_PROVIDERS = {
     "xinjianya",
@@ -510,10 +546,21 @@ def load_opencode_targets(
             if "kilo" in pname.lower() and "free" not in model_name.lower():
                 continue
 
-            expensive = _is_expensive(mname)
-            force_skip_expensive = pname in FINITE_CREDIT_PROVIDERS and not include_expensive
-            if (expensive and not include_expensive) or force_skip_expensive:
+            # ponytail: registry credit-burn guard (user b5 concern).
+            # Default sweep policy: only test recurring/unlimited providers.
+            # `--include-expensive` opts-in finite+unknown (manual smoke).
+            # DEAD providers NEVER tested (host down / key dead).
+            expensive = _is_expensive(mname)  # ponytail: bind before guard; used later in Target()
+            if pname in DEAD_PROVIDERS:
                 continue
+            if pname in FINITE_CREDIT_PROVIDERS and not include_expensive:
+                if expensive:
+                    continue
+                # ponytail: non-expensive but finite/unknown — still allow
+                # if caller passes include_paid (legacy FREE_CREDIT_PROVIDERS
+                # gate above already handles free-vs-paid pricing filter).
+                if not include_paid:
+                    continue
 
             key = (pname, mname)
             if key in seen:

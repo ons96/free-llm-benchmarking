@@ -42,6 +42,12 @@ on:
 permissions:
   contents: write
 
+# The benchmark takes ~2h; prevent overlapping runs from racing on the
+# push to protected main. Let a running benchmark finish rather than cancel.
+concurrency:
+  group: llm-speed-benchmark
+  cancel-in-progress: false
+
 jobs:
   benchmark:
     name: Run LLM Benchmarks
@@ -244,7 +250,20 @@ jobs:
             if [ -z "${{ secrets.BENCHMARK_PUSH_TOKEN }}" ]; then
               echo "::warning::BENCHMARK_PUSH_TOKEN secret not set; push to protected main will fail. Set admin PAT w/ repo scope."
             fi
-            git push
+            # The benchmark runs ~2h; remote main advances during the run, so a
+            # bare push is rejected (non-fast-forward). Rebase-and-retry. Data
+            # files are regenerated each run so "ours wins" on conflict is fine.
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                echo "push succeeded on attempt $attempt"; break
+              fi
+              echo "push rejected (attempt $attempt), rebasing onto origin/main"
+              git fetch origin main
+              # -X ours: our freshly-generated data wins any content conflict
+              git rebase -X ours origin/main || { git rebase --abort; echo "::error::rebase failed unexpectedly"; exit 1; }
+              if [ "$attempt" = "5" ]; then echo "::error::push failed after 5 attempts"; exit 1; fi
+              sleep $((attempt * 5))
+            done
           fi
         env:
           GH_TOKEN: ${{ secrets.BENCHMARK_PUSH_TOKEN || secrets.GITHUB_TOKEN }}
