@@ -1,5 +1,27 @@
 #!/usr/bin/env python3
-"""NVIDIA NIM TTFT/TPS benchmark with real streaming measurements."""
+"""NVIDIA NIM TTFT/TPS benchmark with real streaming measurements.
+
+Refreshed (2026-08) to use the shared measurement core in
+``benchmarks/measurement.py`` so TTFT/TPS/token counting are identical
+to the main runner:
+
+- streaming-aware TTFT (first *content* chunk, not connection time)
+- token counting from the provider ``usage`` block with a chars/4
+  fallback (``token_source`` records which one was used)
+- burst/fake-streaming detection so buffered proxies can't fabricate
+  huge TPS numbers
+- per-provider result records with UTC timestamps written to SQLite,
+  JSON and CSV
+
+Usage:
+    NVIDIA_API_KEY=... python nvidia_speedtest_v2.py [--force] [--only=m1,m2]
+    BASE_URL=... python nvidia_speedtest_v2.py   # any OpenAI-compat endpoint
+
+Outputs (under data/):
+    nvidia_speedtest.db            SQLite (results table, one row per model)
+    nvidia_speedtest_results.json  full per-call records, timestamps
+    nvidia_speedtest_results.csv   same records in CSV form
+"""
 
 import asyncio
 import json
@@ -7,17 +29,30 @@ import os
 import sqlite3
 import sys
 import time
+from datetime import datetime, timezone
+from pathlib import Path
 
 import httpx
 
+from benchmarks.measurement import (
+    BenchmarkRecord,
+    load_json,
+    measure_openai_stream,
+    write_csv,
+    write_json,
+)
+
 API_KEY = os.environ.get("NVIDIA_API_KEY", "")
-BASE_URL = "https://integrate.api.nvidia.com/v1"
+BASE_URL = os.environ.get("BASE_URL", "https://integrate.api.nvidia.com/v1")
 MAX_TOKENS = 200
 TIMEOUT = 30
 CONCURRENCY = 4
 RETRIES = 2
 
-DB_PATH = Path(__file__).parent / "data" / "nvidia_speedtest.db"
+REPO_ROOT = Path(__file__).resolve().parent
+DB_PATH = REPO_ROOT / "data" / "nvidia_speedtest.db"
+JSON_PATH = REPO_ROOT / "data" / "nvidia_speedtest_results.json"
+CSV_PATH = REPO_ROOT / "data" / "nvidia_speedtest_results.csv"
 
 PROMPT = {
     "role": "user",
@@ -26,7 +61,7 @@ PROMPT = {
 
 
 def get_all_models():
-    print("Fetching model list from NVIDIA...")
+    print(f"Fetching model list from {BASE_URL} ...")
     resp = httpx.get(
         f"{BASE_URL}/models",
         headers={"Authorization": f"Bearer {API_KEY}"},
@@ -54,6 +89,7 @@ def init_db():
             total_time_ms REAL,
             status TEXT NOT NULL,
             error_message TEXT,
+            token_source TEXT,
             UNIQUE(model)
         )
     """)
@@ -62,6 +98,7 @@ def init_db():
 
 
 async def test_model_streaming(client, model):
+    """One streaming measurement; returns a BenchmarkRecord."""
     url = f"{BASE_URL}/chat/completions"
     body = {
         "model": model,
@@ -78,107 +115,44 @@ async def test_model_streaming(client, model):
     }
 
     for attempt in range(1 + RETRIES):
-        t_start = time.monotonic()
-        ttft_ms = None
-        first_content_at = None
-        token_count = 0
-        output_text = []
-        prompt_tokens = 0
-        total_tokens = 0
-        try:
-            async with client.stream("POST", url, json=body, headers=headers, timeout=TIMEOUT) as resp:
-                if resp.status_code != 200:
-                    body_text = (await resp.aread()).decode("utf-8", errors="replace")[:300]
-                    if resp.status_code in (429, 503):
-                        await asyncio.sleep(2 + attempt * 2)
-                        continue
-                    t_end = time.monotonic()
-                    return {
-                        "model": model, "ttft_ms": None, "tps": None,
-                        "prompt_tokens": 0, "output_tokens": 0,
-                        "total_time_ms": (t_end - t_start) * 1000,
-                        "status": "error",
-                        "error_message": f"HTTP {resp.status_code}: {body_text}",
-                    }
+        result = await measure_openai_stream(client, url, body, headers, timeout=TIMEOUT)
+        if result["status"] == "http_error" and result["error_message"].startswith(("HTTP 429", "HTTP 503")):
+            await asyncio.sleep(2 + attempt * 2)
+            continue
+        break
 
-                async for line in resp.aiter_lines():
-                    if not line.startswith("data: "):
-                        continue
-                    payload = line[6:].strip()
-                    if payload == "[DONE]":
-                        break
-                    try:
-                        chunk = json.loads(payload)
-                    except json.JSONDecodeError:
-                        continue
-                    choices = chunk.get("choices", [])
-                    if choices:
-                        delta = choices[0].get("delta", {})
-                        content = delta.get("content")
-                        if content:
-                            now = time.monotonic()
-                            if first_content_at is None:
-                                first_content_at = now
-                            output_text.append(content)
-                            token_count += 1
-                    usage = chunk.get("usage")
-                    if usage:
-                        prompt_tokens = usage.get("prompt_tokens", 0)
-                        total_tokens = usage.get("total_tokens", 0)
-
-            t_end = time.monotonic()
-            total_ms = (t_end - t_start) * 1000
-            if first_content_at is not None:
-                ttft_ms = (first_content_at - t_start) * 1000
-            gen_ms = total_ms - (ttft_ms or 0)
-            tps = (token_count / (gen_ms / 1000)) if gen_ms > 0 and token_count > 0 else 0
-            return {
-                "model": model, "ttft_ms": ttft_ms, "tps": tps,
-                "prompt_tokens": prompt_tokens, "output_tokens": token_count,
-                "total_time_ms": total_ms, "status": "success",
-                "error_message": None,
-            }
-
-        except httpx.TimeoutException:
-            t_end = time.monotonic()
-            return {
-                "model": model, "ttft_ms": None, "tps": None,
-                "prompt_tokens": 0, "output_tokens": token_count,
-                "total_time_ms": (t_end - t_start) * 1000,
-                "status": "timeout", "error_message": "Timeout",
-            }
-        except Exception as e:
-            t_end = time.monotonic()
-            return {
-                "model": model, "ttft_ms": None, "tps": None,
-                "prompt_tokens": 0, "output_tokens": 0,
-                "total_time_ms": (t_end - t_start) * 1000,
-                "status": "error", "error_message": f"{type(e).__name__}: {str(e)[:200]}",
-            }
-
-    return {
-        "model": model, "ttft_ms": None, "tps": None,
-        "prompt_tokens": 0, "output_tokens": 0,
-        "total_time_ms": None, "status": "rate_limited",
-        "error_message": "All retries exhausted",
-    }
+    return BenchmarkRecord(
+        provider="nvidia",
+        model=model,
+        base_url=BASE_URL,
+        status=result["status"],
+        ttft_sec=result.get("ttft_sec"),
+        tps=result.get("tps"),
+        output_tokens=result.get("output_tokens", 0),
+        prompt_tokens=result.get("prompt_tokens"),
+        total_time_sec=result.get("total_time_sec"),
+        token_source=result.get("token_source", "estimated"),
+        streaming=True,
+        error_message=result.get("error_message"),
+    )
 
 
-def save_result(conn, result):
+def save_result(conn, record: BenchmarkRecord):
     conn.execute("""
         INSERT OR REPLACE INTO results
-        (model, timestamp, ttft_ms, tps, prompt_tokens, output_tokens, total_time_ms, status, error_message)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+        (model, timestamp, ttft_ms, tps, prompt_tokens, output_tokens, total_time_ms, status, error_message, token_source)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
-        result["model"],
-        datetime.utcnow().isoformat() + "Z",
-        result["ttft_ms"],
-        result["tps"],
-        result["prompt_tokens"],
-        result["output_tokens"],
-        result["total_time_ms"],
-        result["status"],
-        result["error_message"],
+        record.model,
+        record.timestamp,
+        record.ttft_sec * 1000 if record.ttft_sec is not None else None,
+        record.tps,
+        record.prompt_tokens,
+        record.output_tokens,
+        record.total_time_sec * 1000 if record.total_time_sec is not None else None,
+        record.status,
+        record.error_message,
+        record.token_source,
     ))
     conn.commit()
 
@@ -197,33 +171,47 @@ async def run_tests(models, conn, force=False):
 
     if not to_test:
         print("All models already tested!")
-        return
+        return []
 
     semaphore = asyncio.Semaphore(CONCURRENCY)
     completed = 0
     total = len(to_test)
-    results = []
+    records: list[BenchmarkRecord] = []
 
     async def test_with_sem(model):
         nonlocal completed
         async with semaphore:
             async with httpx.AsyncClient() as client:
-                result = await test_model_streaming(client, model)
+                record = await test_model_streaming(client, model)
             completed += 1
-            save_result(conn, result)
-            results.append(result)
+            save_result(conn, record)
+            records.append(record)
 
-            status_icon = "OK" if result["status"] == "success" else "FAIL"
-            ttft = f"{result['ttft_ms']:.0f}ms" if result["ttft_ms"] is not None else "-"
-            tps = f"{result['tps']:.1f}" if result["tps"] else "-"
-            tot = f"{result['total_time_ms']:.0f}ms" if result["total_time_ms"] else "-"
-            err = result["error_message"][:50] if result["error_message"] else ""
+            status_icon = "OK" if record.status == "success" else "FAIL"
+            ttft = f"{record.ttft_sec * 1000:.0f}ms" if record.ttft_sec is not None else "-"
+            tps = f"{record.tps:.1f}" if record.tps else "-"
+            tot = f"{record.total_time_sec * 1000:.0f}ms" if record.total_time_sec else "-"
+            err = record.error_message[:50] if record.error_message else ""
             print(f"[{completed:>3}/{total}] {status_icon:4s} {model[:55]:55s} ttft={ttft:>7} tps={tps:>6} total={tot:>7} {err}", flush=True)
             await asyncio.sleep(0.3)
 
     tasks = [asyncio.create_task(test_with_sem(m)) for m in to_test]
     await asyncio.gather(*tasks)
-    return results
+
+    # JSON + CSV artifacts with timestamps (merge with any prior records)
+    all_records = load_existing_records() + records
+    write_json(all_records, JSON_PATH)
+    write_csv(records, CSV_PATH, append=True)
+    return records
+
+
+def load_existing_records() -> list[BenchmarkRecord]:
+    if not JSON_PATH.exists():
+        return []
+    try:
+        return load_json(JSON_PATH)
+    except (json.JSONDecodeError, OSError):
+        return []
 
 
 def print_summary(conn):
@@ -231,15 +219,15 @@ def print_summary(conn):
     print("SUMMARY (sorted by TPS, success only)")
     print("=" * 100)
     rows = conn.execute("""
-        SELECT model, ttft_ms, tps, output_tokens, total_time_ms, status
+        SELECT model, ttft_ms, tps, output_tokens, total_time_ms, token_source, status
         FROM results
         WHERE status = 'success' AND tps > 0
         ORDER BY tps DESC
     """).fetchall()
-    print(f"{'Model':<55} {'TTFT':>9} {'TPS':>7} {'Out':>5} {'Total':>9}")
+    print(f"{'Model':<55} {'TTFT':>9} {'TPS':>7} {'Out':>5} {'Total':>9} {'Tokens':>8}")
     print("-" * 100)
-    for model, ttft, tps, out, total, _ in rows[:50]:
-        print(f"{model[:55]:<55} {ttft:>7.0f}ms {tps:>6.1f} {out:>5} {total:>7.0f}ms")
+    for model, ttft, tps, out, total, token_source, _ in rows[:50]:
+        print(f"{model[:55]:<55} {ttft:>7.0f}ms {tps:>6.1f} {out:>5} {total:>7.0f}ms {token_source or '-':>8}")
 
     print(f"\n  {len(rows)} successful models")
 
@@ -247,6 +235,7 @@ def print_summary(conn):
         SELECT status, COUNT(*) FROM results GROUP BY status
     """).fetchall()
     print(f"  Status breakdown: {dict(err_rows)}")
+    print(f"  Artifacts: {JSON_PATH.name}, {CSV_PATH.name}")
 
 
 if __name__ == "__main__":
@@ -255,10 +244,11 @@ if __name__ == "__main__":
     only = only_arg[0].split("=", 1)[1].split(",") if only_arg else None
 
     conn = init_db()
-    models = get_all_models()
     if only:
-        models = [m for m in models if m in only]
+        models = only
         print(f"Filtered to {len(models)} models: {models}")
+    else:
+        models = get_all_models()
 
     asyncio.run(run_tests(models, conn, force=force))
     print_summary(conn)
