@@ -258,3 +258,36 @@ class TestRecordSerialization:
         write_csv([BenchmarkRecord(provider="p", model="b")], path, append=True)
         lines = path.read_text().strip().splitlines()
         assert len(lines) == 3  # header + 2 rows
+
+    def test_csv_append_with_stale_header_rotates_file(self, tmp_path):
+        """Regression (review finding): appending after a schema change must
+        never misalign rows under the stale header — the old file is rotated
+        away and a fresh file with the current header is started."""
+        path = tmp_path / "results.csv"
+        # Simulate an old-schema CSV (columns predate token_source, say).
+        stale_fields = [f for f in RECORD_FIELDS if f != "token_source"]
+        old_line = ",".join(["p", "a", "", ""][: len(stale_fields)])
+        path.write_text(",".join(stale_fields) + "\n" + old_line + "\n")
+
+        write_csv([BenchmarkRecord(provider="q", model="b")], path, append=True)
+
+        # New file carries the current header, correctly aligned rows only.
+        lines = path.read_text().strip().splitlines()
+        assert lines[0] == ",".join(RECORD_FIELDS)
+        assert len(lines) == 2
+        assert lines[1].split(",")[RECORD_FIELDS.index("model")] == "b"
+
+        # The stale file was rotated, not overwritten.
+        rotated = list(tmp_path.glob("results.csv.stale-*"))
+        assert len(rotated) == 1
+        rotated_lines = rotated[0].read_text().strip().splitlines()
+        assert rotated_lines[0] == ",".join(stale_fields)
+
+    def test_csv_append_matching_header_appends_in_place(self, tmp_path):
+        path = tmp_path / "results.csv"
+        write_csv([BenchmarkRecord(provider="p", model="a")], path)
+        stale = list(tmp_path.glob("results.csv.stale-*"))
+        write_csv([BenchmarkRecord(provider="p", model="b")], path, append=True)
+        lines = path.read_text().strip().splitlines()
+        assert len(lines) == 3
+        assert list(tmp_path.glob("results.csv.stale-*")) == stale  # no rotation

@@ -155,12 +155,17 @@ def score_candidates(
     ]
 
     tps_n = _normalize([c.avg_tps for c in eligible])
-    ttft_vals = [c.avg_ttft_sec if c.avg_ttft_sec is not None else 0.0 for c in eligible]
-    ttft_n = _normalize(ttft_vals)
+    # Min-max normalize TTFT over candidates that HAVE TTFT data only.
+    # Substituting 0.0 for missing entries would anchor the minimum of the
+    # vector and compress every real TTFT's normalized score; candidates
+    # without TTFT data keep the neutral 0.5 component instead.
+    ttft_idx = [i for i, c in enumerate(eligible) if c.avg_ttft_sec is not None]
+    ttft_n_map = dict(zip(
+        ttft_idx, _normalize([eligible[i].avg_ttft_sec for i in ttft_idx])))
 
     scored: list[dict] = []
     for i, c in enumerate(eligible):
-        ttft_component = 0.5 if c.avg_ttft_sec is None else (1.0 - ttft_n[i])
+        ttft_component = 0.5 if c.avg_ttft_sec is None else (1.0 - ttft_n_map[i])
         score = (
             weights.get("tps", 0.0) * tps_n[i]
             + weights.get("ttft_inv", 0.0) * ttft_component

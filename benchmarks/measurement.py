@@ -294,9 +294,26 @@ def write_json(records: list[BenchmarkRecord], path: str | Path) -> Path:
 
 
 def write_csv(records: list[BenchmarkRecord], path: str | Path, append: bool = False) -> Path:
-    """Write records to CSV with a stable column order (append supported)."""
+    """Write records to CSV with a stable column order (append supported).
+
+    On append, the existing file's header is validated against
+    RECORD_FIELDS: after a schema change the stale header would silently
+    misalign appended rows under the old column order (DictWriter writes
+    in the new order). On mismatch the old file is rotated to
+    ``<name>.stale-<timestamp>`` and a fresh file with the current header
+    is started — data is never corrupted and never silently lost.
+    """
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
+    if append and path.exists() and path.stat().st_size > 0:
+        with open(path, "r", newline="", encoding="utf-8") as f:
+            existing_header = next(csv.reader(f), [])
+        if existing_header != RECORD_FIELDS:
+            rotated = path.with_name(
+                f"{path.name}.stale-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
+            )
+            path.replace(rotated)
+            append = False  # fresh file with the current header
     mode = "a" if append else "w"
     write_header = not (append and path.exists() and path.stat().st_size > 0)
     with open(path, mode, newline="", encoding="utf-8") as f:

@@ -90,6 +90,46 @@ class TestScoring:
         s2 = score_candidates(aggregate(list(reversed(records))))
         assert [(e["provider"], e["priority"]) for e in s1] == [(e["provider"], e["priority"]) for e in s2]
 
+    def test_missing_ttft_does_not_distort_normalization(self):
+        """Regression (review finding): candidates without TTFT data must be
+        excluded from the min-max TTFT vector instead of substituted as 0.0,
+        which anchored the minimum and compressed every real TTFT's score."""
+        records = [
+            rec("fast-ttft", "m", tps=50, ttft=0.2),
+            rec("slow-ttft", "m", tps=50, ttft=1.0),
+            rec("no-ttft", "m", tps=50, ttft=None),
+        ]
+        ttft_only = {"tps": 0.0, "ttft_inv": 1.0, "success": 0.0}
+        scored = score_candidates(aggregate(records), weights=ttft_only)
+        by_provider = {e["provider"]: e["score"] for e in scored}
+        # Normalized over the two REAL ttft values [0.2, 1.0] only:
+        # fast -> 1 - 0.0 = 1.0, slow -> 1 - 1.0 = 0.0, missing -> neutral 0.5.
+        assert by_provider["fast-ttft"] == 1.0
+        assert by_provider["slow-ttft"] == 0.0
+        assert by_provider["no-ttft"] == 0.5
+        # Pre-fix behavior would have scored fast-ttft at 0.8 (min anchored
+        # at the substituted 0.0) — the compression this test locks out.
+        assert [e["provider"] for e in scored] == ["fast-ttft", "no-ttft", "slow-ttft"]
+
+    def test_all_equal_ttft_maps_to_neutral_half(self):
+        """Single-candidate / all-equal TTFT normalizes to the neutral 0.5
+        component rather than 0 or 1."""
+        records = [
+            rec("only", "m", tps=50, ttft=0.7),
+        ]
+        ttft_only = {"tps": 0.0, "ttft_inv": 1.0, "success": 0.0}
+        scored = score_candidates(aggregate(records), weights=ttft_only)
+        assert scored[0]["score"] == 0.5
+
+    def test_all_missing_ttft_scores_neutral(self):
+        records = [
+            rec("a", "m", tps=10, ttft=None),
+            rec("b", "m", tps=20, ttft=None),
+        ]
+        ttft_only = {"tps": 0.0, "ttft_inv": 1.0, "success": 0.0}
+        scored = score_candidates(aggregate(records), weights=ttft_only)
+        assert all(e["score"] == 0.5 for e in scored)
+
 
 class TestFallbackConfig:
     def test_artifact_structure(self):

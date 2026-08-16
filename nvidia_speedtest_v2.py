@@ -74,6 +74,22 @@ def get_all_models():
     return models
 
 
+    conn.commit()
+    return conn
+
+
+def _migrate_db(conn):
+    """Guarded schema migration: databases created before token_source
+    existed keep the old 9-column schema (CREATE TABLE IF NOT EXISTS does
+    not alter existing tables), so INSERTs naming the new column would
+    crash with sqlite3.OperationalError. Called from init_db().
+    """
+    columns = {row[1] for row in conn.execute("PRAGMA table_info(results)")}
+    if "token_source" not in columns:
+        conn.execute("ALTER TABLE results ADD COLUMN token_source TEXT")
+        conn.commit()
+
+
 def init_db():
     DB_PATH.parent.mkdir(parents=True, exist_ok=True)
     conn = sqlite3.connect(DB_PATH)
@@ -94,6 +110,7 @@ def init_db():
         )
     """)
     conn.commit()
+    _migrate_db(conn)
     return conn
 
 
