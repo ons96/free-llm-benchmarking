@@ -1,7 +1,6 @@
 """Async streaming speed test runner."""
 
 import asyncio
-import json
 import sys
 import time
 import uuid
@@ -11,6 +10,12 @@ from typing import Optional
 
 import httpx
 
+from benchmarks.measurement import (
+    StreamCollector,
+    finalize_metrics,
+    tokens_from_usage,
+    approx_tokens,
+)
 from config import Target, RATE_LIMITS
 import db
 
@@ -334,9 +339,7 @@ async def test_single_call(
     )
 
     t_start = time.monotonic()
-    first_token_time: Optional[float] = None
-    collected_text = ""
-    token_count = 0
+    collector = StreamCollector()
 
     NON_STREAM_TOKENS = 4000
     body_stream = dict(body, stream=True)
@@ -365,12 +368,7 @@ async def test_single_call(
             full_text = content or reasoning or ""
             collected_text = full_text
             usage = data.get("usage", {})
-            token_count = (
-                usage.get("completion_tokens")
-                or usage.get("output_tokens")
-                or usage.get("tokens")
-                or _approx_tokens(full_text)
-            )
+            token_count = tokens_from_usage(usage) or _approx_tokens(full_text)
             total_time_sec = time.monotonic() - t_start
             gen_s = total_time_sec
             tps = float(token_count) / gen_s if token_count and gen_s > 0 else None
@@ -406,42 +404,7 @@ async def test_single_call(
                 )
 
             async for line in resp.aiter_lines():
-                if not line.startswith("data: "):
-                    continue
-                data_str = line[6:].strip()
-                if data_str == "[DONE]":
-                    break
-
-                try:
-                    chunk_data = json.loads(data_str)
-                except json.JSONDecodeError:
-                    continue
-
-                # Extract content delta (handle both content and reasoning fields)
-                choices = chunk_data.get("choices", [])
-                if not choices:
-                    continue
-                delta = choices[0].get("delta", {})
-                content = delta.get("content", "") or delta.get("reasoning", "")
-
-                if content:
-                    now = time.monotonic()
-                    if first_token_time is None:
-                        first_token_time = now
-                    last_token_time = now
-                    token_count += _approx_tokens(content)
-                    collected_text += content
-
-                # Check for usage in final chunk (various API formats)
-                usage = chunk_data.get("usage", {})
-                if usage:
-                    # Try different field names
-                    token_count = (
-                        usage.get("completion_tokens")
-                        or usage.get("output_tokens")
-                        or usage.get("tokens")
-                        or token_count  # fallback to approximation
-                    )
+                collector.observe_line(line)
 
     except httpx.TimeoutException:
         return TestResult(
@@ -465,66 +428,29 @@ async def test_single_call(
     t_end = time.monotonic()
     total_time_sec = t_end - t_start
 
-    if first_token_time is None:
+    stats = collector.stats
+    if not stats.saw_tokens:
         return TestResult(
             status="empty",
             error_message="No content tokens received",
             total_time_sec=total_time_sec,
         )
 
-    ttft_sec = first_token_time - t_start
-
-    # TPS: tokens generated / generation time
-    # Use time between first and last token if stream is long enough (>0.5s).
-    # Otherwise fall back to total_time - ttft to avoid absurd values from
-    # buffered/chunked responses where all content arrives in one burst.
-    tps = None
-    if token_count > 1:
-        stream_s = (
-            (last_token_time - first_token_time)
-            if last_token_time and last_token_time > first_token_time
-            else 0
-        )
-        gen_time_s = total_time_sec - ttft_sec
-
-        # Fake-streaming / buffered-proxy detection:
-        # Some providers accept stream=true but deliver the entire response
-        # in a single SSE chunk (or a buffered proxy coalesces it). Then
-        # first_token_time == last_token_time (stream_s == 0) and ttft_sec
-        # consumes nearly the whole call (gen_time_s ~ epsilon), so
-        # token_count / gen_time_s explodes into millions of TPS while the
-        # measured "TTFT" is really the full generation time.
-        # In that case fall back to the conservative whole-call rate and
-        # zero out TTFT (same convention as the non-streaming path, which
-        # _is_outlier and the leaderboard flag logic already treat as
-        # "not real streaming").
-        burst_detected = stream_s < 0.5 and (
-            gen_time_s < 0.05
-            or (total_time_sec > 0 and ttft_sec / total_time_sec > 0.95)
-        )
-
-        if burst_detected:
-            if total_time_sec > 0:
-                tps = token_count / total_time_sec
-            ttft_sec = 0.0
-        elif stream_s >= 0.5:
-            tps = token_count / stream_s
-        elif gen_time_s > 0:
-            tps = token_count / gen_time_s
+    # Shared measurement core: usage-first token counting (chars/4 fallback),
+    # streaming TTFT, first->last-token TPS window, burst/fake-stream detection.
+    metrics = finalize_metrics(stats, t_start, t_end)
 
     return TestResult(
-        ttft_sec=ttft_sec,
-        tps=tps,
-        output_tokens=token_count,
+        ttft_sec=metrics.ttft_sec,
+        tps=metrics.tps,
+        output_tokens=metrics.output_tokens,
         total_time_sec=total_time_sec,
         status="success",
-        raw_sample=collected_text[:200],
+        raw_sample=stats.collected_text[:200],
     )
 
 
-def _approx_tokens(text: str) -> int:
-    """Quick approximation: ~4 chars per token."""
-    return max(1, len(text) // 4)
+_approx_tokens = approx_tokens
 
 
 async def run_target(
