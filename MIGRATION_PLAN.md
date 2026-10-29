@@ -52,9 +52,9 @@ SSH to VPS and extract keys from the gateway's provider config:
 
 ```bash
 # Fetch ALL env vars from VPS
-ssh -i ~/.ssh/oracle.key ubuntu@155.248.217.255 "cat ~/LLM-API-Key-Proxy/.env"
+ssh -i ~/.ssh/oracle.key ubuntu@<VPS155_IP> "cat ~/LLM-API-Key-Proxy/.env"
 # Also check gateway source code for embedded keys
-ssh -i ~/.ssh/oracle.key ubuntu@155.248.217.255 "ls ~/LLM-API-Key-Proxy/"
+ssh -i ~/.ssh/oracle.key ubuntu@<VPS155_IP> "ls ~/LLM-API-Key-Proxy/"
 ```
 
 ### 1C. Resolve compound references
@@ -90,7 +90,7 @@ XIAOMI_API_KEY, ZAI_API_KEY, ZENMUX_API_KEY, ZHIPUAI_API_KEY, CLAUDE_CARTER_API_
 
 **Quick check command:**
 ```bash
-ssh -i ~/.ssh/oracle.key ubuntu@155.248.217.255 \
+ssh -i ~/.ssh/oracle.key ubuntu@<VPS155_IP> \
   "grep -r 'API_KEY\|api_key\|apiKey' ~/LLM-API-Key-Proxy/ --include='*.py' --include='*.json' --include='*.yaml' --include='*.toml' --include='*.env' -l"
 ```
 

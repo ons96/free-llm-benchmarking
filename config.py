@@ -627,7 +627,7 @@ def load_gateway_targets() -> list[Target]:
 
     oc = _parse_jsonc(OPENCODE_JSON.read_text())
     custom = oc.get("provider", {}).get("custom", {})
-    base_url = custom.get("baseURL", "http://40.233.101.233:8000/v1")
+    base_url = custom.get("baseURL", os.environ.get("VPS_GATEWAY_URL", "http://<VPS40_IP>:8000/v1"))
     api_key = custom.get("apiKey", "")
 
     targets: list[Target] = []

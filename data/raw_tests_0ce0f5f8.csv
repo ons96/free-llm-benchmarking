@@ -87,23 +87,23 @@ bluesminds,https://api.bluesminds.com/v1,deepseek-v4-flash,direct,,,,0,0.4300809
 cerebras,https://api.cerebras.ai/v1,gpt-oss-120b,direct,,0.18863158599992857,1824.9168382184391,399,0.40727168600005825,success,,2026-08-17T04:08:11.670188+00:00
 cerebras,https://api.cerebras.ai/v1,zai-glm-4.7,direct,,0.18939853100005166,791.7741387258608,1009,1.4658459859999766,success,,2026-08-17T04:08:13.158028+00:00
 choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,1.4767746269999407,163.65785426830405,432,4.117019669000001,success,,2026-08-17T04:08:17.295769+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,3.2579225810000025,287.9124787402775,419,6.29546445699998,success,,2026-08-17T04:08:23.612134+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.2507991879999736,279.25128651280664,419,1.8682734750000236,success,,2026-08-17T04:08:25.501669+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,225.22304803684642,63,0.2797227040000507,success,,2026-08-17T04:08:25.802446+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,578.0127898268912,63,0.10899412799994934,success,,2026-08-17T04:08:28.049573+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,570.3220896714365,63,0.11046389600005568,success,,2026-08-17T04:08:30.300439+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,3.2579225810000025,287.9124787402775,419,6.29546445699998,success,,2026-08-17T04:08:23.612134+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.2507991879999736,279.25128651280664,419,1.8682734750000236,success,,2026-08-17T04:08:25.501669+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,225.22304803684642,63,0.2797227040000507,success,,2026-08-17T04:08:25.802446+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,578.0127898268912,63,0.10899412799994934,success,,2026-08-17T04:08:28.049573+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,570.3220896714365,63,0.11046389600005568,success,,2026-08-17T04:08:30.300439+00:00
 bluesminds,https://api.bluesminds.com/v1,mistralai/mistral-large-3-675b-instruct-2512,direct,,,,0,0.5166633619999175,http_error,"HTTP 410: {""error"":{""message"":""The model 'mistralai/mistral-large-3-675b-instruct-2512' has reached its end of life on 2026-07-23T09:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-17T04:08:32.401386+00:00
 bluesminds,https://api.bluesminds.com/v1,meta/llama-4-maverick-17b-128e-instruct,direct,,,,0,0.496259721999877,http_error,"HTTP 410: {""error"":{""message"":""The model 'meta/llama-4-maverick-17b-128e-instruct' has reached its end of life on 2026-07-27T00:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-17T04:08:32.423830+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,583.1882490565747,63,0.10802686800002448,success,,2026-08-17T04:08:32.553014+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,65.69037945866143,30,0.4566878780001389,success,,2026-08-17T04:08:32.878897+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,50.102865069270514,29,0.5788092150000921,success,,2026-08-17T04:08:33.022885+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,86.16182178693079,30,0.3481820530000732,success,,2026-08-17T04:08:33.228387+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,113.08098437182423,30,0.26529659399989214,success,,2026-08-17T04:08:33.495189+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,44.154561795065945,29,0.6567837799998415,success,,2026-08-17T04:08:33.681172+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,96.06309946962054,30,0.3122947329998169,success,,2026-08-17T04:08:33.809152+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,95.78710097338028,29,0.3027547520000553,success,,2026-08-17T04:08:33.985649+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,583.1882490565747,63,0.10802686800002448,success,,2026-08-17T04:08:32.553014+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,65.69037945866143,30,0.4566878780001389,success,,2026-08-17T04:08:32.878897+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,50.102865069270514,29,0.5788092150000921,success,,2026-08-17T04:08:33.022885+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,86.16182178693079,30,0.3481820530000732,success,,2026-08-17T04:08:33.228387+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,113.08098437182423,30,0.26529659399989214,success,,2026-08-17T04:08:33.495189+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,44.154561795065945,29,0.6567837799998415,success,,2026-08-17T04:08:33.681172+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,96.06309946962054,30,0.3122947329998169,success,,2026-08-17T04:08:33.809152+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,95.78710097338028,29,0.3027547520000553,success,,2026-08-17T04:08:33.985649+00:00
 bluesminds,https://api.bluesminds.com/v1,qwen/qwen3-next-80b-a3b-thinking,direct,,,,0,0.5329352969999945,http_error,"HTTP 410: {""error"":{""message"":""The model 'qwen/qwen3-next-80b-a3b-thinking' has reached its end of life on 2026-05-21T00:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-17T04:08:34.289192+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,89.27851510592924,29,0.3248261910000565,success,,2026-08-17T04:08:34.311886+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,89.27851510592924,29,0.3248261910000565,success,,2026-08-17T04:08:34.311886+00:00
 bluesminds,https://api.bluesminds.com/v1,abacusai/dracarys-llama-3.1-70b-instruct,direct,,,,0,0.4534807400000318,http_error,"HTTP 410: {""error"":{""message"":""The model 'abacusai/dracarys-llama-3.1-70b-instruct' has reached its end of life on 2026-07-27T00:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-17T04:08:35.186710+00:00
 bluesminds,https://api.bluesminds.com/v1,adept/fuyu-8b,direct,,,,0,0.5538891060000424,http_error,"HTTP 404: {""error"":{""message"":""Function 'e598bfc1-b058-41af-869d-556d3c7e1b48': Not found for account 'CXopJ5TkZaMFelDOAIMVUfcagC4iIrxEG9TvApMCkLY'"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-17T04:08:35.871112+00:00
 bluesminds,https://api.bluesminds.com/v1,meta/llama-3.3-70b-instruct,direct,,,,0,0.42724341500002083,http_error,HTTP 429: ,2026-08-17T04:08:43.259138+00:00

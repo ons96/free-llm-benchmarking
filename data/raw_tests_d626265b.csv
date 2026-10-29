@@ -84,31 +84,31 @@ bluesminds,https://api.bluesminds.com/v1,meta/llama-4-maverick-17b-128e-instruct
 bluesminds,https://api.bluesminds.com/v1,mistralai/mistral-large-3-675b-instruct-2512,direct,,,,0,0.5377259849999518,http_error,"HTTP 410: {""error"":{""message"":""The model 'mistralai/mistral-large-3-675b-instruct-2512' has reached its end of life on 2026-07-23T09:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-20T04:08:08.142994+00:00
 bluesminds,https://api.bluesminds.com/v1,mistralai/mistral-large-2-instruct,direct,,,,0,0.6564244430001054,http_error,"HTTP 404: {""error"":{""message"":""Function '7fadd4de-e22a-48e4-90e9-f02ef14a74b9': Not found for account 'CXopJ5TkZaMFelDOAIMVUfcagC4iIrxEG9TvApMCkLY'"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-20T04:08:08.226967+00:00
 cerebras,https://api.cerebras.ai/v1,gpt-oss-120b,direct,,,,0,0.1262189959998068,http_error,"HTTP 402: {""message"":""Payment required to access this resource. Visit your billing tab."",""type"":""payment_required_error"",""param"":""quota"",""code"":""payment_required""}",2026-08-20T04:08:08.256826+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,1.7344180110001162,312.7590768094376,235,2.5352408380001634,success,,2026-08-20T04:08:10.812067+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,1.7995145590000448,298.65237765929027,235,2.628335651000043,success,,2026-08-20T04:08:10.875886+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,251.14916789956874,63,0.25084693899998456,success,,2026-08-20T04:08:11.083904+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,81.7696870415506,30,0.3668841240000802,success,,2026-08-20T04:08:11.267817+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,247.67603864822073,58,0.23417687200003456,success,,2026-08-20T04:08:11.503318+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,1.7344180110001162,312.7590768094376,235,2.5352408380001634,success,,2026-08-20T04:08:10.812067+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,1.7995145590000448,298.65237765929027,235,2.628335651000043,success,,2026-08-20T04:08:10.875886+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,251.14916789956874,63,0.25084693899998456,success,,2026-08-20T04:08:11.083904+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,81.7696870415506,30,0.3668841240000802,success,,2026-08-20T04:08:11.267817+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,247.67603864822073,58,0.23417687200003456,success,,2026-08-20T04:08:11.503318+00:00
 bluesminds,https://api.bluesminds.com/v1,qwen/qwen3-next-80b-a3b-thinking,direct,,,,0,0.5377539569999499,http_error,"HTTP 410: {""error"":{""message"":""The model 'qwen/qwen3-next-80b-a3b-thinking' has reached its end of life on 2026-05-21T00:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-20T04:08:11.595076+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,213.1972290065188,58,0.2720485639999879,success,,2026-08-20T04:08:11.777465+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,60.39102463760807,30,0.4967625599999792,success,,2026-08-20T04:08:12.112641+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,138.06714866257107,58,0.4200854480000089,success,,2026-08-20T04:08:12.198902+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,225.24280591966135,58,0.257499899999857,success,,2026-08-20T04:08:12.371507+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,213.1972290065188,58,0.2720485639999879,success,,2026-08-20T04:08:11.777465+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,60.39102463760807,30,0.4967625599999792,success,,2026-08-20T04:08:12.112641+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,138.06714866257107,58,0.4200854480000089,success,,2026-08-20T04:08:12.198902+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,225.24280591966135,58,0.257499899999857,success,,2026-08-20T04:08:12.371507+00:00
 bluesminds,https://api.bluesminds.com/v1,abacusai/dracarys-llama-3.1-70b-instruct,direct,,,,0,0.4973341069999151,http_error,"HTTP 410: {""error"":{""message"":""The model 'abacusai/dracarys-llama-3.1-70b-instruct' has reached its end of life on 2026-07-27T00:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-20T04:08:12.459820+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,63.353975959303256,29,0.4577455410001221,success,,2026-08-20T04:08:12.682337+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,146.39425559645625,58,0.39619040899992797,success,,2026-08-20T04:08:12.769139+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,51.6279796525458,29,0.5617109209999853,success,,2026-08-20T04:08:13.041916+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,88.2997169623742,57,0.6455286830000659,success,,2026-08-20T04:08:13.330359+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,93.15792152863665,58,0.6225986909998937,success,,2026-08-20T04:08:13.393091+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,135.2487091003284,57,0.421445796999933,success,,2026-08-20T04:08:13.464808+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,189.95791120652183,63,0.33165241500000775,success,,2026-08-20T04:08:13.606542+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,63.353975959303256,29,0.4577455410001221,success,,2026-08-20T04:08:12.682337+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,146.39425559645625,58,0.39619040899992797,success,,2026-08-20T04:08:12.769139+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,51.6279796525458,29,0.5617109209999853,success,,2026-08-20T04:08:13.041916+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,88.2997169623742,57,0.6455286830000659,success,,2026-08-20T04:08:13.330359+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,93.15792152863665,58,0.6225986909998937,success,,2026-08-20T04:08:13.393091+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,135.2487091003284,57,0.421445796999933,success,,2026-08-20T04:08:13.464808+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,189.95791120652183,63,0.33165241500000775,success,,2026-08-20T04:08:13.606542+00:00
 choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,,,0,5.516531542999928,empty,No content tokens received,2026-08-20T04:08:13.680182+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,129.12177635789064,57,0.44144374100005734,success,,2026-08-20T04:08:13.773391+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,171.2888718307832,57,0.3327711800000088,success,,2026-08-20T04:08:13.799040+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,159.6407976745868,57,0.3570515859998977,success,,2026-08-20T04:08:14.131751+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,150.4083305146767,57,0.37896837100015546,success,,2026-08-20T04:08:14.179977+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,527.9972025207366,63,0.11931881399982558,success,,2026-08-20T04:08:15.884452+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,522.2424380706337,63,0.12063362799995048,success,,2026-08-20T04:08:18.133621+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,129.12177635789064,57,0.44144374100005734,success,,2026-08-20T04:08:13.773391+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,171.2888718307832,57,0.3327711800000088,success,,2026-08-20T04:08:13.799040+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,159.6407976745868,57,0.3570515859998977,success,,2026-08-20T04:08:14.131751+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,150.4083305146767,57,0.37896837100015546,success,,2026-08-20T04:08:14.179977+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,527.9972025207366,63,0.11931881399982558,success,,2026-08-20T04:08:15.884452+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,522.2424380706337,63,0.12063362799995048,success,,2026-08-20T04:08:18.133621+00:00
 bluesminds,https://api.bluesminds.com/v1,meta/llama-3.3-70b-instruct,direct,,,,0,0.45805457500000557,http_error,HTTP 429: ,2026-08-20T04:08:19.079140+00:00
 dext,https://ai.dext.top/v1,deepseek-v4-flash,direct,,,,0,2.2169011200001023,http_error,"HTTP 429: {""error"":{""message"":""Error from provider (Console): Rate limit exceeded. Please try again later."",""type"":""FreeUsageLimitError"",""param"":"""",""code"":null}}",2026-08-20T04:08:29.070119+00:00
 dext,https://ai.dext.top/v1,mimo-v2.5,direct,,,,0,2.093102955999939,http_error,"HTTP 429: {""error"":{""message"":""Error from provider (Console): Rate limit exceeded. Please try again later."",""type"":""FreeUsageLimitError"",""param"":"""",""code"":null}}",2026-08-20T04:08:29.074261+00:00

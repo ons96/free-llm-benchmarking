@@ -157,8 +157,8 @@ choosec,https://api.choosec.cn/v1,deepseek-v4-flash,direct,,,,0,0.54093459199998
 bluesminds,https://api.bluesminds.com/v1,MiniMax-M2.1-lightning,direct,,,,0,0.5148262910001904,http_error,HTTP 429: ,2026-07-22T06:21:58.566441+00:00
 bluesminds,https://api.bluesminds.com/v1,adept/fuyu-8b,direct,,,,0,0.477736147999849,http_error,HTTP 429: ,2026-07-22T06:21:58.690211+00:00
 choosec,https://api.choosec.cn/v1,deepseek-v4-pro,direct,,,,0,31.09737913799995,http_error,HTTP 524: ,2026-07-22T06:22:09.137064+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,2.9288863899998887,222.06790063667776,419,6.466924654999957,success,,2026-07-22T06:22:15.625831+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.42957029799981683,276.9260043161296,419,2.1316258669999115,success,,2026-07-22T06:22:17.793234+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,2.9288863899998887,222.06790063667776,419,6.466924654999957,success,,2026-07-22T06:22:15.625831+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.42957029799981683,276.9260043161296,419,2.1316258669999115,success,,2026-07-22T06:22:17.793234+00:00
 dext,https://ai.dext.top/v1,ai-synthetic-video-detector,direct,,,,0,1.0478309950001403,http_error,"HTTP 500: {""error"":{""message"":""Internal error while making inference request"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-07-22T06:22:24.824685+00:00
 dext,https://ai.dext.top/v1,arctic-embed-l,direct,,,,0,0.5288459050000256,http_error,"HTTP 404: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-07-22T06:22:25.438724+00:00
 dext,https://ai.dext.top/v1,aura-1,direct,,,,0,1.0481483789999402,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-07-22T06:22:26.515589+00:00

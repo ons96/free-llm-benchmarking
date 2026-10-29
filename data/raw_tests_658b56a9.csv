@@ -89,9 +89,9 @@ bluesminds,https://api.bluesminds.com/v1,mistralai/mistral-large,direct,,,,0,0.4
 cerebras,https://api.cerebras.ai/v1,zai-glm-4.7,direct,,0.14207377899992935,928.1177377826139,992,1.2120893749997776,success,,2026-08-13T06:00:44.465761+00:00
 cerebras,https://api.cerebras.ai/v1,gpt-oss-120b,direct,,,,0,0.13189871799977482,http_error,"HTTP 429: {""message"":""We're experiencing high traffic right now! Please try again soon."",""type"":""too_many_requests_error"",""param"":""queue"",""code"":""queue_exceeded""}",2026-08-13T06:00:48.108824+00:00
 choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,2.071407353000268,181.31925791017915,480,4.7212222560001464,success,,2026-08-13T06:00:49.206773+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,2.963188829000046,268.54406527710023,419,6.171335687999999,success,,2026-08-13T06:00:54.301245+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,2.963188829000046,268.54406527710023,419,6.171335687999999,success,,2026-08-13T06:00:54.301245+00:00
 choosec,https://api.choosec.cn/v1,glm-5.2,direct,,,,0,0.8850000359998376,http_error,"HTTP 429: {""error"":{""message"":""余额不足或无可用资源包,请充值。"",""type"":""upstream_error"",""param"":"""",""code"":""1113""}}",2026-08-13T06:00:55.918508+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,5.408269621999807,219.1697782890274,419,7.465006081999945,success,,2026-08-13T06:00:56.691763+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,5.408269621999807,219.1697782890274,419,7.465006081999945,success,,2026-08-13T06:00:56.691763+00:00
 bluesminds,https://api.bluesminds.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1.5,direct,,,,0,0.2994921389999945,http_error,HTTP 429: ,2026-08-13T06:01:00.292727+00:00
 bluesminds,https://api.bluesminds.com/v1,qwen/qwen3-next-80b-a3b-thinking,direct,,,,0,0.32110215500006234,http_error,HTTP 429: ,2026-08-13T06:01:00.313639+00:00
 bluesminds,https://api.bluesminds.com/v1,abacusai/dracarys-llama-3.1-70b-instruct,direct,,,,0,0.36532325400003174,http_error,"HTTP 410: {""error"":{""message"":""The model 'abacusai/dracarys-llama-3.1-70b-instruct' has reached its end of life on 2026-07-27T00:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-13T06:01:38.227777+00:00

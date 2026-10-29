@@ -73,8 +73,8 @@ blaze-free,https://api.blazeapi.org/free/v1,glm-5.2-banana,direct,,,,0,0.2738378
 blaze-free,https://api.blazeapi.org/free/v1,glm-5.2-thinking-banana,direct,,,,0,0.2813172040000609,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-22T03:58:31.633953+00:00
 blaze-free,https://api.blazeapi.org/free/v1,glm-5.2-zero-banana,direct,,,,0,0.2706540160000941,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-22T03:58:32.177730+00:00
 blaze-free,https://api.blazeapi.org/free/v1,deepseek-v4-pro-official,direct,,,,0,9.67480200500006,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-22T03:58:32.315663+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,1.8512952449999602,321.87132074112355,235,2.6216031039999734,success,,2026-08-22T03:58:32.973401+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.6872275929999887,323.843048041852,235,1.43448241100009,success,,2026-08-22T03:58:33.087898+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,1.8512952449999602,321.87132074112355,235,2.6216031039999734,success,,2026-08-22T03:58:32.973401+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.6872275929999887,323.843048041852,235,1.43448241100009,success,,2026-08-22T03:58:33.087898+00:00
 blaze-free,https://api.blazeapi.org/free/v1,deepseek-v4-flash-official,direct,,,,0,9.653981591999923,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-22T03:58:34.383239+00:00
 dext,https://ai.dext.top/v1,deepseek-v4-flash,direct,,,,0,2.3552577909999854,http_error,"HTTP 400: {""error"":{""message"":""Error from provider (Console): Upstream request failed: Model is unavailable."",""type"":""server_error"",""param"":"""",""code"":null}}",2026-08-22T03:58:34.552165+00:00
 choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,7.9598508530000345,188.53927385044656,515,10.69198631200004,success,,2026-08-22T03:58:37.928092+00:00

@@ -105,13 +105,13 @@ bluesminds,https://api.bluesminds.com/v1,abacusai/dracarys-llama-3.1-70b-instruc
 bluesminds,https://api.bluesminds.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1.5,direct,,,,0,0.4839625250000381,http_error,HTTP 429: ,2026-07-27T06:47:18.448554+00:00
 choosec,https://api.choosec.cn/v1,deepseek-v4-pro,direct,,,,0,30.274505617000045,http_error,HTTP 524: ,2026-07-27T06:47:30.443927+00:00
 choosec,https://api.choosec.cn/v1,glm-5.2,direct,,,,0,30.26502062899999,http_error,HTTP 524: ,2026-07-27T06:47:36.138605+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,3.0133082419999937,282.6342446792849,419,6.2017398820000835,success,,2026-07-27T06:47:36.664626+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,3.0133082419999937,282.6342446792849,419,6.2017398820000835,success,,2026-07-27T06:47:36.664626+00:00
 bluesminds,https://api.bluesminds.com/v1,adept/fuyu-8b,direct,,,,0,0.4239866720000691,http_error,HTTP 429: ,2026-07-27T06:47:37.065194+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,49.3637907439536,30,0.6077329060000238,success,,2026-07-27T06:47:37.290906+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.6252967710000803,244.96280012457447,419,2.506546376000074,success,,2026-07-27T06:47:38.762541+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,18.880825095479732,30,1.5889136120000558,success,,2026-07-27T06:47:38.881194+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,166.7417754994516,30,0.1799189189999879,success,,2026-07-27T06:47:39.064059+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,157.70064801455948,30,0.1902338410000084,success,,2026-07-27T06:47:39.257430+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,49.3637907439536,30,0.6077329060000238,success,,2026-07-27T06:47:37.290906+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.6252967710000803,244.96280012457447,419,2.506546376000074,success,,2026-07-27T06:47:38.762541+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,18.880825095479732,30,1.5889136120000558,success,,2026-07-27T06:47:38.881194+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,166.7417754994516,30,0.1799189189999879,success,,2026-07-27T06:47:39.064059+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,157.70064801455948,30,0.1902338410000084,success,,2026-07-27T06:47:39.257430+00:00
 evolvex,https://api.evolvex.gg/v1,claude-sonnet-4-6,direct,,,,0,1.5788424920000352,http_error,"HTTP 402: {""type"":""error"",""error"":{""type"":""insufficient_balance"",""message"":""Insufficient balance. Please top up.""}}",2026-07-27T06:47:40.856964+00:00
 evolvex,https://api.evolvex.gg/v1,claude-opus-4-6,direct,,,,0,2.2209628360000124,http_error,"HTTP 402: {""type"":""error"",""error"":{""type"":""insufficient_balance"",""message"":""Insufficient balance. Please top up.""}}",2026-07-27T06:47:41.004571+00:00
 evolvex,https://api.evolvex.gg/v1,pr-2/claude-opus-4-6,direct,,,,0,0.8597836290000487,http_error,"HTTP 403: {""error"":{""message"":""Insufficient balance: the estimated cost of this request exceeds your available balance. Please top up, or reduce max_tokens if you set a large value. (request id: 20260727144741673929161PnU23vOZ)"",""type"":""evo_api_error"",""param"":"""",""code"":""insufficient_user_quota""}}",2026-07-27T06:47:41.737125+00:00

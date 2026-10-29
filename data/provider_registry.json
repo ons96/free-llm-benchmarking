@@ -387,7 +387,7 @@
       "supports_tool_calls": false
     },
     "custom": {
-      "base_url": "http://40.233.101.233:8000/v1",
+      "base_url": "http://<VPS40_IP>:8000/v1",
       "credit_type": "unknown",
       "free_tier": true,
       "model_types": [

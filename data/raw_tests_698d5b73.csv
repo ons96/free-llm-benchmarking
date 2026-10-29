@@ -75,23 +75,23 @@ cerebras,https://api.cerebras.ai/v1,gpt-oss-120b,direct,,,,0,0.04793267500008369
 blaze-free,https://api.blazeapi.org/free/v1,glm-4.7-china,direct,,,,0,0.35474772799989296,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-24T04:09:31.530338+00:00
 blaze-free,https://api.blazeapi.org/free/v1,sensenova-6.7-flash-lite-china,direct,,,,0,0.3678305650000766,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-24T04:09:32.589302+00:00
 blaze-free,https://api.blazeapi.org/free/v1,glm-5.2-banana,direct,,,,0,0.2582175569998526,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-24T04:09:33.842985+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,371.79344530025446,63,0.16944892600008643,success,,2026-08-24T04:09:34.032128+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,1.869897422999884,315.53110847375586,235,2.6435013349998826,success,,2026-08-24T04:09:34.193098+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.9098042499999792,338.27037847130146,235,1.617298516000119,success,,2026-08-24T04:09:34.225858+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,77.7721284103434,30,0.3857423040001322,success,,2026-08-24T04:09:34.630221+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,56.39485183354269,30,0.5319634509999105,success,,2026-08-24T04:09:34.744231+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,371.79344530025446,63,0.16944892600008643,success,,2026-08-24T04:09:34.032128+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,1.869897422999884,315.53110847375586,235,2.6435013349998826,success,,2026-08-24T04:09:34.193098+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.9098042499999792,338.27037847130146,235,1.617298516000119,success,,2026-08-24T04:09:34.225858+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,77.7721284103434,30,0.3857423040001322,success,,2026-08-24T04:09:34.630221+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,56.39485183354269,30,0.5319634509999105,success,,2026-08-24T04:09:34.744231+00:00
 blaze-free,https://api.blazeapi.org/free/v1,glm-5.2-thinking-banana,direct,,,,0,0.2559486659999948,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-24T04:09:34.872340+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,169.50766580301863,58,0.3421674159999384,success,,2026-08-24T04:09:34.973580+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,187.16701435134792,58,0.30988366300016423,success,,2026-08-24T04:09:35.055687+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,185.80465386707607,58,0.3121557980000489,success,,2026-08-24T04:09:35.287033+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,169.50766580301863,58,0.3421674159999384,success,,2026-08-24T04:09:34.973580+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,187.16701435134792,58,0.30988366300016423,success,,2026-08-24T04:09:35.055687+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,185.80465386707607,58,0.3121557980000489,success,,2026-08-24T04:09:35.287033+00:00
 blaze-free,https://api.blazeapi.org/free/v1,glm-5.2-zero-banana,direct,,,,0,0.26641292800013616,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-24T04:09:35.323990+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,196.21649800356357,58,0.2955918620000375,success,,2026-08-24T04:09:35.352449+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,201.29185782625518,58,0.288138828000001,success,,2026-08-24T04:09:35.576331+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,238.49231016911787,58,0.2431944239999666,success,,2026-08-24T04:09:35.596661+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,959.7008365734719,63,0.06564545699984592,success,,2026-08-24T04:09:36.144335+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,196.21649800356357,58,0.2955918620000375,success,,2026-08-24T04:09:35.352449+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,201.29185782625518,58,0.288138828000001,success,,2026-08-24T04:09:35.576331+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,238.49231016911787,58,0.2431944239999666,success,,2026-08-24T04:09:35.596661+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,959.7008365734719,63,0.06564545699984592,success,,2026-08-24T04:09:36.144335+00:00
 dext,https://ai.dext.top/v1,deepseek-v4-flash,direct,,,,0,2.1048290109999925,http_error,"HTTP 400: {""error"":{""message"":""Error from provider (Console): Upstream request failed: Model is unavailable."",""type"":""server_error"",""param"":"""",""code"":null}}",2026-08-24T04:09:36.996801+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,871.2445367245126,63,0.0723103530001481,success,,2026-08-24T04:09:38.258739+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,843.4886352563738,63,0.07468980299995565,success,,2026-08-24T04:09:40.374569+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,871.2445367245126,63,0.0723103530001481,success,,2026-08-24T04:09:38.258739+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,843.4886352563738,63,0.07468980299995565,success,,2026-08-24T04:09:40.374569+00:00
 choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,7.901508576999959,194.27938184955804,577,10.872203808999984,success,,2026-08-24T04:09:40.938659+00:00
 dext,https://ai.dext.top/v1,mimo-v2.5,direct,,4.385808536000013,101.07144439242992,315,7.524533328999951,success,,2026-08-24T04:09:43.119906+00:00
 dext,https://ai.dext.top/v1,nemotron-3-ultra,direct,,3.5444291999999678,62.854217161725565,329,8.814163076000114,success,,2026-08-24T04:09:45.830341+00:00

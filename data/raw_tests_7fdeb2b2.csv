@@ -110,28 +110,28 @@ choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,1.9418902410002374,207.9306
 choosec,https://api.choosec.cn/v1,glm-5.2,direct,,,,0,30.22236902600025,http_error,HTTP 524: ,2026-08-07T06:02:56.297480+00:00
 bluesminds,https://api.bluesminds.com/v1,abacusai/dracarys-llama-3.1-70b-instruct,direct,,,,0,0.3863736189996416,http_error,"HTTP 410: {""error"":{""message"":""The model 'abacusai/dracarys-llama-3.1-70b-instruct' has reached its end of life on 2026-07-27T00:00:00Z and is no longer available."",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-07T06:03:00.742389+00:00
 bluesminds,https://api.bluesminds.com/v1,adept/fuyu-8b,direct,,,,0,0.4981675859999086,http_error,"HTTP 404: {""error"":{""message"":""Function 'e598bfc1-b058-41af-869d-556d3c7e1b48': Not found for account 'CXopJ5TkZaMFelDOAIMVUfcagC4iIrxEG9TvApMCkLY'"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-07T06:03:01.156395+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,3.3388442139998915,125.89576617903754,419,8.589933196999937,success,,2026-08-07T06:03:02.700981+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,5.021981199999573,114.26741239411903,419,8.819473431999995,success,,2026-08-07T06:03:02.976570+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,8.303939521627262,63,7.586760456999855,success,,2026-08-07T06:03:03.384619+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,4.041836857144691,30,7.422367863999625,success,,2026-08-07T06:03:03.507748+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,4.078870348829866,30,7.354977587999656,success,,2026-08-07T06:03:03.672395+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,35.048649870662764,29,0.8274213159997998,success,,2026-08-07T06:03:03.824498+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,21.46466436215059,29,1.35105769699976,success,,2026-08-07T06:03:04.072257+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,59.42571135168992,30,0.5048319880002055,success,,2026-08-07T06:03:04.178857+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,40.3140731294619,30,0.7441570070000125,success,,2026-08-07T06:03:04.253405+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,49.7505900844337,29,0.5829076590002842,success,,2026-08-07T06:03:04.408764+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,63.02782772505603,30,0.4759802309999941,success,,2026-08-07T06:03:04.656180+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,41.81117624419069,29,0.6935944550000386,success,,2026-08-07T06:03:04.767579+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,63.27253791525016,29,0.4583347050001976,success,,2026-08-07T06:03:04.868329+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,42.44187962317194,30,0.7068489960001898,success,,2026-08-07T06:03:04.961736+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,59.12853549867514,30,0.5073692379996828,success,,2026-08-07T06:03:05.165091+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,48.45868731559827,29,0.5984479070002635,success,,2026-08-07T06:03:05.367392+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,50.68302462566219,29,0.5721836890002123,success,,2026-08-07T06:03:05.441944+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,56.91863890383252,30,0.5270681199999672,success,,2026-08-07T06:03:05.490480+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,96.89895089381095,29,0.29928084599987415,success,,2026-08-07T06:03:05.668037+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,993.5765120760012,63,0.06340729600015038,success,,2026-08-07T06:03:05.904970+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,942.5199425665753,63,0.0668420869997135,success,,2026-08-07T06:03:08.008031+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,933.8041643118121,63,0.06746596599987242,success,,2026-08-07T06:03:10.111423+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,3.3388442139998915,125.89576617903754,419,8.589933196999937,success,,2026-08-07T06:03:02.700981+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,5.021981199999573,114.26741239411903,419,8.819473431999995,success,,2026-08-07T06:03:02.976570+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,8.303939521627262,63,7.586760456999855,success,,2026-08-07T06:03:03.384619+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,4.041836857144691,30,7.422367863999625,success,,2026-08-07T06:03:03.507748+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,4.078870348829866,30,7.354977587999656,success,,2026-08-07T06:03:03.672395+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,35.048649870662764,29,0.8274213159997998,success,,2026-08-07T06:03:03.824498+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,21.46466436215059,29,1.35105769699976,success,,2026-08-07T06:03:04.072257+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,59.42571135168992,30,0.5048319880002055,success,,2026-08-07T06:03:04.178857+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,40.3140731294619,30,0.7441570070000125,success,,2026-08-07T06:03:04.253405+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,49.7505900844337,29,0.5829076590002842,success,,2026-08-07T06:03:04.408764+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,63.02782772505603,30,0.4759802309999941,success,,2026-08-07T06:03:04.656180+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,41.81117624419069,29,0.6935944550000386,success,,2026-08-07T06:03:04.767579+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,63.27253791525016,29,0.4583347050001976,success,,2026-08-07T06:03:04.868329+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,42.44187962317194,30,0.7068489960001898,success,,2026-08-07T06:03:04.961736+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,59.12853549867514,30,0.5073692379996828,success,,2026-08-07T06:03:05.165091+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,48.45868731559827,29,0.5984479070002635,success,,2026-08-07T06:03:05.367392+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,50.68302462566219,29,0.5721836890002123,success,,2026-08-07T06:03:05.441944+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,56.91863890383252,30,0.5270681199999672,success,,2026-08-07T06:03:05.490480+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,96.89895089381095,29,0.29928084599987415,success,,2026-08-07T06:03:05.668037+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,993.5765120760012,63,0.06340729600015038,success,,2026-08-07T06:03:05.904970+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,942.5199425665753,63,0.0668420869997135,success,,2026-08-07T06:03:08.008031+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,933.8041643118121,63,0.06746596599987242,success,,2026-08-07T06:03:10.111423+00:00
 choosec,https://api.choosec.cn/v1,mimo-v2.5,direct,,,,0,3.6005751079997026,http_error,"HTTP 429: {""error"":{""message"":""Rate limit exceeded. Please try again later."",""type"":""FreeUsageLimitError"",""param"":"""",""code"":null}}",2026-08-07T06:03:14.277090+00:00
 bluesminds,https://api.bluesminds.com/v1,deepseek-ai/deepseek-v4-pro,direct,,,,0,60.237261278000005,error,,2026-08-07T06:03:59.531859+00:00
 bluesminds,https://api.bluesminds.com/v1,kimi-k2.5,direct,,,,0,60.23038505999966,error,,2026-08-07T06:04:01.860727+00:00

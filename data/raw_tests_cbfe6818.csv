@@ -84,16 +84,16 @@ bluesminds,https://api.bluesminds.com/v1,mistralai/mistral-large-2-instruct,dire
 bluesminds,https://api.bluesminds.com/v1,mistralai/mistral-large-3-675b-instruct-2512,direct,,,,0,0.5614548700000341,http_error,HTTP 429: ,2026-08-21T04:13:35.490961+00:00
 bluesminds,https://api.bluesminds.com/v1,meta/llama-3.3-70b-instruct,direct,,,,0,0.5614263560000836,http_error,HTTP 429: ,2026-08-21T04:13:35.492485+00:00
 cerebras,https://api.cerebras.ai/v1,gpt-oss-120b,direct,,,,0,0.12812414399991212,http_error,"HTTP 402: {""message"":""Payment required to access this resource. Visit your billing tab."",""type"":""payment_required_error"",""param"":""quota"",""code"":""payment_required""}",2026-08-21T04:13:35.613731+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,20.214651845793902,29,1.4346029910000198,success,,2026-08-21T04:13:37.154221+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,333.5399623150866,57,0.17089406500008408,success,,2026-08-21T04:13:37.530468+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,325.9937573683831,57,0.17484997399992608,success,,2026-08-21T04:13:37.711863+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,306.7040105161784,57,0.18584693400021024,success,,2026-08-21T04:13:37.899407+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,1.8163701949999904,315.84520561410966,235,2.5854655989999173,success,,2026-08-21T04:13:38.129631+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,1.992300441999987,315.0630517519131,235,2.761640047000128,success,,2026-08-21T04:13:38.291006+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,65.93277995753776,29,0.4398419120000199,success,,2026-08-21T04:13:38.543259+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,325.99904494880036,57,0.1748471379999046,success,,2026-08-21T04:13:38.858772+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,315.4516206292636,57,0.18069331800006694,success,,2026-08-21T04:13:39.053965+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,325.68664887617194,57,0.17501484999979766,success,,2026-08-21T04:13:39.330404+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,20.214651845793902,29,1.4346029910000198,success,,2026-08-21T04:13:37.154221+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,333.5399623150866,57,0.17089406500008408,success,,2026-08-21T04:13:37.530468+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,325.9937573683831,57,0.17484997399992608,success,,2026-08-21T04:13:37.711863+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,306.7040105161784,57,0.18584693400021024,success,,2026-08-21T04:13:37.899407+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,1.8163701949999904,315.84520561410966,235,2.5854655989999173,success,,2026-08-21T04:13:38.129631+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,1.992300441999987,315.0630517519131,235,2.761640047000128,success,,2026-08-21T04:13:38.291006+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,65.93277995753776,29,0.4398419120000199,success,,2026-08-21T04:13:38.543259+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,325.99904494880036,57,0.1748471379999046,success,,2026-08-21T04:13:38.858772+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,315.4516206292636,57,0.18069331800006694,success,,2026-08-21T04:13:39.053965+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,325.68664887617194,57,0.17501484999979766,success,,2026-08-21T04:13:39.330404+00:00
 dext,https://ai.dext.top/v1,bge-small-en-v1.5,direct,,,,0,3.4986488029999236,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model bge-small-en-v1.5 under group 公益 (distributor) (request id: 202608210413417446416038268d9d6EK2tJRpB)"",""type"":""new_api_error""}}",2026-08-21T04:13:41.854373+00:00
 dext,https://ai.dext.top/v1,bge-m3,direct,,,,0,3.9425518499999725,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model bge-m3 under group 公益 (distributor) (request id: 202608210413417447141858268d9d6CFDXRUx8)"",""type"":""new_api_error""}}",2026-08-21T04:13:42.159662+00:00
 dext,https://ai.dext.top/v1,claude-glm-5.2,direct,,,,0,4.174254676999908,http_error,"HTTP 503: {""error"":{""code"":""model_not_found"",""message"":""No available channel for model claude-glm-5.2 under group 公益 (distributor) (request id: 202608210413434524705828268d9d6ysjWa7hk)"",""type"":""new_api_error""}}",2026-08-21T04:13:43.551443+00:00

@@ -2171,7 +2171,7 @@
       "npm": "@ai-sdk/openai-compatible",
       "options": {
         "apiKey": "{env:VPS_GATEWAY_API_KEY}",
-        "baseURL": "http://40.233.101.233:8000/v1",
+        "baseURL": "http://<VPS40_IP>:8000/v1",
         "maxRetries": 4
       }
     },
