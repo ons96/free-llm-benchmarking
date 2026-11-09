@@ -54,7 +54,7 @@ def generate_dashboard(
     # Current rankings per task
     rankings = {}
     from freeradar.registry import TASK_CLASSES
-    for task in TASK_CLASSES:
+    for task in list(TASK_CLASSES) + ["fast"]:
         ranked = rank_models(task, top_n=top_n, db_path=db_path)
         rankings[task] = [vars(r) for r in ranked]
 
@@ -76,7 +76,7 @@ def generate_dashboard(
             "providers_monitored": len(provider_health),
         },
         "top_movers": movers[:top_n],
-        "stale_entries": [vars(s) for s in stale[:top_n]],
+        "stale_entries": [dict(s) for s in stale[:top_n]],
         "provider_health": provider_health,
         "alias_status": alias_status,
         "stability_report": stability,
@@ -309,13 +309,14 @@ def generate_html_dashboard(
 """
 
     for a in data['stability_report']['aliases']:
-        stable_badge = '<span class="badge badge-promote">✓</span>' if a['stable'] else '<span class="badge badge-demote">✗</span>'
+        stable_badge = '<span class="badge badge-promote">yes</span>' if a['stable'] else '<span class="badge badge-demote">no</span>'
         success_rate = f"{a['success_rate']:.1%}" if a['success_rate'] is not None else "N/A"
+        score = a['score'] if a['score'] is not None else 0.0
         html += f"""
                     <tr>
                         <td>{a['alias']}</td>
                         <td>{a['provider']}/{a['model_id']}</td>
-                        <td>{a['score']:.3f}</td>
+                        <td>{score:.3f}</td>
                         <td>{a['probes']}</td>
                         <td>{success_rate}</td>
                         <td>{a['alias_changes']}</td>
@@ -341,8 +342,10 @@ if __name__ == "__main__":
     import argparse
     import sys
 
+    from freeradar.registry import DB_PATH as DEFAULT_DB_PATH
+
     parser = argparse.ArgumentParser(description="Generate free-model radar dashboard")
-    parser.add_argument("--db", type=Path, help="Database path")
+    parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH, help="Database path")
     parser.add_argument("--days", type=int, default=7)
     parser.add_argument("--top", type=int, default=10)
     parser.add_argument("--html", type=Path, help="Output HTML file")

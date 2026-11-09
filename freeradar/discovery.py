@@ -11,6 +11,7 @@ Fetches from:
 from __future__ import annotations
 
 import asyncio
+import inspect
 import json
 import os
 import re
@@ -223,7 +224,13 @@ async def discover_from_openrouter() -> AsyncIterator[dict[str, Any]]:
             if "vision" in mid.lower() or "image" in mid.lower():
                 modalities.append("vision")
 
-            tool_calls = bool(m.get("supported_parameters", {}).get("tools"))
+            supported_params = m.get("supported_parameters", {})
+            if isinstance(supported_params, dict):
+                tool_calls = bool(supported_params.get("tools"))
+            elif isinstance(supported_params, list):
+                tool_calls = "tools" in supported_params
+            else:
+                tool_calls = False
 
             yield {
                 "provider": "openrouter",
@@ -252,7 +259,19 @@ async def discover_from_models_dev() -> AsyncIterator[dict[str, Any]]:
             if "models" not in provider_data:
                 continue
 
-            for m in provider_data["models"]:
+            models = provider_data["models"]
+            if isinstance(models, dict):
+                # models is a dict {model_name: model_info}
+                items = models.items()
+            elif isinstance(models, list):
+                # models is a list of model_info dicts
+                items = [(None, m) for m in models]
+            else:
+                continue
+
+            for _name, m in items:
+                if not isinstance(m, dict):
+                    continue
                 mid = m.get("id", "") or m.get("name", "")
                 if not mid:
                     continue
@@ -342,7 +361,7 @@ async def discover_from_github() -> AsyncIterator[dict[str, Any]]:
                 }
 
 
-async def discover_stealth_mentions() -> AsyncIterator[dict[str, Any]]:
+async def discover_stealth_mentions() -> list[dict[str, Any]]:
     """Static list of known stealth/undocumented free models."""
     stealth_models = [
         {
@@ -399,17 +418,26 @@ async def discover_stealth_mentions() -> AsyncIterator[dict[str, Any]]:
         },
     ]
 
-    for m in stealth_models:
-        yield m
-    # Ensure this is an async generator
-    if False:
-        yield
+    return stealth_models
+
+
+async def _iter_source(source: Any) -> AsyncIterator[dict[str, Any]]:
+    """Yield models from a discovery source that may be a list, coroutine or iterator."""
+    if hasattr(source, "__aiter__"):
+        async for model in source:
+            yield model
+        return
+    if inspect.isawaitable(source):
+        source = await source
+    for model in source or []:
+        yield model
 
 
 async def run_discovery(db_path: Path | None = None) -> dict[str, int]:
     """Run all discovery sources and upsert into registry. Returns counts per source."""
+    import freeradar.registry as reg
+
     if db_path:
-        import freeradar.registry as reg
         reg.DB_PATH = db_path
         reg.JSON_PATH = db_path.parent / "free_models.json"
 
@@ -419,7 +447,7 @@ async def run_discovery(db_path: Path | None = None) -> dict[str, int]:
     counts = {src: 0 for src in DISCOVERY_SOURCES}
     seen: set[tuple[str, str]] = set()
 
-    sources: dict[str, AsyncIterator[dict[str, Any]]] = {
+    sources: dict[str, Any] = {
         "opencode": discover_from_opencode(),
         "openrouter": discover_from_openrouter(),
         "models_dev": discover_from_models_dev(),
@@ -429,7 +457,7 @@ async def run_discovery(db_path: Path | None = None) -> dict[str, int]:
 
     try:
         for source_name, source_iter in sources.items():
-            async for model in source_iter:
+            async for model in _iter_source(source_iter):
                 provider = model["provider"]
                 model_id = model["model_id"]
                 key = (provider, model_id)

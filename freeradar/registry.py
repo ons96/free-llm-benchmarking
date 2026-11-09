@@ -395,11 +395,15 @@ def apply_probe_outcome(
                 (provider, model_id),
             ).fetchall()
         ]
+        samples.append(latency_ms)
         p50 = percentile(samples, 50)
 
     throughput = model.get("throughput")
     if ok and tps:
-        throughput = round((float(throughput or 0) * 0.7) + (float(tps) * 0.3), 3)
+        if throughput is None:
+            throughput = round(float(tps), 3)
+        else:
+            throughput = round((float(throughput) * 0.7) + (float(tps) * 0.3), 3)
 
     if ok:
         health = HEALTH_HEALTHY
@@ -596,14 +600,22 @@ def set_alias(
 
 
 def alias_history(conn: sqlite3.Connection, alias: str | None = None, limit: int = 100) -> list[dict[str, Any]]:
+    """Alias change history, oldest first (most recent `limit` entries)."""
     if alias:
         rows = conn.execute(
-            "SELECT * FROM alias_history WHERE alias = ? ORDER BY ts DESC LIMIT ?",
+            """SELECT * FROM (
+                   SELECT * FROM alias_history WHERE alias = ?
+                   ORDER BY ts DESC, id DESC LIMIT ?
+               ) ORDER BY ts ASC, id ASC""",
             (alias, limit),
         ).fetchall()
     else:
         rows = conn.execute(
-            "SELECT * FROM alias_history ORDER BY ts DESC LIMIT ?", (limit,)
+            """SELECT * FROM (
+                   SELECT * FROM alias_history
+                   ORDER BY ts DESC, id DESC LIMIT ?
+               ) ORDER BY ts ASC, id ASC""",
+            (limit,),
         ).fetchall()
     return [dict(r) for r in rows]
 
@@ -682,7 +694,8 @@ def stability_report(conn: sqlite3.Connection, days: int = 7) -> dict[str, Any]:
         probes = stats["probes"] or 0
         successes = stats["successes"] or 0
         changes = conn.execute(
-            "SELECT COUNT(*) AS n FROM alias_history WHERE alias = ? AND ts >= ?",
+            """SELECT COUNT(*) AS n FROM alias_history
+               WHERE alias = ? AND ts >= ? AND previous_provider IS NOT NULL""",
             (row["alias"], since),
         ).fetchone()["n"]
         aliases.append(

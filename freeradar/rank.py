@@ -128,19 +128,19 @@ def _get_quality_score(model_id: str, benchmarks: dict[str, float]) -> float:
 
 
 def _compute_speed_score(p50_latency: float | None, throughput: float | None) -> float:
-    """Compute speed score from latency and throughput."""
+    """Compute speed score from latency and throughput. Balanced caps so faster models
+    differentiate but extreme values don't dominate quality/reliability."""
     if p50_latency is None and throughput is None:
         return 0.5
 
-    # Normalize: lower latency = better, higher throughput = better
     scores = []
     if p50_latency is not None and p50_latency > 0:
-        # 100ms -> 1.0, 500ms -> 0.5, 2000ms -> 0.1
-        lat_score = min(1.0, 100.0 / p50_latency)
+        # 100ms -> 1.0, 50ms -> 1.2 (cap), 200ms -> 0.5, 500ms -> 0.2
+        lat_score = min(1.2, 100.0 / p50_latency)
         scores.append(lat_score)
     if throughput is not None and throughput > 0:
-        # 100 tps -> 1.0, 50 tps -> 0.5, 10 tps -> 0.1
-        tps_score = min(1.0, throughput / 100.0)
+        # 100 tps -> 1.0, 150 tps -> 1.5 (cap), 50 tps -> 0.5, 200 tps -> 1.5
+        tps_score = min(1.5, throughput / 100.0)
         scores.append(tps_score)
 
     return sum(scores) / len(scores) if scores else 0.5
@@ -185,6 +185,8 @@ def _compute_task_score(
 
     quality = _get_quality_score(model["model_id"], benchmarks)
     speed = _compute_speed_score(model.get("p50_latency"), model.get("throughput"))
+    # Normalize speed to [0, 1] range (max possible with caps is 1.5)
+    speed = min(1.0, speed / 1.5)
     reliability = _compute_reliability_score(
         model.get("health", HEALTH_UNKNOWN),
         model.get("consecutive_healthy", 0),
@@ -198,6 +200,15 @@ def _compute_task_score(
 
     composite = q_w * quality + s_w * speed + r_w * reliability
     return composite, quality, speed, reliability
+
+
+def _speed_tiebreak(model: dict[str, Any]) -> float:
+    """Raw speed used only to break score ties: lower latency, higher throughput wins."""
+    latency = float(model.get("p50_latency") or 0.0)
+    throughput = float(model.get("throughput") or 0.0)
+    if latency <= 0:
+        return throughput / 100.0
+    return (1000.0 / latency) + (throughput / 100.0)
 
 
 def rank_models(
@@ -232,7 +243,7 @@ def rank_models(
 
         score, quality, speed, reliability = _compute_task_score(m, task_class, benchmarks)
 
-        ranked.append(RankedModel(
+        ranked.append((RankedModel(
             provider=m["provider"],
             model_id=m["model_id"],
             task_class=task_class,
@@ -252,9 +263,10 @@ def rank_models(
             consecutive_healthy=m.get("consecutive_healthy", 0),
             total_probes=m.get("total_probes", 0),
             success_count=m.get("success_count", 0),
-        ))
+        ), _speed_tiebreak(m)))
 
-    ranked.sort(key=lambda r: r.score, reverse=True)
+    ranked.sort(key=lambda entry: (entry[0].score, entry[1]), reverse=True)
+    ranked = [entry[0] for entry in ranked]
 
     if top_n:
         ranked = ranked[:top_n]

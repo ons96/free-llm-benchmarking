@@ -59,7 +59,7 @@ def _write_gateway_yaml(data: dict, backup: bool = True) -> Path | None:
     backup_path = None
     if backup and GATEWAY_VIRTUAL_PATH.exists():
         ts = time.strftime("%Y%m%d-%H%M%S")
-        backup_path = GATEWAY_VIRTUAL_PATH.with_suffix(f".yaml.bak.{ts}")
+        backup_path = GATEWAY_VIRTUAL_PATH.with_name(f"{GATEWAY_VIRTUAL_PATH.stem}.{ts}.yaml.bak")
         shutil.copy(GATEWAY_VIRTUAL_PATH, backup_path)
 
     if GATEWAY_VIRTUAL_PATH.exists():
@@ -308,6 +308,14 @@ def get_alias_status(db_path: Path | None = None) -> dict[str, Any]:
     for a in aliases:
         alias = a["alias"]
         history = alias_history(conn, alias, limit=10)
+        health = "unknown"
+        if a.get("provider") and a.get("model_id"):
+            row = conn.execute(
+                "SELECT health FROM models WHERE provider = ? AND model_id = ?",
+                (a["provider"], a["model_id"]),
+            ).fetchone()
+            if row:
+                health = row["health"]
         status[alias] = {
             "task": a.get("task"),
             "provider": a.get("provider"),
@@ -315,6 +323,7 @@ def get_alias_status(db_path: Path | None = None) -> dict[str, Any]:
             "score": a.get("score"),
             "updated_at": a.get("updated_at"),
             "healthy_streak": a.get("healthy_streak", 0),
+            "health": health,
             "fallback_provider": a.get("fallback_provider"),
             "fallback_model": a.get("fallback_model_id"),
             "history": history,

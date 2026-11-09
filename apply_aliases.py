@@ -12,6 +12,7 @@ import sys
 from pathlib import Path
 
 from freeradar.aliases import compute_alias_proposals, apply_alias_proposals, MIN_CONSECUTIVE_HEALTHY
+from freeradar.registry import DB_PATH as DEFAULT_DB_PATH
 
 
 def main():
@@ -20,7 +21,7 @@ def main():
     parser.add_argument("--apply", dest="dry_run", action="store_false", help="Apply changes to gateway")
     parser.add_argument("--no-backup", dest="backup", action="store_false", help="Skip backup")
     parser.add_argument("--min-streak", type=int, default=MIN_CONSECUTIVE_HEALTHY, help="Min consecutive healthy probes")
-    parser.add_argument("--db", type=Path, help="Database path")
+    parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH, help="Database path")
     parser.add_argument("--json", action="store_true", help="Output JSON")
     parser.set_defaults(dry_run=True, backup=True)
     args = parser.parse_args()

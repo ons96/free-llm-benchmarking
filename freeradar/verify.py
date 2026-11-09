@@ -10,6 +10,7 @@ Runs tiny chat + tool-call probe per model. Records:
 from __future__ import annotations
 
 import asyncio
+import inspect
 import os
 import time
 from dataclasses import dataclass
@@ -374,9 +375,11 @@ async def _verify_worker(
 
         async with semaphore:
             try:
-                result = await verify_model(provider, model_id, db_path)
-                if result:
-                    results[f"{provider}/{model_id}"] = result
+                outcome = verify_model(provider, model_id, db_path)
+                if inspect.isawaitable(outcome):
+                    outcome = await outcome
+                if outcome:
+                    results[f"{provider}/{model_id}"] = outcome
             except Exception as e:
                 results[f"{provider}/{model_id}"] = {"error": ProbeResult(
                     provider=provider, model_id=model_id, probe_type="error",

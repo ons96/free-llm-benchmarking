@@ -11,7 +11,8 @@ import json
 import sys
 from pathlib import Path
 
-from freeradar.rank import rank_models, TASK_CLASSES
+from freeradar.rank import rank_models, rank_all_tasks, TASK_CLASSES
+from freeradar.registry import DB_PATH as DEFAULT_DB_PATH
 
 
 def main():
@@ -23,13 +24,12 @@ def main():
         help="Task class to rank for",
     )
     parser.add_argument("--top", type=int, default=10, help="Number of top models to show")
-    parser.add_argument("--db", type=Path, help="Database path (default: data/free_models.db)")
+    parser.add_argument("--db", type=Path, default=DEFAULT_DB_PATH, help="Database path (default: data/free_models.db)")
     parser.add_argument("--json", action="store_true", help="Output JSON")
     parser.add_argument("--all-tasks", action="store_true", help="Rank for all task classes")
     args = parser.parse_args()
 
     if args.all_tasks:
-        from freeradar.rank import rank_all_tasks
         results = rank_all_tasks(args.top, args.db)
         if args.json:
             print(json.dumps({k: [vars(r) for r in v] for k, v in results.items()}, indent=2, default=str))
