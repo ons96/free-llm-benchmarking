@@ -156,7 +156,8 @@ def test_apply_alias_proposals_creates_backup(temp_db_with_data):
         assert result["backup"] is not None
         backup_path = Path(result["backup"])
         assert backup_path.exists()
-        assert backup_path.suffix == ".yaml.bak"
+        # Path.suffix only returns the last extension, so check the name instead.
+        assert backup_path.name.endswith(".yaml.bak")
     finally:
         if GATEWAY_VIRTUAL_PATH.exists():
             GATEWAY_VIRTUAL_PATH.unlink()
