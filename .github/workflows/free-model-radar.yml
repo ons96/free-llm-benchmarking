@@ -1,0 +1,234 @@
+name: Free Model Radar
+
+on:
+  schedule:
+    - cron: '0 4 * * *'  # Daily at 04:00 UTC
+  workflow_dispatch:
+    inputs:
+      skip-discovery:
+        description: 'Skip discovery phase'
+        required: false
+        default: 'false'
+        type: boolean
+      skip-verification:
+        description: 'Skip verification phase'
+        required: false
+        default: 'false'
+        type: boolean
+      skip-aliases:
+        description: 'Skip alias updates'
+        required: false
+        default: 'false'
+        type: boolean
+      apply-aliases:
+        description: 'Actually apply alias changes (not dry-run)'
+        required: false
+        default: 'false'
+        type: boolean
+      max-verify:
+        description: 'Max models to verify (default: all)'
+        required: false
+        default: ''
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: free-model-radar
+  cancel-in-progress: false
+
+jobs:
+  radar:
+    name: Run Free Model Radar
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.BENCHMARK_PUSH_TOKEN || secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          activate-environment: true
+          enable-cache: true
+          cache-dependency-glob: |
+            requirements.txt
+            uv.lock
+
+      - name: Install dependencies
+        run: |
+          uv pip install -r requirements.txt
+          uv pip install httpx pyyaml beautifulsoup4 lxml tqdm
+
+      - name: Restore opencode config from repo
+        run: |
+          mkdir -p ~/.config/opencode
+          cp config/opencode-runner.json ~/.config/opencode/opencode.json
+          echo "Config restored. Providers: $(uv run python -c "import json; d=json.load(open('/home/runner/.config/opencode/opencode.json')); print(len(d.get('provider', {})))")"
+
+      - name: Build ~/.env and ~/.secrets/ from repo secrets
+        env:
+          SECRETS_JSON: ${{ toJSON(secrets) }}
+        run: |
+          python3 <<'PYEOF'
+          import json, os, re
+          secrets = json.loads(os.environ["SECRETS_JSON"])
+          home = os.path.expanduser("~")
+          env_path = os.path.join(home, ".env")
+          sec_dir = os.path.join(home, ".secrets")
+          os.makedirs(sec_dir, exist_ok=True)
+          skip_names = {"BENCHMARK_PUSH_TOKEN","OPENCODE_JSON_BASE64","GITHUB_TOKEN","GH_TOKEN","HF_TOKEN"}
+          env_written = sec_written = 0
+          with open(env_path, "w") as f:
+              for name, val in sorted(secrets.items()):
+                  if val is None or val == "":
+                      continue
+                  if name in skip_names:
+                      continue
+                  if name.endswith("_URL") or name.endswith("_BASE_URL") or name.endswith("_HOST"):
+                      continue
+                  f.write(f"{name}={val}\n")
+                  env_written += 1
+                  file_name = name.lower().replace("_", "-")
+                  file_path = os.path.join(sec_dir, file_name)
+                  with open(file_path, "w") as g:
+                      g.write(val + ("\n" if not val.endswith("\n") else ""))
+                  sec_written += 1
+          print(f"~/.env: {env_written} keys, ~/.secrets/: {sec_written} files")
+          PYEOF
+
+      - name: Initialize database
+        run: |
+          uv run python -m freeradar --help || true
+
+      - name: Run Free Model Radar
+        env:
+          HOME: /home/runner
+        run: |
+          set -a
+          . ~/.env
+          set +a
+
+          ARGS=""
+
+          if [ "${{ github.event.inputs.skip-discovery }}" = "true" ]; then
+            ARGS="$ARGS --skip-discovery"
+          fi
+
+          if [ "${{ github.event.inputs.skip-verification }}" = "true" ]; then
+            ARGS="$ARGS --skip-verification"
+          fi
+
+          if [ "${{ github.event.inputs.skip-aliases }}" = "true" ]; then
+            ARGS="$ARGS --skip-aliases"
+          fi
+
+          if [ "${{ github.event.inputs.apply-aliases }}" = "true" ]; then
+            ARGS="$ARGS --apply-aliases --dry-run-aliases=false"
+          fi
+
+          if [ -n "${{ github.event.inputs.max-verify }}" ]; then
+            ARGS="$ARGS --max-verify ${{ github.event.inputs.max-verify }}"
+          fi
+
+          ARGS="$ARGS --json"
+
+          echo "Running: python -m freeradar $ARGS"
+          uv run python -m freeradar $ARGS
+
+      - name: Generate dashboard
+        if: always()
+        run: |
+          uv run python -m freeradar.dashboard --html docs/dashboard.html --days 7 --top 20 || true
+
+      - name: Fail-safe: scan job log for leaked secrets
+        if: always()
+        run: |
+          python3 <<'PYEOF'
+          import json, os, subprocess, sys
+          secrets_ctx = json.loads(os.environ.get("SECRETS_CONTEXT", "{}"))
+          hits = []
+          for name, val in secrets_ctx.items():
+              if not val or len(val) < 12:
+                  continue
+              try:
+                  r = subprocess.run(
+                      ["grep", "-rl", val, "/home/runner/work/", "--include=*.log", "--include=*.txt"],
+                      capture_output=True, text=True, timeout=30
+                  )
+                  if r.stdout.strip():
+                      hits.append((name, r.stdout.strip().splitlines()[0]))
+              except Exception:
+                  pass
+          if hits:
+              print(f"::error::SECRET LEAK DETECTED in {len(hits)} files:")
+              for name, path in hits:
+                  print(f"  {name} -> {path}")
+              sys.exit(1)
+          print(f"Scanned {len(secrets_ctx)} secrets, no leaks in /home/runner/work/.")
+          PYEOF
+        env:
+          SECRETS_CONTEXT: ${{ toJSON(secrets) }}
+
+      - name: Commit updated data files
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Add changed data files
+          git add data/free_models.db data/free_models.json 2>/dev/null || true
+          git add docs/dashboard.html docs/dashboard.json 2>/dev/null || true
+
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: update free-model radar data [skip ci]"
+            if [ -z "${{ secrets.BENCHMARK_PUSH_TOKEN }}" ]; then
+              echo "::warning::BENCHMARK_PUSH_TOKEN secret not set; push to protected main will fail. Set admin PAT w/ repo scope."
+            fi
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                echo "push succeeded on attempt $attempt"; break
+              fi
+              echo "push rejected (attempt $attempt), rebasing onto origin/main"
+              git fetch origin main
+              git rebase -X ours origin/main || { git rebase --abort; echo "::error::rebase failed unexpectedly"; exit 1; }
+              if [ "$attempt" = "5" ]; then echo "::error::push failed after 5 attempts"; exit 1; fi
+              sleep $((attempt * 5))
+            done
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.BENCHMARK_PUSH_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Deploy dashboard to GitHub Pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          enable_jekyll: false
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "## Free Model Radar Run Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          uv run python -c "
+import json, sys
+try:
+    with open('data/free_models.json') as f:
+        data = json.load(f)
+    print(f\"Total models: {len(data.get('models', []))}\")
+    print(f\"Aliases: {len(data.get('aliases', []))}\")
+    for a in data.get('aliases', []):
+        print(f\"  {a['alias']}: {a.get('provider')}/{a.get('model_id')} (streak={a.get('healthy_streak', 0)}, score={a.get('score', 0):.3f})\")
+except Exception as e:
+    print(f'Could not read summary: {e}')
+" >> $GITHUB_STEP_SUMMARY || true
