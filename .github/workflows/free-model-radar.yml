@@ -146,7 +146,7 @@ jobs:
         run: |
           uv run python -m freeradar.dashboard --html docs/dashboard.html --days 7 --top 20 || true
 
-      - name: Fail-safe: scan job log for leaked secrets
+      - name: "Fail-safe: scan job log for leaked secrets"
         if: always()
         run: |
           python3 <<'PYEOF'
@@ -218,17 +218,17 @@ jobs:
       - name: Summary
         if: always()
         run: |
-          echo "## Free Model Radar Run Summary" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          uv run python -c "
-import json, sys
-try:
-    with open('data/free_models.json') as f:
-        data = json.load(f)
-    print(f\"Total models: {len(data.get('models', []))}\")
-    print(f\"Aliases: {len(data.get('aliases', []))}\")
-    for a in data.get('aliases', []):
-        print(f\"  {a['alias']}: {a.get('provider')}/{a.get('model_id')} (streak={a.get('healthy_streak', 0)}, score={a.get('score', 0):.3f})\")
-except Exception as e:
-    print(f'Could not read summary: {e}')
-" >> $GITHUB_STEP_SUMMARY || true
+          echo "## Free Model Radar Run Summary" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          uv run python - <<'PY' >> "$GITHUB_STEP_SUMMARY" || true
+          import json
+          try:
+              with open('data/free_models.json') as f:
+                  data = json.load(f)
+              print(f"Total models: {len(data.get('models', []))}")
+              print(f"Aliases: {len(data.get('aliases', []))}")
+              for a in data.get('aliases', []):
+                  print(f"  {a['alias']}: {a.get('provider')}/{a.get('model_id')}")
+          except Exception as e:
+              print(f'Could not read summary: {e}')
+          PY
