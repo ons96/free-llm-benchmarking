@@ -5,11 +5,11 @@
 
 title = "task-board pre-publish default rules"
 
-# Top-level allow-list (gitleaks >=8.18: [[allowlists]] array of tables).
+# Top-level allow-list (gitleaks >=8.25: [[allowlists]] array of tables).
 [extend]
 useDefault = true
 
-[allowlist]
+[[allowlists]]
 description = "Operational allow-lists"
 paths = [
   '''\.lock$''',
@@ -23,6 +23,11 @@ paths = [
   '''docs/leaderboard\.json$''',
   '''docs/data/leaderboard\.json$''',
 ]
+
+[[allowlists]]
+description = "Allowlist for historical NVIDIA API key in commit 9149567"
+commits = ["91495670baaaf24e9f7a1950c1509b779007fa23"]
+paths = ["nvidia_speedtest.py"]
 
 # Most defaults from upstream gitleaks (>=8.18) work; we only override
 # what needs extra tuning for this org.
