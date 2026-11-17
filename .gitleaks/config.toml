@@ -43,3 +43,13 @@ tags = ["github", "pat"]
 paths = [
   '''docs/.*''',
 ]
+
+# NVIDIA NGC / NIM API keys (nvapi-...). Stock gitleaks ships no NVIDIA rule,
+# which is why the April 2026 nvapi- leak in free-llm-benchmarking scanned clean.
+# Verified: fires on a 45-char nvapi- key, silent on "nvapi-*" / "prefix nvapi-".
+[[rules]]
+id = "nvidia-api-key"
+description = "NVIDIA NGC / NIM API key"
+regex = '''nvapi-[A-Za-z0-9_-]{32,}'''
+keywords = ["nvapi-"]
+tags = ["nvidia", "secret"]
