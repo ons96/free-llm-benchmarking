@@ -35,8 +35,9 @@ permissions:
   contents: write
 
 # Explicit allowlist of repo secrets. The old toJSON(secrets) dump tripped
-# GitHub's malicious-workflow gate. Add new secrets to BOTH this block and
-# .github/secret-names.txt.
+# GitHub's malicious-workflow gate. This block is the single source of truth:
+# the build and leak-scan steps read their name list from it. Add new repo
+# secrets here only.
 env:
   AEROLINK: ${{ secrets.AEROLINK }}
   AGNES_AI_API_KEY: ${{ secrets.AGNES_AI_API_KEY }}
@@ -179,9 +180,9 @@ jobs:
       - name: Build ~/.env and ~/.secrets/ from repo secrets
         run: |
           python3 <<'PYEOF'
-          import os, re
-          NAMES = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/secret-names.txt")
-          allow = [x.strip() for x in open(NAMES) if x.strip() and not x.startswith("#")]
+          import os, yaml
+          WF = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/workflows/free-model-radar.yml")
+          allow = list(yaml.safe_load(open(WF))["env"])
           secrets = {n: os.environ[n] for n in allow if os.environ.get(n)}
           home = os.path.expanduser("~")
           env_path = os.path.join(home, ".env")
@@ -258,9 +259,9 @@ jobs:
         if: always()
         run: |
           python3 <<'PYEOF'
-          import os, subprocess, sys
-          NAMES = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/secret-names.txt")
-          allow = [x.strip() for x in open(NAMES) if x.strip() and not x.startswith("#")]
+          import os, subprocess, sys, yaml
+          WF = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/workflows/free-model-radar.yml")
+          allow = list(yaml.safe_load(open(WF))["env"])
           secrets_ctx = {n: os.environ[n] for n in allow if os.environ.get(n)}
           hits = []
           for name, val in secrets_ctx.items():
@@ -287,9 +288,9 @@ jobs:
         if: always()
         run: |
           python3 <<'PYEOF'
-          import os, subprocess, sys
-          NAMES = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/secret-names.txt")
-          allow = [x.strip() for x in open(NAMES) if x.strip() and not x.startswith("#")]
+          import os, subprocess, sys, yaml
+          WF = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/workflows/free-model-radar.yml")
+          allow = list(yaml.safe_load(open(WF))["env"])
           secrets_ctx = {n: os.environ[n] for n in allow if os.environ.get(n)}
           targets = ["data/free_models.json", "docs/dashboard.html", "docs/dashboard.json"]
           hits = []
