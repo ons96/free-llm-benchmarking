@@ -8,22 +8,22 @@ on:
       skip-discovery:
         description: 'Skip discovery phase'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       skip-verification:
         description: 'Skip verification phase'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       skip-aliases:
         description: 'Skip alias updates'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       apply-aliases:
         description: 'Actually apply alias changes (not dry-run)'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       max-verify:
         description: 'Max models to verify (default: all)'
