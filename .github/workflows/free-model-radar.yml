@@ -46,13 +46,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, pinned for supply-chain safety
         with:
           token: ${{ secrets.BENCHMARK_PUSH_TOKEN || secrets.GITHUB_TOKEN }}
           fetch-depth: 1
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7, pinned
         with:
           activate-environment: true
           enable-cache: true
@@ -101,6 +101,9 @@ jobs:
                   sec_written += 1
           print(f"~/.env: {env_written} keys, ~/.secrets/: {sec_written} files")
           PYEOF
+          chmod 600 ~/.env
+          chmod 700 ~/.secrets
+          chmod 600 ~/.secrets/* 2>/dev/null || true
 
       - name: Initialize database
         run: |
@@ -175,6 +178,47 @@ jobs:
         env:
           SECRETS_CONTEXT: ${{ toJSON(secrets) }}
 
+      - name: "Fail-safe: scan publish artifacts for leaked secrets"
+        if: always()
+        run: |
+          python3 <<'PYEOF'
+          import json, os, subprocess, sys
+          secrets_ctx = json.loads(os.environ.get("SECRETS_CONTEXT", "{}"))
+          targets = ["data/free_models.json", "docs/dashboard.html", "docs/dashboard.json"]
+          hits = []
+          for name, val in secrets_ctx.items():
+              if not val or len(val) < 12:
+                  continue
+              if name == "BENCHMARK_PUSH_TOKEN":
+                  continue
+              for tgt in targets:
+                  if not os.path.exists(tgt):
+                      continue
+                  try:
+                      r = subprocess.run(["grep", "-l", "-F", val, tgt], capture_output=True, text=True, timeout=30)
+                      if tgt in r.stdout:
+                          hits.append((name, tgt))
+                  except Exception:
+                      pass
+              # binary DB: scan strings output
+              db = "data/free_models.db"
+              if os.path.exists(db):
+                  try:
+                      r1 = subprocess.run(["strings", db], capture_output=True, text=True, timeout=30)
+                      if val in r1.stdout:
+                          hits.append((name, db))
+                  except Exception:
+                      pass
+          if hits:
+              print(f"::error::SECRET LEAK DETECTED in {len(hits)} publish artifact(s):")
+              for name, path in hits:
+                  print(f"  {name} -> {path}")
+              sys.exit(1)
+          print("Publish artifacts clean: no secret values found.")
+          PYEOF
+        env:
+          SECRETS_CONTEXT: ${{ toJSON(secrets) }}
+
       - name: Commit updated data files
         if: success()
         run: |
@@ -209,7 +253,7 @@ jobs:
 
       - name: Deploy dashboard to GitHub Pages
         if: success()
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3, pinned
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
