@@ -349,7 +349,7 @@ jobs:
               fi
               echo "push rejected (attempt $attempt), rebasing onto origin/main"
               git fetch origin main
-              git rebase -X ours origin/main || { git rebase --abort; echo "::error::rebase failed unexpectedly"; exit 1; }
+              git -c rebase.autoStash=true rebase -X ours origin/main || { git rebase --abort; echo "::error::rebase failed unexpectedly"; exit 1; }
               if [ "$attempt" = "5" ]; then echo "::error::push failed after 5 attempts"; exit 1; fi
               sleep $((attempt * 5))
             done
