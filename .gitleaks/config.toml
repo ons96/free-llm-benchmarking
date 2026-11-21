@@ -22,6 +22,11 @@ paths = [
   '''.+\.snap$''',
   '''docs/leaderboard\.json$''',
   '''docs/data/leaderboard\.json$''',
+  # Raw probe transcripts store upstream HTTP bodies verbatim. Cloudflare
+  # interstitials and vendor error pages trip token-shaped rules (the
+  # facebook-page-access-token rule fires on captured HTML). These files hold
+  # response text only; no credential is ever written into them.
+  '''data/raw_tests_[0-9a-f]+\.csv$''',
 ]
 
 # Most defaults from upstream gitleaks (>=8.18) work; we only override
