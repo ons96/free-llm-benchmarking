@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Free Model Radar Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #333; }
+        h2 { color: #555; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .card h3 { margin-top: 0; color: #666; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric { font-size: 32px; font-weight: bold; color: #333; }
+        .metric small { font-size: 14px; font-weight: normal; color: #999; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #fafafa; font-weight: 600; color: #666; }
+        tr:hover { background: #f9f9f9; }
+        .healthy { color: #28a745; font-weight: bold; }
+        .degraded { color: #ffc107; font-weight: bold; }
+        .unhealthy { color: #dc3545; font-weight: bold; }
+        .unknown { color: #6c757d; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+        .badge-promote { background: #d4edda; color: #155724; }
+        .badge-demote { background: #f8d7da; color: #721c24; }
+        .badge-keep { background: #e2e3e5; color: #383d41; }
+        .badge-init { background: #cce5ff; color: #004085; }
+        .rank { font-weight: bold; color: #333; }
+        .score-high { color: #28a745; }
+        .score-med { color: #ffc107; }
+        .score-low { color: #dc3545; }
+        .timestamp { color: #999; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Free Model Radar Dashboard</h1>
+        <p class="timestamp">Generated: 2026-11-21T01:23:25.458331+00:00 | Window: 7 days</p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Total Models</h3>
+                <div class="metric">14848<small> (14848 free)</small></div>
+            </div>
+            <div class="card">
+                <h3>Active Models</h3>
+                <div class="metric">14848</div>
+            </div>
+            <div class="card">
+                <h3>Aliases Managed</h3>
+                <div class="metric">0</div>
+            </div>
+            <div class="card">
+                <h3>Providers Monitored</h3>
+                <div class="metric">17</div>
+            </div>
+        </div>
+
+        <h2>Current Aliases</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Alias</th><th>Task</th><th>Current Model</th><th>Score</th><th>Streak</th><th>Health</th><th>Fallback</th><th>Updated</th></tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Rankings by Task</h2>
+        <div class="grid">
+
+            <div class="card">
+                <h3>Coding</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>mistral</td>
+                            <td>ministral-14b-2512</td>
+                            <td class="score-low">0.260</td>
+                            <td>0.00</td>
+                            <td>0.04</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>mistral</td>
+                            <td>mistral-code-latest</td>
+                            <td class="score-low">0.258</td>
+                            <td>0.00</td>
+                            <td>0.03</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>mistral</td>
+                            <td>codestral-2508</td>
+                            <td class="score-low">0.258</td>
+                            <td>0.00</td>
+                            <td>0.03</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>mistral</td>
+                            <td>codestral-latest</td>
+                            <td class="score-low">0.158</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>mistral</td>
+                            <td>mistral-code-fim-latest</td>
+                            <td class="score-low">0.158</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>mistral</td>
+                            <td>ministral-14b-latest</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>mistral</td>
+                            <td>ministral-3b-2512</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>mistral</td>
+                            <td>ministral-3b-latest</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>mistral</td>
+                            <td>ministral-8b-2512</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>mistral</td>
+                            <td>ministral-8b-latest</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">11</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-latest</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">12</td>
+                            <td>mistral</td>
+                            <td>mistral-medium</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">13</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-3-5</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">14</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-3.5</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">15</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-3</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">16</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-2604</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">17</td>
+                            <td>mistral</td>
+                            <td>mistral-vibe-cli-latest</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">18</td>
+                            <td>mistral</td>
+                            <td>mistral-vibe-cli-with-tools</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">19</td>
+                            <td>mistral</td>
+                            <td>magistral-medium-latest</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">20</td>
+                            <td>mistral</td>
+                            <td>mistral-small-2603</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Reasoning</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>mistral</td>
+                            <td>ministral-14b-2512</td>
+                            <td class="score-low">0.256</td>
+                            <td>0.00</td>
+                            <td>0.04</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>mistral</td>
+                            <td>mistral-code-latest</td>
+                            <td class="score-low">0.255</td>
+                            <td>0.00</td>
+                            <td>0.03</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>mistral</td>
+                            <td>codestral-2508</td>
+                            <td class="score-low">0.255</td>
+                            <td>0.00</td>
+                            <td>0.03</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>mistral</td>
+                            <td>codestral-latest</td>
+                            <td class="score-low">0.125</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>mistral</td>
+                            <td>mistral-code-fim-latest</td>
+                            <td class="score-low">0.125</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>mistral</td>
+                            <td>ministral-14b-latest</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>mistral</td>
+                            <td>ministral-3b-2512</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>mistral</td>
+                            <td>ministral-3b-latest</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>mistral</td>
+                            <td>ministral-8b-2512</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>mistral</td>
+                            <td>ministral-8b-latest</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">11</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-latest</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">12</td>
+                            <td>mistral</td>
+                            <td>mistral-medium</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">13</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-3-5</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">14</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-3.5</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">15</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-3</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">16</td>
+                            <td>mistral</td>
+                            <td>mistral-medium-2604</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">17</td>
+                            <td>mistral</td>
+                            <td>mistral-vibe-cli-latest</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">18</td>
+                            <td>mistral</td>
+                            <td>mistral-vibe-cli-with-tools</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">19</td>
+                            <td>mistral</td>
+                            <td>magistral-medium-latest</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">20</td>
+                            <td>mistral</td>
+                            <td>mistral-small-2603</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Long Context</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-20b</td>
+                            <td class="score-med">0.496</td>
+                            <td>0.00</td>
+                            <td>0.48</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-safeguard-20b</td>
+                            <td class="score-med">0.489</td>
+                            <td>0.00</td>
+                            <td>0.45</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>groq</td>
+                            <td>qwen/qwen3.8-27b</td>
+                            <td class="score-med">0.466</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-120b</td>
+                            <td class="score-med">0.457</td>
+                            <td>0.00</td>
+                            <td>0.29</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>ovhcloud</td>
+                            <td>nemotron3-nano-30b</td>
+                            <td class="score-med">0.427</td>
+                            <td>0.00</td>
+                            <td>0.14</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>ovhcloud</td>
+                            <td>gpt-oss-20b</td>
+                            <td class="score-med">0.427</td>
+                            <td>0.00</td>
+                            <td>0.14</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>ovhcloud</td>
+                            <td>gemma-4-26b-a4b</td>
+                            <td class="score-med">0.427</td>
+                            <td>0.00</td>
+                            <td>0.13</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>together</td>
+                            <td>Prism-ML/Ternary-Bonsai-27B</td>
+                            <td class="score-med">0.425</td>
+                            <td>0.00</td>
+                            <td>0.12</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>ovhcloud</td>
+                            <td>laguna-xs-2.1</td>
+                            <td class="score-med">0.425</td>
+                            <td>0.00</td>
+                            <td>0.12</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>ovhcloud</td>
+                            <td>Olala-v1.0-mini-7A1B</td>
+                            <td class="score-med">0.424</td>
+                            <td>0.00</td>
+                            <td>0.12</td>
+                            <td>1.00</td>
+                            <td>32768</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">11</td>
+                            <td>ovhcloud</td>
+                            <td>Qwen3.8-27B</td>
+                            <td class="score-med">0.424</td>
+                            <td>0.00</td>
+                            <td>0.12</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">12</td>
+                            <td>kilocode</td>
+                            <td>kilo-auto/free</td>
+                            <td class="score-med">0.419</td>
+                            <td>0.00</td>
+                            <td>0.10</td>
+                            <td>1.00</td>
+                            <td>256000</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">13</td>
+                            <td>ovhcloud</td>
+                            <td>Qwen3Guard-Gen-8B</td>
+                            <td class="score-med">0.417</td>
+                            <td>0.00</td>
+                            <td>0.08</td>
+                            <td>1.00</td>
+                            <td>32768</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">14</td>
+                            <td>ovhcloud</td>
+                            <td>nemotron3-omni-30b</td>
+                            <td class="score-med">0.416</td>
+                            <td>0.00</td>
+                            <td>0.08</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">15</td>
+                            <td>ovhcloud</td>
+                            <td>gpt-oss-120b</td>
+                            <td class="score-med">0.416</td>
+                            <td>0.00</td>
+                            <td>0.08</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">16</td>
+                            <td>ovhcloud</td>
+                            <td>Olala-v1.0-summarise</td>
+                            <td class="score-med">0.416</td>
+                            <td>0.00</td>
+                            <td>0.08</td>
+                            <td>1.00</td>
+                            <td>32768</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">17</td>
+                            <td>ovhcloud</td>
+                            <td>Qwen3.5-9B</td>
+                            <td class="score-med">0.416</td>
+                            <td>0.00</td>
+                            <td>0.08</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">18</td>
+                            <td>ovhcloud</td>
+                            <td>qwen3.6-35b-a3b</td>
+                            <td class="score-med">0.415</td>
+                            <td>0.00</td>
+                            <td>0.07</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">19</td>
+                            <td>ovhcloud</td>
+                            <td>Qwen3.5-397B-A17B</td>
+                            <td class="score-med">0.414</td>
+                            <td>0.00</td>
+                            <td>0.07</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">20</td>
+                            <td>ovhcloud</td>
+                            <td>Qwen2.5-VL-72B-Instruct</td>
+                            <td class="score-med">0.414</td>
+                            <td>0.00</td>
+                            <td>0.07</td>
+                            <td>1.00</td>
+                            <td>32768</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Vision</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>azure-cognitive-services</td>
+                            <td>gpt-4-turbo-vision</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>edenai</td>
+                            <td>deepinfra/meta-llama/Llama-3.2-11B-Vision-Instruct</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>edenai</td>
+                            <td>deepseek/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>edenai</td>
+                            <td>cohere/command-a-vision-07-2025</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>cloudflare-workers-ai</td>
+                            <td>@cf/meta/llama-3.2-11b-vision-instruct</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>302ai</td>
+                            <td>doubao-seed-1-6-vision-250815</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>volcengine</td>
+                            <td>doubao-seed-1-6-vision-250815</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>llmgateway-providers</td>
+                            <td>deepinfra/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>opencode</td>
+                            <td>deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>kilo</td>
+                            <td>deepseek/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">11</td>
+                            <td>vispark</td>
+                            <td>vispark/vision-large</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">12</td>
+                            <td>vispark</td>
+                            <td>vispark/vision-medium</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">13</td>
+                            <td>vispark</td>
+                            <td>vispark/vision-small</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">14</td>
+                            <td>aimlapi</td>
+                            <td>deepseek/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">15</td>
+                            <td>orcarouter</td>
+                            <td>deepseek/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">16</td>
+                            <td>qiniu-ai</td>
+                            <td>doubao-1.5-vision-pro</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">17</td>
+                            <td>io-net</td>
+                            <td>meta-llama/Llama-3.2-90B-Vision-Instruct</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">18</td>
+                            <td>commandcode</td>
+                            <td>deepseek/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">19</td>
+                            <td>deepinfra</td>
+                            <td>deepseek-ai/DeepSeek-V4-Flash-Vision-Exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">20</td>
+                            <td>amd</td>
+                            <td>DeepSeek-V4-Flash-Vision-Exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Bulk</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>groq</td>
+                            <td>meta-llama/llama-prompt-guard-2-22m</td>
+                            <td class="score-med">0.512</td>
+                            <td>0.00</td>
+                            <td>0.62</td>
+                            <td>1.00</td>
+                            <td>512</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>groq</td>
+                            <td>meta-llama/llama-prompt-guard-2-86m</td>
+                            <td class="score-med">0.501</td>
+                            <td>0.00</td>
+                            <td>0.60</td>
+                            <td>1.00</td>
+                            <td>512</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-20b</td>
+                            <td class="score-med">0.441</td>
+                            <td>0.00</td>
+                            <td>0.48</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-safeguard-20b</td>
+                            <td class="score-med">0.423</td>
+                            <td>0.00</td>
+                            <td>0.45</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>groq</td>
+                            <td>qwen/qwen3.8-27b</td>
+                            <td class="score-low">0.364</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-120b</td>
+                            <td class="score-low">0.343</td>
+                            <td>0.00</td>
+                            <td>0.29</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>groq</td>
+                            <td>allam-2-7b</td>
+                            <td class="score-low">0.280</td>
+                            <td>0.00</td>
+                            <td>0.16</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>ovhcloud</td>
+                            <td>nemotron3-nano-30b</td>
+                            <td class="score-low">0.269</td>
+                            <td>0.00</td>
+                            <td>0.14</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>ovhcloud</td>
+                            <td>gpt-oss-20b</td>
+                            <td class="score-low">0.268</td>
+                            <td>0.00</td>
+                            <td>0.14</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>ovhcloud</td>
+                            <td>gemma-4-26b-a4b</td>
+                            <td class="score-low">0.266</td>
+                            <td>0.00</td>
+                            <td>0.13</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">11</td>
+                            <td>together</td>
+                            <td>Prism-ML/Ternary-Bonsai-27B</td>
+                            <td class="score-low">0.262</td>
+                            <td>0.00</td>
+                            <td>0.12</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">12</td>
+                            <td>ovhcloud</td>
+                            <td>laguna-xs-2.1</td>
+                            <td class="score-low">0.262</td>
+                            <td>0.00</td>
+                            <td>0.12</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">13</td>
+                            <td>ovhcloud</td>
+                            <td>Olala-v1.0-mini-7A1B</td>
+                            <td class="score-low">0.261</td>
+                            <td>0.00</td>
+                            <td>0.12</td>
+                            <td>1.00</td>
+                            <td>32768</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">14</td>
+                            <td>ovhcloud</td>
+                            <td>Qwen3.8-27B</td>
+                            <td class="score-low">0.260</td>
+                            <td>0.00</td>
+                            <td>0.12</td>
+                            <td>1.00</td>
+                            <td>262144</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">15</td>
+                            <td>ktai</td>
+                            <td>z-ai/glm-4.6v-flash</td>
+                            <td class="score-low">0.253</td>
+                            <td>0.00</td>
+                            <td>0.11</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">16</td>
+                            <td>bluesminds</td>
+                            <td>nvidia/ising-calibration-1.5-31b</td>
+                            <td class="score-low">0.251</td>
+                            <td>0.00</td>
+                            <td>0.10</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">17</td>
+                            <td>kilocode</td>
+                            <td>kilo-auto/free</td>
+                            <td class="score-low">0.248</td>
+                            <td>0.00</td>
+                            <td>0.10</td>
+                            <td>1.00</td>
+                            <td>256000</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">18</td>
+                            <td>koyeb</td>
+                            <td>nemotron-3.5-lightning</td>
+                            <td class="score-low">0.246</td>
+                            <td>0.00</td>
+                            <td>0.09</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">19</td>
+                            <td>aihub-071129</td>
+                            <td>codestral-latest</td>
+                            <td class="score-low">0.244</td>
+                            <td>0.00</td>
+                            <td>0.09</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">20</td>
+                            <td>koyeb</td>
+                            <td>nemotron-3.5-lightning-30b-a3b</td>
+                            <td class="score-low">0.242</td>
+                            <td>0.00</td>
+                            <td>0.08</td>
+                            <td>1.00</td>
+                            <td>4096</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Fast</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>groq</td>
+                            <td>meta-llama/llama-prompt-guard-2-22m</td>
+                            <td class="score-med">0.537</td>
+                            <td>0.00</td>
+                            <td>0.62</td>
+                            <td>1.00</td>
+                            <td>512</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>groq</td>
+                            <td>meta-llama/llama-prompt-guard-2-86m</td>
+                            <td class="score-med">0.521</td>
+                            <td>0.00</td>
+                            <td>0.60</td>
+                            <td>1.00</td>
+                            <td>512</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-20b</td>
+                            <td class="score-med">0.437</td>
+                            <td>0.00</td>
+                            <td>0.48</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-safeguard-20b</td>
+                            <td class="score-med">0.412</td>
+                            <td>0.00</td>
+                            <td>0.45</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>groq</td>
+                            <td>qwen/qwen3.8-27b</td>
+                            <td class="score-low">0.330</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>groq</td>
+                            <td>openai/gpt-oss-120b</td>
+                            <td class="score-low">0.300</td>
+                            <td>0.00</td>
+                            <td>0.29</td>
+                            <td>1.00</td>
+                            <td>131072</td>
+                            <td><span class="healthy">healthy</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>aitools</td>
+                            <td>openai/gpt-oss-20b</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>aitools</td>
+                            <td>google/gemma-4-31b</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>aitools</td>
+                            <td>zhipu/glm-4-flash</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>aitools</td>
+                            <td>zhipu/glm-4v-flash</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">11</td>
+                            <td>blaze-free</td>
+                            <td>hcnsec-auto</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">12</td>
+                            <td>blaze-free</td>
+                            <td>deepseek-v4-flash</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">13</td>
+                            <td>blaze-free</td>
+                            <td>deepseek-v4-pro</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">14</td>
+                            <td>blaze-free</td>
+                            <td>deepseek-v4.1-flash</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">15</td>
+                            <td>blaze-free</td>
+                            <td>glm-5.3</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">16</td>
+                            <td>blaze-free</td>
+                            <td>glm-5.3-flash</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">17</td>
+                            <td>blaze-free</td>
+                            <td>kimi-k3</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">18</td>
+                            <td>blaze-free</td>
+                            <td>longcat-2.5</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">19</td>
+                            <td>blaze-free</td>
+                            <td>mimo-v2.6-flash</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">20</td>
+                            <td>blaze-free</td>
+                            <td>minimax-m3.1-flash</td>
+                            <td class="score-low">0.263</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.30</td>
+                            <td>4096</td>
+                            <td><span class="degraded">degraded</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h2>Top Movers (Last 7 Days)</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Provider</th><th>Model</th><th>Probes</th><th>Successes</th><th>Success Rate</th><th>First Probe</th><th>Last Probe</th></tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>mistral</td>
+                        <td>ministral-14b-2512</td>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:47:15</td>
+                        <td class="timestamp">2026-11-21T00:47:15</td>
+                    </tr>
+                    <tr>
+                        <td>agnes-ai</td>
+                        <td>agnes-2.5-flash</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:04</td>
+                        <td class="timestamp">2026-11-21T00:49:04</td>
+                    </tr>
+                    <tr>
+                        <td>agnes-ai</td>
+                        <td>agnes-3.0-flash</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:48:59</td>
+                        <td class="timestamp">2026-11-21T00:48:59</td>
+                    </tr>
+                    <tr>
+                        <td>aihub-071129</td>
+                        <td>Qwen/Qwen2.5-7B-Instruct</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:48:46</td>
+                        <td class="timestamp">2026-11-21T00:48:46</td>
+                    </tr>
+                    <tr>
+                        <td>aihub-071129</td>
+                        <td>codestral-latest</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:48:47</td>
+                        <td class="timestamp">2026-11-21T00:48:47</td>
+                    </tr>
+                    <tr>
+                        <td>aihub-071129</td>
+                        <td>intern-s1-mini</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:48:51</td>
+                        <td class="timestamp">2026-11-21T00:48:51</td>
+                    </tr>
+                    <tr>
+                        <td>aihub-071129</td>
+                        <td>ministral-8b-latest</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:48:46</td>
+                        <td class="timestamp">2026-11-21T00:48:46</td>
+                    </tr>
+                    <tr>
+                        <td>aitools</td>
+                        <td>zhipu/glm-4.1v-thinking-flash</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:37:55</td>
+                        <td class="timestamp">2026-11-21T00:37:55</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>black-forest-labs/flux.2-klein-4b</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:09</td>
+                        <td class="timestamp">2026-11-21T00:49:09</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>bytedance-seed/seedream-4.5</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:10</td>
+                        <td class="timestamp">2026-11-21T00:49:10</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>cogview</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:13</td>
+                        <td class="timestamp">2026-11-21T00:49:13</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>deepseek/deepseek-v4-flash-0731</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:10</td>
+                        <td class="timestamp">2026-11-21T00:49:10</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>glm-5.2</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:18</td>
+                        <td class="timestamp">2026-11-21T00:49:18</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>glm-5.2-deepthink</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:27</td>
+                        <td class="timestamp">2026-11-21T00:49:27</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>glm-5.2-thinking</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:26</td>
+                        <td class="timestamp">2026-11-21T00:49:26</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>glm-5.3</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:13</td>
+                        <td class="timestamp">2026-11-21T00:49:13</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>glm-5.3-deepthink</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:28</td>
+                        <td class="timestamp">2026-11-21T00:49:28</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>glm-5.3-flash-deepthink</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:20</td>
+                        <td class="timestamp">2026-11-21T00:49:20</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>glm-5.3-flash-thinking</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:24</td>
+                        <td class="timestamp">2026-11-21T00:49:24</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td>glm-5.3-thinking</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>100.0%</td>
+                        <td class="timestamp">2026-11-21T00:49:37</td>
+                        <td class="timestamp">2026-11-21T00:49:37</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Stale Entries (Not Verified in 7 Days)</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Provider</th><th>Model</th><th>Last Verified</th><th>Health</th><th>Probes</th></tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>aitools</td>
+                        <td>zhipu/glm-4.6v-flash</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>aitools</td>
+                        <td>zhipu/glm-4.7-flash</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-3.1-nemotron-70b-instruct</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-3.1-nemotron-51b-instruct</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-3.1-nemoguard-8b-content-safety</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-3.2-nv-embedqa-1b-v1</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/nemotron-3-ultra-550b-a55b</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>openai/gpt-oss-20b</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-3.2-nemoretriever-1b-vlm-embed-v1</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/nemotron-3.5-lightning-30b-a3b</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-3.1-nemoguard-8b-topic-control</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama3-chatqa-1.5-70b</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/riva-translate-4b-instruct-v1.1</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-3.1-nemotron-safety-guard-8b-v3</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-nemotron-embed-vl-1b-v2</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>meta/llama2-70b</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>meta/llama-3.2-90b-vision-instruct</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>nvidia/llama-3.1-nemotron-ultra-253b-v1</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td>google/diffusiongemma-26b-a4b-it</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>kilocode</td>
+                        <td>meta/muse-ember</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Provider Health</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Provider</th><th>Health</th><th>Last OK</th><th>Last Error</th><th>Cooldown Until</th><th>Rate Limit Reset</th><th>Free Quota</th><th>Updated</th></tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>ovhcloud</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2027-01-01T00:00:01</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T01:23:05</td>
+                    </tr>
+                    <tr>
+                        <td>mistral</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T01:21:35</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T01:20:35</td>
+                    </tr>
+                    <tr>
+                        <td>banana2556</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:50:27</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:49:27</td>
+                    </tr>
+                    <tr>
+                        <td>atessa</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:49:59</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:48:59</td>
+                    </tr>
+                    <tr>
+                        <td>tokenreply</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:49:58</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:48:58</td>
+                    </tr>
+                    <tr>
+                        <td>opencode_zen-nokey</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-22T00:00:02</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:48:56</td>
+                    </tr>
+                    <tr>
+                        <td>aihub-071129</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:49:51</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:48:51</td>
+                    </tr>
+                    <tr>
+                        <td>paxsenix</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:49:03</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:48:06</td>
+                    </tr>
+                    <tr>
+                        <td>opencode</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-22T00:00:02</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:47:48</td>
+                    </tr>
+                    <tr>
+                        <td>navy-alt</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:47:44</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:47:43</td>
+                    </tr>
+                    <tr>
+                        <td>navy</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:47:42</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:47:41</td>
+                    </tr>
+                    <tr>
+                        <td>nano-gpt</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:48:35</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:47:35</td>
+                    </tr>
+                    <tr>
+                        <td>llm7</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:47:06</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:46:56</td>
+                    </tr>
+                    <tr>
+                        <td>airforce</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:47:17</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:46:17</td>
+                    </tr>
+                    <tr>
+                        <td>kilocode</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:46:57</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:45:57</td>
+                    </tr>
+                    <tr>
+                        <td>bluesminds</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:39:04</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:38:04</td>
+                    </tr>
+                    <tr>
+                        <td>aitools</td>
+                        <td><span class="degraded">degraded</span></td>
+                        <td class="timestamp">never</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">none</td>
+                        <td class="timestamp">2026-11-21T00:38:54</td>
+                        <td>None</td>
+                        <td class="timestamp">2026-11-21T00:37:55</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>7-Day Stability Report</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Alias</th><th>Model</th><th>Score</th><th>Probes</th><th>Success Rate</th><th>Changes</th><th>Stable</th></tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
