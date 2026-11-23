@@ -94,8 +94,8 @@ bluesminds,https://api.bluesminds.com/v1,adept/fuyu-8b,direct,,,,0,0.45986533600
 blaze-free,https://api.blazeapi.org/free/v1,glm-5.2-thinking-banana,direct,,,,0,1.0121869020001668,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-16T04:13:03.320121+00:00
 blaze-free,https://api.blazeapi.org/free/v1,glm-5.2-zero-banana,direct,,,,0,1.1495699979998335,http_error,"HTTP 502: {""error"":{""type"":""dried_up"",""message"":""Provider dried up""}}",2026-08-16T04:13:06.267160+00:00
 choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,5.171465347000094,202.4281802795951,635,8.310224063000078,success,,2026-08-16T04:13:10.009519+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,3.2601942839999083,152.80225501438906,419,7.557455046000086,success,,2026-08-16T04:13:10.396945+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,5.033393478999869,131.38234716079532,419,8.345353505000048,success,,2026-08-16T04:13:10.785225+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,3.2601942839999083,152.80225501438906,419,7.557455046000086,success,,2026-08-16T04:13:10.396945+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,5.033393478999869,131.38234716079532,419,8.345353505000048,success,,2026-08-16T04:13:10.785225+00:00
 bluesminds,https://api.bluesminds.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1,direct,,,,0,0.33736924400000134,http_error,HTTP 429: ,2026-08-16T04:13:11.057236+00:00
 dext,https://ai.dext.top/v1,nemotron-3-ultra,direct,,2.251587170999983,68.71697881260799,290,6.472313522999912,success,,2026-08-16T04:13:16.890478+00:00
 bluesminds,https://api.bluesminds.com/v1,meta/llama-3.3-70b-instruct,direct,,0.0,23.603415968715968,426,18.048235076000083,success,,2026-08-16T04:13:17.982925+00:00

@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Free Model Radar Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 20px; background: #f5f5f5; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: #333; }
+        h2 { color: #555; border-bottom: 2px solid #ddd; padding-bottom: 5px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .card h3 { margin-top: 0; color: #666; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .metric { font-size: 32px; font-weight: bold; color: #333; }
+        .metric small { font-size: 14px; font-weight: normal; color: #999; }
+        table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #fafafa; font-weight: 600; color: #666; }
+        tr:hover { background: #f9f9f9; }
+        .healthy { color: #28a745; font-weight: bold; }
+        .degraded { color: #ffc107; font-weight: bold; }
+        .unhealthy { color: #dc3545; font-weight: bold; }
+        .unknown { color: #6c757d; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold; }
+        .badge-promote { background: #d4edda; color: #155724; }
+        .badge-demote { background: #f8d7da; color: #721c24; }
+        .badge-keep { background: #e2e3e5; color: #383d41; }
+        .badge-init { background: #cce5ff; color: #004085; }
+        .rank { font-weight: bold; color: #333; }
+        .score-high { color: #28a745; }
+        .score-med { color: #ffc107; }
+        .score-low { color: #dc3545; }
+        .timestamp { color: #999; font-size: 12px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Free Model Radar Dashboard</h1>
+        <p class="timestamp">Generated: 2026-11-09T11:30:16.447031+00:00 | Window: 7 days</p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Total Models</h3>
+                <div class="metric">8942<small> (8942 free)</small></div>
+            </div>
+            <div class="card">
+                <h3>Active Models</h3>
+                <div class="metric">8942</div>
+            </div>
+            <div class="card">
+                <h3>Aliases Managed</h3>
+                <div class="metric">0</div>
+            </div>
+            <div class="card">
+                <h3>Providers Monitored</h3>
+                <div class="metric">0</div>
+            </div>
+        </div>
+
+        <h2>Current Aliases</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Alias</th><th>Task</th><th>Current Model</th><th>Score</th><th>Streak</th><th>Health</th><th>Fallback</th><th>Updated</th></tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Rankings by Task</h2>
+        <div class="grid">
+
+            <div class="card">
+                <h3>Coding</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>nvidia</td>
+                            <td>nemotron-3-ultra</td>
+                            <td class="score-med">0.571</td>
+                            <td>0.90</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>groq</td>
+                            <td>llama-3.1-70b-versatile</td>
+                            <td class="score-med">0.546</td>
+                            <td>0.85</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>131072</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>cerebras</td>
+                            <td>llama3.1-70b</td>
+                            <td class="score-med">0.521</td>
+                            <td>0.80</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>8192</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>blazeai</td>
+                            <td>qwen2.5-coder-32b-instruct</td>
+                            <td class="score-med">0.496</td>
+                            <td>0.75</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>32768</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>openrouter</td>
+                            <td>liquid/lfm-3-1.7b:free</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>openrouter</td>
+                            <td>stealth/crouton-alpha</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1048576</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>openrouter</td>
+                            <td>recursive/flint-v1.0:free</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>openrouter</td>
+                            <td>xingchen-agi/xing4.0-29b-a4b:free</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>openrouter</td>
+                            <td>nvidia/nemotron-3.5-super-vl:free</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1000000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>openrouter</td>
+                            <td>dots-studio/dots-3-note-preview:free</td>
+                            <td class="score-low">0.121</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>512000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Reasoning</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>nvidia</td>
+                            <td>nemotron-3-ultra</td>
+                            <td class="score-med">0.627</td>
+                            <td>0.90</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>groq</td>
+                            <td>llama-3.1-70b-versatile</td>
+                            <td class="score-med">0.598</td>
+                            <td>0.85</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>131072</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>cerebras</td>
+                            <td>llama3.1-70b</td>
+                            <td class="score-med">0.568</td>
+                            <td>0.80</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>8192</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>blazeai</td>
+                            <td>qwen2.5-coder-32b-instruct</td>
+                            <td class="score-med">0.537</td>
+                            <td>0.75</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>32768</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>openrouter</td>
+                            <td>liquid/lfm-3-1.7b:free</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>openrouter</td>
+                            <td>stealth/crouton-alpha</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1048576</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>openrouter</td>
+                            <td>recursive/flint-v1.0:free</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>openrouter</td>
+                            <td>xingchen-agi/xing4.0-29b-a4b:free</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>openrouter</td>
+                            <td>nvidia/nemotron-3.5-super-vl:free</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1000000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>openrouter</td>
+                            <td>dots-studio/dots-3-note-preview:free</td>
+                            <td class="score-low">0.087</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>512000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Long Context</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>groq</td>
+                            <td>llama-3.1-70b-versatile</td>
+                            <td class="score-med">0.467</td>
+                            <td>0.85</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>131072</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>blazeai</td>
+                            <td>qwen2.5-coder-32b-instruct</td>
+                            <td class="score-med">0.427</td>
+                            <td>0.75</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>32768</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>openrouter</td>
+                            <td>liquid/lfm-3-1.7b:free</td>
+                            <td class="score-low">0.127</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>openrouter</td>
+                            <td>stealth/crouton-alpha</td>
+                            <td class="score-low">0.127</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1048576</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>openrouter</td>
+                            <td>recursive/flint-v1.0:free</td>
+                            <td class="score-low">0.127</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>openrouter</td>
+                            <td>xingchen-agi/xing4.0-29b-a4b:free</td>
+                            <td class="score-low">0.127</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>openrouter</td>
+                            <td>nvidia/nemotron-3.5-super-vl:free</td>
+                            <td class="score-low">0.127</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1000000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>openrouter</td>
+                            <td>dots-studio/dots-3-note-preview:free</td>
+                            <td class="score-low">0.127</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>512000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>openrouter</td>
+                            <td>liquid/lfm-2.5-2.6b:free</td>
+                            <td class="score-low">0.127</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>65536</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>openrouter</td>
+                            <td>nvidia/nemotron-3.5-lightning:free</td>
+                            <td class="score-low">0.127</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1000000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Vision</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>orcarouter</td>
+                            <td>deepseek/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>azure</td>
+                            <td>gpt-4-turbo-vision</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>openrouter</td>
+                            <td>deepseek/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>qiniu-ai</td>
+                            <td>doubao-1.5-vision-pro</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>cohere</td>
+                            <td>command-a-vision-07-2025</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>cohere</td>
+                            <td>c4ai-aya-vision-32b</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>huggingface</td>
+                            <td>deepseek-ai/DeepSeek-V4-Flash-Vision-Exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>commandcode</td>
+                            <td>deepseek/deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>deepinfra</td>
+                            <td>deepseek-ai/DeepSeek-V4-Flash-Vision-Exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>edenai</td>
+                            <td>deepseek-v4-flash-vision-exp</td>
+                            <td class="score-low">0.104</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Bulk</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>nvidia</td>
+                            <td>nemotron-3-ultra</td>
+                            <td class="score-med">0.467</td>
+                            <td>0.90</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>groq</td>
+                            <td>llama-3.1-70b-versatile</td>
+                            <td class="score-med">0.452</td>
+                            <td>0.85</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>131072</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>cerebras</td>
+                            <td>llama3.1-70b</td>
+                            <td class="score-med">0.437</td>
+                            <td>0.80</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>8192</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>blazeai</td>
+                            <td>qwen2.5-coder-32b-instruct</td>
+                            <td class="score-med">0.422</td>
+                            <td>0.75</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>32768</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>openrouter</td>
+                            <td>liquid/lfm-3-1.7b:free</td>
+                            <td class="score-low">0.197</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>openrouter</td>
+                            <td>stealth/crouton-alpha</td>
+                            <td class="score-low">0.197</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1048576</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>openrouter</td>
+                            <td>recursive/flint-v1.0:free</td>
+                            <td class="score-low">0.197</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>openrouter</td>
+                            <td>xingchen-agi/xing4.0-29b-a4b:free</td>
+                            <td class="score-low">0.197</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>openrouter</td>
+                            <td>nvidia/nemotron-3.5-super-vl:free</td>
+                            <td class="score-low">0.197</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1000000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>openrouter</td>
+                            <td>dots-studio/dots-3-note-preview:free</td>
+                            <td class="score-low">0.197</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>512000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card">
+                <h3>Fast</h3>
+                <table>
+                    <thead>
+                        <tr><th>#</th><th>Provider</th><th>Model</th><th>Score</th><th>Quality</th><th>Speed</th><th>Reliability</th><th>Context</th><th>Health</th></tr>
+                    </thead>
+                    <tbody>
+
+                        <tr>
+                            <td class="rank">1</td>
+                            <td>nvidia</td>
+                            <td>nemotron-3-ultra</td>
+                            <td class="score-med">0.428</td>
+                            <td>0.90</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>4096</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">2</td>
+                            <td>groq</td>
+                            <td>llama-3.1-70b-versatile</td>
+                            <td class="score-med">0.418</td>
+                            <td>0.85</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>131072</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">3</td>
+                            <td>cerebras</td>
+                            <td>llama3.1-70b</td>
+                            <td class="score-med">0.408</td>
+                            <td>0.80</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>8192</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">4</td>
+                            <td>blazeai</td>
+                            <td>qwen2.5-coder-32b-instruct</td>
+                            <td class="score-low">0.398</td>
+                            <td>0.75</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>32768</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">5</td>
+                            <td>openrouter</td>
+                            <td>liquid/lfm-3-1.7b:free</td>
+                            <td class="score-low">0.248</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">6</td>
+                            <td>openrouter</td>
+                            <td>stealth/crouton-alpha</td>
+                            <td class="score-low">0.248</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1048576</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">7</td>
+                            <td>openrouter</td>
+                            <td>recursive/flint-v1.0:free</td>
+                            <td class="score-low">0.248</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">8</td>
+                            <td>openrouter</td>
+                            <td>xingchen-agi/xing4.0-29b-a4b:free</td>
+                            <td class="score-low">0.248</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>262144</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">9</td>
+                            <td>openrouter</td>
+                            <td>nvidia/nemotron-3.5-super-vl:free</td>
+                            <td class="score-low">0.248</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>1000000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                        <tr>
+                            <td class="rank">10</td>
+                            <td>openrouter</td>
+                            <td>dots-studio/dots-3-note-preview:free</td>
+                            <td class="score-low">0.248</td>
+                            <td>0.00</td>
+                            <td>0.33</td>
+                            <td>0.15</td>
+                            <td>512000</td>
+                            <td><span class="unknown">unknown</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <h2>Top Movers (Last 7 Days)</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Provider</th><th>Model</th><th>Probes</th><th>Successes</th><th>Success Rate</th><th>First Probe</th><th>Last Probe</th></tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Stale Entries (Not Verified in 7 Days)</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Provider</th><th>Model</th><th>Last Verified</th><th>Health</th><th>Probes</th></tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td>openrouter</td>
+                        <td>liquid/lfm-3-1.7b:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>stealth/crouton-alpha</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>recursive/flint-v1.0:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>xingchen-agi/xing4.0-29b-a4b:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>nvidia/nemotron-3.5-super-vl:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>dots-studio/dots-3-note-preview:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>liquid/lfm-2.5-2.6b:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>nvidia/nemotron-3.5-lightning:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>cohere/north-mini-code:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>openrouter</td>
+                        <td>nvidia/nemotron-3-ultra-550b-a55b:free</td>
+                        <td class="timestamp">never</td>
+                        <td><span class="unknown">unknown</span></td>
+                        <td>0</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2>Provider Health</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Provider</th><th>Health</th><th>Last OK</th><th>Last Error</th><th>Cooldown Until</th><th>Rate Limit Reset</th><th>Free Quota</th><th>Updated</th></tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+
+        <h2>7-Day Stability Report</h2>
+        <div class="card">
+            <table>
+                <thead>
+                    <tr><th>Alias</th><th>Model</th><th>Score</th><th>Probes</th><th>Success Rate</th><th>Changes</th><th>Stable</th></tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

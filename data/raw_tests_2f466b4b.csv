@@ -127,12 +127,12 @@ bluesminds,https://api.bluesminds.com/v1,meta/llama-4-maverick-17b-128e-instruct
 choosec,https://api.choosec.cn/v1,deepseek-v4-pro,direct,,,,0,30.229834209000046,http_error,HTTP 524: ,2026-07-24T06:05:51.901232+00:00
 bluesminds,https://api.bluesminds.com/v1,meta/llama-4-maverick-17b-128e-instruct,direct,,,,0,0.3620964909999884,http_error,HTTP 429: ,2026-07-24T06:05:52.745261+00:00
 bluesminds,https://api.bluesminds.com/v1,adept/fuyu-8b,direct,,,,0,0.3608555810000098,http_error,HTTP 429: ,2026-07-24T06:05:57.292969+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,2.330732393000062,261.4613703998202,419,5.568622983000068,success,,2026-07-24T06:05:57.490256+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,51.147202687619675,30,0.5865423410000403,success,,2026-07-24T06:05:57.898740+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,200.14808823619924,30,0.14988901599997462,success,,2026-07-24T06:05:58.049800+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,5.297966607000035,261.73790740962664,419,7.021566385000028,success,,2026-07-24T06:05:59.786743+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,15.760857947009548,30,1.9034496790000048,success,,2026-07-24T06:05:59.954362+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,220.46851278626207,30,0.13607385299997077,success,,2026-07-24T06:06:00.091659+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,2.330732393000062,261.4613703998202,419,5.568622983000068,success,,2026-07-24T06:05:57.490256+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,51.147202687619675,30,0.5865423410000403,success,,2026-07-24T06:05:57.898740+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,200.14808823619924,30,0.14988901599997462,success,,2026-07-24T06:05:58.049800+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,5.297966607000035,261.73790740962664,419,7.021566385000028,success,,2026-07-24T06:05:59.786743+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,15.760857947009548,30,1.9034496790000048,success,,2026-07-24T06:05:59.954362+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,220.46851278626207,30,0.13607385299997077,success,,2026-07-24T06:06:00.091659+00:00
 dext,https://ai.dext.top/v1,arctic-embed-l,direct,,,,0,0.9819515350000074,http_error,"HTTP 404: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-07-24T06:06:00.787797+00:00
 dext,https://ai.dext.top/v1,aura-1,direct,,,,0,1.417006760999925,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-07-24T06:06:01.527481+00:00
 dext,https://ai.dext.top/v1,aura-2-en,direct,,,,0,0.7924706320000041,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-07-24T06:06:01.600750+00:00

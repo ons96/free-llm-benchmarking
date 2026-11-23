@@ -120,7 +120,7 @@ choosec,https://api.choosec.cn/v1,deepseek-v4-pro,direct,,30.065800061999994,43.
 evolvex,https://api.evolvex.gg/v1,gpt-5,direct,high,,,0,0.8286818630000425,http_error,"HTTP 500: {""error"":{""message"":""auth_unavailable: no auth available"",""type"":""server_error"",""code"":""internal_server_error""}}",2026-07-28T06:03:10.182959+00:00
 free-gemini,https://free-gemini-proandflash.onrender.com/v1,gemini-2.5-pro-fake-stream,direct,,,,0,0.3630429099999901,http_error,"HTTP 401: {""error"":""Invalid API key""}",2026-07-28T06:03:10.596786+00:00
 free-gemini,https://free-gemini-proandflash.onrender.com/v1,gemini-2.5-pro-search-fake-stream,direct,,,,0,0.3463022109999656,http_error,"HTTP 401: {""error"":""Invalid API key""}",2026-07-28T06:03:10.964994+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,6.452690999999959,113.1605487866706,419,14.042767929999968,success,,2026-07-28T06:03:11.346017+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,6.452690999999959,113.1605487866706,419,14.042767929999968,success,,2026-07-28T06:03:11.346017+00:00
 free-gemini,https://free-gemini-proandflash.onrender.com/v1,gemini-2.5-pro-search-true-stream,direct,,,,0,0.38355955399993036,http_error,"HTTP 401: {""error"":""Invalid API key""}",2026-07-28T06:03:11.371446+00:00
 free-gemini,https://free-gemini-proandflash.onrender.com/v1,gemini-2.5-flash-fake-stream,direct,,,,0,0.2094590369999878,http_error,"HTTP 401: {""error"":""Invalid API key""}",2026-07-28T06:03:11.602197+00:00
 evolvex,https://api.evolvex.gg/v1,claude-haiku-4-5,direct,,,,0,1.2083908980000615,http_error,"HTTP 502: {""error"":""Upstream Communication Error"",""message"":""Pollinations Text Error: 402""}",2026-07-28T06:03:11.625134+00:00
@@ -172,7 +172,7 @@ github-models,https://models.inference.ai.azure.com,meta/meta-llama-3-70b-instru
 github-models,https://models.inference.ai.azure.com,meta/meta-llama-3-8b-instruct,direct,,,,0,0.06443767100006426,http_error,"HTTP 401: {""error"":{""code"":""unauthorized"",""message"":""No authorization header or api key found in request."",""details"":""No authorization header or api key found in request.""}}",2026-07-28T06:03:14.192794+00:00
 bluesminds,https://api.bluesminds.com/v1,meta/llama-3.3-70b-instruct,direct,,,,0,0.4041777859999911,http_error,HTTP 429: ,2026-07-28T06:03:14.383208+00:00
 choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,6.861641480000003,20.73720093754652,352,23.83637133000002,success,,2026-07-28T06:03:15.259269+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,11.721798626000009,111.07645157628792,419,15.796622865000018,success,,2026-07-28T06:03:15.743535+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,11.721798626000009,111.07645157628792,419,15.796622865000018,success,,2026-07-28T06:03:15.743535+00:00
 evolvex,https://api.evolvex.gg/v1,claude-opus-4-6,direct,,,,0,0.5751883549999093,http_error,"HTTP 429: {""error"":{""code"":""model_cooldown"",""message"":""All credentials for model claude-opus-4-6 are cooling down"",""model"":""claude-opus-4-6"",""reset_seconds"":187,""reset_time"":""3m7s""}}",2026-07-28T06:03:16.507365+00:00
 groq,https://api.groq.com/openai/v1,llama-3.3-70b-versatile,direct,,0.2671593049999501,676.4352659035884,420,0.8960935290000407,success,,2026-07-28T06:03:17.424487+00:00
 groq,https://api.groq.com/openai/v1,allam-2-7b,direct,,0.2730789529999811,1392.2305550820768,445,0.5927099209999369,success,,2026-07-28T06:03:18.051569+00:00
@@ -180,9 +180,9 @@ groq,https://api.groq.com/openai/v1,canopylabs/orpheus-arabic-saudi,direct,,,,0,
 ",2026-07-28T06:03:18.169372+00:00
 groq,https://api.groq.com/openai/v1,canopylabs/orpheus-v1-english,direct,,,,0,0.07100644199999806,http_error,"HTTP 400: {""error"":{""message"":""The model `canopylabs/orpheus-v1-english` requires terms acceptance. Please have the org admin accept the terms at https://console.groq.com/playground?model=canopylabs%2Forpheus-v1-english"",""type"":""invalid_request_error"",""code"":""model_terms_required""}}
 ",2026-07-28T06:03:18.289372+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.2995543770000495,186.9504723326242,419,2.733473927000091,success,,2026-07-28T06:03:18.479149+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.24827503500000603,255.88537171603468,423,2.0854069219999474,success,,2026-07-28T06:03:20.566282+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.1173430600000529,278.6960009137927,419,1.803572847000055,success,,2026-07-28T06:03:22.371440+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.2995543770000495,186.9504723326242,419,2.733473927000091,success,,2026-07-28T06:03:18.479149+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.24827503500000603,255.88537171603468,423,2.0854069219999474,success,,2026-07-28T06:03:20.566282+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.1173430600000529,278.6960009137927,419,1.803572847000055,success,,2026-07-28T06:03:22.371440+00:00
 gratisfy,https://api.gratisfy.xyz/v1,glm-5.2,direct,,,,0,1.275245707999943,http_error,"HTTP 503: {""error"":{""message"":""{\""error\"":{\""message\"":\""No available upstream keys. All keys are rate-limited or inactive.\"",\""type\"":\""service_unavailable\""}}"",""type"":""api_error"",""param"":null,""code"":""provider_error"",""error_origin"":""provider"",""error_origin_message"":""This error came from the provider.""}}",2026-07-28T06:03:25.207347+00:00
 groq,https://api.groq.com/openai/v1,groq/compound-mini,direct,,0.33721409600002517,473.7890414485182,1184,2.8369753849999597,success,,2026-07-28T06:03:25.230840+00:00
 bluesminds,https://api.bluesminds.com/v1,meta/llama-3.3-70b-instruct,direct,,,,0,0.38493625399996745,http_error,HTTP 429: ,2026-07-28T06:03:25.255883+00:00

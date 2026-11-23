@@ -107,9 +107,9 @@ bluesminds,https://api.bluesminds.com/v1,deepseek-v4-flash,direct,,,,0,0.3584085
 choosec,https://api.choosec.cn/v1,glm-5.1,direct,,,,0,0.3563703759998589,http_error,"HTTP 402: {""error"":{""message"":""Sorry, your account balance is insufficient"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-07-30T06:10:16.029999+00:00
 buddybackend,https://buddybackend.cloud/v1,deepseek-v4-pro,direct,,,,0,4.258865204999893,http_error,HTTP 429: ,2026-07-30T06:10:17.286435+00:00
 choosec,https://api.choosec.cn/v1,deepseek-v4-flash,direct,,,,0,0.7454697959999521,http_error,"HTTP 429: {""error"":{""message"":""Rate limit exceeded. Please try again later."",""type"":""FreeUsageLimitError"",""param"":"""",""code"":null}}",2026-07-30T06:10:22.542453+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,3.1957464870001786,281.4029858834316,419,7.073740417000181,success,,2026-07-30T06:10:24.380889+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,3.1957464870001786,281.4029858834316,419,7.073740417000181,success,,2026-07-30T06:10:24.380889+00:00
 bluesminds,https://api.bluesminds.com/v1,adept/fuyu-8b,direct,,,,0,0.3579819789999874,http_error,HTTP 429: ,2026-07-30T06:10:25.474523+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,2.04627725499995,303.5079563318062,419,3.6025451329999214,success,,2026-07-30T06:10:26.165739+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,2.04627725499995,303.5079563318062,419,3.6025451329999214,success,,2026-07-30T06:10:26.165739+00:00
 bluesminds,https://api.bluesminds.com/v1,deepseek-v4-flash,direct,,,,0,0.44024170700004106,http_error,HTTP 429: ,2026-07-30T06:10:26.735387+00:00
 evolvex,https://api.evolvex.gg/v1,claude-opus-4-6,direct,,,,0,2.3720985310001197,http_error,"HTTP 402: {""type"":""error"",""error"":{""type"":""insufficient_balance"",""message"":""Insufficient balance. Please top up.""}}",2026-07-30T06:10:27.867325+00:00
 evolvex,https://api.evolvex.gg/v1,claude-sonnet-4-6,direct,,,,0,2.287590655000031,http_error,"HTTP 402: {""type"":""error"",""error"":{""type"":""insufficient_balance"",""message"":""Insufficient balance. Please top up.""}}",2026-07-30T06:10:28.474064+00:00

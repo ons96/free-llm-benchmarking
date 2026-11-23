@@ -106,28 +106,28 @@ choosec,https://api.choosec.cn/v1,glm-5.1,direct,,,,0,0.7332236370000373,http_er
 choosec,https://api.choosec.cn/v1,mimo-v2.5,direct,,2.3718137420000858,71.1652017125244,404,8.049265284000057,success,,2026-08-04T06:10:24.929313+00:00
 bluesminds,https://api.bluesminds.com/v1,adept/fuyu-8b,direct,,,,0,0.30474442200011254,http_error,HTTP 429: ,2026-08-04T06:10:25.957491+00:00
 bluesminds,https://api.bluesminds.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1,direct,,0.0,28.497461993984235,568,19.931599527000117,success,,2026-08-04T06:10:26.014596+00:00
-custom,http://40.233.101.233:8000/v1,coding-fast,direct,,3.4771753730001365,131.29492257655033,393,9.870426130000169,success,,2026-08-04T06:10:27.751189+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,15.471352384037653,63,4.0720422130000316,success,,2026-08-04T06:10:28.569919+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,10.333296140815703,30,2.9032362559999,success,,2026-08-04T06:10:28.882195+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,22.21174253486913,29,1.3056157099999837,success,,2026-08-04T06:10:29.078597+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,6.963775886304914,30,4.308007679999946,success,,2026-08-04T06:10:29.258275+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,43.81908687033776,30,0.684633162000182,success,,2026-08-04T06:10:29.568263+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,48.7706050508923,29,0.5946204679999028,success,,2026-08-04T06:10:29.674610+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,42.97397165091341,30,0.6980969839999034,success,,2026-08-04T06:10:29.957741+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,50.50047307075618,30,0.5940538410000045,success,,2026-08-04T06:10:30.164257+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,32.46635350854117,29,0.8932324349998453,success,,2026-08-04T06:10:30.569769+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,42.04168161984786,30,0.7135775459998968,success,,2026-08-04T06:10:30.672691+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,43.595052900821926,30,0.68815147600003,success,,2026-08-04T06:10:30.854270+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,42.34083365070867,30,0.7085358839999572,success,,2026-08-04T06:10:31.382765+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,29.127541406367307,29,0.9956212779998168,success,,2026-08-04T06:10:31.567054+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,48.654463852708695,63,1.2948452210000596,success,,2026-08-04T06:10:31.955382+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,20.97317191185451,29,1.3827188430000206,success,,2026-08-04T06:10:32.258019+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,69.91181261280873,29,0.414808297999798,success,,2026-08-04T06:10:32.674261+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,70.6482032086052,29,0.41048460800016073,success,,2026-08-04T06:10:33.086187+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-fast,direct,,3.4771753730001365,131.29492257655033,393,9.870426130000169,success,,2026-08-04T06:10:27.751189+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,15.471352384037653,63,4.0720422130000316,success,,2026-08-04T06:10:28.569919+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,10.333296140815703,30,2.9032362559999,success,,2026-08-04T06:10:28.882195+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,22.21174253486913,29,1.3056157099999837,success,,2026-08-04T06:10:29.078597+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,6.963775886304914,30,4.308007679999946,success,,2026-08-04T06:10:29.258275+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,43.81908687033776,30,0.684633162000182,success,,2026-08-04T06:10:29.568263+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,48.7706050508923,29,0.5946204679999028,success,,2026-08-04T06:10:29.674610+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,42.97397165091341,30,0.6980969839999034,success,,2026-08-04T06:10:29.957741+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,50.50047307075618,30,0.5940538410000045,success,,2026-08-04T06:10:30.164257+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,32.46635350854117,29,0.8932324349998453,success,,2026-08-04T06:10:30.569769+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,42.04168161984786,30,0.7135775459998968,success,,2026-08-04T06:10:30.672691+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-super-120b,direct,,0.0,43.595052900821926,30,0.68815147600003,success,,2026-08-04T06:10:30.854270+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-3-nano-30b,direct,,0.0,42.34083365070867,30,0.7085358839999572,success,,2026-08-04T06:10:31.382765+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-12b,direct,,0.0,29.127541406367307,29,0.9956212779998168,success,,2026-08-04T06:10:31.567054+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,48.654463852708695,63,1.2948452210000596,success,,2026-08-04T06:10:31.955382+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,20.97317191185451,29,1.3827188430000206,success,,2026-08-04T06:10:32.258019+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,69.91181261280873,29,0.414808297999798,success,,2026-08-04T06:10:32.674261+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,70.6482032086052,29,0.41048460800016073,success,,2026-08-04T06:10:33.086187+00:00
 dext,https://ai.dext.top/v1,arctic-embed-l,direct,,,,0,1.7887123620000693,http_error,"HTTP 503: {""error"":{""message"":""No available channel for model arctic-embed-l under group special (distributor) (request id: 202608040610330765022528268d9d6Pj0DC9wU)"",""type"":""new_api_error"",""param"":"""",""code"":""model_not_found""}}",2026-08-04T06:10:33.376454+00:00
 dext,https://ai.dext.top/v1,ai-synthetic-video-detector,direct,,,,0,2.0097802469999806,http_error,"HTTP 503: {""error"":{""message"":""No available channel for model ai-synthetic-video-detector under group special (distributor) (request id: 202608040610331101672828268d9d61KC7rNPF)"",""type"":""new_api_error"",""param"":"""",""code"":""model_not_found""}}",2026-08-04T06:10:33.413614+00:00
-custom,http://40.233.101.233:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,75.7449371567892,29,0.382863873000133,success,,2026-08-04T06:10:33.470533+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,309.5678458426756,63,0.20350950799979728,success,,2026-08-04T06:10:34.569967+00:00
+custom,http://<VPS40_IP>:8000/v1,nvidia-nemotron-nano-9b,direct,,0.0,75.7449371567892,29,0.382863873000133,success,,2026-08-04T06:10:33.470533+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,309.5678458426756,63,0.20350950799979728,success,,2026-08-04T06:10:34.569967+00:00
 dext,https://ai.dext.top/v1,aura-2-en,direct,,,,0,1.3896367519998876,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-04T06:10:34.824043+00:00
 dext,https://ai.dext.top/v1,aura-1,direct,,,,0,1.4493893379999463,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-04T06:10:34.846296+00:00
 dext,https://ai.dext.top/v1,aura-2-es,direct,,,,0,1.5228370270001506,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-04T06:10:35.013966+00:00
@@ -135,7 +135,7 @@ dext,https://ai.dext.top/v1,bge-large-en-v1.5,direct,,,,0,1.4975890300001993,htt
 dext,https://ai.dext.top/v1,bge-base-en-v1.5,direct,,,,0,1.6176128760000665,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-04T06:10:36.462144+00:00
 dext,https://ai.dext.top/v1,bge-m3,direct,,,,0,1.449843041000122,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-04T06:10:36.484589+00:00
 bluesminds,https://api.bluesminds.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1,direct,,,,0,0.30357378500002596,http_error,HTTP 429: ,2026-08-04T06:10:36.737450+00:00
-custom,http://40.233.101.233:8000/v1,deepseek-chat,direct,,0.0,205.13708521796988,63,0.3071117049998975,success,,2026-08-04T06:10:36.954711+00:00
+custom,http://<VPS40_IP>:8000/v1,deepseek-chat,direct,,0.0,205.13708521796988,63,0.3071117049998975,success,,2026-08-04T06:10:36.954711+00:00
 dext,https://ai.dext.top/v1,bge-reranker-base,direct,,,,0,1.5636626309999428,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-04T06:10:37.949515+00:00
 dext,https://ai.dext.top/v1,bge-small-en-v1.5,direct,,,,0,1.6221751250000125,http_error,"HTTP 400: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-04T06:10:38.105166+00:00
 dext,https://ai.dext.top/v1,codegemma-1.1-7b,direct,,,,0,1.2782975239999814,http_error,"HTTP 503: {""error"":{""message"":""No available channel for model codegemma-1.1-7b under group special (distributor) (request id: 202608040610379400909778268d9d61ugBPxDJ)"",""type"":""new_api_error"",""param"":"""",""code"":""model_not_found""}}",2026-08-04T06:10:38.253701+00:00
@@ -143,14 +143,14 @@ dext,https://ai.dext.top/v1,codellama-70b,direct,,,,0,1.3216434109999682,http_er
 dext,https://ai.dext.top/v1,codegemma-7b,direct,,,,0,1.492194230999985,http_error,"HTTP 503: {""error"":{""message"":""No available channel for model codegemma-7b under group special (distributor) (request id: 202608040610391597084948268d9d65wvaKzVD)"",""type"":""new_api_error"",""param"":"""",""code"":""model_not_found""}}",2026-08-04T06:10:39.462020+00:00
 dext,https://ai.dext.top/v1,codestral-22b-instruct-v0.1,direct,,,,0,1.3078184160001456,http_error,"HTTP 503: {""error"":{""message"":""No available channel for model codestral-22b-instruct-v0.1 under group special (distributor) (request id: 202608040610392832185018268d9d6I3cOFYRQ)"",""type"":""new_api_error"",""param"":"""",""code"":""model_not_found""}}",2026-08-04T06:10:39.581965+00:00
 choosec,https://api.choosec.cn/v1,glm-5.2,direct,,,,0,30.304144853000025,http_error,HTTP 524: ,2026-08-04T06:10:40.579720+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,10.249957513999789,22.56474110384607,297,23.454083327999797,success,,2026-08-04T06:10:44.082790+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,10.249957513999789,22.56474110384607,297,23.454083327999797,success,,2026-08-04T06:10:44.082790+00:00
 choosec,https://api.choosec.cn/v1,MiniMax-M3,direct,,,,0,30.284389315999988,http_error,HTTP 524: ,2026-08-04T06:10:47.046500+00:00
 bluesminds,https://api.bluesminds.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1,direct,,,,0,0.39559766699994725,http_error,HTTP 429: ,2026-08-04T06:10:47.558536+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,1.0410204909999266,26.944820989281684,193,8.285825491999958,success,,2026-08-04T06:10:52.370061+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,1.0410204909999266,26.944820989281684,193,8.285825491999958,success,,2026-08-04T06:10:52.370061+00:00
 dext,https://ai.dext.top/v1,claude-glm-5.2,direct,,,,0,1.8793065229999684,http_error,"HTTP 429: {""error"":{""message"":""openai_error"",""type"":""bad_response_status_code"",""param"":"""",""code"":""bad_response_status_code""}}",2026-08-04T06:10:52.418642+00:00
 bluesminds,https://api.bluesminds.com/v1,nvidia/llama-3.3-nemotron-super-49b-v1,direct,,,,0,0.30366417600021123,http_error,HTTP 429: ,2026-08-04T06:10:58.304275+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,0.6096803059999729,21.72513237004837,197,9.978761389000056,success,,2026-08-04T06:11:02.350650+00:00
-custom,http://40.233.101.233:8000/v1,coding-smart,direct,,1.2224759169998833,15.781121726291785,229,15.816356164999888,success,,2026-08-04T06:11:18.168689+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,0.6096803059999729,21.72513237004837,197,9.978761389000056,success,,2026-08-04T06:11:02.350650+00:00
+custom,http://<VPS40_IP>:8000/v1,coding-smart,direct,,1.2224759169998833,15.781121726291785,229,15.816356164999888,success,,2026-08-04T06:11:18.168689+00:00
 dext,https://ai.dext.top/v1,dbrx-instruct,direct,,,,0,1.6833602700000938,http_error,"HTTP 503: {""error"":{""message"":""No available channel for model dbrx-instruct under group special (distributor) (request id: 202608040611348224525238268d9d66SQGfN2M)"",""type"":""new_api_error"",""param"":"""",""code"":""model_not_found""}}",2026-08-04T06:11:35.144474+00:00
 dext,https://ai.dext.top/v1,cosmos-reason2-8b,direct,,,,0,1.6728052690000368,http_error,"HTTP 503: {""error"":{""message"":""No available channel for model cosmos-reason2-8b under group special (distributor) (request id: 202608040611348136865438268d9d6cMk4DfTU)"",""type"":""new_api_error"",""param"":"""",""code"":""model_not_found""}}",2026-08-04T06:11:35.151852+00:00
 dext,https://ai.dext.top/v1,deepseek-coder-6.7b-instruct,direct,,,,0,1.7888116110000283,http_error,"HTTP 503: {""error"":{""message"":""No available channel for model deepseek-coder-6.7b-instruct under group special (distributor) (request id: 202608040611348136615038268d9d6mNcryIzf)"",""type"":""new_api_error"",""param"":"""",""code"":""model_not_found""}}",2026-08-04T06:11:35.195640+00:00

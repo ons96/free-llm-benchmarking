@@ -40,3 +40,7 @@ credentials*
 # Logs
 *.log
 logs/
+
+# Newsletter drafts are generated; only the generator is versioned
+drafts/
+data/newsletter-state.json

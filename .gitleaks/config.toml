@@ -6,7 +6,10 @@
 title = "task-board pre-publish default rules"
 
 # Top-level allow-list (gitleaks >=8.18: [[allowlists]] array of tables).
-[[allowlists]]
+[extend]
+useDefault = true
+
+[allowlist]
 description = "Operational allow-lists"
 paths = [
   '''\.lock$''',
@@ -19,6 +22,11 @@ paths = [
   '''.+\.snap$''',
   '''docs/leaderboard\.json$''',
   '''docs/data/leaderboard\.json$''',
+  # Raw probe transcripts store upstream HTTP bodies verbatim. Cloudflare
+  # interstitials and vendor error pages trip token-shaped rules (the
+  # facebook-page-access-token rule fires on captured HTML). These files hold
+  # response text only; no credential is ever written into them.
+  '''data/raw_tests_[0-9a-f]+\.csv$''',
 ]
 
 # Most defaults from upstream gitleaks (>=8.18) work; we only override
@@ -40,3 +48,13 @@ tags = ["github", "pat"]
 paths = [
   '''docs/.*''',
 ]
+
+# NVIDIA NGC / NIM API keys (nvapi-...). Stock gitleaks ships no NVIDIA rule,
+# which is why the April 2026 nvapi- leak in free-llm-benchmarking scanned clean.
+# Verified: fires on a 45-char nvapi- key, silent on "nvapi-*" / "prefix nvapi-".
+[[rules]]
+id = "nvidia-api-key"
+description = "NVIDIA NGC / NIM API key"
+regex = '''nvapi-[A-Za-z0-9_-]{32,}'''
+keywords = ["nvapi-"]
+tags = ["nvidia", "secret"]
