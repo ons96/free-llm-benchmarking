@@ -8,22 +8,22 @@ on:
       skip-discovery:
         description: 'Skip discovery phase'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       skip-verification:
         description: 'Skip verification phase'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       skip-aliases:
         description: 'Skip alias updates'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       apply-aliases:
         description: 'Actually apply alias changes (not dry-run)'
         required: false
-        default: 'false'
+        default: false
         type: boolean
       max-verify:
         description: 'Max models to verify (default: all)'
@@ -33,6 +33,112 @@ on:
 
 permissions:
   contents: write
+
+# Explicit allowlist of repo secrets. The old toJSON(secrets) dump tripped
+# GitHub's malicious-workflow gate. This block is the single source of truth:
+# the build and leak-scan steps read their name list from it. Add new repo
+# secrets here only.
+env:
+  AEROLINK: ${{ secrets.AEROLINK }}
+  AGNES_AI_API_KEY: ${{ secrets.AGNES_AI_API_KEY }}
+  AIBZ_KEY: ${{ secrets.AIBZ_KEY }}
+  AIHUBMIX: ${{ secrets.AIHUBMIX }}
+  AIHUBMIX_KEY: ${{ secrets.AIHUBMIX_KEY }}
+  AIHUB_071129_KEY: ${{ secrets.AIHUB_071129_KEY }}
+  AIRFORCE_API_KEY: ${{ secrets.AIRFORCE_API_KEY }}
+  AITOOLS_API_KEY: ${{ secrets.AITOOLS_API_KEY }}
+  AI_CLAW_ANYROUTER_KEY: ${{ secrets.AI_CLAW_ANYROUTER_KEY }}
+  AI_CLAW_KEY: ${{ secrets.AI_CLAW_KEY }}
+  ANMIX: ${{ secrets.ANMIX }}
+  ANTHROPIC: ${{ secrets.ANTHROPIC }}
+  ATESSA_API_KEY: ${{ secrets.ATESSA_API_KEY }}
+  BANANA2556_API_KEY: ${{ secrets.BANANA2556_API_KEY }}
+  BAYUNZI_API_KEY: ${{ secrets.BAYUNZI_API_KEY }}
+  BENCHMARK_PUSH_TOKEN: ${{ secrets.BENCHMARK_PUSH_TOKEN }}
+  BLAZE: ${{ secrets.BLAZE }}
+  BLAZEAI_API_KEY: ${{ secrets.BLAZEAI_API_KEY }}
+  BLAZE_FREE_API_KEY: ${{ secrets.BLAZE_FREE_API_KEY }}
+  BLAZE_FREE_KEY: ${{ secrets.BLAZE_FREE_KEY }}
+  BLAZE_ORG: ${{ secrets.BLAZE_ORG }}
+  BLUESMINDS: ${{ secrets.BLUESMINDS }}
+  BLUESMINDS_KEY: ${{ secrets.BLUESMINDS_KEY }}
+  BOSCO_KOYEB_KEY: ${{ secrets.BOSCO_KOYEB_KEY }}
+  BUDDYBACKEND_API_KEY: ${{ secrets.BUDDYBACKEND_API_KEY }}
+  BUDDYBACKEND_KEY: ${{ secrets.BUDDYBACKEND_KEY }}
+  CEREBRAS: ${{ secrets.CEREBRAS }}
+  CHOOSEC_API_KEY: ${{ secrets.CHOOSEC_API_KEY }}
+  CHOOSEC_KEY: ${{ secrets.CHOOSEC_KEY }}
+  CONDUIT_API_KEY: ${{ secrets.CONDUIT_API_KEY }}
+  CONDUIT_KEY: ${{ secrets.CONDUIT_KEY }}
+  CROWLLM_API_KEY: ${{ secrets.CROWLLM_API_KEY }}
+  CURSOR_COOKIE: ${{ secrets.CURSOR_COOKIE }}
+  CUZLAB_API_KEY: ${{ secrets.CUZLAB_API_KEY }}
+  DCAPI_GBOX_KEY: ${{ secrets.DCAPI_GBOX_KEY }}
+  DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+  DEEPSEEK_KEY: ${{ secrets.DEEPSEEK_KEY }}
+  DEXT_API_KEY: ${{ secrets.DEXT_API_KEY }}
+  EIGHT88AVI_API_KEY: ${{ secrets.EIGHT88AVI_API_KEY }}
+  EIGHT88AVI_KEY: ${{ secrets.EIGHT88AVI_KEY }}
+  EVOLVEX_KEY: ${{ secrets.EVOLVEX_KEY }}
+  FREEMODEL: ${{ secrets.FREEMODEL }}
+  FREEMODEL_API_KEY: ${{ secrets.FREEMODEL_API_KEY }}
+  FREETHEAI_API_KEY: ${{ secrets.FREETHEAI_API_KEY }}
+  FREE_GEMINI_KEY: ${{ secrets.FREE_GEMINI_KEY }}
+  FURRY_KEY: ${{ secrets.FURRY_KEY }}
+  FURRY_KEY_ALT: ${{ secrets.FURRY_KEY_ALT }}
+  FUTUREPPO_API_KEY: ${{ secrets.FUTUREPPO_API_KEY }}
+  FUTUREPPO_API_KEY_NEW: ${{ secrets.FUTUREPPO_API_KEY_NEW }}
+  FUTUREPPO_NVIDIA_API_KEY: ${{ secrets.FUTUREPPO_NVIDIA_API_KEY }}
+  GATEWAY_API_KEY: ${{ secrets.GATEWAY_API_KEY }}
+  GBOX_API_KEY: ${{ secrets.GBOX_API_KEY }}
+  GCLI_API_KEY: ${{ secrets.GCLI_API_KEY }}
+  GEMINI: ${{ secrets.GEMINI }}
+  GRATISFY: ${{ secrets.GRATISFY }}
+  GRATISFY_NEW_KEY: ${{ secrets.GRATISFY_NEW_KEY }}
+  GROQ: ${{ secrets.GROQ }}
+  HAPUPPY: ${{ secrets.HAPUPPY }}
+  HAPUPPY_API_KEY: ${{ secrets.HAPUPPY_API_KEY }}
+  HAPUPPY_KEY: ${{ secrets.HAPUPPY_KEY }}
+  HF_TOKEN: ${{ secrets.HF_TOKEN }}
+  HUASHANG_API_KEY: ${{ secrets.HUASHANG_API_KEY }}
+  HUGGINGFACE_API_KEY: ${{ secrets.HUGGINGFACE_API_KEY }}
+  KOYEB_API_KEY: ${{ secrets.KOYEB_API_KEY }}
+  KTAI_PAID_API_KEY: ${{ secrets.KTAI_PAID_API_KEY }}
+  LHYB_API_KEY: ${{ secrets.LHYB_API_KEY }}
+  LOGFARE_API_KEY: ${{ secrets.LOGFARE_API_KEY }}
+  LOLMAO_API_KEY: ${{ secrets.LOLMAO_API_KEY }}
+  LOTTE_LIBRARY_API_KEY: ${{ secrets.LOTTE_LIBRARY_API_KEY }}
+  LPGPT_API_KEY: ${{ secrets.LPGPT_API_KEY }}
+  MISTRAL_API_KEY: ${{ secrets.MISTRAL_API_KEY }}
+  NAVY_ALT_API_KEY: ${{ secrets.NAVY_ALT_API_KEY }}
+  NAVY_API_KEY: ${{ secrets.NAVY_API_KEY }}
+  NOVITA_API_KEY: ${{ secrets.NOVITA_API_KEY }}
+  OLLAMA_CLOUD_API_KEY: ${{ secrets.OLLAMA_CLOUD_API_KEY }}
+  OPENCODE_JSON_BASE64: ${{ secrets.OPENCODE_JSON_BASE64 }}
+  OPENCODE_ZEN_API_KEY: ${{ secrets.OPENCODE_ZEN_API_KEY }}
+  OPENROUTER_2_API_KEY: ${{ secrets.OPENROUTER_2_API_KEY }}
+  OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+  POOLED_API_KEY: ${{ secrets.POOLED_API_KEY }}
+  QZZ_API_KEY: ${{ secrets.QZZ_API_KEY }}
+  REDWAKEAI_API_KEY: ${{ secrets.REDWAKEAI_API_KEY }}
+  SETBUG_API_KEY: ${{ secrets.SETBUG_API_KEY }}
+  SEVENTEEN_NAS_API_KEY: ${{ secrets.SEVENTEEN_NAS_API_KEY }}
+  SH00T_API_KEY: ${{ secrets.SH00T_API_KEY }}
+  SH00T_API_KEY_2: ${{ secrets.SH00T_API_KEY_2 }}
+  TOGETHER_API_KEY: ${{ secrets.TOGETHER_API_KEY }}
+  TOKENLB_API_KEY: ${{ secrets.TOKENLB_API_KEY }}
+  TOKENREPLY_API_KEY: ${{ secrets.TOKENREPLY_API_KEY }}
+  TOKENROUTER_API_KEY: ${{ secrets.TOKENROUTER_API_KEY }}
+  VOIDAI_API_KEY: ${{ secrets.VOIDAI_API_KEY }}
+  VPS_GATEWAY_API_KEY: ${{ secrets.VPS_GATEWAY_API_KEY }}
+  XIAOMIMIMO_API_KEY: ${{ secrets.XIAOMIMIMO_API_KEY }}
+  XINJIANYA_API_KEY: ${{ secrets.XINJIANYA_API_KEY }}
+  YZGPT_KEY1: ${{ secrets.YZGPT_KEY1 }}
+  YZGPT_KEY2: ${{ secrets.YZGPT_KEY2 }}
+  ZANITY_API_KEY: ${{ secrets.ZANITY_API_KEY }}
+  ZENLLM_API_KEY: ${{ secrets.ZENLLM_API_KEY }}
+  ZENMUX_API_KEY: ${{ secrets.ZENMUX_API_KEY }}
+  ZHANGYU_API_KEY: ${{ secrets.ZHANGYU_API_KEY }}
 
 concurrency:
   group: free-model-radar
@@ -46,13 +152,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4, pinned for supply-chain safety
         with:
           token: ${{ secrets.BENCHMARK_PUSH_TOKEN || secrets.GITHUB_TOKEN }}
           fetch-depth: 1
 
       - name: Install uv
-        uses: astral-sh/setup-uv@v7
+        uses: astral-sh/setup-uv@37802adc94f370d6bfd71619e3f0bf239e1f3b78 # v7, pinned
         with:
           activate-environment: true
           enable-cache: true
@@ -72,12 +178,12 @@ jobs:
           echo "Config restored. Providers: $(uv run python -c "import json; d=json.load(open('/home/runner/.config/opencode/opencode.json')); print(len(d.get('provider', {})))")"
 
       - name: Build ~/.env and ~/.secrets/ from repo secrets
-        env:
-          SECRETS_JSON: ${{ toJSON(secrets) }}
         run: |
           python3 <<'PYEOF'
-          import json, os, re
-          secrets = json.loads(os.environ["SECRETS_JSON"])
+          import os, yaml
+          WF = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/workflows/free-model-radar.yml")
+          allow = list(yaml.safe_load(open(WF))["env"])
+          secrets = {n: os.environ[n] for n in allow if os.environ.get(n)}
           home = os.path.expanduser("~")
           env_path = os.path.join(home, ".env")
           sec_dir = os.path.join(home, ".secrets")
@@ -101,6 +207,9 @@ jobs:
                   sec_written += 1
           print(f"~/.env: {env_written} keys, ~/.secrets/: {sec_written} files")
           PYEOF
+          chmod 600 ~/.env
+          chmod 700 ~/.secrets
+          chmod 600 ~/.secrets/* 2>/dev/null || true
 
       - name: Initialize database
         run: |
@@ -150,8 +259,10 @@ jobs:
         if: always()
         run: |
           python3 <<'PYEOF'
-          import json, os, subprocess, sys
-          secrets_ctx = json.loads(os.environ.get("SECRETS_CONTEXT", "{}"))
+          import os, subprocess, sys, yaml
+          WF = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/workflows/free-model-radar.yml")
+          allow = list(yaml.safe_load(open(WF))["env"])
+          secrets_ctx = {n: os.environ[n] for n in allow if os.environ.get(n)}
           hits = []
           for name, val in secrets_ctx.items():
               if not val or len(val) < 12:
@@ -172,8 +283,47 @@ jobs:
               sys.exit(1)
           print(f"Scanned {len(secrets_ctx)} secrets, no leaks in /home/runner/work/.")
           PYEOF
-        env:
-          SECRETS_CONTEXT: ${{ toJSON(secrets) }}
+
+      - name: "Fail-safe: scan publish artifacts for leaked secrets"
+        if: always()
+        run: |
+          python3 <<'PYEOF'
+          import os, subprocess, sys, yaml
+          WF = os.path.join(os.environ["GITHUB_WORKSPACE"], ".github/workflows/free-model-radar.yml")
+          allow = list(yaml.safe_load(open(WF))["env"])
+          secrets_ctx = {n: os.environ[n] for n in allow if os.environ.get(n)}
+          targets = ["data/free_models.json", "docs/dashboard.html", "docs/dashboard.json"]
+          hits = []
+          for name, val in secrets_ctx.items():
+              if not val or len(val) < 12:
+                  continue
+              if name == "BENCHMARK_PUSH_TOKEN":
+                  continue
+              for tgt in targets:
+                  if not os.path.exists(tgt):
+                      continue
+                  try:
+                      r = subprocess.run(["grep", "-l", "-F", val, tgt], capture_output=True, text=True, timeout=30)
+                      if tgt in r.stdout:
+                          hits.append((name, tgt))
+                  except Exception:
+                      pass
+              # binary DB: scan strings output
+              db = "data/free_models.db"
+              if os.path.exists(db):
+                  try:
+                      r1 = subprocess.run(["strings", db], capture_output=True, text=True, timeout=30)
+                      if val in r1.stdout:
+                          hits.append((name, db))
+                  except Exception:
+                      pass
+          if hits:
+              print(f"::error::SECRET LEAK DETECTED in {len(hits)} publish artifact(s):")
+              for name, path in hits:
+                  print(f"  {name} -> {path}")
+              sys.exit(1)
+          print("Publish artifacts clean: no secret values found.")
+          PYEOF
 
       - name: Commit updated data files
         if: success()
@@ -199,7 +349,7 @@ jobs:
               fi
               echo "push rejected (attempt $attempt), rebasing onto origin/main"
               git fetch origin main
-              git rebase -X ours origin/main || { git rebase --abort; echo "::error::rebase failed unexpectedly"; exit 1; }
+              git -c rebase.autoStash=true rebase -X ours origin/main || { git rebase --abort; echo "::error::rebase failed unexpectedly"; exit 1; }
               if [ "$attempt" = "5" ]; then echo "::error::push failed after 5 attempts"; exit 1; fi
               sleep $((attempt * 5))
             done
@@ -209,7 +359,7 @@ jobs:
 
       - name: Deploy dashboard to GitHub Pages
         if: success()
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@373f7f263a76c20808c831209c920827a82a2847 # v3, pinned
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
